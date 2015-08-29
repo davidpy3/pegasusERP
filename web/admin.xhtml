@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html">
+    
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
+    
+    <h:body><center><table border="1" bgcolor="red" width="300"><tr><td>
+        <h:graphicImage  url="images/pegasus_top.png"></h:graphicImage></td></tr>
+    <h:form>
+        <p>Biembenido #{userController.usuario.usuario}</p>
+        <h:commandLink action="#{userController.logout}" value="Logout"></h:commandLink>
+    </h:form>
+                <tr><td align="center">
+                                <table border="1" >
+                                    <tr>
+                   <td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                       ALTA DIRECCION</td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                           PRESUPUESTO (R)</td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                  CONFIGURACIONES</td>
+                                    </tr>
+                                                    <tr>
+                   <td></td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                           OPERACIONES</td>
+                                        <td width="20"></td><td>
+                                </td>
+                                    </tr>
+                                     <tr>
+                   <td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                       PERSONAL (P)</td>
+                                        <td width="20"></td><td></td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                  ABASTECIMIENTO (A)</td>
+                                    </tr>   
+                                               <tr>
+                   <td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                       ALTA DIRECCION</td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                           ALTA DIRECCION</td>
+                                        <td width="20"></td><td><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                  ALTA DIRECCION</td>
+                                    </tr>
+                                </table>
+                           El menú principial que puede apreciar muestra la estructura funcional del sistema, cada opción es un módulo. Puede ingresar también utilizado las teclas rápidas que se muestra entre paréntesis.     
+                    </td></tr></table>
+    </center>
+</h:body>
+</html>

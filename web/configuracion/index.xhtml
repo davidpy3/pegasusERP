@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="first">
+            
+        </f:facet>
+    </h:head>
+    <h:form>
+       <p:growl id="msg"/>
+       <p:menubar>
+           <p:submenu label="Operación">
+               
+               <p:menuitem  value="Bandeja de Requerimientos"/>
+               <p:menuitem  value="Configuracion del Sistema"/>
+               <p:separator/>
+               <p:menuitem  value="Administración de Usuarios"/>
+               <p:separator/>
+               <p:menuitem  value="Salir"/>
+               <p:menuitem  value="PECOSA"/>
+               <p:menuitem  value="Migrar Personal"/>
+               <p:menuitem  value="SQUID"/>
+           </p:submenu>
+           <p:submenu label="Tablas">
+               
+               <p:menuitem  value="Parametros"/>
+               <p:menuitem  value="Hcc"/>
+               <p:menuitem  value="Actualizar Orden"/>
+               <p:menuitem  value="Sincronzacion SIAF"/>
+               
+           </p:submenu>
+           <p:submenu label="Herramientas">
+               
+               <p:menuitem  value="Cambio de Contraseña"/>
+               <p:separator/>
+               <p:menuitem  value="Mis Datos Personales"/>
+               <p:menuitem  value="Año de Ejecucion"/>
+           </p:submenu>
+                <p:submenu label="Ayuda">
+               
+               <p:menuitem  value="Acerca de..."/>
+           </p:submenu>
+           <f:facet name="options">
+               <p:commandButton type="button" value="Logout" icon="ui-icon-extlink"/>
+           </f:facet>
+       </p:menubar>
+    </h:form>
+</html>
