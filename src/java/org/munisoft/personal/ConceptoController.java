@@ -13,8 +13,6 @@ import javax.persistence.EntityManager;
 import org.jsuns.data.JPA;
 import org.jsuns.util.XUtil;
 import org.munisoft.model.Concepto;
-import org.munisoft.model.Personal;
-import org.munisoft.model.PersonalDscto;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
