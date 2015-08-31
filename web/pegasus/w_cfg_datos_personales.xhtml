@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <f:facet name="first"></f:facet>
+    </h:head>
+    <f:view>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:outputLabel value="D.N.I.:" for="usuario" />
+                <h:inputText id="usuario" value="#{dummy.getInt(40931308)}" title="Usuario" required="true" requiredMessage="The Usuario field is required."/>
+                <h:outputLabel value="Usuario:" for="clave" />
+                <h:inputText id="clave" value="#{dummy.getString(6)}" title="Clave" />
+                <h:outputLabel value="N° R.U.C:" for="IDcargo" />
+                <h:inputText id="IDcargo" value="#{dummy.getInt(1040931308)}" title="IDcargo" />
+                <h:outputLabel value="Pref:" for="anio" />
+                <h:inputText id="anio" value="#{dummy.getInt(9)}" title="Anio" />
+                <h:outputLabel value="Apellidos:" for="obra" />
+                <h:inputText id="obra" title="Obra" />
+                <h:outputLabel value="Nombres:" for="actProy" />
+                <h:inputText id="actProy" value="#{dummy.getString(30)}" title="ActProy" />
+                <h:outputLabel value="Sexo:"/>
+                <p:selectOneMenu value="F" style="width:125px">
+                    <f:selectItem itemLabel="Masculino" itemValue="M" />
+                    <f:selectItem itemLabel="Femenino" itemValue="F" />
+                </p:selectOneMenu>
+                <h:outputLabel value="Fec. Nac.:" for="estado" />
+                <p:calendar id="estado" value="#{dummy.getDate(3)}" showOn="button" />
+
+                <h:outputLabel value="Profesión:" for="autoriza" />
+                <h:inputText id="autoriza" value="#{userController.usuario.autoriza}" title="Autoriza" />
+                <h:outputLabel value="N° de Colegiatura:" for="localHost" />
+                <h:inputText id="localHost" value="#{userController.usuario.localHost}" title="LocalHost" />
+                <h:outputLabel value="Teléfono:" for="localIp" />
+                <h:inputText id="localIp" value="#{userController.usuario.localIp}" title="LocalIp" />
+            </h:panelGrid>
+            <p:button value="Guardar" icon="ui-icon-disk"></p:button>
+        </h:form>
+    </f:view>
+</html>

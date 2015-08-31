@@ -38,12 +38,22 @@ public class AuthorizationFilter implements Filter {
             HttpServletResponse resp = (HttpServletResponse) response;
             HttpSession ses = reqt.getSession(false);
             String reqURI = reqt.getRequestURI();
+            System.out.println("uri="+reqURI);
+            String q[]=reqURI.split("/");
+            
             if (reqURI.indexOf("/login.xhtml") >= 0
                     || (ses != null && ses.getAttribute("usuario") != null)
                     || reqURI.indexOf("/public/") >= 0
-                    || reqURI.contains("javax.faces.resource"))
-                chain.doFilter(request, response);
-            else
+                    || reqURI.contains("javax.faces.resource")){
+                
+                if("faces".equals(q[2])){
+                    chain.doFilter(request, response);
+                }else{
+                    ses.setAttribute("url","/"+q[2]+"/"+q[3]);
+                    resp.sendRedirect(reqt.getContextPath() + "/faces/"+q[2]+"/index.xhtml");
+                }
+                
+            }else
                 resp.sendRedirect(reqt.getContextPath() + "/faces/login.xhtml");
         } catch (Exception e) {
             System.out.println(e.getMessage());

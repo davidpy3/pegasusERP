@@ -140,12 +140,15 @@
     <class>org.munisoft.model.PlanillaDet</class>
     <class>org.munisoft.model.Cotizacion</class>
     <class>org.munisoft.model.OrdenDet</class>
+    <class>org.munisoft.model.PersonalDscto</class>
+    <class>org.munisoft.model.Concepto</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://;databaseName=pegasus"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
       <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="javax.persistence.jdbc.password" value="Srp007"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
     </properties>
   </persistence-unit>
 </persistence>

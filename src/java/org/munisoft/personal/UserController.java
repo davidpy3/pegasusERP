@@ -62,7 +62,7 @@ public class UserController implements Serializable {
     //validate login
     public String validateUsernamePassword(){
         EntityManager em=JPA.getInstance().getEntityManager();
-        /*for(Object d:em.createQuery("select "
+       /* for(Object d:em.createQuery("select "
                 + "u from Usuario u").getResultList()){
             if(d!=null){
                 Usuario u=(Usuario) d;
@@ -106,6 +106,8 @@ public class UserController implements Serializable {
   
     }
  
+    
+    
     //logout event, invalidate session
     public String logout() {
         HttpSession session =Pegasus.getSession();
