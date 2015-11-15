@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPlanillaTrabTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PlanillaTrabListForm">
+                <p:panel id="container" header="#{bundle.ListPlanillaTrabTitle}">
+                         <p:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.personal}:"/>
+                        
+                        <p:autoComplete autocomplete="true"  size="60" id="personalDsctoPK_dni" value="#{planillaTrabController.params['personal']}" completeMethod="#{personalController.complete}"
+                                        var="v" itemLabel="#{v.dni}: #{v.nombComp}" converter="personalControllerConverter" itemValue="#{v}" forceSelection="true">
+                            <p:column>
+                                <h:outputText value="#{v.dni}" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="#{v.nombComp}" />
+                            </p:column>
+                            <p:ajax event="itemSelect" update="container" listener="#{planillaTrabController.ajaxListener}"/>
+                        </p:autoComplete>
+                        
+                    </p:panelGrid>
+                    <p:dataTable id="datalist" value="#{planillaTrabController.items}" var="item"
+                                 selectionMode="single" selection="#{planillaTrabController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.planillaTrabPK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+                        <p:ajax event="rowSelect"   update="certificadoButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="certificadoButton createButton viewButton editButton deleteButton"/>
+
+                        <p:columnGroup type="header">
+            <p:row>
+                <p:column rowspan="2" headerText="#{bundle.anoEje}" />
+                <p:column rowspan="2" headerText="#{bundle.mes}" />
+                <p:column rowspan="2" headerText="#{bundle.nPlanilla}" />
+                <p:column rowspan="2" headerText="#{bundle.tipoPlanilla}" />
+                <p:column rowspan="2" headerText="#{bundle.modalidadLaboral}" />
+                <p:column rowspan="2" headerText="#{bundle.nivelRemunerativo}" />
+                <p:column rowspan="2" headerText="#{bundle.nombreObra}" />
+                <p:column colspan="4" headerText="#{bundle.DiasLaborados}" />
+                <p:column rowspan="2" headerText="#{bundle.NExpediente}" />
+            </p:row>
+            <p:row>
+                <p:column headerText="#{bundle.nor}" />
+                <p:column headerText="#{bundle.diasDom}" />
+                <p:column headerText="#{bundle.diasAgua}" />
+                <p:column headerText="#{bundle.diasTot}" />
+            </p:row>
+        </p:columnGroup>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.planillaPK.anoEje}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.mes}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.NPlanilla}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.tipoPlanilla.abrevPlanilla}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.modalidadLaboral.id}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.nivelRemunerativo.abrev}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planilla.meta.nombreNm}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{planillaTrabController.getDiasTotal(item)}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.diasDom}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.diasAgua}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.diasTot}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.planillaTrabPK.NExpediente}"/>
+                        </p:column>
+                        
+                        <f:facet name="header">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{planillaTrabController.prepareCreate}" update=":PlanillaTrabCreateForm" oncomplete="PF('PlanillaTrabCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PlanillaTrabViewForm" oncomplete="PF('PlanillaTrabViewDialog').show()" disabled="#{empty planillaTrabController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlanillaTrabEditForm" oncomplete="PF('PlanillaTrabEditDialog').show()" disabled="#{empty planillaTrabController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{planillaTrabController.destroy}" update=":growl,datalist" disabled="#{empty planillaTrabController.selected}"/>
+                        <p:button id="certificadoButton"   value="#{personalController.selected eq null?'xx':planillaTrabController.selected.personal.dn}"
+                                      outcome="/personal/report/certificadoTrab.xhtml" 
+                                      disabled="#{empty planillaTrabController.selected}">
+                            <f:param name="dni" value="#{planillaTrabController.selected.personal.dni}" ></f:param>
+                            </p:button></f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

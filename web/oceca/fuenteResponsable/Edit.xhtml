@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteResponsableEditDlg" widgetVar="SgcFuenteResponsableEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcFuenteResponsableTitle}">
+            <h:form id="SgcFuenteResponsableEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteResponsableController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcFuenteResponsableLabel_sgcFuenteResponsablePK_idFuente}" for="sgcFuenteResponsablePK_idFuente" />
+                        <p:inputText id="sgcFuenteResponsablePK_idFuente" value="#{sgcFuenteResponsableController.selected.sgcFuenteResponsablePK.idFuente}" title="#{bundle.EditSgcFuenteResponsableTitle_sgcFuenteResponsablePK_idFuente}" required="true" requiredMessage="#{bundle.EditSgcFuenteResponsableRequiredMessage_sgcFuenteResponsablePK_idFuente}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuenteResponsableLabel_sgcFuenteResponsablePK_idDir}" for="sgcFuenteResponsablePK_idDir" />
+                        <p:inputText id="sgcFuenteResponsablePK_idDir" value="#{sgcFuenteResponsableController.selected.sgcFuenteResponsablePK.idDir}" title="#{bundle.EditSgcFuenteResponsableTitle_sgcFuenteResponsablePK_idDir}" required="true" requiredMessage="#{bundle.EditSgcFuenteResponsableRequiredMessage_sgcFuenteResponsablePK_idDir}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFuenteResponsableController.update}" value="#{bundle.Save}" update="display,:SgcFuenteResponsableListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcFuenteResponsableEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFuenteResponsableEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

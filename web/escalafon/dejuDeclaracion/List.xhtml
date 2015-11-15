@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EscDejuDeclaracionListForm">
+                <p:panel header="#{bundle.ListEscDejuDeclaracionTitle}">
+                    <p:dataTable id="datalist" value="#{escDejuDeclaracionController.items}" var="item"
+                                 selectionMode="single" selection="#{escDejuDeclaracionController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idDec}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_idDec}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDec}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_idEsc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEsc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_entidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ejerPre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ejerPre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_cargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_fechaAsume}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAsume}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_fechaCese}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCese}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tiempoServ}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempoServ}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_alInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alInicio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbPu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbPu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbPr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbPr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbTot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbTot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbiPu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbiPu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbiPr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbiPr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_rbiTot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rbiTot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim1Pu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim1Pu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim1Pr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim1Pr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim1Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim1Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim2Pu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim2Pu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim2Pr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim2Pr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim2Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim2Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim3Pu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim3Pu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim3Pr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim3Pr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_oim3Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oim3Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_tipBien6}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipBien6}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_direBien6}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direBien6}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numFicha6}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFicha6}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_autoval6}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoval6}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehi1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehi1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiMarca1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiMarca1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiPlaca1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiPlaca1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiValor1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiValor1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehi2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehi2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiMarca2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiMarca2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiPlaca2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiPlaca2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiValor2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiValor2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehi3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehi3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiMarca3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiMarca3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiPlaca3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiPlaca3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiValor3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiValor3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehi4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehi4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiMarca4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiMarca4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiPlaca4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiPlaca4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_vehiValor4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiValor4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ef1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ef1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_if1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.if1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_val1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.val1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ef2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ef2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_if2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.if2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_val2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.val2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ef3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ef3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_if3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.if3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_val3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.val3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ef4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ef4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_if4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.if4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_val4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.val4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_ef5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ef5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_if5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.if5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_val5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.val5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein1Pu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein1Pu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein1Pr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein1Pr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein1Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein1Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein2Pu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein2Pu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein2Pr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein2Pr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dein2Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dein2Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi1Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi1Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi2Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi2Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_debi3Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debi3Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre1Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre1Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre2Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre2Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_acre3Tot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acre3Tot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_numPerDep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numPerDep}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_fechaElab}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaElab}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_otraInfo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraInfo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_otraInfoTotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraInfoTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_conDni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conDni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_conApaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conApaterno}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_conAmaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conAmaterno}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_conNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_conRuc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conRuc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_idMov}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMov}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_idDtra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDtra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_bonificaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bonificaciones}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_remuneracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remuneracion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_honorarios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.honorarios}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_gratificaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gratificaciones}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_utilidades}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.utilidades}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_dietas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dietas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_otros}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otros}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_activo}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscDejuDeclaracionTitle_idPeriodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPeriodo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{escDejuDeclaracionController.prepareCreate}" update=":EscDejuDeclaracionCreateForm" oncomplete="PF('EscDejuDeclaracionCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EscDejuDeclaracionViewForm" oncomplete="PF('EscDejuDeclaracionViewDialog').show()" disabled="#{empty escDejuDeclaracionController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EscDejuDeclaracionEditForm" oncomplete="PF('EscDejuDeclaracionEditDialog').show()" disabled="#{empty escDejuDeclaracionController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{escDejuDeclaracionController.destroy}" update=":growl,datalist" disabled="#{empty escDejuDeclaracionController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

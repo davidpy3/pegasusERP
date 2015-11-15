@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OmarPartidaDefViewDlg" widgetVar="OmarPartidaDefViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOmarPartidaDefTitle}">
+            <h:form id="OmarPartidaDefViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{omarPartidaDefController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_idPartidadef}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.idPartidadef}" title="#{bundle.ViewOmarPartidaDefTitle_idPartidadef}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_idUsuario}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.idUsuario}" title="#{bundle.ViewOmarPartidaDefTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_nombPartida}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.nombPartida}" title="#{bundle.ViewOmarPartidaDefTitle_nombPartida}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_nombPartidar}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.nombPartidar}" title="#{bundle.ViewOmarPartidaDefTitle_nombPartidar}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_libro}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.libro}" title="#{bundle.ViewOmarPartidaDefTitle_libro}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_folio}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.folio}" title="#{bundle.ViewOmarPartidaDefTitle_folio}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_nombreCompleto}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.nombreCompleto}" title="#{bundle.ViewOmarPartidaDefTitle_nombreCompleto}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_sexo}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.sexo}" title="#{bundle.ViewOmarPartidaDefTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_edad}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.edad}" title="#{bundle.ViewOmarPartidaDefTitle_edad}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_fechaDefuncion}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.fechaDefuncion}" title="#{bundle.ViewOmarPartidaDefTitle_fechaDefuncion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOmarPartidaDefLabel_fechaRegistro}"/>
+                        <h:outputText value="#{omarPartidaDefController.selected.fechaRegistro}" title="#{bundle.ViewOmarPartidaDefTitle_fechaRegistro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OmarPartidaDefViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcInspeccionViewDlg" widgetVar="SgcInspeccionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcInspeccionTitle}">
+            <h:form id="SgcInspeccionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcInspeccionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idInspec}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idInspec}" title="#{bundle.ViewSgcInspeccionTitle_idInspec}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idTipins}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idTipins}" title="#{bundle.ViewSgcInspeccionTitle_idTipins}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_detalle}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.detalle}" title="#{bundle.ViewSgcInspeccionTitle_detalle}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_fechaPlan}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.fechaPlan}" title="#{bundle.ViewSgcInspeccionTitle_fechaPlan}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_fecha}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.fecha}" title="#{bundle.ViewSgcInspeccionTitle_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idObjeto}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idObjeto}" title="#{bundle.ViewSgcInspeccionTitle_idObjeto}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idInspector}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idInspector}" title="#{bundle.ViewSgcInspeccionTitle_idInspector}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idTestigo}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idTestigo}" title="#{bundle.ViewSgcInspeccionTitle_idTestigo}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_observacion}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.observacion}" title="#{bundle.ViewSgcInspeccionTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idEstado}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idEstado}" title="#{bundle.ViewSgcInspeccionTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewSgcInspeccionLabel_idExpe}"/>
+                        <h:outputText value="#{sgcInspeccionController.selected.idExpe}" title="#{bundle.ViewSgcInspeccionTitle_idExpe}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcInspeccionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentacViewDlg" widgetVar="CuentacViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCuentacTitle}">
+            <h:form id="CuentacViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuentacController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCuentacLabel_anoEje}"/>
+                        <h:outputText value="#{cuentacController.selected.anoEje}" title="#{bundle.ViewCuentacTitle_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_cuenta}"/>
+                        <h:outputText value="#{cuentacController.selected.cuenta}" title="#{bundle.ViewCuentacTitle_cuenta}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_denomina}"/>
+                        <h:outputText value="#{cuentacController.selected.denomina}" title="#{bundle.ViewCuentacTitle_denomina}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_tipoCta}"/>
+                        <h:outputText value="#{cuentacController.selected.tipoCta}" title="#{bundle.ViewCuentacTitle_tipoCta}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_flagCtaEsp}"/>
+                        <p:selectBooleanCheckbox value="#{cuentacController.selected.flagCtaEsp}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_tipUsoCta}"/>
+                        <h:outputText value="#{cuentacController.selected.tipUsoCta}" title="#{bundle.ViewCuentacTitle_tipUsoCta}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_procentDepre}"/>
+                        <h:outputText value="#{cuentacController.selected.procentDepre}" title="#{bundle.ViewCuentacTitle_procentDepre}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_flgPatri}"/>
+                        <h:outputText value="#{cuentacController.selected.flgPatri}" title="#{bundle.ViewCuentacTitle_flgPatri}"/>
+                        <h:outputText value="#{bundle.ViewCuentacLabel_flgAlma}"/>
+                        <h:outputText value="#{cuentacController.selected.flgAlma}" title="#{bundle.ViewCuentacTitle_flgAlma}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CuentacViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

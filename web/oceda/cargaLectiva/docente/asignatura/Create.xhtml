@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaLectivaAsignaturaCreateDlg" widgetVar="CargaLectivaAsignaturaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCargaLectivaAsignaturaTitle}">
+            <h:form id="CargaLectivaAsignaturaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaLectivaAsignaturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idCldet}" for="idCldet" />
+                        <p:inputText id="idCldet" value="#{cargaLectivaAsignaturaController.selected.idCldet}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idCldet}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_idCldet}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idAsignatura}" for="idAsignatura" />
+                        <p:inputText id="idAsignatura" value="#{cargaLectivaAsignaturaController.selected.idAsignatura}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idAsignatura}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_idAsignatura}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idClcab}" for="idClcab" />
+                        <p:inputText id="idClcab" value="#{cargaLectivaAsignaturaController.selected.idClcab}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idClcab}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idCldetDep}" for="idCldetDep" />
+                        <p:inputText id="idCldetDep" value="#{cargaLectivaAsignaturaController.selected.idCldetDep}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idCldetDep}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idTcl}" for="idTcl" />
+                        <p:inputText id="idTcl" value="#{cargaLectivaAsignaturaController.selected.idTcl}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idTcl}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_codPrioridad}" for="codPrioridad" />
+                        <p:inputText id="codPrioridad" value="#{cargaLectivaAsignaturaController.selected.codPrioridad}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_codPrioridad}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_nroAlum}" for="nroAlum" />
+                        <p:inputText id="nroAlum" value="#{cargaLectivaAsignaturaController.selected.nroAlum}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_nroAlum}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_nroAlum}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_gruptTeor}" for="gruptTeor" />
+                        <p:inputText id="gruptTeor" value="#{cargaLectivaAsignaturaController.selected.gruptTeor}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_gruptTeor}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_gruptTeor}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_gruptPrac}" for="gruptPrac" />
+                        <p:inputText id="gruptPrac" value="#{cargaLectivaAsignaturaController.selected.gruptPrac}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_gruptPrac}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_gruptPrac}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_grupTeor}" for="grupTeor" />
+                        <p:inputText id="grupTeor" value="#{cargaLectivaAsignaturaController.selected.grupTeor}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_grupTeor}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_grupTeor}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_grupoT}" for="grupoT" />
+                        <p:inputText id="grupoT" value="#{cargaLectivaAsignaturaController.selected.grupoT}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_grupoT}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_grupPrac}" for="grupPrac" />
+                        <p:inputText id="grupPrac" value="#{cargaLectivaAsignaturaController.selected.grupPrac}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_grupPrac}" required="true" requiredMessage="#{bundle.CreateCargaLectivaAsignaturaRequiredMessage_grupPrac}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_grupoP}" for="grupoP" />
+                        <p:inputText id="grupoP" value="#{cargaLectivaAsignaturaController.selected.grupoP}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_grupoP}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_horTeor}" for="horTeor" />
+                        <p:inputText id="horTeor" value="#{cargaLectivaAsignaturaController.selected.horTeor}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_horTeor}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_horPrac}" for="horPrac" />
+                        <p:inputText id="horPrac" value="#{cargaLectivaAsignaturaController.selected.horPrac}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_horPrac}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_subtotal}" for="subtotal" />
+                        <p:inputText id="subtotal" value="#{cargaLectivaAsignaturaController.selected.subtotal}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_subtotal}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_estEncarg}" for="estEncarg" />
+                        <p:selectBooleanCheckbox id="estEncarg" value="#{cargaLectivaAsignaturaController.selected.estEncarg}" required="true" requiredMessage="#{bundle.EditCargaLectivaAsignaturaRequiredMessage_estEncarg}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_estAsigna}" for="estAsigna" />
+                        <p:selectBooleanCheckbox id="estAsigna" value="#{cargaLectivaAsignaturaController.selected.estAsigna}" required="true" requiredMessage="#{bundle.EditCargaLectivaAsignaturaRequiredMessage_estAsigna}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_estCompartido}" for="estCompartido" />
+                        <p:selectBooleanCheckbox id="estCompartido" value="#{cargaLectivaAsignaturaController.selected.estCompartido}" required="true" requiredMessage="#{bundle.EditCargaLectivaAsignaturaRequiredMessage_estCompartido}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_tipComp}" for="tipComp" />
+                        <p:inputText id="tipComp" value="#{cargaLectivaAsignaturaController.selected.tipComp}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_tipComp}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_tipEnca}" for="tipEnca" />
+                        <p:inputText id="tipEnca" value="#{cargaLectivaAsignaturaController.selected.tipEnca}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_tipEnca}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_ht}" for="ht" />
+                        <p:inputText id="ht" value="#{cargaLectivaAsignaturaController.selected.ht}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_ht}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_hp}" for="hp" />
+                        <p:inputText id="hp" value="#{cargaLectivaAsignaturaController.selected.hp}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_hp}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_asigCompartidas}" for="asigCompartidas" />
+                        <p:inputText id="asigCompartidas" value="#{cargaLectivaAsignaturaController.selected.asigCompartidas}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_asigCompartidas}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_uso}" for="uso" />
+                        <p:selectBooleanCheckbox id="uso" value="#{cargaLectivaAsignaturaController.selected.uso}" required="true" requiredMessage="#{bundle.EditCargaLectivaAsignaturaRequiredMessage_uso}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idEsp}" for="idEsp" />
+                        <p:inputText id="idEsp" value="#{cargaLectivaAsignaturaController.selected.idEsp}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idEsp}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_estException}" for="estException" />
+                        <p:inputText id="estException" value="#{cargaLectivaAsignaturaController.selected.estException}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_estException}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{cargaLectivaAsignaturaController.selected.idEstado}" title="#{bundle.CreateCargaLectivaAsignaturaTitle_idEstado}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaAsignaturaLabel_original}" for="original" />
+                        <p:selectBooleanCheckbox id="original" value="#{cargaLectivaAsignaturaController.selected.original}" required="true" requiredMessage="#{bundle.EditCargaLectivaAsignaturaRequiredMessage_original}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargaLectivaAsignaturaController.create}" value="#{bundle.Save}" update="display,:CargaLectivaAsignaturaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CargaLectivaAsignaturaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargaLectivaAsignaturaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

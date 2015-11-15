@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaTipoParticipanteEditDlg" widgetVar="SvaTipoParticipanteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSvaTipoParticipanteTitle}">
+            <h:form id="SvaTipoParticipanteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaTipoParticipanteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSvaTipoParticipanteLabel_idTipo}" for="idTipo" />
+                        <p:inputText id="idTipo" value="#{svaTipoParticipanteController.selected.idTipo}" title="#{bundle.EditSvaTipoParticipanteTitle_idTipo}" required="true" requiredMessage="#{bundle.EditSvaTipoParticipanteRequiredMessage_idTipo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaTipoParticipanteLabel_tipoParticipante}" for="tipoParticipante" />
+                        <p:inputText id="tipoParticipante" value="#{svaTipoParticipanteController.selected.tipoParticipante}" title="#{bundle.EditSvaTipoParticipanteTitle_tipoParticipante}" required="true" requiredMessage="#{bundle.EditSvaTipoParticipanteRequiredMessage_tipoParticipante}"/>
+                        <p:outputLabel value="#{bundle.EditSvaTipoParticipanteLabel_base}" for="base" />
+                        <p:selectBooleanCheckbox id="base" value="#{svaTipoParticipanteController.selected.base}" required="true" requiredMessage="#{bundle.EditSvaTipoParticipanteRequiredMessage_base}"/>
+                        <p:outputLabel value="#{bundle.EditSvaTipoParticipanteLabel_idTipart}" for="idTipart" />
+                        <p:inputText id="idTipart" value="#{svaTipoParticipanteController.selected.idTipart}" title="#{bundle.EditSvaTipoParticipanteTitle_idTipart}" />
+                        <p:outputLabel value="#{bundle.EditSvaTipoParticipanteLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{svaTipoParticipanteController.selected.numero}" title="#{bundle.EditSvaTipoParticipanteTitle_numero}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaTipoParticipanteController.update}" value="#{bundle.Save}" update="display,:SvaTipoParticipanteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SvaTipoParticipanteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaTipoParticipanteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

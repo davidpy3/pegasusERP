@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaRespuestaDocenteEstViewDlg" widgetVar="SvaRespuestaDocenteEstViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaRespuestaDocenteEstTitle}">
+            <h:form id="SvaRespuestaDocenteEstViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaRespuestaDocenteEstController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_svaRespuestaDocenteEstPK_idParticipacion}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.svaRespuestaDocenteEstPK.idParticipacion}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_svaRespuestaDocenteEstPK_idParticipacion}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_svaRespuestaDocenteEstPK_idPregunta}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.svaRespuestaDocenteEstPK.idPregunta}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_svaRespuestaDocenteEstPK_idPregunta}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_idEncuesta}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.idEncuesta}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_idEncuesta}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_idAcexp}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.idAcexp}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_idAcexp}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_idDocente}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.idDocente}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_idDocente}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_idAsignatura}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.idAsignatura}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_idAsignatura}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaDocenteEstLabel_idOpcion}"/>
+                        <h:outputText value="#{svaRespuestaDocenteEstController.selected.idOpcion}" title="#{bundle.ViewSvaRespuestaDocenteEstTitle_idOpcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaRespuestaDocenteEstViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

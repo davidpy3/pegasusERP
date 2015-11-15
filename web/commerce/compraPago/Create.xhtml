@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompraPagoCreateDlg" widgetVar="CompraPagoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCompraPagoTitle}">
+            <h:form id="CompraPagoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{compraPagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_idPago}" for="idPago" />
+                        <p:inputText id="idPago" value="#{compraPagoController.selected.idPago}" title="#{bundle.CreateCompraPagoTitle_idPago}" required="true" requiredMessage="#{bundle.CreateCompraPagoRequiredMessage_idPago}"/>
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_fecPago}" for="fecPago" />
+                        <p:calendar id="fecPago" pattern="MM/dd/yyyy" value="#{compraPagoController.selected.fecPago}" title="#{bundle.EditCompraPagoTitle_fecPago}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{compraPagoController.selected.monto}" title="#{bundle.CreateCompraPagoTitle_monto}" />
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_fecVenc}" for="fecVenc" />
+                        <p:calendar id="fecVenc" pattern="MM/dd/yyyy" value="#{compraPagoController.selected.fecVenc}" title="#{bundle.EditCompraPagoTitle_fecVenc}" required="true" requiredMessage="#{bundle.EditCompraPagoRequiredMessage_fecVenc}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{compraPagoController.selected.estado}" title="#{bundle.CreateCompraPagoTitle_estado}" required="true" requiredMessage="#{bundle.CreateCompraPagoRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateCompraPagoLabel_idCompra}" for="idCompra" />
+                        <p:selectOneMenu id="idCompra" value="#{compraPagoController.selected.idCompra}" required="true" requiredMessage="#{bundle.EditCompraPagoRequiredMessage_idCompra}">
+                            <f:selectItems value="#{compraController.itemsAvailableSelectOne}"
+                                           var="idCompraItem"
+                                           itemValue="#{idCompraItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{compraPagoController.create}" value="#{bundle.Save}" update="display,:CompraPagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CompraPagoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompraPagoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

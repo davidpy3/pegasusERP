@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NivelRemunerativoViewDlg" widgetVar="NivelRemunerativoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNivelRemunerativoTitle}">
+            <h:form id="NivelRemunerativoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{nivelRemunerativoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_nivelRemunerativoPK_nivelRem}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.nivelRemunerativoPK.nivelRem}" title="#{bundle.ViewNivelRemunerativoTitle_nivelRemunerativoPK_nivelRem}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_nombre}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.nombre}" title="#{bundle.ViewNivelRemunerativoTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_abrev}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.abrev}" title="#{bundle.ViewNivelRemunerativoTitle_abrev}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_periodicidad}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.periodicidad}" title="#{bundle.ViewNivelRemunerativoTitle_periodicidad}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_montoBasico}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.montoBasico}" title="#{bundle.ViewNivelRemunerativoTitle_montoBasico}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_montoTope}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.montoTope}" title="#{bundle.ViewNivelRemunerativoTitle_montoTope}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_buc}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.buc}" title="#{bundle.ViewNivelRemunerativoTitle_buc}"/>
+                        <h:outputText value="#{bundle.ViewNivelRemunerativoLabel_tipoTrabajador}"/>
+                        <h:outputText value="#{nivelRemunerativoController.selected.tipoTrabajador}" title="#{bundle.ViewNivelRemunerativoTitle_tipoTrabajador}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NivelRemunerativoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

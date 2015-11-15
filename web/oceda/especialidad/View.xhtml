@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsEspecialidadViewDlg" widgetVar="ApsEspecialidadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewApsEspecialidadTitle}">
+            <h:form id="ApsEspecialidadViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsEspecialidadController.selected != null}">
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_idEspecialidad}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.idEspecialidad}" title="#{bundle.ViewApsEspecialidadTitle_idEspecialidad}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_codEspecialidad}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.codEspecialidad}" title="#{bundle.ViewApsEspecialidadTitle_codEspecialidad}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_especialidad}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.especialidad}" title="#{bundle.ViewApsEspecialidadTitle_especialidad}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_grado}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.grado}" title="#{bundle.ViewApsEspecialidadTitle_grado}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_titulo}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.titulo}" title="#{bundle.ViewApsEspecialidadTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_idResolucion}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.idResolucion}" title="#{bundle.ViewApsEspecialidadTitle_idResolucion}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_fechaApertura}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.fechaApertura}" title="#{bundle.ViewApsEspecialidadTitle_fechaApertura}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_minAlumno}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.minAlumno}" title="#{bundle.ViewApsEspecialidadTitle_minAlumno}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_creditos}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.creditos}" title="#{bundle.ViewApsEspecialidadTitle_creditos}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_ciclos}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.ciclos}" title="#{bundle.ViewApsEspecialidadTitle_ciclos}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_codOld}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.codOld}" title="#{bundle.ViewApsEspecialidadTitle_codOld}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_abr}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.abr}" title="#{bundle.ViewApsEspecialidadTitle_abr}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_abr1}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.abr1}" title="#{bundle.ViewApsEspecialidadTitle_abr1}"/>
+                        <h:outputText value="#{bundle.ViewApsEspecialidadLabel_idAmbito}"/>
+                        <h:outputText value="#{apsEspecialidadController.selected.idAmbito}" title="#{bundle.ViewApsEspecialidadTitle_idAmbito}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ApsEspecialidadViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuenteFinancEditDlg" widgetVar="FuenteFinancEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFuenteFinancTitle}">
+            <h:form id="FuenteFinancEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fuenteFinancController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFuenteFinancLabel_fuenteFinancPK_anoEje}" for="fuenteFinancPK_anoEje" />
+                        <p:inputText id="fuenteFinancPK_anoEje" value="#{fuenteFinancController.selected.fuenteFinancPK.anoEje}" title="#{bundle.EditFuenteFinancTitle_fuenteFinancPK_anoEje}" required="true" requiredMessage="#{bundle.EditFuenteFinancRequiredMessage_fuenteFinancPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.EditFuenteFinancLabel_fuenteFinancPK_fuenteFinanc}" for="fuenteFinancPK_fuenteFinanc" />
+                        <p:inputText id="fuenteFinancPK_fuenteFinanc" value="#{fuenteFinancController.selected.fuenteFinancPK.fuenteFinanc}" title="#{bundle.EditFuenteFinancTitle_fuenteFinancPK_fuenteFinanc}" required="true" requiredMessage="#{bundle.EditFuenteFinancRequiredMessage_fuenteFinancPK_fuenteFinanc}"/>
+                        <p:outputLabel value="#{bundle.EditFuenteFinancLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{fuenteFinancController.selected.nombre}" title="#{bundle.EditFuenteFinancTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditFuenteFinancLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{fuenteFinancController.selected.abrev}" title="#{bundle.EditFuenteFinancTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.EditFuenteFinancLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{fuenteFinancController.selected.estado}" title="#{bundle.EditFuenteFinancTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fuenteFinancController.update}" value="#{bundle.Save}" update="display,:FuenteFinancListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FuenteFinancEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FuenteFinancEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscPersHorarioViewDlg" widgetVar="EscPersHorarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscPersHorarioTitle}">
+            <h:form id="EscPersHorarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escPersHorarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_escPersHorarioPK_jornada}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.escPersHorarioPK.jornada}" title="#{bundle.ViewEscPersHorarioTitle_escPersHorarioPK_jornada}"/>
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_escPersHorarioPK_dia}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.escPersHorarioPK.dia}" title="#{bundle.ViewEscPersHorarioTitle_escPersHorarioPK_dia}"/>
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_horaIn}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.horaIn}" title="#{bundle.ViewEscPersHorarioTitle_horaIn}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_horaOut}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.horaOut}" title="#{bundle.ViewEscPersHorarioTitle_horaOut}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_escPersonal}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.escPersonal}" title="#{bundle.ViewEscPersHorarioTitle_escPersonal}"/>
+                        <h:outputText value="#{bundle.ViewEscPersHorarioLabel_idTurno}"/>
+                        <h:outputText value="#{escPersHorarioController.selected.idTurno}" title="#{bundle.ViewEscPersHorarioTitle_idTurno}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscPersHorarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

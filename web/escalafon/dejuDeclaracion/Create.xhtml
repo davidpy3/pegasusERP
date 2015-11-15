@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDejuDeclaracionCreateDlg" widgetVar="EscDejuDeclaracionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscDejuDeclaracionTitle}">
+            <h:form id="EscDejuDeclaracionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDejuDeclaracionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_idDec}" for="idDec" />
+                        <p:inputText id="idDec" value="#{escDejuDeclaracionController.selected.idDec}" title="#{bundle.CreateEscDejuDeclaracionTitle_idDec}" required="true" requiredMessage="#{bundle.CreateEscDejuDeclaracionRequiredMessage_idDec}"/>
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escDejuDeclaracionController.selected.idEsc}" title="#{bundle.CreateEscDejuDeclaracionTitle_idEsc}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_entidad}" for="entidad" />
+                        <p:inputText id="entidad" value="#{escDejuDeclaracionController.selected.entidad}" title="#{bundle.CreateEscDejuDeclaracionTitle_entidad}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{escDejuDeclaracionController.selected.direccion}" title="#{bundle.CreateEscDejuDeclaracionTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ejerPre}" for="ejerPre" />
+                        <p:inputText id="ejerPre" value="#{escDejuDeclaracionController.selected.ejerPre}" title="#{bundle.CreateEscDejuDeclaracionTitle_ejerPre}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{escDejuDeclaracionController.selected.cargo}" title="#{bundle.CreateEscDejuDeclaracionTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_fechaAsume}" for="fechaAsume" />
+                        <p:calendar id="fechaAsume" pattern="MM/dd/yyyy" value="#{escDejuDeclaracionController.selected.fechaAsume}" title="#{bundle.EditEscDejuDeclaracionTitle_fechaAsume}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_fechaCese}" for="fechaCese" />
+                        <p:calendar id="fechaCese" pattern="MM/dd/yyyy" value="#{escDejuDeclaracionController.selected.fechaCese}" title="#{bundle.EditEscDejuDeclaracionTitle_fechaCese}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tiempoServ}" for="tiempoServ" />
+                        <p:inputText id="tiempoServ" value="#{escDejuDeclaracionController.selected.tiempoServ}" title="#{bundle.CreateEscDejuDeclaracionTitle_tiempoServ}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_alInicio}" for="alInicio" />
+                        <p:inputText id="alInicio" value="#{escDejuDeclaracionController.selected.alInicio}" title="#{bundle.CreateEscDejuDeclaracionTitle_alInicio}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbPu}" for="rbPu" />
+                        <p:inputText id="rbPu" value="#{escDejuDeclaracionController.selected.rbPu}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbPu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbPr}" for="rbPr" />
+                        <p:inputText id="rbPr" value="#{escDejuDeclaracionController.selected.rbPr}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbPr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbTot}" for="rbTot" />
+                        <p:inputText id="rbTot" value="#{escDejuDeclaracionController.selected.rbTot}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbTot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbiPu}" for="rbiPu" />
+                        <p:inputText id="rbiPu" value="#{escDejuDeclaracionController.selected.rbiPu}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbiPu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbiPr}" for="rbiPr" />
+                        <p:inputText id="rbiPr" value="#{escDejuDeclaracionController.selected.rbiPr}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbiPr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_rbiTot}" for="rbiTot" />
+                        <p:inputText id="rbiTot" value="#{escDejuDeclaracionController.selected.rbiTot}" title="#{bundle.CreateEscDejuDeclaracionTitle_rbiTot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim1Pu}" for="oim1Pu" />
+                        <p:inputText id="oim1Pu" value="#{escDejuDeclaracionController.selected.oim1Pu}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim1Pu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim1Pr}" for="oim1Pr" />
+                        <p:inputText id="oim1Pr" value="#{escDejuDeclaracionController.selected.oim1Pr}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim1Pr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim1Tot}" for="oim1Tot" />
+                        <p:inputText id="oim1Tot" value="#{escDejuDeclaracionController.selected.oim1Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim1Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim2Pu}" for="oim2Pu" />
+                        <p:inputText id="oim2Pu" value="#{escDejuDeclaracionController.selected.oim2Pu}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim2Pu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim2Pr}" for="oim2Pr" />
+                        <p:inputText id="oim2Pr" value="#{escDejuDeclaracionController.selected.oim2Pr}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim2Pr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim2Tot}" for="oim2Tot" />
+                        <p:inputText id="oim2Tot" value="#{escDejuDeclaracionController.selected.oim2Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim2Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim3Pu}" for="oim3Pu" />
+                        <p:inputText id="oim3Pu" value="#{escDejuDeclaracionController.selected.oim3Pu}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim3Pu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim3Pr}" for="oim3Pr" />
+                        <p:inputText id="oim3Pr" value="#{escDejuDeclaracionController.selected.oim3Pr}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim3Pr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_oim3Tot}" for="oim3Tot" />
+                        <p:inputText id="oim3Tot" value="#{escDejuDeclaracionController.selected.oim3Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_oim3Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien1}" for="tipBien1" />
+                        <p:inputText id="tipBien1" value="#{escDejuDeclaracionController.selected.tipBien1}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien1}" for="direBien1" />
+                        <p:inputText id="direBien1" value="#{escDejuDeclaracionController.selected.direBien1}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha1}" for="numFicha1" />
+                        <p:inputText id="numFicha1" value="#{escDejuDeclaracionController.selected.numFicha1}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval1}" for="autoval1" />
+                        <p:inputText id="autoval1" value="#{escDejuDeclaracionController.selected.autoval1}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien2}" for="tipBien2" />
+                        <p:inputText id="tipBien2" value="#{escDejuDeclaracionController.selected.tipBien2}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien2}" for="direBien2" />
+                        <p:inputText id="direBien2" value="#{escDejuDeclaracionController.selected.direBien2}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha2}" for="numFicha2" />
+                        <p:inputText id="numFicha2" value="#{escDejuDeclaracionController.selected.numFicha2}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval2}" for="autoval2" />
+                        <p:inputText id="autoval2" value="#{escDejuDeclaracionController.selected.autoval2}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien3}" for="tipBien3" />
+                        <p:inputText id="tipBien3" value="#{escDejuDeclaracionController.selected.tipBien3}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien3}" for="direBien3" />
+                        <p:inputText id="direBien3" value="#{escDejuDeclaracionController.selected.direBien3}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha3}" for="numFicha3" />
+                        <p:inputText id="numFicha3" value="#{escDejuDeclaracionController.selected.numFicha3}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval3}" for="autoval3" />
+                        <p:inputText id="autoval3" value="#{escDejuDeclaracionController.selected.autoval3}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien4}" for="tipBien4" />
+                        <p:inputText id="tipBien4" value="#{escDejuDeclaracionController.selected.tipBien4}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien4}" for="direBien4" />
+                        <p:inputText id="direBien4" value="#{escDejuDeclaracionController.selected.direBien4}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha4}" for="numFicha4" />
+                        <p:inputText id="numFicha4" value="#{escDejuDeclaracionController.selected.numFicha4}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval4}" for="autoval4" />
+                        <p:inputText id="autoval4" value="#{escDejuDeclaracionController.selected.autoval4}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien5}" for="tipBien5" />
+                        <p:inputText id="tipBien5" value="#{escDejuDeclaracionController.selected.tipBien5}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien5}" for="direBien5" />
+                        <p:inputText id="direBien5" value="#{escDejuDeclaracionController.selected.direBien5}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha5}" for="numFicha5" />
+                        <p:inputText id="numFicha5" value="#{escDejuDeclaracionController.selected.numFicha5}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval5}" for="autoval5" />
+                        <p:inputText id="autoval5" value="#{escDejuDeclaracionController.selected.autoval5}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_tipBien6}" for="tipBien6" />
+                        <p:inputText id="tipBien6" value="#{escDejuDeclaracionController.selected.tipBien6}" title="#{bundle.CreateEscDejuDeclaracionTitle_tipBien6}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_direBien6}" for="direBien6" />
+                        <p:inputText id="direBien6" value="#{escDejuDeclaracionController.selected.direBien6}" title="#{bundle.CreateEscDejuDeclaracionTitle_direBien6}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numFicha6}" for="numFicha6" />
+                        <p:inputText id="numFicha6" value="#{escDejuDeclaracionController.selected.numFicha6}" title="#{bundle.CreateEscDejuDeclaracionTitle_numFicha6}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_autoval6}" for="autoval6" />
+                        <p:inputText id="autoval6" value="#{escDejuDeclaracionController.selected.autoval6}" title="#{bundle.CreateEscDejuDeclaracionTitle_autoval6}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehi1}" for="vehi1" />
+                        <p:inputText id="vehi1" value="#{escDejuDeclaracionController.selected.vehi1}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehi1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiMarca1}" for="vehiMarca1" />
+                        <p:inputText id="vehiMarca1" value="#{escDejuDeclaracionController.selected.vehiMarca1}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiMarca1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiPlaca1}" for="vehiPlaca1" />
+                        <p:inputText id="vehiPlaca1" value="#{escDejuDeclaracionController.selected.vehiPlaca1}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiPlaca1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiValor1}" for="vehiValor1" />
+                        <p:inputText id="vehiValor1" value="#{escDejuDeclaracionController.selected.vehiValor1}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiValor1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehi2}" for="vehi2" />
+                        <p:inputText id="vehi2" value="#{escDejuDeclaracionController.selected.vehi2}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehi2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiMarca2}" for="vehiMarca2" />
+                        <p:inputText id="vehiMarca2" value="#{escDejuDeclaracionController.selected.vehiMarca2}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiMarca2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiPlaca2}" for="vehiPlaca2" />
+                        <p:inputText id="vehiPlaca2" value="#{escDejuDeclaracionController.selected.vehiPlaca2}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiPlaca2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiValor2}" for="vehiValor2" />
+                        <p:inputText id="vehiValor2" value="#{escDejuDeclaracionController.selected.vehiValor2}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiValor2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehi3}" for="vehi3" />
+                        <p:inputText id="vehi3" value="#{escDejuDeclaracionController.selected.vehi3}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehi3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiMarca3}" for="vehiMarca3" />
+                        <p:inputText id="vehiMarca3" value="#{escDejuDeclaracionController.selected.vehiMarca3}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiMarca3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiPlaca3}" for="vehiPlaca3" />
+                        <p:inputText id="vehiPlaca3" value="#{escDejuDeclaracionController.selected.vehiPlaca3}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiPlaca3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiValor3}" for="vehiValor3" />
+                        <p:inputText id="vehiValor3" value="#{escDejuDeclaracionController.selected.vehiValor3}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiValor3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehi4}" for="vehi4" />
+                        <p:inputText id="vehi4" value="#{escDejuDeclaracionController.selected.vehi4}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehi4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiMarca4}" for="vehiMarca4" />
+                        <p:inputText id="vehiMarca4" value="#{escDejuDeclaracionController.selected.vehiMarca4}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiMarca4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiPlaca4}" for="vehiPlaca4" />
+                        <p:inputText id="vehiPlaca4" value="#{escDejuDeclaracionController.selected.vehiPlaca4}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiPlaca4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_vehiValor4}" for="vehiValor4" />
+                        <p:inputText id="vehiValor4" value="#{escDejuDeclaracionController.selected.vehiValor4}" title="#{bundle.CreateEscDejuDeclaracionTitle_vehiValor4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ef1}" for="ef1" />
+                        <p:inputText id="ef1" value="#{escDejuDeclaracionController.selected.ef1}" title="#{bundle.CreateEscDejuDeclaracionTitle_ef1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_if1}" for="if1" />
+                        <p:inputText id="if1" value="#{escDejuDeclaracionController.selected.if1}" title="#{bundle.CreateEscDejuDeclaracionTitle_if1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_val1}" for="val1" />
+                        <p:inputText id="val1" value="#{escDejuDeclaracionController.selected.val1}" title="#{bundle.CreateEscDejuDeclaracionTitle_val1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ef2}" for="ef2" />
+                        <p:inputText id="ef2" value="#{escDejuDeclaracionController.selected.ef2}" title="#{bundle.CreateEscDejuDeclaracionTitle_ef2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_if2}" for="if2" />
+                        <p:inputText id="if2" value="#{escDejuDeclaracionController.selected.if2}" title="#{bundle.CreateEscDejuDeclaracionTitle_if2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_val2}" for="val2" />
+                        <p:inputText id="val2" value="#{escDejuDeclaracionController.selected.val2}" title="#{bundle.CreateEscDejuDeclaracionTitle_val2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ef3}" for="ef3" />
+                        <p:inputText id="ef3" value="#{escDejuDeclaracionController.selected.ef3}" title="#{bundle.CreateEscDejuDeclaracionTitle_ef3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_if3}" for="if3" />
+                        <p:inputText id="if3" value="#{escDejuDeclaracionController.selected.if3}" title="#{bundle.CreateEscDejuDeclaracionTitle_if3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_val3}" for="val3" />
+                        <p:inputText id="val3" value="#{escDejuDeclaracionController.selected.val3}" title="#{bundle.CreateEscDejuDeclaracionTitle_val3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ef4}" for="ef4" />
+                        <p:inputText id="ef4" value="#{escDejuDeclaracionController.selected.ef4}" title="#{bundle.CreateEscDejuDeclaracionTitle_ef4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_if4}" for="if4" />
+                        <p:inputText id="if4" value="#{escDejuDeclaracionController.selected.if4}" title="#{bundle.CreateEscDejuDeclaracionTitle_if4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_val4}" for="val4" />
+                        <p:inputText id="val4" value="#{escDejuDeclaracionController.selected.val4}" title="#{bundle.CreateEscDejuDeclaracionTitle_val4}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_ef5}" for="ef5" />
+                        <p:inputText id="ef5" value="#{escDejuDeclaracionController.selected.ef5}" title="#{bundle.CreateEscDejuDeclaracionTitle_ef5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_if5}" for="if5" />
+                        <p:inputText id="if5" value="#{escDejuDeclaracionController.selected.if5}" title="#{bundle.CreateEscDejuDeclaracionTitle_if5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_val5}" for="val5" />
+                        <p:inputText id="val5" value="#{escDejuDeclaracionController.selected.val5}" title="#{bundle.CreateEscDejuDeclaracionTitle_val5}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein1}" for="dein1" />
+                        <p:inputText id="dein1" value="#{escDejuDeclaracionController.selected.dein1}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein1Pu}" for="dein1Pu" />
+                        <p:inputText id="dein1Pu" value="#{escDejuDeclaracionController.selected.dein1Pu}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein1Pu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein1Pr}" for="dein1Pr" />
+                        <p:inputText id="dein1Pr" value="#{escDejuDeclaracionController.selected.dein1Pr}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein1Pr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein1Tot}" for="dein1Tot" />
+                        <p:inputText id="dein1Tot" value="#{escDejuDeclaracionController.selected.dein1Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein1Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein2}" for="dein2" />
+                        <p:inputText id="dein2" value="#{escDejuDeclaracionController.selected.dein2}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein2Pu}" for="dein2Pu" />
+                        <p:inputText id="dein2Pu" value="#{escDejuDeclaracionController.selected.dein2Pu}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein2Pu}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein2Pr}" for="dein2Pr" />
+                        <p:inputText id="dein2Pr" value="#{escDejuDeclaracionController.selected.dein2Pr}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein2Pr}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dein2Tot}" for="dein2Tot" />
+                        <p:inputText id="dein2Tot" value="#{escDejuDeclaracionController.selected.dein2Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_dein2Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi1}" for="debi1" />
+                        <p:inputText id="debi1" value="#{escDejuDeclaracionController.selected.debi1}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi1Tot}" for="debi1Tot" />
+                        <p:inputText id="debi1Tot" value="#{escDejuDeclaracionController.selected.debi1Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi1Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi2}" for="debi2" />
+                        <p:inputText id="debi2" value="#{escDejuDeclaracionController.selected.debi2}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi2Tot}" for="debi2Tot" />
+                        <p:inputText id="debi2Tot" value="#{escDejuDeclaracionController.selected.debi2Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi2Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi3}" for="debi3" />
+                        <p:inputText id="debi3" value="#{escDejuDeclaracionController.selected.debi3}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_debi3Tot}" for="debi3Tot" />
+                        <p:inputText id="debi3Tot" value="#{escDejuDeclaracionController.selected.debi3Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_debi3Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre1}" for="acre1" />
+                        <p:inputText id="acre1" value="#{escDejuDeclaracionController.selected.acre1}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre1}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre1Tot}" for="acre1Tot" />
+                        <p:inputText id="acre1Tot" value="#{escDejuDeclaracionController.selected.acre1Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre1Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre2}" for="acre2" />
+                        <p:inputText id="acre2" value="#{escDejuDeclaracionController.selected.acre2}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre2}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre2Tot}" for="acre2Tot" />
+                        <p:inputText id="acre2Tot" value="#{escDejuDeclaracionController.selected.acre2Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre2Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre3}" for="acre3" />
+                        <p:inputText id="acre3" value="#{escDejuDeclaracionController.selected.acre3}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre3}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_acre3Tot}" for="acre3Tot" />
+                        <p:inputText id="acre3Tot" value="#{escDejuDeclaracionController.selected.acre3Tot}" title="#{bundle.CreateEscDejuDeclaracionTitle_acre3Tot}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_numPerDep}" for="numPerDep" />
+                        <p:inputText id="numPerDep" value="#{escDejuDeclaracionController.selected.numPerDep}" title="#{bundle.CreateEscDejuDeclaracionTitle_numPerDep}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_fechaElab}" for="fechaElab" />
+                        <p:calendar id="fechaElab" pattern="MM/dd/yyyy" value="#{escDejuDeclaracionController.selected.fechaElab}" title="#{bundle.EditEscDejuDeclaracionTitle_fechaElab}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_otraInfo}" for="otraInfo" />
+                        <p:inputText id="otraInfo" value="#{escDejuDeclaracionController.selected.otraInfo}" title="#{bundle.CreateEscDejuDeclaracionTitle_otraInfo}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_otraInfoTotal}" for="otraInfoTotal" />
+                        <p:inputText id="otraInfoTotal" value="#{escDejuDeclaracionController.selected.otraInfoTotal}" title="#{bundle.CreateEscDejuDeclaracionTitle_otraInfoTotal}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_conDni}" for="conDni" />
+                        <p:inputText id="conDni" value="#{escDejuDeclaracionController.selected.conDni}" title="#{bundle.CreateEscDejuDeclaracionTitle_conDni}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_conApaterno}" for="conApaterno" />
+                        <p:inputText id="conApaterno" value="#{escDejuDeclaracionController.selected.conApaterno}" title="#{bundle.CreateEscDejuDeclaracionTitle_conApaterno}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_conAmaterno}" for="conAmaterno" />
+                        <p:inputText id="conAmaterno" value="#{escDejuDeclaracionController.selected.conAmaterno}" title="#{bundle.CreateEscDejuDeclaracionTitle_conAmaterno}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_conNombre}" for="conNombre" />
+                        <p:inputText id="conNombre" value="#{escDejuDeclaracionController.selected.conNombre}" title="#{bundle.CreateEscDejuDeclaracionTitle_conNombre}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_conRuc}" for="conRuc" />
+                        <p:inputText id="conRuc" value="#{escDejuDeclaracionController.selected.conRuc}" title="#{bundle.CreateEscDejuDeclaracionTitle_conRuc}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_idMov}" for="idMov" />
+                        <p:inputText id="idMov" value="#{escDejuDeclaracionController.selected.idMov}" title="#{bundle.CreateEscDejuDeclaracionTitle_idMov}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escDejuDeclaracionController.selected.idDtra}" title="#{bundle.CreateEscDejuDeclaracionTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_bonificaciones}" for="bonificaciones" />
+                        <p:inputText id="bonificaciones" value="#{escDejuDeclaracionController.selected.bonificaciones}" title="#{bundle.CreateEscDejuDeclaracionTitle_bonificaciones}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_remuneracion}" for="remuneracion" />
+                        <p:inputText id="remuneracion" value="#{escDejuDeclaracionController.selected.remuneracion}" title="#{bundle.CreateEscDejuDeclaracionTitle_remuneracion}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_honorarios}" for="honorarios" />
+                        <p:inputText id="honorarios" value="#{escDejuDeclaracionController.selected.honorarios}" title="#{bundle.CreateEscDejuDeclaracionTitle_honorarios}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_gratificaciones}" for="gratificaciones" />
+                        <p:inputText id="gratificaciones" value="#{escDejuDeclaracionController.selected.gratificaciones}" title="#{bundle.CreateEscDejuDeclaracionTitle_gratificaciones}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_utilidades}" for="utilidades" />
+                        <p:inputText id="utilidades" value="#{escDejuDeclaracionController.selected.utilidades}" title="#{bundle.CreateEscDejuDeclaracionTitle_utilidades}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_dietas}" for="dietas" />
+                        <p:inputText id="dietas" value="#{escDejuDeclaracionController.selected.dietas}" title="#{bundle.CreateEscDejuDeclaracionTitle_dietas}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_otros}" for="otros" />
+                        <p:inputText id="otros" value="#{escDejuDeclaracionController.selected.otros}" title="#{bundle.CreateEscDejuDeclaracionTitle_otros}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escDejuDeclaracionController.selected.activo}" />
+                        <p:outputLabel value="#{bundle.CreateEscDejuDeclaracionLabel_idPeriodo}" for="idPeriodo" />
+                        <p:selectOneMenu id="idPeriodo" value="#{escDejuDeclaracionController.selected.idPeriodo}" >
+                            <f:selectItems value="#{escDejuPeriodoController.itemsAvailableSelectOne}"
+                                           var="idPeriodoItem"
+                                           itemValue="#{idPeriodoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escDejuDeclaracionController.create}" value="#{bundle.Save}" update="display,:EscDejuDeclaracionListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscDejuDeclaracionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscDejuDeclaracionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

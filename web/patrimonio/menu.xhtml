@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head><title>Módulo de Patrimonio - Sistema de Gestion</title></h:head>
+    <h:form>
+        <p:growl id="msg"/>
+        <p:menubar>
+            <p:submenu label="Operación">
+                <p:menuitem value="Registro de Funcionarios" url="/admin/patrimonio/funcionario"/>
+                <p:separator/>
+                <p:menuitem value="Registro General de Bienes"
+                            url="/admin/patrimonio/bien"/>
+                <p:menuitem value="Registro de Bienes Culturales" 
+                            url="/personal/w_bandeja_papeletas.xhtml" update=":center"/>
+                <p:menuitem value="Registro de Bienes Intangibles"
+                            url="/personal/w_bandeja_planilla.xhtml" update=":center"/>
+                <p:menuitem value="Registro de Bienes Inmuebles"
+                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                <p:menuitem value="Registro Auxiliar de Semovientes"
+                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                <p:menuitem value="Registro de Bienes Auxiliares"
+                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                <p:separator/>
+                <p:menuitem value="Ordenes de Compra"
+                            url="/personal/w_resume_planilla.xhtml" update=":center"/>
+                <p:menuitem value="Notas de Cargo de Bienes"
+                            url="/personal/w_resume_planilla.xhtml" update=":center"/>
+                <p:separator/>
+                <p:menuitem value="Autorizacion de Movimientos de Bienes"
+                            url="/personal/w_resume_planilla.xhtml" update=":center"/>
+            </p:submenu>
+            <p:submenu label="Inventario">
+                <p:menuitem value="Registro de Inventario"
+                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                <p:separator/>
+                <p:menuitem value="Periodos de Depreciacion"
+                            url="/personal/w_resume_planilla.xhtml" update=":center"/>
+            </p:submenu>
+            <p:submenu label="Tablas">
+
+                <p:menuitem value="Locales"
+                            url="/admin/patrimonio/local" update=":center"/>
+                   <p:separator/>
+                <p:menuitem value="Areas y Oficinas"
+                            url="/personal/w_registro_conceptos.xhtml" update=":center"/>
+                <p:menuitem value="Ambientes"
+                            url="/admin/patrimonio/ambiente" update=":center"/>
+                <p:separator/>
+                <p:menuitem value="Grupos y Clases"/>
+                <p:menuitem value="Catalogo del SBN"/>
+                <p:separator/>
+                <p:menuitem  value="Plan Contable"/>
+            </p:submenu>
+            <p:submenu label="Reportes">
+
+                <p:menuitem  value="Ficha de Datos de Bienes"/>
+                <p:separator/>
+                <p:menuitem  value="Bienes Activos"/>
+                <p:menuitem  value="Bienes por Locales"/>
+                <p:menuitem  value="Bienes por Locales y Ambientes"/>
+                <p:separator/>
+                <p:menuitem  value="Bienes Dados de Baja"/>
+                <p:separator/>
+                <p:menuitem  value="Resumen General de Bienes Culturales"/>
+                <p:menuitem  value="Resumen General de Bienes Intangibles"/> 
+                <p:menuitem  value="Resumen General de Bienes Inmuebles"/>
+                <p:menuitem  value="Resumen General de Bienes Auxiliares"/>
+                <p:menuitem  value="Resumen General de Semovientes Auxiliares"/>
+                <p:separator/>
+                <p:menuitem  value="Reporte de Oficinas"/> 
+                <p:separator/>
+                <p:menuitem  value="Historial de Bienes"/>
+            </p:submenu>
+            <p:submenu label="Herramientas">
+                <p:menuitem  value="Interface SIMI"/>
+                <p:menuitem  value="Actualización de Cuentas de Bienes"/>
+                <p:separator/>
+                <p:menuitem value="Mis Datos Personales" ajax="false"
+                            action="#{systemController.to('/pegasus/w_cfg_datos_personales')}" update=":center"/>
+                <p:menuitem  value="Cambio de Contraseña"/>
+                <p:separator/>
+                <p:menuitem  value="Año de Ejecucion"/>
+            </p:submenu>
+            <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                <p:menuitem value="Cerrar Sessión" ajax="false" action="#{userController.logout}"/>
+                <p:menuitem value="Cambiar Contraseña" />
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAutoevaluacionPlanViewDlg" widgetVar="SgcAutoevaluacionPlanViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcAutoevaluacionPlanTitle}">
+            <h:form id="SgcAutoevaluacionPlanViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAutoevaluacionPlanController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idEstandar}"/>
+                        <h:outputText value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idEstandar}" title="#{bundle.ViewSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idEstandar}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idAutoevaluacion}"/>
+                        <h:outputText value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idAutoevaluacion}" title="#{bundle.ViewSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idAutoevaluacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idPlacti}"/>
+                        <h:outputText value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idPlacti}" title="#{bundle.ViewSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idPlacti}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionPlanLabel_responsables}"/>
+                        <h:outputText value="#{sgcAutoevaluacionPlanController.selected.responsables}" title="#{bundle.ViewSgcAutoevaluacionPlanTitle_responsables}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionPlanLabel_recursos}"/>
+                        <h:outputText value="#{sgcAutoevaluacionPlanController.selected.recursos}" title="#{bundle.ViewSgcAutoevaluacionPlanTitle_recursos}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcAutoevaluacionPlanViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

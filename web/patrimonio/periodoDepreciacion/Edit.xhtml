@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeriodoDepreciacionEditDlg" widgetVar="PeriodoDepreciacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPeriodoDepreciacionTitle}">
+            <h:form id="PeriodoDepreciacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{periodoDepreciacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_codPeriodo}" for="codPeriodo" />
+                        <p:inputText id="codPeriodo" value="#{periodoDepreciacionController.selected.codPeriodo}" title="#{bundle.EditPeriodoDepreciacionTitle_codPeriodo}" required="true" requiredMessage="#{bundle.EditPeriodoDepreciacionRequiredMessage_codPeriodo}"/>
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_periodo}" for="periodo" />
+                        <p:calendar id="periodo" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.periodo}" title="#{bundle.EditPeriodoDepreciacionTitle_periodo}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_userRegistra}" for="userRegistra" />
+                        <p:inputText id="userRegistra" value="#{periodoDepreciacionController.selected.userRegistra}" title="#{bundle.EditPeriodoDepreciacionTitle_userRegistra}" />
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_fechaRegistra}" for="fechaRegistra" />
+                        <p:calendar id="fechaRegistra" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.fechaRegistra}" title="#{bundle.EditPeriodoDepreciacionTitle_fechaRegistra}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_userCierre}" for="userCierre" />
+                        <p:inputText id="userCierre" value="#{periodoDepreciacionController.selected.userCierre}" title="#{bundle.EditPeriodoDepreciacionTitle_userCierre}" />
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_fechaCierre}" for="fechaCierre" />
+                        <p:calendar id="fechaCierre" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.fechaCierre}" title="#{bundle.EditPeriodoDepreciacionTitle_fechaCierre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{periodoDepreciacionController.selected.estado}" title="#{bundle.EditPeriodoDepreciacionTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_anoInv}" for="anoInv" />
+                        <p:inputText id="anoInv" value="#{periodoDepreciacionController.selected.anoInv}" title="#{bundle.EditPeriodoDepreciacionTitle_anoInv}" />
+                        <p:outputLabel value="#{bundle.EditPeriodoDepreciacionLabel_numInv}" for="numInv" />
+                        <p:inputText id="numInv" value="#{periodoDepreciacionController.selected.numInv}" title="#{bundle.EditPeriodoDepreciacionTitle_numInv}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{periodoDepreciacionController.update}" value="#{bundle.Save}" update="display,:PeriodoDepreciacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PeriodoDepreciacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PeriodoDepreciacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteViewDlg" widgetVar="SgcFuenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcFuenteTitle}">
+            <h:form id="SgcFuenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_idFuente}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.idFuente}" title="#{bundle.ViewSgcFuenteTitle_idFuente}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_tipo}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.tipo}" title="#{bundle.ViewSgcFuenteTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_codigo}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.codigo}" title="#{bundle.ViewSgcFuenteTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_fuenteVerificacion}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.fuenteVerificacion}" title="#{bundle.ViewSgcFuenteTitle_fuenteVerificacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_estado}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.estado}" title="#{bundle.ViewSgcFuenteTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_fechaReg}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.fechaReg}" title="#{bundle.ViewSgcFuenteTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcFuenteLabel_delta}"/>
+                        <h:outputText value="#{sgcFuenteController.selected.delta}" title="#{bundle.ViewSgcFuenteTitle_delta}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcFuenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

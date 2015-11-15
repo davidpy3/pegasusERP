@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="CargaLectivaAsignaturaListForm">
+                <p:panel header="#{bundle.ListCargaLectivaAsignaturaTitle}">
+                    <p:dataTable id="datalist" value="#{cargaLectivaAsignaturaController.items}" var="item"
+                                 selectionMode="single" selection="#{cargaLectivaAsignaturaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idCldet}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idCldet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCldet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idAsignatura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAsignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idClcab}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idClcab}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idCldetDep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCldetDep}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idTcl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTcl}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_codPrioridad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPrioridad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_nroAlum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroAlum}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_gruptTeor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gruptTeor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_gruptPrac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gruptPrac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_grupTeor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupTeor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_grupoT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupoT}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_grupPrac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupPrac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_grupoP}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupoP}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_horTeor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horTeor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_horPrac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horPrac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_subtotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subtotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_estEncarg}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estEncarg}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_estAsigna}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estAsigna}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_estCompartido}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estCompartido}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_tipComp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipComp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_tipEnca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipEnca}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_ht}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ht}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_hp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_asigCompartidas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.asigCompartidas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_uso}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.uso}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idEsp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEsp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_estException}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estException}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargaLectivaAsignaturaTitle_original}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.original}" disabled="true"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cargaLectivaAsignaturaController.prepareCreate}" update=":CargaLectivaAsignaturaCreateForm" oncomplete="PF('CargaLectivaAsignaturaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CargaLectivaAsignaturaViewForm" oncomplete="PF('CargaLectivaAsignaturaViewDialog').show()" disabled="#{empty cargaLectivaAsignaturaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CargaLectivaAsignaturaEditForm" oncomplete="PF('CargaLectivaAsignaturaEditDialog').show()" disabled="#{empty cargaLectivaAsignaturaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cargaLectivaAsignaturaController.destroy}" update=":growl,datalist" disabled="#{empty cargaLectivaAsignaturaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

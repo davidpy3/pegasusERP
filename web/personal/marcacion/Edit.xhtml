@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcacionEditDlg" widgetVar="MarcacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMarcacionTitle}">
+            <h:form id="MarcacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_marcacionPK_fechaHora}" for="marcacionPK_fechaHora" />
+                        <p:calendar id="marcacionPK_fechaHora" pattern="dd/MM/yyyy HH:mm:ss" value="#{marcacionController.selected.marcacionPK.fechaHora}" title="#{bundle.EditMarcacionTitle_marcacionPK_fechaHora}" required="true" requiredMessage="#{bundle.EditMarcacionRequiredMessage_marcacionPK_fechaHora}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_marcacionPK_dni}" for="marcacionPK_dni" />
+                        <p:inputText id="marcacionPK_dni" value="#{marcacionController.selected.marcacionPK.dni}" title="#{bundle.EditMarcacionTitle_marcacionPK_dni}" required="true" requiredMessage="#{bundle.EditMarcacionRequiredMessage_marcacionPK_dni}"/>
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_tipoHor}" for="tipoHor" />
+                        <p:inputText id="tipoHor" value="#{marcacionController.selected.tipoHor}" title="#{bundle.EditMarcacionTitle_tipoHor}" />
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_turno}" for="turno" />
+                        <p:inputText id="turno" value="#{marcacionController.selected.turno}" title="#{bundle.EditMarcacionTitle_turno}" />
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_registro}" for="registro" />
+                        <p:inputText id="registro" value="#{marcacionController.selected.registro}" title="#{bundle.EditMarcacionTitle_registro}" />
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{marcacionController.selected.tipo}" title="#{bundle.EditMarcacionTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_observ}" for="observ" />
+                        <p:inputText id="observ" value="#{marcacionController.selected.observ}" title="#{bundle.EditMarcacionTitle_observ}" />
+                        <p:outputLabel value="#{bundle.EditMarcacionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{marcacionController.selected.estado}" title="#{bundle.EditMarcacionTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{marcacionController.update}" value="#{bundle.Save}" update="display,:MarcacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MarcacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MarcacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

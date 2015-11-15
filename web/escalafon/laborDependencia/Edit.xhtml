@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscLabordependenciasEditDlg" widgetVar="EscLabordependenciasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscLabordependenciasTitle}">
+            <h:form id="EscLabordependenciasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escLabordependenciasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_escLabordependenciasPK_idDep}" for="escLabordependenciasPK_idDep" />
+                        <p:inputText id="escLabordependenciasPK_idDep" value="#{escLabordependenciasController.selected.escLabordependenciasPK.idDep}" title="#{bundle.EditEscLabordependenciasTitle_escLabordependenciasPK_idDep}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_escLabordependenciasPK_idDep}"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_escLabordependenciasPK_fecIni}" for="escLabordependenciasPK_fecIni" />
+                        <p:calendar id="escLabordependenciasPK_fecIni" pattern="MM/dd/yyyy" value="#{escLabordependenciasController.selected.escLabordependenciasPK.fecIni}" title="#{bundle.EditEscLabordependenciasTitle_escLabordependenciasPK_fecIni}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_escLabordependenciasPK_fecIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_escLabordependenciasPK_labor}" for="escLabordependenciasPK_labor" />
+                        <p:inputText id="escLabordependenciasPK_labor" value="#{escLabordependenciasController.selected.escLabordependenciasPK.labor}" title="#{bundle.EditEscLabordependenciasTitle_escLabordependenciasPK_labor}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_escLabordependenciasPK_labor}"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_fecFin}" for="fecFin" />
+                        <p:calendar id="fecFin" pattern="MM/dd/yyyy" value="#{escLabordependenciasController.selected.fecFin}" title="#{bundle.EditEscLabordependenciasTitle_fecFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escLabordependenciasController.selected.activo}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_jefe}" for="jefe" />
+                        <p:selectBooleanCheckbox id="jefe" value="#{escLabordependenciasController.selected.jefe}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_jefe}"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_codDtra}" for="codDtra" />
+                        <p:inputText id="codDtra" value="#{escLabordependenciasController.selected.codDtra}" title="#{bundle.EditEscLabordependenciasTitle_codDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{escLabordependenciasController.selected.descripcion}" title="#{bundle.EditEscLabordependenciasTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_migrado}" for="migrado" />
+                        <p:selectBooleanCheckbox id="migrado" value="#{escLabordependenciasController.selected.migrado}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_migrado}"/>
+                        <p:outputLabel value="#{bundle.EditEscLabordependenciasLabel_escCarreraLaboral}" for="escCarreraLaboral" />
+                        <p:selectOneMenu id="escCarreraLaboral" value="#{escLabordependenciasController.selected.escCarreraLaboral}" required="true" requiredMessage="#{bundle.EditEscLabordependenciasRequiredMessage_escCarreraLaboral}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCarreraLaboralController.itemsAvailableSelectOne}"
+                                           var="escCarreraLaboralItem"
+                                           itemValue="#{escCarreraLaboralItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escLabordependenciasController.update}" value="#{bundle.Save}" update="display,:EscLabordependenciasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscLabordependenciasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscLabordependenciasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

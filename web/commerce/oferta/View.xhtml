@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OfertaViewDlg" widgetVar="OfertaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOfertaTitle}">
+            <h:form id="OfertaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ofertaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOfertaLabel_idOferta}"/>
+                        <h:outputText value="#{ofertaController.selected.idOferta}" title="#{bundle.ViewOfertaTitle_idOferta}"/>
+                        <h:outputText value="#{bundle.ViewOfertaLabel_nomOfer}"/>
+                        <h:outputText value="#{ofertaController.selected.nomOfer}" title="#{bundle.ViewOfertaTitle_nomOfer}"/>
+                        <h:outputText value="#{bundle.ViewOfertaLabel_fechaOfer}"/>
+                        <h:outputText value="#{ofertaController.selected.fechaOfer}" title="#{bundle.ViewOfertaTitle_fechaOfer}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOfertaLabel_fechaVenc}"/>
+                        <h:outputText value="#{ofertaController.selected.fechaVenc}" title="#{bundle.ViewOfertaTitle_fechaVenc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOfertaLabel_estado}"/>
+                        <h:outputText value="#{ofertaController.selected.estado}" title="#{bundle.ViewOfertaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewOfertaLabel_idAlmacen}"/>
+                        <h:outputText value="#{ofertaController.selected.idAlmacen}" title="#{bundle.ViewOfertaTitle_idAlmacen}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OfertaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

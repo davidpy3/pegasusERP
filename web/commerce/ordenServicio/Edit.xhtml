@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOrdenServicioEditDlg" widgetVar="ComOrdenServicioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComOrdenServicioTitle}">
+            <h:form id="ComOrdenServicioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOrdenServicioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idOrdenServicio}" for="idOrdenServicio" />
+                        <p:inputText id="idOrdenServicio" value="#{comOrdenServicioController.selected.idOrdenServicio}" title="#{bundle.EditComOrdenServicioTitle_idOrdenServicio}" required="true" requiredMessage="#{bundle.EditComOrdenServicioRequiredMessage_idOrdenServicio}"/>
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_correlativo}" for="correlativo" />
+                        <p:inputText id="correlativo" value="#{comOrdenServicioController.selected.correlativo}" title="#{bundle.EditComOrdenServicioTitle_correlativo}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{comOrdenServicioController.selected.idDep}" title="#{bundle.EditComOrdenServicioTitle_idDep}" required="true" requiredMessage="#{bundle.EditComOrdenServicioRequiredMessage_idDep}"/>
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idDirProveedor}" for="idDirProveedor" />
+                        <p:inputText id="idDirProveedor" value="#{comOrdenServicioController.selected.idDirProveedor}" title="#{bundle.EditComOrdenServicioTitle_idDirProveedor}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comOrdenServicioController.selected.idFuenteFinanciamiento}" title="#{bundle.EditComOrdenServicioTitle_idFuenteFinanciamiento}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idPrograma}" for="idPrograma" />
+                        <p:inputText id="idPrograma" value="#{comOrdenServicioController.selected.idPrograma}" title="#{bundle.EditComOrdenServicioTitle_idPrograma}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{comOrdenServicioController.selected.fechaReg}" title="#{bundle.EditComOrdenServicioTitle_fechaReg}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idTipoDocumento}" for="idTipoDocumento" />
+                        <p:inputText id="idTipoDocumento" value="#{comOrdenServicioController.selected.idTipoDocumento}" title="#{bundle.EditComOrdenServicioTitle_idTipoDocumento}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{comOrdenServicioController.selected.serie}" title="#{bundle.EditComOrdenServicioTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{comOrdenServicioController.selected.numero}" title="#{bundle.EditComOrdenServicioTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_tasaImpuesto}" for="tasaImpuesto" />
+                        <p:inputText id="tasaImpuesto" value="#{comOrdenServicioController.selected.tasaImpuesto}" title="#{bundle.EditComOrdenServicioTitle_tasaImpuesto}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_impuesto}" for="impuesto" />
+                        <p:inputText id="impuesto" value="#{comOrdenServicioController.selected.impuesto}" title="#{bundle.EditComOrdenServicioTitle_impuesto}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOrdenServicioController.selected.subTotal}" title="#{bundle.EditComOrdenServicioTitle_subTotal}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{comOrdenServicioController.selected.total}" title="#{bundle.EditComOrdenServicioTitle_total}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{comOrdenServicioController.selected.referencia}" title="#{bundle.EditComOrdenServicioTitle_referencia}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{comOrdenServicioController.selected.estado}" title="#{bundle.EditComOrdenServicioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditComOrdenServicioLabel_idDirUpdate}" for="idDirUpdate" />
+                        <p:inputText id="idDirUpdate" value="#{comOrdenServicioController.selected.idDirUpdate}" title="#{bundle.EditComOrdenServicioTitle_idDirUpdate}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOrdenServicioController.update}" value="#{bundle.Save}" update="display,:ComOrdenServicioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComOrdenServicioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOrdenServicioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

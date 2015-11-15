@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListComAltaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ComAltaListForm">
+                <p:panel header="#{bundle.ListComAltaTitle}">
+                    <p:dataTable id="datalist" value="#{comAltaController.items}" var="item"
+                                 selectionMode="single" selection="#{comAltaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idAlta}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idAlta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAlta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idFormaAdquisicion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFormaAdquisicion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idArticulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idArticulo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_correlativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correlativo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idOperacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOperacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idItem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idItem}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_identificador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_detalle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detalle}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idDep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDep}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComAltaTitle_idUltope}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUltope}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{comAltaController.prepareCreate}" update=":ComAltaCreateForm" oncomplete="PF('ComAltaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ComAltaViewForm" oncomplete="PF('ComAltaViewDialog').show()" disabled="#{empty comAltaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ComAltaEditForm" oncomplete="PF('ComAltaEditDialog').show()" disabled="#{empty comAltaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{comAltaController.destroy}" update=":growl,datalist" disabled="#{empty comAltaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

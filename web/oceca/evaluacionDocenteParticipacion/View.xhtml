@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaEvaluacionDocenteParticipacionViewDlg" widgetVar="SvaEvaluacionDocenteParticipacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle}">
+            <h:form id="SvaEvaluacionDocenteParticipacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaEvaluacionDocenteParticipacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_idParticipacion}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.idParticipacion}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_idParticipacion}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_idEncuesta}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.idEncuesta}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_idEncuesta}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_idDir}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.idDir}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_idAsignatura}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.idAsignatura}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_idAsignatura}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_idDocente}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.idDocente}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_idDocente}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_puntaje}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.puntaje}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_puntaje}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_cerrado}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.cerrado}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_cerrado}"/>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_fechaCierre}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.fechaCierre}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_fechaCierre}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSvaEvaluacionDocenteParticipacionLabel_fechaReg}"/>
+                        <h:outputText value="#{svaEvaluacionDocenteParticipacionController.selected.fechaReg}" title="#{bundle.ViewSvaEvaluacionDocenteParticipacionTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaEvaluacionDocenteParticipacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

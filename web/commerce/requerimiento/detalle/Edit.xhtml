@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SRequerimientoDetalleEditDlg" widgetVar="SRequerimientoDetalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSRequerimientoDetalleTitle}">
+            <h:form id="SRequerimientoDetalleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sRequerimientoDetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSRequerimientoDetalleLabel_requerimiento}" for="requerimiento" />
+                        <p:selectOneMenu id="requerimiento" value="#{sRequerimientoDetalleController.selected.requerimiento}" required="true" requiredMessage="#{bundle.EditSRequerimientoDetalleRequiredMessage_requerimiento}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sRequerimientoController.itemsAvailableSelectOne}"
+                                           var="requerimientoItem"
+                                           itemValue="#{requerimientoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSRequerimientoDetalleLabel_solicitudDetallePK_idSolicitud}" for="solicitudDetallePK_idSolicitud" />
+                        <p:inputText id="solicitudDetallePK_idSolicitud" value="#{sRequerimientoDetalleController.selected.solicitudDetallePK.idSolicitud}" title="#{bundle.EditSRequerimientoDetalleTitle_solicitudDetallePK_idSolicitud}" required="true" requiredMessage="#{bundle.EditSRequerimientoDetalleRequiredMessage_solicitudDetallePK_idSolicitud}"/>
+                        <p:outputLabel value="#{bundle.EditSRequerimientoDetalleLabel_cantSol}" for="cantSol" />
+                        <p:inputText id="cantSol" value="#{sRequerimientoDetalleController.selected.cantSol}" title="#{bundle.EditSRequerimientoDetalleTitle_cantSol}" />
+                        <p:outputLabel value="#{bundle.EditSRequerimientoDetalleLabel_cantEnv}" for="cantEnv" />
+                        <p:inputText id="cantEnv" value="#{sRequerimientoDetalleController.selected.cantEnv}" title="#{bundle.EditSRequerimientoDetalleTitle_cantEnv}" />
+                        <p:outputLabel value="#{bundle.EditSRequerimientoDetalleLabel_articulo}" for="articulo" />
+                        <p:selectOneMenu id="articulo" value="#{sRequerimientoDetalleController.selected.articulo}" required="true" requiredMessage="#{bundle.EditSRequerimientoDetalleRequiredMessage_articulo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{comArticuloController.itemsAvailableSelectOne}"
+                                           var="articuloItem"
+                                           itemValue="#{articuloItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sRequerimientoDetalleController.update}" value="#{bundle.Save}" update="display,:SRequerimientoDetalleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SRequerimientoDetalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SRequerimientoDetalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

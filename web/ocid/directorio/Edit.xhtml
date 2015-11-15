@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtDirectorioEditDlg" widgetVar="DrtDirectorioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDrtDirectorioTitle}">
+            <h:form id="DrtDirectorioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtDirectorioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_idDclas}" for="idDclas" />
+                        <p:inputText id="idDclas" value="#{drtDirectorioController.selected.idDclas}" title="#{bundle.EditDrtDirectorioTitle_idDclas}" />
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{drtDirectorioController.selected.idDir}" title="#{bundle.EditDrtDirectorioTitle_idDir}" required="true" requiredMessage="#{bundle.EditDrtDirectorioRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_pspCxt}" for="pspCxt" />
+                        <p:inputText id="pspCxt" value="#{drtDirectorioController.selected.pspCxt}" title="#{bundle.EditDrtDirectorioTitle_pspCxt}" required="true" requiredMessage="#{bundle.EditDrtDirectorioRequiredMessage_pspCxt}"/>
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_pspApp}" for="pspApp" />
+                        <p:inputText id="pspApp" value="#{drtDirectorioController.selected.pspApp}" title="#{bundle.EditDrtDirectorioTitle_pspApp}" />
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_pspUid}" for="pspUid" />
+                        <p:inputText id="pspUid" value="#{drtDirectorioController.selected.pspUid}" title="#{bundle.EditDrtDirectorioTitle_pspUid}" />
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_dateinsert}" for="dateinsert" />
+                        <p:calendar id="dateinsert" pattern="dd/MM/yyyy HH:mm:ss" value="#{drtDirectorioController.selected.dateinsert}" title="#{bundle.EditDrtDirectorioTitle_dateinsert}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDrtDirectorioLabel_drtPersonanatural}" for="drtPersonanatural" />
+                        <p:selectOneMenu id="drtPersonanatural" value="#{drtDirectorioController.selected.drtPersonanatural}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{drtPersonaNaturalController.itemsAvailableSelectOne}"
+                                           var="drtPersonanaturalItem"
+                                           itemValue="#{drtPersonanaturalItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{drtDirectorioController.update}" value="#{bundle.Save}" update="display,:DrtDirectorioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DrtDirectorioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DrtDirectorioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

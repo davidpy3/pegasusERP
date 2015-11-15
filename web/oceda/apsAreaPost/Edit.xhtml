@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsAreaPostEditDlg" widgetVar="ApsAreaPostEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditApsAreaPostTitle}">
+            <h:form id="ApsAreaPostEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsAreaPostController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditApsAreaPostLabel_idArea}" for="idArea" />
+                        <p:inputText id="idArea" value="#{apsAreaPostController.selected.idArea}" title="#{bundle.EditApsAreaPostTitle_idArea}" required="true" requiredMessage="#{bundle.EditApsAreaPostRequiredMessage_idArea}"/>
+                        <p:outputLabel value="#{bundle.EditApsAreaPostLabel_codArea}" for="codArea" />
+                        <p:inputText id="codArea" value="#{apsAreaPostController.selected.codArea}" title="#{bundle.EditApsAreaPostTitle_codArea}" />
+                        <p:outputLabel value="#{bundle.EditApsAreaPostLabel_area}" for="area" />
+                        <p:inputText id="area" value="#{apsAreaPostController.selected.area}" title="#{bundle.EditApsAreaPostTitle_area}" />
+                        <p:outputLabel value="#{bundle.EditApsAreaPostLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{apsAreaPostController.selected.idAmbito}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsAreaPostController.update}" value="#{bundle.Save}" update="display,:ApsAreaPostListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ApsAreaPostEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsAreaPostEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDemeritosViewDlg" widgetVar="EscDemeritosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscDemeritosTitle}">
+            <h:form id="EscDemeritosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDemeritosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_id}"/>
+                        <h:outputText value="#{escDemeritosController.selected.id}" title="#{bundle.ViewEscDemeritosTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_idDtra}"/>
+                        <h:outputText value="#{escDemeritosController.selected.idDtra}" title="#{bundle.ViewEscDemeritosTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_mencion}"/>
+                        <h:outputText value="#{escDemeritosController.selected.mencion}" title="#{bundle.ViewEscDemeritosTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_diasSancion}"/>
+                        <h:outputText value="#{escDemeritosController.selected.diasSancion}" title="#{bundle.ViewEscDemeritosTitle_diasSancion}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_fechaIni}"/>
+                        <h:outputText value="#{escDemeritosController.selected.fechaIni}" title="#{bundle.ViewEscDemeritosTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_fechaFin}"/>
+                        <h:outputText value="#{escDemeritosController.selected.fechaFin}" title="#{bundle.ViewEscDemeritosTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_fechaDem}"/>
+                        <h:outputText value="#{escDemeritosController.selected.fechaDem}" title="#{bundle.ViewEscDemeritosTitle_fechaDem}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{escDemeritosController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_observacion}"/>
+                        <h:outputText value="#{escDemeritosController.selected.observacion}" title="#{bundle.ViewEscDemeritosTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_idEsc}"/>
+                        <h:outputText value="#{escDemeritosController.selected.idEsc}" title="#{bundle.ViewEscDemeritosTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_idTf}"/>
+                        <h:outputText value="#{escDemeritosController.selected.idTf}" title="#{bundle.ViewEscDemeritosTitle_idTf}"/>
+                        <h:outputText value="#{bundle.ViewEscDemeritosLabel_idTs}"/>
+                        <h:outputText value="#{escDemeritosController.selected.idTs}" title="#{bundle.ViewEscDemeritosTitle_idTs}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscDemeritosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

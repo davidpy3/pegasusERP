@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionTrasladoViewDlg" widgetVar="ComOperacionTrasladoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOperacionTrasladoTitle}">
+            <h:form id="ComOperacionTrasladoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionTrasladoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idOperacion}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idOperacion}" title="#{bundle.ViewComOperacionTrasladoTitle_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idFuenteFinanciamiento}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idFuenteFinanciamiento}" title="#{bundle.ViewComOperacionTrasladoTitle_idFuenteFinanciamiento}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idPrograma}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idPrograma}" title="#{bundle.ViewComOperacionTrasladoTitle_idPrograma}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idPecosa}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idPecosa}" title="#{bundle.ViewComOperacionTrasladoTitle_idPecosa}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idSolicitante}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idSolicitante}" title="#{bundle.ViewComOperacionTrasladoTitle_idSolicitante}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idDirRecibe}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idDirRecibe}" title="#{bundle.ViewComOperacionTrasladoTitle_idDirRecibe}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_fechaReg}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.fechaReg}" title="#{bundle.ViewComOperacionTrasladoTitle_fechaReg}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idCreador}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idCreador}" title="#{bundle.ViewComOperacionTrasladoTitle_idCreador}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionTrasladoLabel_idEstado}"/>
+                        <h:outputText value="#{comOperacionTrasladoController.selected.idEstado}" title="#{bundle.ViewComOperacionTrasladoTitle_idEstado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOperacionTrasladoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

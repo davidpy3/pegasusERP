@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuizRelacionViewDlg" widgetVar="QuizRelacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewQuizRelacionTitle}">
+            <h:form id="QuizRelacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizRelacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idRelacion}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idRelacion}" title="#{bundle.ViewQuizRelacionTitle_idRelacion}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idAfectante}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idAfectante}" title="#{bundle.ViewQuizRelacionTitle_idAfectante}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idItemAfectante}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idItemAfectante}" title="#{bundle.ViewQuizRelacionTitle_idItemAfectante}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idAfectado}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idAfectado}" title="#{bundle.ViewQuizRelacionTitle_idAfectado}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idItemAfectado}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idItemAfectado}" title="#{bundle.ViewQuizRelacionTitle_idItemAfectado}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_comparador}"/>
+                        <h:outputText value="#{quizRelacionController.selected.comparador}" title="#{bundle.ViewQuizRelacionTitle_comparador}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_idOpcion}"/>
+                        <h:outputText value="#{quizRelacionController.selected.idOpcion}" title="#{bundle.ViewQuizRelacionTitle_idOpcion}"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{quizRelacionController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewQuizRelacionLabel_total}"/>
+                        <p:selectBooleanCheckbox value="#{quizRelacionController.selected.total}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="QuizRelacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

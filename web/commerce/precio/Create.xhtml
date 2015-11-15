@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComPrecioCreateDlg" widgetVar="ComPrecioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComPrecioTitle}">
+            <h:form id="ComPrecioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comPrecioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_idPrecio}" for="idPrecio" />
+                        <p:inputText id="idPrecio" value="#{comPrecioController.selected.idPrecio}" title="#{bundle.CreateComPrecioTitle_idPrecio}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_idPrecio}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_idArticulo}" for="idArticulo" />
+                        <p:inputText id="idArticulo" value="#{comPrecioController.selected.idArticulo}" title="#{bundle.CreateComPrecioTitle_idArticulo}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_idUnidad}" for="idUnidad" />
+                        <p:inputText id="idUnidad" value="#{comPrecioController.selected.idUnidad}" title="#{bundle.CreateComPrecioTitle_idUnidad}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_idUnidad}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comPrecioController.selected.cantidad}" title="#{bundle.CreateComPrecioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_idPlan}" for="idPlan" />
+                        <p:inputText id="idPlan" value="#{comPrecioController.selected.idPlan}" title="#{bundle.CreateComPrecioTitle_idPlan}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_idPlan}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_meses}" for="meses" />
+                        <p:inputText id="meses" value="#{comPrecioController.selected.meses}" title="#{bundle.CreateComPrecioTitle_meses}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_meses}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_idGrupo}" for="idGrupo" />
+                        <p:inputText id="idGrupo" value="#{comPrecioController.selected.idGrupo}" title="#{bundle.CreateComPrecioTitle_idGrupo}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_idGrupo}"/>
+                        <p:outputLabel value="#{bundle.CreateComPrecioLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{comPrecioController.selected.precio}" title="#{bundle.CreateComPrecioTitle_precio}" required="true" requiredMessage="#{bundle.CreateComPrecioRequiredMessage_precio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comPrecioController.create}" value="#{bundle.Save}" update="display,:ComPrecioListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComPrecioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComPrecioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

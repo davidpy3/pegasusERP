@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPapeletaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PapeletaListForm">
+                <p:panel header="#{bundle.ListPapeletaTitle}">
+                    <p:dataTable id="datalist" value="#{papeletaController.items}" var="item"
+                                 selectionMode="single" selection="#{papeletaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.papeletaPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="previewButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="previewButton createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_personal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_papeletaPK_NPapeleta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.papeletaPK.NPapeleta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_papeletaPK_anoEje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.papeletaPK.anoEje}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_tipoPape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoPape}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_regulariza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.regulariza}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_periPape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periPape}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_fechaPape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPape}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_fechaDel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaDel}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_fechaAl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAl}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_horaIni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaIni}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_horaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaFin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_lugar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lugar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_motivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.motivo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPapeletaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{papeletaController.prepareCreate}" update=":PapeletaCreateForm" oncomplete="PF('PapeletaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PapeletaViewForm" oncomplete="PF('PapeletaViewDialog').show()" disabled="#{empty papeletaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PapeletaEditForm" oncomplete="PF('PapeletaEditDialog').show()" disabled="#{empty papeletaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{papeletaController.destroy}" update=":growl,datalist" disabled="#{empty papeletaController.selected}"/>
+                            <p:commandButton id="anularButton" icon="ui-icon-trash"  value="#{bundle.Anular}" actionListener="#{papeletaController.destroy}" update=":growl,datalist" disabled="#{empty papeletaController.selected}"/>
+                            <p:commandButton id="autorizarButton" icon="ui-icon-trash"  value="#{bundle.Autorizar}" actionListener="#{papeletaController.destroy}" update=":growl,datalist" disabled="#{empty papeletaController.selected}"/>
+                            <p:button id="previewButton"   value="#{papeletaController.selected eq null?'xx':papeletaController.selected.papeletaPK.toString()}"
+                                      outcome="/personal/report/reportePapeleta.xhtml" 
+                                      disabled="#{empty papeletaController.selected}">
+                                <f:param name="papeletaPK" value="#{papeletaController.selected.papeletaPK.anoEje}-#{papeletaController.selected.papeletaPK.NPapeleta}" ></f:param>
+                            </p:button>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

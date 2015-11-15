@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEncargaturasViewDlg" widgetVar="EscEncargaturasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscEncargaturasTitle}">
+            <h:form id="EscEncargaturasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEncargaturasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_idEnc}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.idEnc}" title="#{bundle.ViewEscEncargaturasTitle_idEnc}"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_fecInicio}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.fecInicio}" title="#{bundle.ViewEscEncargaturasTitle_fecInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_fecFin}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.fecFin}" title="#{bundle.ViewEscEncargaturasTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escEncargaturasController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_idDtra}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.idDtra}" title="#{bundle.ViewEscEncargaturasTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_mencion}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.mencion}" title="#{bundle.ViewEscEncargaturasTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_temporadaActual}"/>
+                        <p:selectBooleanCheckbox value="#{escEncargaturasController.selected.temporadaActual}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_fecfinProp}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.fecfinProp}" title="#{bundle.ViewEscEncargaturasTitle_fecfinProp}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_escCap}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.escCap}" title="#{bundle.ViewEscEncargaturasTitle_escCap}"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_idDesp}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.idDesp}" title="#{bundle.ViewEscEncargaturasTitle_idDesp}"/>
+                        <h:outputText value="#{bundle.ViewEscEncargaturasLabel_idEsc}"/>
+                        <h:outputText value="#{escEncargaturasController.selected.idEsc}" title="#{bundle.ViewEscEncargaturasTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscEncargaturasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

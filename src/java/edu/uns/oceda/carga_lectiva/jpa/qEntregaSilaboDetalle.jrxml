@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="19"/>
+	<style name="style1">
+		<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<queryString>
+		<![CDATA[select
+aps_facultad.facultad,
+mta_matricula_cab.id_especialidad,
+aps_escuela.id_escuela,
+aps_escuela.nombre,
+apc_periodo_academico.cod_acper,
+mta_matricula_det.nom_asignatura,
+mta_matricula_cab.id_acper,
+mta_matricula_det.id_ciclo,
+cur_ciclo.num_romano,
+drt_personanatural.nombre_completo,
+fxa_estudiante.codigo_estudiante
+
+from mta_matricula_cab
+
+inner join aps_especialidad on aps_especialidad.id_especialidad=mta_matricula_cab.id_especialidad
+inner join aps_especialidad_pre on aps_especialidad_pre.id_especialidad=aps_especialidad.id_especialidad
+inner join aps_escuela on aps_escuela.id_escuela=aps_especialidad_pre.id_escuela
+inner join aps_facultad on aps_facultad.id_facultad=aps_escuela.id_facultad
+inner join apc_periodo_academico ON apc_periodo_academico.id_acper=mta_matricula_cab.id_acper
+inner join mta_matricula_det ON mta_matricula_det.id_mta_alu=mta_matricula_cab.id_mta_alu
+inner join cur_asignatura on cur_asignatura.id_asignatura=mta_matricula_det.id_asignatura
+inner join cur_ciclo on cur_ciclo.id_ciclo=mta_matricula_det.id_ciclo
+inner join fxa_estudiante on fxa_estudiante.id_acexp=mta_matricula_cab.id_acexp
+inner join drt_personanatural on drt_personanatural.id_dir=fxa_estudiante.id_direstudiante
+where mta_matricula_cab.id_acper=193 AND mta_matricula_det.nom_asignatura LIKE '%JUVENIL%'
+ORDER BY
+apc_periodo_academico.cod_acper,
+aps_facultad.id_facultad,
+aps_escuela.id_escuela,
+mta_matricula_det.nom_asignatura,
+mta_matricula_det.id_ciclo,
+cur_ciclo.num_romano,
+drt_personanatural.nombre_completo
+]]>
+	</queryString>
+	<field name="facultad" class="java.lang.String"/>
+	<field name="id_especialidad" class="java.lang.Integer"/>
+	<field name="id_escuela" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cod_acper" class="java.lang.String"/>
+	<field name="nom_asignatura" class="java.lang.String"/>
+	<field name="id_acper" class="java.lang.Integer"/>
+	<field name="id_ciclo" class="java.lang.Integer"/>
+	<field name="num_romano" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="codigo_estudiante" class="java.lang.String"/>
+	<variable name="asignatura_PAGE_NUMBER" class="java.lang.Integer" resetType="Group" resetGroup="asignatura" incrementType="Column">
+		<variableExpression><![CDATA[$V{asignatura_PAGE_NUMBER}+1]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<group name="asignatura" isStartNewPage="true" isResetPageNumber="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{nom_asignatura}]]></groupExpression>
+		<groupHeader>
+			<band height="237">
+				<staticText>
+					<reportElement style="style1" x="35" y="217" width="319" height="20" isPrintInFirstWholeBand="true"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[APELLIDOS Y NOMBRES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="354" y="217" width="101" height="20" isPrintInFirstWholeBand="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CODIGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="455" y="217" width="100" height="20" isPrintInFirstWholeBand="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[FIRMA]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="style1" x="86" y="37" width="369" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["FACULTAD: "+$F{facultad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="86" y="57" width="469" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["DEPARTAMENTO: "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="86" y="77" width="469" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["SEMESTRE ACADEMICO: "+$F{cod_acper}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="86" y="97" width="268" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["FECHA: "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="354" y="97" width="101" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["HI: "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="455" y="97" width="100" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["HT: "]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="style1" x="455" y="37" width="100" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[VERSION: 1.0]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="86" y="0" width="369" height="37" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REGISTRO DE ENTREGA Y EXPOSICION DE
+SILABO A ESTUDIANTES]]></text>
+				</staticText>
+				<image>
+					<reportElement style="style1" x="0" y="0" width="86" height="117" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["G:\\proyecto\\oceca\\web\\images\\santa.jpg"]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement style="style1" x="0" y="137" width="555" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["ESCUELA ACADEMICA PROFESIONAL: "+$F{nombre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="455" y="157" width="100" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["CICLO: "+$F{num_romano}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="0" y="157" width="455" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["ASIGNATURA: "+$F{nom_asignatura}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="0" y="177" width="555" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["DOCENTE: "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="style1" x="455" y="0" width="100" height="37" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["E"+$F{id_escuela}+".I.31.1.R1"]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement style="style1" x="0" y="117" width="555" height="20" isRemoveLineWhenBlank="true" backcolor="#990000">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+					</reportElement>
+				</rectangle>
+				<rectangle>
+					<reportElement style="style1" x="0" y="197" width="555" height="20" backcolor="#990000"/>
+				</rectangle>
+				<staticText>
+					<reportElement style="style1" x="0" y="217" width="35" height="20" isPrintInFirstWholeBand="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[N°]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="219">
+				<staticText>
+					<reportElement style="style1" x="0" y="0" width="555" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[OBSERVACIONES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="0" y="20" width="555" height="59" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="0" y="79" width="555" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[FIRMAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="164" y="99" width="391" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[DELEGADO DE AULA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="164" y="119" width="391" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[NOMBRE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="0" y="99" width="164" height="60" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[DOCENTE ASIGNATURA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="164" y="139" width="391" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[CODIGO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="0" y="159" width="164" height="60" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="164" y="159" width="391" height="60" isRemoveLineWhenBlank="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="style1" x="35" y="0" width="319" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="354" y="0" width="101" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo_estudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="style1" x="455" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement style="style1" x="0" y="0" width="35" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{asignatura_COUNT}]]></textFieldExpression>
+				<patternExpression><![CDATA["00"]]></patternExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

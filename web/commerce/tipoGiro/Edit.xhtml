@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoGiroEditDlg" widgetVar="ComTipoGiroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComTipoGiroTitle}">
+            <h:form id="ComTipoGiroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoGiroController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComTipoGiroLabel_idTipoGiro}" for="idTipoGiro" />
+                        <p:inputText id="idTipoGiro" value="#{comTipoGiroController.selected.idTipoGiro}" title="#{bundle.EditComTipoGiroTitle_idTipoGiro}" required="true" requiredMessage="#{bundle.EditComTipoGiroRequiredMessage_idTipoGiro}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoGiroLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{comTipoGiroController.selected.nombre}" title="#{bundle.EditComTipoGiroTitle_nombre}" required="true" requiredMessage="#{bundle.EditComTipoGiroRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoGiroLabel_idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{comTipoGiroController.selected.idUsuario}" title="#{bundle.EditComTipoGiroTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditComTipoGiroRequiredMessage_idUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoGiroLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{comTipoGiroController.selected.fechaReg}" title="#{bundle.EditComTipoGiroTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditComTipoGiroRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditComTipoGiroLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{comTipoGiroController.selected.estado}" title="#{bundle.EditComTipoGiroTitle_estado}" required="true" requiredMessage="#{bundle.EditComTipoGiroRequiredMessage_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTipoGiroController.update}" value="#{bundle.Save}" update="display,:ComTipoGiroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComTipoGiroEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTipoGiroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

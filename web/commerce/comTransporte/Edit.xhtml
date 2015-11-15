@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTransporteEditDlg" widgetVar="ComTransporteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComTransporteTitle}">
+            <h:form id="ComTransporteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTransporteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_idTransporte}" for="idTransporte" />
+                        <p:inputText id="idTransporte" value="#{comTransporteController.selected.idTransporte}" title="#{bundle.EditComTransporteTitle_idTransporte}" required="true" requiredMessage="#{bundle.EditComTransporteRequiredMessage_idTransporte}"/>
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{comTransporteController.selected.idDir}" title="#{bundle.EditComTransporteTitle_idDir}" required="true" requiredMessage="#{bundle.EditComTransporteRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_idTipoTransporte}" for="idTipoTransporte" />
+                        <p:inputText id="idTipoTransporte" value="#{comTransporteController.selected.idTipoTransporte}" title="#{bundle.EditComTransporteTitle_idTipoTransporte}" required="true" requiredMessage="#{bundle.EditComTransporteRequiredMessage_idTipoTransporte}"/>
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{comTransporteController.selected.marca}" title="#{bundle.EditComTransporteTitle_marca}" />
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_anio}" for="anio" />
+                        <p:inputText id="anio" value="#{comTransporteController.selected.anio}" title="#{bundle.EditComTransporteTitle_anio}" />
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_matricula}" for="matricula" />
+                        <p:inputText id="matricula" value="#{comTransporteController.selected.matricula}" title="#{bundle.EditComTransporteTitle_matricula}" />
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{comTransporteController.selected.color}" title="#{bundle.EditComTransporteTitle_color}" />
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_propiedad}" for="propiedad" />
+                        <p:inputText id="propiedad" value="#{comTransporteController.selected.propiedad}" title="#{bundle.EditComTransporteTitle_propiedad}" />
+                        <p:outputLabel value="#{bundle.EditComTransporteLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{comTransporteController.selected.estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTransporteController.update}" value="#{bundle.Save}" update="display,:ComTransporteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComTransporteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTransporteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

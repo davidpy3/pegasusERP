@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSvaInformeTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SvaInformeListForm">
+                <p:panel header="#{bundle.ListSvaInformeTitle}">
+                    <p:dataTable id="datalist" value="#{svaInformeController.items}" var="item"
+                                 selectionMode="single" selection="#{svaInformeController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idAutoinfo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idAutoinfo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutoinfo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idAutoevaluacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutoevaluacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idVersion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVersion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idInstitucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInstitucion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idUbig}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUbig}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_fechaPresentacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPresentacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_resumenEjecutivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resumenEjecutivo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_introduccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.introduccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_carreraDescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carreraDescripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_carreraHistoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carreraHistoria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_mision}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mision}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_vision}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vision}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idAutoridad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutoridad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_idDtra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDtra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_nroMatriculados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroMatriculados}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_nroPromociones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroPromociones}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_nroGraduados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroGraduados}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_nroTitulados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroTitulados}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_grado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_titulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titulo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_fechaReg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaReg}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaInformeTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{svaInformeController.prepareCreate}" update=":SvaInformeCreateForm" oncomplete="PF('SvaInformeCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SvaInformeViewForm" oncomplete="PF('SvaInformeViewDialog').show()" disabled="#{empty svaInformeController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SvaInformeEditForm" oncomplete="PF('SvaInformeEditDialog').show()" disabled="#{empty svaInformeController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{svaInformeController.destroy}" update=":growl,datalist" disabled="#{empty svaInformeController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

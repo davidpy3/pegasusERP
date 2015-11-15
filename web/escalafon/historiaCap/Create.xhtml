@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscHistoriaCapCreateDlg" widgetVar="EscHistoriaCapCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscHistoriaCapTitle}">
+            <h:form id="EscHistoriaCapCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escHistoriaCapController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscHistoriaCapLabel_idHistCap}" for="idHistCap" />
+                        <p:inputText id="idHistCap" value="#{escHistoriaCapController.selected.idHistCap}" title="#{bundle.CreateEscHistoriaCapTitle_idHistCap}" required="true" requiredMessage="#{bundle.CreateEscHistoriaCapRequiredMessage_idHistCap}"/>
+                        <p:outputLabel value="#{bundle.CreateEscHistoriaCapLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escHistoriaCapController.selected.idDtra}" title="#{bundle.CreateEscHistoriaCapTitle_idDtra}" required="true" requiredMessage="#{bundle.CreateEscHistoriaCapRequiredMessage_idDtra}"/>
+                        <p:outputLabel value="#{bundle.CreateEscHistoriaCapLabel_elaborada}" for="elaborada" />
+                        <p:inputText id="elaborada" value="#{escHistoriaCapController.selected.elaborada}" title="#{bundle.CreateEscHistoriaCapTitle_elaborada}" />
+                        <p:outputLabel value="#{bundle.CreateEscHistoriaCapLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escHistoriaCapController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscHistoriaCapRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateEscHistoriaCapLabel_fechaDoc}" for="fechaDoc" />
+                        <p:calendar id="fechaDoc" pattern="MM/dd/yyyy" value="#{escHistoriaCapController.selected.fechaDoc}" title="#{bundle.EditEscHistoriaCapTitle_fechaDoc}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escHistoriaCapController.create}" value="#{bundle.Save}" update="display,:EscHistoriaCapListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscHistoriaCapCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscHistoriaCapCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComStockCreateDlg" widgetVar="ComStockCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComStockTitle}">
+            <h:form id="ComStockCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comStockController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_comStockPK_idArticulo}" for="comStockPK_idArticulo" />
+                        <p:inputText id="comStockPK_idArticulo" value="#{comStockController.selected.comStockPK.idArticulo}" title="#{bundle.CreateComStockTitle_comStockPK_idArticulo}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_comStockPK_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_comStockPK_idDep}" for="comStockPK_idDep" />
+                        <p:inputText id="comStockPK_idDep" value="#{comStockController.selected.comStockPK.idDep}" title="#{bundle.CreateComStockTitle_comStockPK_idDep}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_comStockPK_idDep}"/>
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comStockController.selected.cantidad}" title="#{bundle.CreateComStockTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_cantidadX}" for="cantidadX" />
+                        <p:inputText id="cantidadX" value="#{comStockController.selected.cantidadX}" title="#{bundle.CreateComStockTitle_cantidadX}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_cantidadX}"/>
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_cantidadU}" for="cantidadU" />
+                        <p:inputText id="cantidadU" value="#{comStockController.selected.cantidadU}" title="#{bundle.CreateComStockTitle_cantidadU}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_cantidadU}"/>
+                        <p:outputLabel value="#{bundle.CreateComStockLabel_acumuladoS}" for="acumuladoS" />
+                        <p:inputText id="acumuladoS" value="#{comStockController.selected.acumuladoS}" title="#{bundle.CreateComStockTitle_acumuladoS}" required="true" requiredMessage="#{bundle.CreateComStockRequiredMessage_acumuladoS}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comStockController.create}" value="#{bundle.Save}" update="display,:ComStockListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComStockCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComStockCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

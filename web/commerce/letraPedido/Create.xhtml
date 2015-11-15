@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LetraPedidoCreateDlg" widgetVar="LetraPedidoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLetraPedidoTitle}">
+            <h:form id="LetraPedidoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{letraPedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLetraPedidoLabel_idLetraPedido}" for="idLetraPedido" />
+                        <p:inputText id="idLetraPedido" value="#{letraPedidoController.selected.idLetraPedido}" title="#{bundle.CreateLetraPedidoTitle_idLetraPedido}" required="true" requiredMessage="#{bundle.CreateLetraPedidoRequiredMessage_idLetraPedido}"/>
+                        <p:outputLabel value="#{bundle.CreateLetraPedidoLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{letraPedidoController.selected.monto}" title="#{bundle.CreateLetraPedidoTitle_monto}" />
+                        <p:outputLabel value="#{bundle.CreateLetraPedidoLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{letraPedidoController.selected.fecha}" title="#{bundle.EditLetraPedidoTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateLetraPedidoLabel_idPedido}" for="idPedido" />
+                        <p:inputText id="idPedido" value="#{letraPedidoController.selected.idPedido}" title="#{bundle.CreateLetraPedidoTitle_idPedido}" required="true" requiredMessage="#{bundle.CreateLetraPedidoRequiredMessage_idPedido}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{letraPedidoController.create}" value="#{bundle.Save}" update="display,:LetraPedidoListForm:datalist,:growl" oncomplete="handleSubmit(args,'LetraPedidoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LetraPedidoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

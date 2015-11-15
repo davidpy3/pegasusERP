@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProcesoTablaCreateDlg" widgetVar="ProcesoTablaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProcesoTablaTitle}">
+            <h:form id="ProcesoTablaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{procesoTablaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProcesoTablaLabel_procesoTablaPK_clasifica}" for="procesoTablaPK_clasifica" />
+                        <p:inputText id="procesoTablaPK_clasifica" value="#{procesoTablaController.selected.procesoTablaPK.clasifica}" title="#{bundle.CreateProcesoTablaTitle_procesoTablaPK_clasifica}" required="true" requiredMessage="#{bundle.CreateProcesoTablaRequiredMessage_procesoTablaPK_clasifica}"/>
+                        <p:outputLabel value="#{bundle.CreateProcesoTablaLabel_procesoTablaPK_anno}" for="procesoTablaPK_anno" />
+                        <p:inputText id="procesoTablaPK_anno" value="#{procesoTablaController.selected.procesoTablaPK.anno}" title="#{bundle.CreateProcesoTablaTitle_procesoTablaPK_anno}" required="true" requiredMessage="#{bundle.CreateProcesoTablaRequiredMessage_procesoTablaPK_anno}"/>
+                        <p:outputLabel value="#{bundle.CreateProcesoTablaLabel_mayor}" for="mayor" />
+                        <p:inputText id="mayor" value="#{procesoTablaController.selected.mayor}" title="#{bundle.CreateProcesoTablaTitle_mayor}" />
+                        <p:outputLabel value="#{bundle.CreateProcesoTablaLabel_menor}" for="menor" />
+                        <p:inputText id="menor" value="#{procesoTablaController.selected.menor}" title="#{bundle.CreateProcesoTablaTitle_menor}" />
+                        <p:outputLabel value="#{bundle.CreateProcesoTablaLabel_procesoTipo}" for="procesoTipo" />
+                        <p:selectOneMenu id="procesoTipo" value="#{procesoTablaController.selected.procesoTipo}" required="true" requiredMessage="#{bundle.EditProcesoTablaRequiredMessage_procesoTipo}">
+                            <f:selectItems value="#{procesoTipoController.itemsAvailableSelectOne}"
+                                           var="procesoTipoItem"
+                                           itemValue="#{procesoTipoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{procesoTablaController.create}" value="#{bundle.Save}" update="display,:ProcesoTablaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProcesoTablaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProcesoTablaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

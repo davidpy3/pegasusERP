@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNivelRemunerativoUnsViewDlg" widgetVar="EscNivelRemunerativoUnsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscNivelRemunerativoUnsTitle}">
+            <h:form id="EscNivelRemunerativoUnsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNivelRemunerativoUnsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_escNivelRemunerativoUnsPK_idNivel}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.escNivelRemunerativoUnsPK.idNivel}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_escNivelRemunerativoUnsPK_idNivel}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_escNivelRemunerativoUnsPK_tipo}"/>
+                        <p:selectBooleanCheckbox value="#{escNivelRemunerativoUnsController.selected.escNivelRemunerativoUnsPK.tipo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_nivel}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.nivel}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_nivel}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_dedicacion}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.dedicacion}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_dedicacion}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_abrevCat}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.abrevCat}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_abrevCat}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_abrevDed}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.abrevDed}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_abrevDed}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_idCat}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.idCat}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_idCat}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelRemunerativoUnsLabel_idGo}"/>
+                        <h:outputText value="#{escNivelRemunerativoUnsController.selected.idGo}" title="#{bundle.ViewEscNivelRemunerativoUnsTitle_idGo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscNivelRemunerativoUnsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

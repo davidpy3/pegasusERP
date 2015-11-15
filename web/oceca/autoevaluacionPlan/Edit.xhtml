@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAutoevaluacionPlanEditDlg" widgetVar="SgcAutoevaluacionPlanEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcAutoevaluacionPlanTitle}">
+            <h:form id="SgcAutoevaluacionPlanEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAutoevaluacionPlanController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idEstandar}" for="sgcAutoevaluacionPlanPK_idEstandar" />
+                        <p:inputText id="sgcAutoevaluacionPlanPK_idEstandar" value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idEstandar}" title="#{bundle.EditSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idEstandar}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionPlanRequiredMessage_sgcAutoevaluacionPlanPK_idEstandar}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idAutoevaluacion}" for="sgcAutoevaluacionPlanPK_idAutoevaluacion" />
+                        <p:inputText id="sgcAutoevaluacionPlanPK_idAutoevaluacion" value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idAutoevaluacion}" title="#{bundle.EditSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idAutoevaluacion}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionPlanRequiredMessage_sgcAutoevaluacionPlanPK_idAutoevaluacion}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionPlanLabel_sgcAutoevaluacionPlanPK_idPlacti}" for="sgcAutoevaluacionPlanPK_idPlacti" />
+                        <p:inputText id="sgcAutoevaluacionPlanPK_idPlacti" value="#{sgcAutoevaluacionPlanController.selected.sgcAutoevaluacionPlanPK.idPlacti}" title="#{bundle.EditSgcAutoevaluacionPlanTitle_sgcAutoevaluacionPlanPK_idPlacti}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionPlanRequiredMessage_sgcAutoevaluacionPlanPK_idPlacti}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionPlanLabel_responsables}" for="responsables" />
+                        <p:inputText id="responsables" value="#{sgcAutoevaluacionPlanController.selected.responsables}" title="#{bundle.EditSgcAutoevaluacionPlanTitle_responsables}" />
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionPlanLabel_recursos}" for="recursos" />
+                        <p:inputText id="recursos" value="#{sgcAutoevaluacionPlanController.selected.recursos}" title="#{bundle.EditSgcAutoevaluacionPlanTitle_recursos}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcAutoevaluacionPlanController.update}" value="#{bundle.Save}" update="display,:SgcAutoevaluacionPlanListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcAutoevaluacionPlanEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcAutoevaluacionPlanEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

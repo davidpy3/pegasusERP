@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KardexEditDlg" widgetVar="KardexEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditKardexTitle}">
+            <h:form id="KardexEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kardexController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditKardexLabel_idKardex}" for="idKardex" />
+                        <p:inputText id="idKardex" value="#{kardexController.selected.idKardex}" title="#{bundle.EditKardexTitle_idKardex}" required="true" requiredMessage="#{bundle.EditKardexRequiredMessage_idKardex}"/>
+                        <p:outputLabel value="#{bundle.EditKardexLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{kardexController.selected.fecha}" title="#{bundle.EditKardexTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditKardexLabel_cantIng}" for="cantIng" />
+                        <p:inputText id="cantIng" value="#{kardexController.selected.cantIng}" title="#{bundle.EditKardexTitle_cantIng}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_preUniIng}" for="preUniIng" />
+                        <p:inputText id="preUniIng" value="#{kardexController.selected.preUniIng}" title="#{bundle.EditKardexTitle_preUniIng}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_cantSal}" for="cantSal" />
+                        <p:inputText id="cantSal" value="#{kardexController.selected.cantSal}" title="#{bundle.EditKardexTitle_cantSal}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_preUniSal}" for="preUniSal" />
+                        <p:inputText id="preUniSal" value="#{kardexController.selected.preUniSal}" title="#{bundle.EditKardexTitle_preUniSal}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{kardexController.selected.serie}" title="#{bundle.EditKardexTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{kardexController.selected.numero}" title="#{bundle.EditKardexTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_nroDoc}" for="nroDoc" />
+                        <p:inputText id="nroDoc" value="#{kardexController.selected.nroDoc}" title="#{bundle.EditKardexTitle_nroDoc}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{kardexController.selected.nombre}" title="#{bundle.EditKardexTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_docNro}" for="docNro" />
+                        <p:inputText id="docNro" value="#{kardexController.selected.docNro}" title="#{bundle.EditKardexTitle_docNro}" required="true" requiredMessage="#{bundle.EditKardexRequiredMessage_docNro}"/>
+                        <p:outputLabel value="#{bundle.EditKardexLabel_idTipoMov}" for="idTipoMov" />
+                        <p:inputText id="idTipoMov" value="#{kardexController.selected.idTipoMov}" title="#{bundle.EditKardexTitle_idTipoMov}" />
+                        <p:outputLabel value="#{bundle.EditKardexLabel_idArticulo}" for="idArticulo" />
+                        <p:selectOneMenu id="idArticulo" value="#{kardexController.selected.idArticulo}" required="true" requiredMessage="#{bundle.EditKardexRequiredMessage_idArticulo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{comArticuloController.itemsAvailableSelectOne}"
+                                           var="idArticuloItem"
+                                           itemValue="#{idArticuloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditKardexLabel_idTipoDoc}" for="idTipoDoc" />
+                        <p:selectOneMenu id="idTipoDoc" value="#{kardexController.selected.idTipoDoc}" required="true" requiredMessage="#{bundle.EditKardexRequiredMessage_idTipoDoc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"
+                                           var="idTipoDocItem"
+                                           itemValue="#{idTipoDocItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditKardexLabel_idAlmacen}" for="idAlmacen" />
+                        <p:selectOneMenu id="idAlmacen" value="#{kardexController.selected.idAlmacen}" required="true" requiredMessage="#{bundle.EditKardexRequiredMessage_idAlmacen}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sonAlmacenController.itemsAvailableSelectOne}"
+                                           var="idAlmacenItem"
+                                           itemValue="#{idAlmacenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{kardexController.update}" value="#{bundle.Save}" update="display,:KardexListForm:datalist,:growl" oncomplete="handleSubmit(args, 'KardexEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="KardexEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

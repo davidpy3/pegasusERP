@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscMeritosViewDlg" widgetVar="EscMeritosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscMeritosTitle}">
+            <h:form id="EscMeritosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escMeritosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_idDtra}"/>
+                        <h:outputText value="#{escMeritosController.selected.idDtra}" title="#{bundle.ViewEscMeritosTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_mencion}"/>
+                        <h:outputText value="#{escMeritosController.selected.mencion}" title="#{bundle.ViewEscMeritosTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_id}"/>
+                        <h:outputText value="#{escMeritosController.selected.id}" title="#{bundle.ViewEscMeritosTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_merito}"/>
+                        <h:outputText value="#{escMeritosController.selected.merito}" title="#{bundle.ViewEscMeritosTitle_merito}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_fechaMer}"/>
+                        <h:outputText value="#{escMeritosController.selected.fechaMer}" title="#{bundle.ViewEscMeritosTitle_fechaMer}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_fechaInicio}"/>
+                        <h:outputText value="#{escMeritosController.selected.fechaInicio}" title="#{bundle.ViewEscMeritosTitle_fechaInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_fechaFin}"/>
+                        <h:outputText value="#{escMeritosController.selected.fechaFin}" title="#{bundle.ViewEscMeritosTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_monto}"/>
+                        <h:outputText value="#{escMeritosController.selected.monto}" title="#{bundle.ViewEscMeritosTitle_monto}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_idEsc}"/>
+                        <h:outputText value="#{escMeritosController.selected.idEsc}" title="#{bundle.ViewEscMeritosTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscMeritosLabel_idTipo}"/>
+                        <h:outputText value="#{escMeritosController.selected.idTipo}" title="#{bundle.ViewEscMeritosTitle_idTipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscMeritosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

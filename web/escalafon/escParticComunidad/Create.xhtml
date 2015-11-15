@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscParticComunidadCreateDlg" widgetVar="EscParticComunidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscParticComunidadTitle}">
+            <h:form id="EscParticComunidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escParticComunidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_idComud}" for="idComud" />
+                        <p:inputText id="idComud" value="#{escParticComunidadController.selected.idComud}" title="#{bundle.CreateEscParticComunidadTitle_idComud}" required="true" requiredMessage="#{bundle.CreateEscParticComunidadRequiredMessage_idComud}"/>
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escParticComunidadController.selected.idEsc}" title="#{bundle.CreateEscParticComunidadTitle_idEsc}" required="true" requiredMessage="#{bundle.CreateEscParticComunidadRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{escParticComunidadController.selected.cargo}" title="#{bundle.CreateEscParticComunidadTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="MM/dd/yyyy" value="#{escParticComunidadController.selected.fechaInicio}" title="#{bundle.EditEscParticComunidadTitle_fechaInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escParticComunidadController.selected.fechaFin}" title="#{bundle.EditEscParticComunidadTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escParticComunidadController.selected.activo}" />
+                        <p:outputLabel value="#{bundle.CreateEscParticComunidadLabel_idInst}" for="idInst" />
+                        <p:selectOneMenu id="idInst" value="#{escParticComunidadController.selected.idInst}" required="true" requiredMessage="#{bundle.EditEscParticComunidadRequiredMessage_idInst}">
+                            <f:selectItems value="#{escInstitucionesController.itemsAvailableSelectOne}"
+                                           var="idInstItem"
+                                           itemValue="#{idInstItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escParticComunidadController.create}" value="#{bundle.Save}" update="display,:EscParticComunidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscParticComunidadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscParticComunidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NivelRemunerativoCreateDlg" widgetVar="NivelRemunerativoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNivelRemunerativoTitle}">
+            <h:form id="NivelRemunerativoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{nivelRemunerativoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_nivelRemunerativoPK_nivelRem}" for="nivelRemunerativoPK_nivelRem" />
+                        <p:inputText id="nivelRemunerativoPK_nivelRem" value="#{nivelRemunerativoController.selected.nivelRemunerativoPK.nivelRem}" title="#{bundle.CreateNivelRemunerativoTitle_nivelRemunerativoPK_nivelRem}" required="true" requiredMessage="#{bundle.CreateNivelRemunerativoRequiredMessage_nivelRemunerativoPK_nivelRem}"/>
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{nivelRemunerativoController.selected.nombre}" title="#{bundle.CreateNivelRemunerativoTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{nivelRemunerativoController.selected.abrev}" title="#{bundle.CreateNivelRemunerativoTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_periodicidad}" for="periodicidad" />
+                        <p:inputText id="periodicidad" value="#{nivelRemunerativoController.selected.periodicidad}" title="#{bundle.CreateNivelRemunerativoTitle_periodicidad}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_montoBasico}" for="montoBasico" />
+                        <p:inputText id="montoBasico" value="#{nivelRemunerativoController.selected.montoBasico}" title="#{bundle.CreateNivelRemunerativoTitle_montoBasico}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_montoTope}" for="montoTope" />
+                        <p:inputText id="montoTope" value="#{nivelRemunerativoController.selected.montoTope}" title="#{bundle.CreateNivelRemunerativoTitle_montoTope}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_buc}" for="buc" />
+                        <p:inputText id="buc" value="#{nivelRemunerativoController.selected.buc}" title="#{bundle.CreateNivelRemunerativoTitle_buc}" />
+                        <p:outputLabel value="#{bundle.CreateNivelRemunerativoLabel_tipoTrabajador}" for="tipoTrabajador" />
+                        <p:selectOneMenu id="tipoTrabajador" value="#{nivelRemunerativoController.selected.tipoTrabajador}" required="true" requiredMessage="#{bundle.EditNivelRemunerativoRequiredMessage_tipoTrabajador}">
+                            <f:selectItems value="#{tipoTrabajadorController.itemsAvailableSelectOne}"
+                                           var="tipoTrabajadorItem"
+                                           itemValue="#{tipoTrabajadorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{nivelRemunerativoController.create}" value="#{bundle.Save}" update="display,:NivelRemunerativoListForm:datalist,:growl" oncomplete="handleSubmit(args,'NivelRemunerativoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NivelRemunerativoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SectoresEditDlg" widgetVar="SectoresEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSectoresTitle}">
+            <h:form id="SectoresEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sectoresController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSectoresLabel_codSect}" for="codSect" />
+                        <p:inputText id="codSect" value="#{sectoresController.selected.codSect}" title="#{bundle.EditSectoresTitle_codSect}" required="true" requiredMessage="#{bundle.EditSectoresRequiredMessage_codSect}"/>
+                        <p:outputLabel value="#{bundle.EditSectoresLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{sectoresController.selected.nombres}" title="#{bundle.EditSectoresTitle_nombres}" required="true" requiredMessage="#{bundle.EditSectoresRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.EditSectoresLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{sectoresController.selected.abrev}" title="#{bundle.EditSectoresTitle_abrev}" required="true" requiredMessage="#{bundle.EditSectoresRequiredMessage_abrev}"/>
+                        <p:outputLabel value="#{bundle.EditSectoresLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sectoresController.selected.estado}" title="#{bundle.EditSectoresTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sectoresController.update}" value="#{bundle.Save}" update="display,:SectoresListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SectoresEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SectoresEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

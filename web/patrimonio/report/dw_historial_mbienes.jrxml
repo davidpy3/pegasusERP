@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="802" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="58dc3b39-c7e7-440b-bd1d-4e76c6d14789">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<queryString>
+		<![CDATA[  SELECT patri_movimiento.ano_eje,   
+         patri_movimiento.tipo_mov,   
+         patri_movimiento.num_mov,   
+         patri_movimiento.fecha_reg,   
+         patri_movimiento.empl_origen,   
+         patri_movimiento.motivo,   
+         patri_movimiento.empl_destino  
+    FROM patri_mov_detalle,   
+         patri_movimiento  
+   WHERE ( patri_movimiento.ano_eje = patri_mov_detalle.ano_eje ) and  
+         ( patri_movimiento.tipo_mov = patri_mov_detalle.tipo_mov ) and  
+         ( patri_movimiento.num_mov = patri_mov_detalle.num_mov ) and  
+         ( ( patri_mov_detalle.codbien ='74643745') AND  
+         ( patri_mov_detalle.correla = '0033' ) )    
+]]>
+	</queryString>
+	<field name="ano_eje" class="java.lang.String"/>
+	<field name="tipo_mov" class="java.lang.String"/>
+	<field name="num_mov" class="java.lang.String"/>
+	<field name="fecha_reg" class="java.sql.Timestamp"/>
+	<field name="empl_origen" class="java.lang.String"/>
+	<field name="motivo" class="java.lang.String"/>
+	<field name="empl_destino" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="40" uuid="925b6d79-6c3f-4927-aa2a-f8c6f2e38090"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HISTORIAL DE MOVIMIENTOS DE BIENES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="40" width="100" height="20" uuid="02bfc13f-476b-4bb7-bc53-3b02f2793820"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Patrimonial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="60" width="100" height="20" uuid="677eefb1-7ce7-4916-bdc1-a7aa19ee93d7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="60" width="191" height="20" uuid="d7ddc42c-b7f9-4f12-88ba-7e976ee26b44"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[f_get_tipobien( codbien_x )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="40" width="191" height="20" uuid="12f807f1-6d7c-4569-aaa3-6ea1e48e757b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ codbien_x  + ' - '  + correla_x]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="0" y="0" width="40" height="20" backcolor="#CCFFFF" uuid="3edc9d09-85ae-48dd-98b9-627da6495adb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="40" y="0" width="114" height="20" backcolor="#CCFFFF" uuid="89f8c84a-3f05-4dcf-ae4a-56fc4657024f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Mov]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="154" y="0" width="60" height="20" backcolor="#CCFFFF" uuid="591af6b2-96ae-43d9-9179-d458239f1345"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Num Mov]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="214" y="0" width="114" height="20" backcolor="#CCFFFF" uuid="0eb6e1e7-93ad-4582-b653-7dd8d5849b77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha /Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="328" y="0" width="155" height="20" backcolor="#CCFFFF" uuid="a3147c36-b1e3-4d90-b71d-955df1e59ac6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empl Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="483" y="0" width="164" height="20" backcolor="#CCFFFF" uuid="a65bdca4-6d50-47fe-a4e2-9186c287ade8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Opaque" x="647" y="0" width="155" height="20" backcolor="#CCFFFF" uuid="714dede6-6425-4cc0-8d25-5b7be2fed98b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empl Destino]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="0" y="0" width="40" height="20" uuid="4313a7a5-3b0d-4ab1-abed-8e5ca0879d43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ano_eje}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="40" y="0" width="114" height="20" uuid="8ae736ed-3da9-40b2-ae5d-25d227cacf46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipo_mov}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="154" y="0" width="60" height="20" uuid="93fc46fa-d015-4e7e-87a1-51d3f41170f7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{num_mov}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="214" y="0" width="114" height="20" uuid="f2880051-7cb4-404c-b07d-a471151f86e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_reg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="328" y="0" width="155" height="20" uuid="1cebfb59-047e-4f73-be80-9385b3b1040b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empl_origen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="483" y="0" width="164" height="20" uuid="8dcbe6a6-7446-4993-9fad-1058e6b47534"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{motivo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="style1" x="647" y="0" width="155" height="20" uuid="e2a9f1f6-1baa-4cae-a08a-82742e2b4898"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empl_destino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

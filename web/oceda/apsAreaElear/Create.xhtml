@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsAreaElearCreateDlg" widgetVar="ApsAreaElearCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateApsAreaElearTitle}">
+            <h:form id="ApsAreaElearCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsAreaElearController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateApsAreaElearLabel_idArea}" for="idArea" />
+                        <p:inputText id="idArea" value="#{apsAreaElearController.selected.idArea}" title="#{bundle.CreateApsAreaElearTitle_idArea}" required="true" requiredMessage="#{bundle.CreateApsAreaElearRequiredMessage_idArea}"/>
+                        <p:outputLabel value="#{bundle.CreateApsAreaElearLabel_codArea}" for="codArea" />
+                        <p:inputText id="codArea" value="#{apsAreaElearController.selected.codArea}" title="#{bundle.CreateApsAreaElearTitle_codArea}" />
+                        <p:outputLabel value="#{bundle.CreateApsAreaElearLabel_especialidad}" for="especialidad" />
+                        <p:inputText id="especialidad" value="#{apsAreaElearController.selected.especialidad}" title="#{bundle.CreateApsAreaElearTitle_especialidad}" />
+                        <p:outputLabel value="#{bundle.CreateApsAreaElearLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{apsAreaElearController.selected.idAmbito}" >
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsAreaElearController.create}" value="#{bundle.Save}" update="display,:ApsAreaElearListForm:datalist,:growl" oncomplete="handleSubmit(args,'ApsAreaElearCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsAreaElearCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

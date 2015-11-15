@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LetraPedidoViewDlg" widgetVar="LetraPedidoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLetraPedidoTitle}">
+            <h:form id="LetraPedidoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{letraPedidoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLetraPedidoLabel_idLetraPedido}"/>
+                        <h:outputText value="#{letraPedidoController.selected.idLetraPedido}" title="#{bundle.ViewLetraPedidoTitle_idLetraPedido}"/>
+                        <h:outputText value="#{bundle.ViewLetraPedidoLabel_monto}"/>
+                        <h:outputText value="#{letraPedidoController.selected.monto}" title="#{bundle.ViewLetraPedidoTitle_monto}"/>
+                        <h:outputText value="#{bundle.ViewLetraPedidoLabel_fecha}"/>
+                        <h:outputText value="#{letraPedidoController.selected.fecha}" title="#{bundle.ViewLetraPedidoTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewLetraPedidoLabel_idPedido}"/>
+                        <h:outputText value="#{letraPedidoController.selected.idPedido}" title="#{bundle.ViewLetraPedidoTitle_idPedido}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LetraPedidoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

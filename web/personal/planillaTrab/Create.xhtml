@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaTrabCreateDlg" widgetVar="PlanillaTrabCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlanillaTrabTitle}">
+            <h:form id="PlanillaTrabCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planillaTrabController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_planillaDetCollection}" for="planillaDetCollection" />
+                        <p:inputText id="planillaDetCollection" value="#{planillaTrabController.selected.planillaDetCollection}" title="#{bundle.CreatePlanillaTrabTitle_planillaDetCollection}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_regPension}" for="regPension" />
+                        <p:inputText id="regPension" value="#{planillaTrabController.selected.regPension}" title="#{bundle.CreatePlanillaTrabTitle_regPension}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_NOrden}" for="NOrden" />
+                        <p:inputText id="NOrden" value="#{planillaTrabController.selected.NOrden}" title="#{bundle.CreatePlanillaTrabTitle_NOrden}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_nivelRem}" for="nivelRem" />
+                        <p:inputText id="nivelRem" value="#{planillaTrabController.selected.nivelRem}" title="#{bundle.CreatePlanillaTrabTitle_nivelRem}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_cargoFunc}" for="cargoFunc" />
+                        <p:inputText id="cargoFunc" value="#{planillaTrabController.selected.cargoFunc}" title="#{bundle.CreatePlanillaTrabTitle_cargoFunc}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_descCargo}" for="descCargo" />
+                        <p:inputText id="descCargo" value="#{planillaTrabController.selected.descCargo}" title="#{bundle.CreatePlanillaTrabTitle_descCargo}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_fechaIngreso}" for="fechaIngreso" />
+                        <p:calendar id="fechaIngreso" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaTrabController.selected.fechaIngreso}" title="#{bundle.EditPlanillaTrabTitle_fechaIngreso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_fechaModi}" for="fechaModi" />
+                        <p:calendar id="fechaModi" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaTrabController.selected.fechaModi}" title="#{bundle.EditPlanillaTrabTitle_fechaModi}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_dniModi}" for="dniModi" />
+                        <p:inputText id="dniModi" value="#{planillaTrabController.selected.dniModi}" title="#{bundle.CreatePlanillaTrabTitle_dniModi}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_montoRem}" for="montoRem" />
+                        <p:inputText id="montoRem" value="#{planillaTrabController.selected.montoRem}" title="#{bundle.CreatePlanillaTrabTitle_montoRem}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_remAseg}" for="remAseg" />
+                        <p:inputText id="remAseg" value="#{planillaTrabController.selected.remAseg}" title="#{bundle.CreatePlanillaTrabTitle_remAseg}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasNor}" for="diasNor" />
+                        <p:inputText id="diasNor" value="#{planillaTrabController.selected.diasNor}" title="#{bundle.CreatePlanillaTrabTitle_diasNor}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasDom}" for="diasDom" />
+                        <p:inputText id="diasDom" value="#{planillaTrabController.selected.diasDom}" title="#{bundle.CreatePlanillaTrabTitle_diasDom}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasAgua}" for="diasAgua" />
+                        <p:inputText id="diasAgua" value="#{planillaTrabController.selected.diasAgua}" title="#{bundle.CreatePlanillaTrabTitle_diasAgua}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasFalt}" for="diasFalt" />
+                        <p:inputText id="diasFalt" value="#{planillaTrabController.selected.diasFalt}" title="#{bundle.CreatePlanillaTrabTitle_diasFalt}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_minTard}" for="minTard" />
+                        <p:inputText id="minTard" value="#{planillaTrabController.selected.minTard}" title="#{bundle.CreatePlanillaTrabTitle_minTard}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasFer}" for="diasFer" />
+                        <p:inputText id="diasFer" value="#{planillaTrabController.selected.diasFer}" title="#{bundle.CreatePlanillaTrabTitle_diasFer}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasFtrab}" for="diasFtrab" />
+                        <p:inputText id="diasFtrab" value="#{planillaTrabController.selected.diasFtrab}" title="#{bundle.CreatePlanillaTrabTitle_diasFtrab}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_horaExtra}" for="horaExtra" />
+                        <p:inputText id="horaExtra" value="#{planillaTrabController.selected.horaExtra}" title="#{bundle.CreatePlanillaTrabTitle_horaExtra}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasDm}" for="diasDm" />
+                        <p:inputText id="diasDm" value="#{planillaTrabController.selected.diasDm}" title="#{bundle.CreatePlanillaTrabTitle_diasDm}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasVac}" for="diasVac" />
+                        <p:inputText id="diasVac" value="#{planillaTrabController.selected.diasVac}" title="#{bundle.CreatePlanillaTrabTitle_diasVac}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_diasTot}" for="diasTot" />
+                        <p:inputText id="diasTot" value="#{planillaTrabController.selected.diasTot}" title="#{bundle.CreatePlanillaTrabTitle_diasTot}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_NHijos}" for="NHijos" />
+                        <p:inputText id="NHijos" value="#{planillaTrabController.selected.NHijos}" title="#{bundle.CreatePlanillaTrabTitle_NHijos}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_NSerie}" for="NSerie" />
+                        <p:inputText id="NSerie" value="#{planillaTrabController.selected.NSerie}" title="#{bundle.CreatePlanillaTrabTitle_NSerie}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_NRecibo}" for="NRecibo" />
+                        <p:inputText id="NRecibo" value="#{planillaTrabController.selected.NRecibo}" title="#{bundle.CreatePlanillaTrabTitle_NRecibo}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_totalIngr}" for="totalIngr" />
+                        <p:inputText id="totalIngr" value="#{planillaTrabController.selected.totalIngr}" title="#{bundle.CreatePlanillaTrabTitle_totalIngr}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_totalDesc}" for="totalDesc" />
+                        <p:inputText id="totalDesc" value="#{planillaTrabController.selected.totalDesc}" title="#{bundle.CreatePlanillaTrabTitle_totalDesc}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_totalApor}" for="totalApor" />
+                        <p:inputText id="totalApor" value="#{planillaTrabController.selected.totalApor}" title="#{bundle.CreatePlanillaTrabTitle_totalApor}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d01}" for="d01" />
+                        <p:inputText id="d01" value="#{planillaTrabController.selected.d01}" title="#{bundle.CreatePlanillaTrabTitle_d01}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d02}" for="d02" />
+                        <p:inputText id="d02" value="#{planillaTrabController.selected.d02}" title="#{bundle.CreatePlanillaTrabTitle_d02}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d03}" for="d03" />
+                        <p:inputText id="d03" value="#{planillaTrabController.selected.d03}" title="#{bundle.CreatePlanillaTrabTitle_d03}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d04}" for="d04" />
+                        <p:inputText id="d04" value="#{planillaTrabController.selected.d04}" title="#{bundle.CreatePlanillaTrabTitle_d04}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d05}" for="d05" />
+                        <p:inputText id="d05" value="#{planillaTrabController.selected.d05}" title="#{bundle.CreatePlanillaTrabTitle_d05}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d06}" for="d06" />
+                        <p:inputText id="d06" value="#{planillaTrabController.selected.d06}" title="#{bundle.CreatePlanillaTrabTitle_d06}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d07}" for="d07" />
+                        <p:inputText id="d07" value="#{planillaTrabController.selected.d07}" title="#{bundle.CreatePlanillaTrabTitle_d07}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d08}" for="d08" />
+                        <p:inputText id="d08" value="#{planillaTrabController.selected.d08}" title="#{bundle.CreatePlanillaTrabTitle_d08}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d09}" for="d09" />
+                        <p:inputText id="d09" value="#{planillaTrabController.selected.d09}" title="#{bundle.CreatePlanillaTrabTitle_d09}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d10}" for="d10" />
+                        <p:inputText id="d10" value="#{planillaTrabController.selected.d10}" title="#{bundle.CreatePlanillaTrabTitle_d10}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d11}" for="d11" />
+                        <p:inputText id="d11" value="#{planillaTrabController.selected.d11}" title="#{bundle.CreatePlanillaTrabTitle_d11}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d12}" for="d12" />
+                        <p:inputText id="d12" value="#{planillaTrabController.selected.d12}" title="#{bundle.CreatePlanillaTrabTitle_d12}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d13}" for="d13" />
+                        <p:inputText id="d13" value="#{planillaTrabController.selected.d13}" title="#{bundle.CreatePlanillaTrabTitle_d13}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d14}" for="d14" />
+                        <p:inputText id="d14" value="#{planillaTrabController.selected.d14}" title="#{bundle.CreatePlanillaTrabTitle_d14}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d15}" for="d15" />
+                        <p:inputText id="d15" value="#{planillaTrabController.selected.d15}" title="#{bundle.CreatePlanillaTrabTitle_d15}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d16}" for="d16" />
+                        <p:inputText id="d16" value="#{planillaTrabController.selected.d16}" title="#{bundle.CreatePlanillaTrabTitle_d16}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d17}" for="d17" />
+                        <p:inputText id="d17" value="#{planillaTrabController.selected.d17}" title="#{bundle.CreatePlanillaTrabTitle_d17}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d18}" for="d18" />
+                        <p:inputText id="d18" value="#{planillaTrabController.selected.d18}" title="#{bundle.CreatePlanillaTrabTitle_d18}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d19}" for="d19" />
+                        <p:inputText id="d19" value="#{planillaTrabController.selected.d19}" title="#{bundle.CreatePlanillaTrabTitle_d19}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d20}" for="d20" />
+                        <p:inputText id="d20" value="#{planillaTrabController.selected.d20}" title="#{bundle.CreatePlanillaTrabTitle_d20}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d21}" for="d21" />
+                        <p:inputText id="d21" value="#{planillaTrabController.selected.d21}" title="#{bundle.CreatePlanillaTrabTitle_d21}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d22}" for="d22" />
+                        <p:inputText id="d22" value="#{planillaTrabController.selected.d22}" title="#{bundle.CreatePlanillaTrabTitle_d22}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d23}" for="d23" />
+                        <p:inputText id="d23" value="#{planillaTrabController.selected.d23}" title="#{bundle.CreatePlanillaTrabTitle_d23}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d24}" for="d24" />
+                        <p:inputText id="d24" value="#{planillaTrabController.selected.d24}" title="#{bundle.CreatePlanillaTrabTitle_d24}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d25}" for="d25" />
+                        <p:inputText id="d25" value="#{planillaTrabController.selected.d25}" title="#{bundle.CreatePlanillaTrabTitle_d25}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d26}" for="d26" />
+                        <p:inputText id="d26" value="#{planillaTrabController.selected.d26}" title="#{bundle.CreatePlanillaTrabTitle_d26}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d27}" for="d27" />
+                        <p:inputText id="d27" value="#{planillaTrabController.selected.d27}" title="#{bundle.CreatePlanillaTrabTitle_d27}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d28}" for="d28" />
+                        <p:inputText id="d28" value="#{planillaTrabController.selected.d28}" title="#{bundle.CreatePlanillaTrabTitle_d28}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d29}" for="d29" />
+                        <p:inputText id="d29" value="#{planillaTrabController.selected.d29}" title="#{bundle.CreatePlanillaTrabTitle_d29}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d30}" for="d30" />
+                        <p:inputText id="d30" value="#{planillaTrabController.selected.d30}" title="#{bundle.CreatePlanillaTrabTitle_d30}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_d31}" for="d31" />
+                        <p:inputText id="d31" value="#{planillaTrabController.selected.d31}" title="#{bundle.CreatePlanillaTrabTitle_d31}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_personal}" for="personal" />
+                        <p:selectOneMenu id="personal" value="#{planillaTrabController.selected.personal}" required="true" requiredMessage="#{bundle.EditPlanillaTrabRequiredMessage_personal}">
+                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
+                                           var="personalItem"
+                                           itemValue="#{personalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePlanillaTrabLabel_planilla}" for="planilla" />
+                        <p:selectOneMenu id="planilla" value="#{planillaTrabController.selected.planilla}" required="true" requiredMessage="#{bundle.EditPlanillaTrabRequiredMessage_planilla}">
+                            <f:selectItems value="#{planillaController.itemsAvailableSelectOne}"
+                                           var="planillaItem"
+                                           itemValue="#{planillaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planillaTrabController.create}" value="#{bundle.Save}" update="display,:PlanillaTrabListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlanillaTrabCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanillaTrabCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

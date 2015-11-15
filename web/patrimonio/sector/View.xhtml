@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SectoresViewDlg" widgetVar="SectoresViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSectoresTitle}">
+            <h:form id="SectoresViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sectoresController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSectoresLabel_codSect}"/>
+                        <h:outputText value="#{sectoresController.selected.codSect}" title="#{bundle.ViewSectoresTitle_codSect}"/>
+                        <h:outputText value="#{bundle.ViewSectoresLabel_nombres}"/>
+                        <h:outputText value="#{sectoresController.selected.nombres}" title="#{bundle.ViewSectoresTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewSectoresLabel_abrev}"/>
+                        <h:outputText value="#{sectoresController.selected.abrev}" title="#{bundle.ViewSectoresTitle_abrev}"/>
+                        <h:outputText value="#{bundle.ViewSectoresLabel_estado}"/>
+                        <h:outputText value="#{sectoresController.selected.estado}" title="#{bundle.ViewSectoresTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SectoresViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

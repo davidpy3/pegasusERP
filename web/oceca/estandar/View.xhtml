@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcEstandarViewDlg" widgetVar="SgcEstandarViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcEstandarTitle}">
+            <h:form id="SgcEstandarViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcEstandarController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_idEstandar}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.idEstandar}" title="#{bundle.ViewSgcEstandarTitle_idEstandar}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_numero}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.numero}" title="#{bundle.ViewSgcEstandarTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_idFactor}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.idFactor}" title="#{bundle.ViewSgcEstandarTitle_idFactor}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_idCriterio}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.idCriterio}" title="#{bundle.ViewSgcEstandarTitle_idCriterio}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_idModelo}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.idModelo}" title="#{bundle.ViewSgcEstandarTitle_idModelo}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_estandar}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.estandar}" title="#{bundle.ViewSgcEstandarTitle_estandar}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_idTipo}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.idTipo}" title="#{bundle.ViewSgcEstandarTitle_idTipo}"/>
+                        <h:outputText value="#{bundle.ViewSgcEstandarLabel_consideracion}"/>
+                        <h:outputText value="#{sgcEstandarController.selected.consideracion}" title="#{bundle.ViewSgcEstandarTitle_consideracion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcEstandarViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

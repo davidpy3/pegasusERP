@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SRequerimientoViewDlg" widgetVar="SRequerimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSRequerimientoTitle}">
+            <h:form id="SRequerimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sRequerimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_idSolicitud}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.idSolicitud}" title="#{bundle.ViewSRequerimientoTitle_idSolicitud}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_fecSol}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.fecSol}" title="#{bundle.ViewSRequerimientoTitle_fecSol}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_fecEnv}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.fecEnv}" title="#{bundle.ViewSRequerimientoTitle_fecEnv}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_plazo}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.plazo}" title="#{bundle.ViewSRequerimientoTitle_plazo}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_idAlmOri}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.idAlmOri}" title="#{bundle.ViewSRequerimientoTitle_idAlmOri}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_idAlmDes}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.idAlmDes}" title="#{bundle.ViewSRequerimientoTitle_idAlmDes}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_estado}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.estado}" title="#{bundle.ViewSRequerimientoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_nick}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.nick}" title="#{bundle.ViewSRequerimientoTitle_nick}"/>
+                        <h:outputText value="#{bundle.ViewSRequerimientoLabel_solicitudDetalleCollection}"/>
+                        <h:outputText value="#{sRequerimientoController.selected.solicitudDetalleCollection}" title="#{bundle.ViewSRequerimientoTitle_solicitudDetalleCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SRequerimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

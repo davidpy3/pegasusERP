@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcProcViewDlg" widgetVar="SgcProcViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcProcTitle}">
+            <h:form id="SgcProcViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcProcController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idProc}"/>
+                        <h:outputText value="#{sgcProcController.selected.idProc}" title="#{bundle.ViewSgcProcTitle_idProc}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idTipoproc}"/>
+                        <h:outputText value="#{sgcProcController.selected.idTipoproc}" title="#{bundle.ViewSgcProcTitle_idTipoproc}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_codigo}"/>
+                        <h:outputText value="#{sgcProcController.selected.codigo}" title="#{bundle.ViewSgcProcTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_proceso}"/>
+                        <h:outputText value="#{sgcProcController.selected.proceso}" title="#{bundle.ViewSgcProcTitle_proceso}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idDoc}"/>
+                        <h:outputText value="#{sgcProcController.selected.idDoc}" title="#{bundle.ViewSgcProcTitle_idDoc}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idDir}"/>
+                        <h:outputText value="#{sgcProcController.selected.idDir}" title="#{bundle.ViewSgcProcTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idDirDoc}"/>
+                        <h:outputText value="#{sgcProcController.selected.idDirDoc}" title="#{bundle.ViewSgcProcTitle_idDirDoc}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idDepAdministra}"/>
+                        <h:outputText value="#{sgcProcController.selected.idDepAdministra}" title="#{bundle.ViewSgcProcTitle_idDepAdministra}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idDep}"/>
+                        <h:outputText value="#{sgcProcController.selected.idDep}" title="#{bundle.ViewSgcProcTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_idCap}"/>
+                        <h:outputText value="#{sgcProcController.selected.idCap}" title="#{bundle.ViewSgcProcTitle_idCap}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_depResponsable}"/>
+                        <h:outputText value="#{sgcProcController.selected.depResponsable}" title="#{bundle.ViewSgcProcTitle_depResponsable}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_meta}"/>
+                        <h:outputText value="#{sgcProcController.selected.meta}" title="#{bundle.ViewSgcProcTitle_meta}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_descripcion}"/>
+                        <h:outputText value="#{sgcProcController.selected.descripcion}" title="#{bundle.ViewSgcProcTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_baseLegal}"/>
+                        <h:outputText value="#{sgcProcController.selected.baseLegal}" title="#{bundle.ViewSgcProcTitle_baseLegal}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_requisitos}"/>
+                        <h:outputText value="#{sgcProcController.selected.requisitos}" title="#{bundle.ViewSgcProcTitle_requisitos}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_disposicion}"/>
+                        <h:outputText value="#{sgcProcController.selected.disposicion}" title="#{bundle.ViewSgcProcTitle_disposicion}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_creador}"/>
+                        <h:outputText value="#{sgcProcController.selected.creador}" title="#{bundle.ViewSgcProcTitle_creador}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_responsabilidad}"/>
+                        <h:outputText value="#{sgcProcController.selected.responsabilidad}" title="#{bundle.ViewSgcProcTitle_responsabilidad}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_otrasDep}"/>
+                        <h:outputText value="#{sgcProcController.selected.otrasDep}" title="#{bundle.ViewSgcProcTitle_otrasDep}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_documentosGenerados}"/>
+                        <h:outputText value="#{sgcProcController.selected.documentosGenerados}" title="#{bundle.ViewSgcProcTitle_documentosGenerados}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_clase}"/>
+                        <h:outputText value="#{sgcProcController.selected.clase}" title="#{bundle.ViewSgcProcTitle_clase}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_nivel}"/>
+                        <h:outputText value="#{sgcProcController.selected.nivel}" title="#{bundle.ViewSgcProcTitle_nivel}"/>
+                        <h:outputText value="#{bundle.ViewSgcProcLabel_enlace}"/>
+                        <h:outputText value="#{sgcProcController.selected.enlace}" title="#{bundle.ViewSgcProcTitle_enlace}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcProcViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

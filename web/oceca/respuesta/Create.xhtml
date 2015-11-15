@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaRespuestaCreateDlg" widgetVar="SvaRespuestaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSvaRespuestaTitle}">
+            <h:form id="SvaRespuestaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaRespuestaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSvaRespuestaLabel_svaRespuestaPK_idPregunta}" for="svaRespuestaPK_idPregunta" />
+                        <p:inputText id="svaRespuestaPK_idPregunta" value="#{svaRespuestaController.selected.svaRespuestaPK.idPregunta}" title="#{bundle.CreateSvaRespuestaTitle_svaRespuestaPK_idPregunta}" required="true" requiredMessage="#{bundle.CreateSvaRespuestaRequiredMessage_svaRespuestaPK_idPregunta}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaRespuestaLabel_svaRespuestaPK_idParticipacion}" for="svaRespuestaPK_idParticipacion" />
+                        <p:inputText id="svaRespuestaPK_idParticipacion" value="#{svaRespuestaController.selected.svaRespuestaPK.idParticipacion}" title="#{bundle.CreateSvaRespuestaTitle_svaRespuestaPK_idParticipacion}" required="true" requiredMessage="#{bundle.CreateSvaRespuestaRequiredMessage_svaRespuestaPK_idParticipacion}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaRespuestaLabel_idEncuesta}" for="idEncuesta" />
+                        <p:inputText id="idEncuesta" value="#{svaRespuestaController.selected.idEncuesta}" title="#{bundle.CreateSvaRespuestaTitle_idEncuesta}" required="true" requiredMessage="#{bundle.CreateSvaRespuestaRequiredMessage_idEncuesta}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaRespuestaLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{svaRespuestaController.selected.idDir}" title="#{bundle.CreateSvaRespuestaTitle_idDir}" required="true" requiredMessage="#{bundle.CreateSvaRespuestaRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaRespuestaLabel_idOpcion}" for="idOpcion" />
+                        <p:inputText id="idOpcion" value="#{svaRespuestaController.selected.idOpcion}" title="#{bundle.CreateSvaRespuestaTitle_idOpcion}" required="true" requiredMessage="#{bundle.CreateSvaRespuestaRequiredMessage_idOpcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaRespuestaController.create}" value="#{bundle.Save}" update="display,:SvaRespuestaListForm:datalist,:growl" oncomplete="handleSubmit(args,'SvaRespuestaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaRespuestaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

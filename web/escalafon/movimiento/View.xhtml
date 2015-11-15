@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscMovimientosViewDlg" widgetVar="EscMovimientosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscMovimientosTitle}">
+            <h:form id="EscMovimientosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escMovimientosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscMovimientosLabel_idMov}"/>
+                        <h:outputText value="#{escMovimientosController.selected.idMov}" title="#{bundle.ViewEscMovimientosTitle_idMov}"/>
+                        <h:outputText value="#{bundle.ViewEscMovimientosLabel_movimiento}"/>
+                        <h:outputText value="#{escMovimientosController.selected.movimiento}" title="#{bundle.ViewEscMovimientosTitle_movimiento}"/>
+                        <h:outputText value="#{bundle.ViewEscMovimientosLabel_abrev}"/>
+                        <h:outputText value="#{escMovimientosController.selected.abrev}" title="#{bundle.ViewEscMovimientosTitle_abrev}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscMovimientosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

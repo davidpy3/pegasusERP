@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteCreateDlg" widgetVar="SgcFuenteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcFuenteTitle}">
+            <h:form id="SgcFuenteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcFuenteController.selected.idFuente}" title="#{bundle.CreateSgcFuenteTitle_idFuente}" required="true" requiredMessage="#{bundle.CreateSgcFuenteRequiredMessage_idFuente}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{sgcFuenteController.selected.tipo}" title="#{bundle.CreateSgcFuenteTitle_tipo}" required="true" requiredMessage="#{bundle.CreateSgcFuenteRequiredMessage_tipo}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{sgcFuenteController.selected.codigo}" title="#{bundle.CreateSgcFuenteTitle_codigo}" required="true" requiredMessage="#{bundle.CreateSgcFuenteRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_fuenteVerificacion}" for="fuenteVerificacion" />
+                        <p:inputText id="fuenteVerificacion" value="#{sgcFuenteController.selected.fuenteVerificacion}" title="#{bundle.CreateSgcFuenteTitle_fuenteVerificacion}" required="true" requiredMessage="#{bundle.CreateSgcFuenteRequiredMessage_fuenteVerificacion}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sgcFuenteController.selected.estado}" title="#{bundle.CreateSgcFuenteTitle_estado}" required="true" requiredMessage="#{bundle.CreateSgcFuenteRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcFuenteController.selected.fechaReg}" title="#{bundle.EditSgcFuenteTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSgcFuenteRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFuenteLabel_delta}" for="delta" />
+                        <p:inputText id="delta" value="#{sgcFuenteController.selected.delta}" title="#{bundle.CreateSgcFuenteTitle_delta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFuenteController.create}" value="#{bundle.Save}" update="display,:SgcFuenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcFuenteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFuenteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

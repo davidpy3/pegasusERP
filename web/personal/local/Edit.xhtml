@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LocalEditDlg" widgetVar="LocalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLocalTitle}">
+            <h:form id="LocalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{localController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLocalLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{localController.selected.id}" title="#{bundle.EditLocalTitle_id}" required="true" requiredMessage="#{bundle.EditLocalRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{localController.selected.nombre}" title="#{bundle.EditLocalTitle_nombre}" required="true" requiredMessage="#{bundle.EditLocalRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{localController.selected.direccion}" title="#{bundle.EditLocalTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_numMun}" for="numMun" />
+                        <p:inputText id="numMun" value="#{localController.selected.numMun}" title="#{bundle.EditLocalTitle_numMun}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscMz}" for="dscMz" />
+                        <p:inputText id="dscMz" value="#{localController.selected.dscMz}" title="#{bundle.EditLocalTitle_dscMz}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscLote}" for="dscLote" />
+                        <p:inputText id="dscLote" value="#{localController.selected.dscLote}" title="#{bundle.EditLocalTitle_dscLote}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_ctdArea}" for="ctdArea" />
+                        <p:inputText id="ctdArea" value="#{localController.selected.ctdArea}" title="#{bundle.EditLocalTitle_ctdArea}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgUm}" for="flgUm" />
+                        <p:inputText id="flgUm" value="#{localController.selected.flgUm}" title="#{bundle.EditLocalTitle_flgUm}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgTiporeg}" for="flgTiporeg" />
+                        <p:inputText id="flgTiporeg" value="#{localController.selected.flgTiporeg}" title="#{bundle.EditLocalTitle_flgTiporeg}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscAsiento}" for="dscAsiento" />
+                        <p:inputText id="dscAsiento" value="#{localController.selected.dscAsiento}" title="#{bundle.EditLocalTitle_dscAsiento}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscFojas}" for="dscFojas" />
+                        <p:inputText id="dscFojas" value="#{localController.selected.dscFojas}" title="#{bundle.EditLocalTitle_dscFojas}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscTomo}" for="dscTomo" />
+                        <p:inputText id="dscTomo" value="#{localController.selected.dscTomo}" title="#{bundle.EditLocalTitle_dscTomo}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscPelectro}" for="dscPelectro" />
+                        <p:inputText id="dscPelectro" value="#{localController.selected.dscPelectro}" title="#{bundle.EditLocalTitle_dscPelectro}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_codPredio}" for="codPredio" />
+                        <p:inputText id="codPredio" value="#{localController.selected.codPredio}" title="#{bundle.EditLocalTitle_codPredio}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscBeneficiario}" for="dscBeneficiario" />
+                        <p:inputText id="dscBeneficiario" value="#{localController.selected.dscBeneficiario}" title="#{bundle.EditLocalTitle_dscBeneficiario}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscPropietario}" for="dscPropietario" />
+                        <p:inputText id="dscPropietario" value="#{localController.selected.dscPropietario}" title="#{bundle.EditLocalTitle_dscPropietario}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscCtactble}" for="dscCtactble" />
+                        <p:inputText id="dscCtactble" value="#{localController.selected.dscCtactble}" title="#{bundle.EditLocalTitle_dscCtactble}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgTipomoneda}" for="flgTipomoneda" />
+                        <p:inputText id="flgTipomoneda" value="#{localController.selected.flgTipomoneda}" title="#{bundle.EditLocalTitle_flgTipomoneda}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_ctdValor}" for="ctdValor" />
+                        <p:inputText id="ctdValor" value="#{localController.selected.ctdValor}" title="#{bundle.EditLocalTitle_ctdValor}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgPropiedad}" for="flgPropiedad" />
+                        <p:inputText id="flgPropiedad" value="#{localController.selected.flgPropiedad}" title="#{bundle.EditLocalTitle_flgPropiedad}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscAsinabip}" for="dscAsinabip" />
+                        <p:inputText id="dscAsinabip" value="#{localController.selected.dscAsinabip}" title="#{bundle.EditLocalTitle_dscAsinabip}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_codinst}" for="codinst" />
+                        <p:selectOneMenu id="codinst" value="#{localController.selected.codinst}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
+                                           var="codinstItem"
+                                           itemValue="#{codinstItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_tipovia}" for="tipovia" />
+                        <p:selectOneMenu id="tipovia" value="#{localController.selected.tipovia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoViaController.itemsAvailableSelectOne}"
+                                           var="tipoviaItem"
+                                           itemValue="#{tipoviaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_codubigeo}" for="codubigeo" />
+                        <p:selectOneMenu id="codubigeo" value="#{localController.selected.codubigeo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ubigeoController.itemsAvailableSelectOne}"
+                                           var="codubigeoItem"
+                                           itemValue="#{codubigeoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{localController.update}" value="#{bundle.Save}" update="display,:LocalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LocalEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LocalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

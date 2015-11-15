@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaLectivaCreateDlg" widgetVar="CargaLectivaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCargaLectivaTitle}">
+            <h:form id="CargaLectivaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaLectivaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idCarglect}" for="idCarglect" />
+                        <p:inputText id="idCarglect" value="#{cargaLectivaController.selected.idCarglect}" title="#{bundle.CreateCargaLectivaTitle_idCarglect}" required="true" requiredMessage="#{bundle.CreateCargaLectivaRequiredMessage_idCarglect}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idAcper}" for="idAcper" />
+                        <p:inputText id="idAcper" value="#{cargaLectivaController.selected.idAcper}" title="#{bundle.CreateCargaLectivaTitle_idAcper}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{cargaLectivaController.selected.idDtra}" title="#{bundle.CreateCargaLectivaTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idDepartamento}" for="idDepartamento" />
+                        <p:inputText id="idDepartamento" value="#{cargaLectivaController.selected.idDepartamento}" title="#{bundle.CreateCargaLectivaTitle_idDepartamento}" required="true" requiredMessage="#{bundle.CreateCargaLectivaRequiredMessage_idDepartamento}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idTipo}" for="idTipo" />
+                        <p:inputText id="idTipo" value="#{cargaLectivaController.selected.idTipo}" title="#{bundle.CreateCargaLectivaTitle_idTipo}" required="true" requiredMessage="#{bundle.CreateCargaLectivaRequiredMessage_idTipo}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{cargaLectivaController.selected.descripcion}" title="#{bundle.CreateCargaLectivaTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{cargaLectivaController.selected.fecha}" title="#{bundle.EditCargaLectivaTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{cargaLectivaController.selected.estado}" required="true" requiredMessage="#{bundle.EditCargaLectivaRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_consolidado}" for="consolidado" />
+                        <p:selectBooleanCheckbox id="consolidado" value="#{cargaLectivaController.selected.consolidado}" required="true" requiredMessage="#{bundle.EditCargaLectivaRequiredMessage_consolidado}"/>
+                        <p:outputLabel value="#{bundle.CreateCargaLectivaLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{cargaLectivaController.selected.idDir}" title="#{bundle.CreateCargaLectivaTitle_idDir}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargaLectivaController.create}" value="#{bundle.Save}" update="display,:CargaLectivaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CargaLectivaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargaLectivaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

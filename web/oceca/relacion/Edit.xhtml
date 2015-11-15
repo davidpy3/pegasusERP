@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuizRelacionEditDlg" widgetVar="QuizRelacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQuizRelacionTitle}">
+            <h:form id="QuizRelacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizRelacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idRelacion}" for="idRelacion" />
+                        <p:inputText id="idRelacion" value="#{quizRelacionController.selected.idRelacion}" title="#{bundle.EditQuizRelacionTitle_idRelacion}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_idRelacion}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idAfectante}" for="idAfectante" />
+                        <p:inputText id="idAfectante" value="#{quizRelacionController.selected.idAfectante}" title="#{bundle.EditQuizRelacionTitle_idAfectante}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_idAfectante}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idItemAfectante}" for="idItemAfectante" />
+                        <p:inputText id="idItemAfectante" value="#{quizRelacionController.selected.idItemAfectante}" title="#{bundle.EditQuizRelacionTitle_idItemAfectante}" />
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idAfectado}" for="idAfectado" />
+                        <p:inputText id="idAfectado" value="#{quizRelacionController.selected.idAfectado}" title="#{bundle.EditQuizRelacionTitle_idAfectado}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_idAfectado}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idItemAfectado}" for="idItemAfectado" />
+                        <p:inputText id="idItemAfectado" value="#{quizRelacionController.selected.idItemAfectado}" title="#{bundle.EditQuizRelacionTitle_idItemAfectado}" />
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_comparador}" for="comparador" />
+                        <p:inputText id="comparador" value="#{quizRelacionController.selected.comparador}" title="#{bundle.EditQuizRelacionTitle_comparador}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_comparador}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_idOpcion}" for="idOpcion" />
+                        <p:inputText id="idOpcion" value="#{quizRelacionController.selected.idOpcion}" title="#{bundle.EditQuizRelacionTitle_idOpcion}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_idOpcion}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{quizRelacionController.selected.activo}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditQuizRelacionLabel_total}" for="total" />
+                        <p:selectBooleanCheckbox id="total" value="#{quizRelacionController.selected.total}" required="true" requiredMessage="#{bundle.EditQuizRelacionRequiredMessage_total}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{quizRelacionController.update}" value="#{bundle.Save}" update="display,:QuizRelacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuizRelacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QuizRelacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

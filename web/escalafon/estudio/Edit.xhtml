@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEstudioEditDlg" widgetVar="EscEstudioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscEstudioTitle}">
+            <h:form id="EscEstudioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEstudioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escEstudioController.selected.idEsc}" title="#{bundle.EditEscEstudioTitle_idEsc}" required="true" requiredMessage="#{bundle.EditEscEstudioRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{escEstudioController.selected.fecha}" title="#{bundle.EditEscEstudioTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_mension}" for="mension" />
+                        <p:inputText id="mension" value="#{escEstudioController.selected.mension}" title="#{bundle.EditEscEstudioTitle_mension}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_materia}" for="materia" />
+                        <p:inputText id="materia" value="#{escEstudioController.selected.materia}" title="#{bundle.EditEscEstudioTitle_materia}" required="true" requiredMessage="#{bundle.EditEscEstudioRequiredMessage_materia}"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{escEstudioController.selected.id}" title="#{bundle.EditEscEstudioTitle_id}" required="true" requiredMessage="#{bundle.EditEscEstudioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escEstudioController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscEstudioRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escEstudioController.selected.fechaIni}" title="#{bundle.EditEscEstudioTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escEstudioController.selected.fechaFin}" title="#{bundle.EditEscEstudioTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_fechaAprcu}" for="fechaAprcu" />
+                        <p:calendar id="fechaAprcu" pattern="MM/dd/yyyy" value="#{escEstudioController.selected.fechaAprcu}" title="#{bundle.EditEscEstudioTitle_fechaAprcu}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_nroLibro}" for="nroLibro" />
+                        <p:inputText id="nroLibro" value="#{escEstudioController.selected.nroLibro}" title="#{bundle.EditEscEstudioTitle_nroLibro}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_folio}" for="folio" />
+                        <p:inputText id="folio" value="#{escEstudioController.selected.folio}" title="#{bundle.EditEscEstudioTitle_folio}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_nroOrden}" for="nroOrden" />
+                        <p:inputText id="nroOrden" value="#{escEstudioController.selected.nroOrden}" title="#{bundle.EditEscEstudioTitle_nroOrden}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_gradoAbrev}" for="gradoAbrev" />
+                        <p:inputText id="gradoAbrev" value="#{escEstudioController.selected.gradoAbrev}" title="#{bundle.EditEscEstudioTitle_gradoAbrev}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_nroMatricula}" for="nroMatricula" />
+                        <p:inputText id="nroMatricula" value="#{escEstudioController.selected.nroMatricula}" title="#{bundle.EditEscEstudioTitle_nroMatricula}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_escInstituciones}" for="escInstituciones" />
+                        <p:selectOneMenu id="escInstituciones" value="#{escEstudioController.selected.escInstituciones}" required="true" requiredMessage="#{bundle.EditEscEstudioRequiredMessage_escInstituciones}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escInstitucionesController.itemsAvailableSelectOne}"
+                                           var="escInstitucionesItem"
+                                           itemValue="#{escInstitucionesItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_escNivelEstudios}" for="escNivelEstudios" />
+                        <p:inputText id="escNivelEstudios" value="#{escEstudioController.selected.escNivelEstudios}" title="#{bundle.EditEscEstudioTitle_escNivelEstudios}" />
+                        <p:outputLabel value="#{bundle.EditEscEstudioLabel_idPl}" for="idPl" />
+                        <p:selectOneMenu id="idPl" value="#{escEstudioController.selected.idPl}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{perPermisoPersonalController.itemsAvailableSelectOne}"
+                                           var="idPlItem"
+                                           itemValue="#{idPlItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escEstudioController.update}" value="#{bundle.Save}" update="display,:EscEstudioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscEstudioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscEstudioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

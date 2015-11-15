@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PagoEmpleadoCreateDlg" widgetVar="PagoEmpleadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePagoEmpleadoTitle}">
+            <h:form id="PagoEmpleadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pagoEmpleadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_idPago}" for="idPago" />
+                        <p:inputText id="idPago" value="#{pagoEmpleadoController.selected.idPago}" title="#{bundle.CreatePagoEmpleadoTitle_idPago}" required="true" requiredMessage="#{bundle.CreatePagoEmpleadoRequiredMessage_idPago}"/>
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{pagoEmpleadoController.selected.monto}" title="#{bundle.CreatePagoEmpleadoTitle_monto}" />
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{pagoEmpleadoController.selected.fecha}" title="#{bundle.EditPagoEmpleadoTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{pagoEmpleadoController.selected.estado}" title="#{bundle.CreatePagoEmpleadoTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_adelanto}" for="adelanto" />
+                        <p:inputText id="adelanto" value="#{pagoEmpleadoController.selected.adelanto}" title="#{bundle.CreatePagoEmpleadoTitle_adelanto}" />
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_comision}" for="comision" />
+                        <p:inputText id="comision" value="#{pagoEmpleadoController.selected.comision}" title="#{bundle.CreatePagoEmpleadoTitle_comision}" />
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_salario}" for="salario" />
+                        <p:inputText id="salario" value="#{pagoEmpleadoController.selected.salario}" title="#{bundle.CreatePagoEmpleadoTitle_salario}" required="true" requiredMessage="#{bundle.CreatePagoEmpleadoRequiredMessage_salario}"/>
+                        <p:outputLabel value="#{bundle.CreatePagoEmpleadoLabel_dni}" for="dni" />
+                        <p:selectOneMenu id="dni" value="#{pagoEmpleadoController.selected.dni}" required="true" requiredMessage="#{bundle.EditPagoEmpleadoRequiredMessage_dni}">
+                            <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"
+                                           var="dniItem"
+                                           itemValue="#{dniItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pagoEmpleadoController.create}" value="#{bundle.Save}" update="display,:PagoEmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'PagoEmpleadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PagoEmpleadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

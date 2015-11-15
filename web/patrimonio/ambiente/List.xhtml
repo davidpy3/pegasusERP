@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAmbienteTitle}"></h:outputText>
+        </ui:define>
+
+        
+        <ui:define name="body">
+            <h:form id="AmbienteListForm">
+                <p:panel header="#{bundle.ListAmbienteTitle}">
+                    <p:dataTable id="datalist" value="#{ambienteController.items}" var="item"
+                                 selectionMode="single" selection="#{ambienteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.ambientePK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column styleClass="td-center" width="70">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ambientePK.codambiente}"/>
+                        </p:column>
+                        <p:column styleClass="td-center" width="70">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Local}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ambientePK.codlocal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Ambiente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ambiente}"/>
+                        </p:column>
+                        <p:column styleClass="td-center" width="70">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ambienteController.prepareCreate}" update=":AmbienteCreateForm" oncomplete="PF('AmbienteCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":AmbienteViewForm" oncomplete="PF('AmbienteViewDialog').show()" disabled="#{empty ambienteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":AmbienteEditForm" oncomplete="PF('AmbienteEditDialog').show()" disabled="#{empty ambienteController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ambienteController.destroy}" update=":growl,datalist" disabled="#{empty ambienteController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

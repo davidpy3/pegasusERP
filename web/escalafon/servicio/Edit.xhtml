@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscServiciosEditDlg" widgetVar="EscServiciosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscServiciosTitle}">
+            <h:form id="EscServiciosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escServiciosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscServiciosLabel_idServicio}" for="idServicio" />
+                        <p:inputText id="idServicio" value="#{escServiciosController.selected.idServicio}" title="#{bundle.EditEscServiciosTitle_idServicio}" required="true" requiredMessage="#{bundle.EditEscServiciosRequiredMessage_idServicio}"/>
+                        <p:outputLabel value="#{bundle.EditEscServiciosLabel_servicio}" for="servicio" />
+                        <p:inputText id="servicio" value="#{escServiciosController.selected.servicio}" title="#{bundle.EditEscServiciosTitle_servicio}" required="true" requiredMessage="#{bundle.EditEscServiciosRequiredMessage_servicio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escServiciosController.update}" value="#{bundle.Save}" update="display,:EscServiciosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscServiciosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscServiciosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

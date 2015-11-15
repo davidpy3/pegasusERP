@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscPersHorarioCreateDlg" widgetVar="EscPersHorarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscPersHorarioTitle}">
+            <h:form id="EscPersHorarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escPersHorarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_escPersHorarioPK_jornada}" for="escPersHorarioPK_jornada" />
+                        <p:inputText id="escPersHorarioPK_jornada" value="#{escPersHorarioController.selected.escPersHorarioPK.jornada}" title="#{bundle.CreateEscPersHorarioTitle_escPersHorarioPK_jornada}" required="true" requiredMessage="#{bundle.CreateEscPersHorarioRequiredMessage_escPersHorarioPK_jornada}"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_escPersHorarioPK_dia}" for="escPersHorarioPK_dia" />
+                        <p:inputText id="escPersHorarioPK_dia" value="#{escPersHorarioController.selected.escPersHorarioPK.dia}" title="#{bundle.CreateEscPersHorarioTitle_escPersHorarioPK_dia}" required="true" requiredMessage="#{bundle.CreateEscPersHorarioRequiredMessage_escPersHorarioPK_dia}"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_horaIn}" for="horaIn" />
+                        <p:calendar id="horaIn" pattern="HH:mm:ss" value="#{escPersHorarioController.selected.horaIn}" title="#{bundle.EditEscPersHorarioTitle_horaIn}" required="true" requiredMessage="#{bundle.EditEscPersHorarioRequiredMessage_horaIn}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_horaOut}" for="horaOut" />
+                        <p:calendar id="horaOut" pattern="HH:mm:ss" value="#{escPersHorarioController.selected.horaOut}" title="#{bundle.EditEscPersHorarioTitle_horaOut}" required="true" requiredMessage="#{bundle.EditEscPersHorarioRequiredMessage_horaOut}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_escPersonal}" for="escPersonal" />
+                        <p:selectOneMenu id="escPersonal" value="#{escPersHorarioController.selected.escPersonal}" required="true" requiredMessage="#{bundle.EditEscPersHorarioRequiredMessage_escPersonal}">
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="escPersonalItem"
+                                           itemValue="#{escPersonalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscPersHorarioLabel_idTurno}" for="idTurno" />
+                        <p:selectOneMenu id="idTurno" value="#{escPersHorarioController.selected.idTurno}" required="true" requiredMessage="#{bundle.EditEscPersHorarioRequiredMessage_idTurno}">
+                            <f:selectItems value="#{escTurnoController.itemsAvailableSelectOne}"
+                                           var="idTurnoItem"
+                                           itemValue="#{idTurnoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escPersHorarioController.create}" value="#{bundle.Save}" update="display,:EscPersHorarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscPersHorarioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscPersHorarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

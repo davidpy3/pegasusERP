@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoOperacionCreateDlg" widgetVar="ComTipoOperacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComTipoOperacionTitle}">
+            <h:form id="ComTipoOperacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoOperacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComTipoOperacionLabel_idTipoOperacion}" for="idTipoOperacion" />
+                        <p:inputText id="idTipoOperacion" value="#{comTipoOperacionController.selected.idTipoOperacion}" title="#{bundle.CreateComTipoOperacionTitle_idTipoOperacion}" required="true" requiredMessage="#{bundle.CreateComTipoOperacionRequiredMessage_idTipoOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComTipoOperacionLabel_tipoOperacion}" for="tipoOperacion" />
+                        <p:inputText id="tipoOperacion" value="#{comTipoOperacionController.selected.tipoOperacion}" title="#{bundle.CreateComTipoOperacionTitle_tipoOperacion}" required="true" requiredMessage="#{bundle.CreateComTipoOperacionRequiredMessage_tipoOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComTipoOperacionLabel_movimiento}" for="movimiento" />
+                        <p:inputText id="movimiento" value="#{comTipoOperacionController.selected.movimiento}" title="#{bundle.CreateComTipoOperacionTitle_movimiento}" required="true" requiredMessage="#{bundle.CreateComTipoOperacionRequiredMessage_movimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateComTipoOperacionLabel_cierra}" for="cierra" />
+                        <p:inputText id="cierra" value="#{comTipoOperacionController.selected.cierra}" title="#{bundle.CreateComTipoOperacionTitle_cierra}" required="true" requiredMessage="#{bundle.CreateComTipoOperacionRequiredMessage_cierra}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTipoOperacionController.create}" value="#{bundle.Save}" update="display,:ComTipoOperacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComTipoOperacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTipoOperacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

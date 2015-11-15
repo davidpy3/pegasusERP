@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatriMovimientoEditDlg" widgetVar="PatriMovimientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPatriMovimientoTitle}">
+            <h:form id="PatriMovimientoEditForm" style="width:1000px">
+                <h:panelGroup id="display" rendered="#{patriMovimientoController.selected!= null}">
+                    <p:panelGrid columns="6" rendered="#{patriMovimientoController.prepareEdit() != null}">
+                        <p:outputLabel value="Ano Eje:" for="patriMovimientoPK_anoEje" />
+                        <p:inputText id="patriMovimientoPK_anoEje" value="#{patriMovimientoController.selected.patriMovimientoPK.anoEje}" title="#{bundle.EditPatriMovimientoTitle_patriMovimientoPK_anoEje}" required="true" requiredMessage="#{bundle.EditPatriMovimientoRequiredMessage_patriMovimientoPK_anoEje}"/>
+                        <p:outputLabel value="fechaReg" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{patriMovimientoController.selected.fechaReg}" title="#{bundle.EditPatriMovimientoTitle_fechaReg}"  showOn="button"/>
+                        <p:outputLabel value="numMov" for="patriMovimientoPK_numMov" />
+                        <p:inputText id="patriMovimientoPK_numMov" value="#{patriMovimientoController.selected.patriMovimientoPK.numMov}" title="#{bundle.EditPatriMovimientoTitle_patriMovimientoPK_numMov}" required="true" requiredMessage="#{bundle.EditPatriMovimientoRequiredMessage_patriMovimientoPK_numMov}"/>
+                        <p:outputLabel value="retorno" for="retorno" />
+
+                        <p:selectOneMenu id="retorno" value="#{patriMovimientoController.selected.retorno}" style="width:150px">
+                            <f:selectItem itemLabel="SI" itemValue="S"  />
+                            <f:selectItem itemLabel="NO" itemValue="N"  />
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="fechaSalida" for="fechaSalida" />
+                        <p:calendar id="fechaSalida" pattern="dd/MM/yyyy HH:mm:ss" value="#{patriMovimientoController.selected.fechaSalida}" title="#{bundle.EditPatriMovimientoTitle_fechaSalida}"  showOn="button"/>
+                        <p:outputLabel value="fechaRetorno" for="fechaRetorno" />
+                        <p:calendar id="fechaRetorno" pattern="dd/MM/yyyy HH:mm:ss" value="#{patriMovimientoController.selected.fechaRetorno}" title="#{bundle.EditPatriMovimientoTitle_fechaRetorno}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:panelGrid columns="4" rendered="#{patriMovimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.patriMovimientoPK_tipoMov}" for="patriMovimientoPK_tipoMov" />
+                        <p:inputText id="patriMovimientoPK_tipoMov" value="#{patriMovimientoController.selected.patriMovimientoPK.tipoMov}" title="#{bundle.EditPatriMovimientoTitle_patriMovimientoPK_tipoMov}" required="true" requiredMessage="#{bundle.EditPatriMovimientoRequiredMessage_patriMovimientoPK_tipoMov}"/>
+                        <p:outputLabel value="fechaMov" for="fechaMov" />
+                        <p:calendar id="fechaMov" pattern="dd/MM/yyyy HH:mm:ss" value="#{patriMovimientoController.selected.fechaMov}" title="#{bundle.EditPatriMovimientoTitle_fechaMov}"  showOn="button"/>
+                        <p:outputLabel value="emplOrigen" for="emplOrigen" />
+                        <p:inputText id="emplOrigen" value="#{patriMovimientoController.selected.emplOrigen}" title="#{bundle.EditPatriMovimientoTitle_emplOrigen}" />
+                        <p:outputLabel value="emplDestino" for="emplDestino" />
+                        <p:inputText id="emplDestino" value="#{patriMovimientoController.selected.emplDestino}" title="#{bundle.EditPatriMovimientoTitle_emplDestino}" />
+                        <p:outputLabel value="localOrigen" for="localOrigen" />
+                        <p:inputText id="localOrigen" value="#{patriMovimientoController.selected.localOrigen}" title="#{bundle.EditPatriMovimientoTitle_localOrigen}" />
+                        <p:outputLabel value="localDestino" for="localDestino" />
+                        <p:inputText id="localDestino" value="#{patriMovimientoController.selected.localDestino}" title="#{bundle.EditPatriMovimientoTitle_localDestino}" />
+                        <p:outputLabel value="#{bundle.descDestino}" for="descDestino" />
+                        <p:inputText id="descDestino" value="#{patriMovimientoController.selected.descDestino}" title="#{bundle.EditPatriMovimientoTitle_descDestino}" />
+                        <p:outputLabel value="#{bundle.areaOrigen}" for="areaOrigen" />
+                        <p:inputText id="areaOrigen" value="#{patriMovimientoController.selected.areaOrigen}" title="#{bundle.EditPatriMovimientoTitle_areaOrigen}" />
+                        <p:outputLabel value="#{bundle.areaDestino}" for="areaDestino" />
+                        <p:inputText id="areaDestino" value="#{patriMovimientoController.selected.areaDestino}" title="#{bundle.EditPatriMovimientoTitle_areaDestino}" />
+                        <p:outputLabel value="#{bundle.oficinaOrigen}" for="oficinaOrigen" />
+                        <p:inputText id="oficinaOrigen" value="#{patriMovimientoController.selected.oficinaOrigen}" title="#{bundle.EditPatriMovimientoTitle_oficinaOrigen}" />
+                        <p:outputLabel value="#{bundle.oficinaDestino}" for="oficinaDestino" />
+                        <p:inputText id="oficinaDestino" value="#{patriMovimientoController.selected.oficinaDestino}" title="#{bundle.EditPatriMovimientoTitle_oficinaDestino}" />
+                        <p:outputLabel value="#{bundle.motivo}" for="motivo" />
+                        <p:inputText id="motivo" value="#{patriMovimientoController.selected.motivo}" title="#{bundle.EditPatriMovimientoTitle_motivo}" />
+                        <p:outputLabel value="#{bundle.estado}" for="estado" />
+                        <p:inputText id="estado" value="#{patriMovimientoController.selected.estado}" title="#{bundle.EditPatriMovimientoTitle_estado}" />
+                        <p:outputLabel value="#{bundle.selec}" for="selec" />
+                        <p:inputText id="selec" value="#{patriMovimientoController.selected.selec}" title="#{bundle.EditPatriMovimientoTitle_selec}" />
+                        <p:outputLabel value="#{bundle.observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{patriMovimientoController.selected.observaciones}" title="#{bundle.EditPatriMovimientoTitle_observaciones}" />
+                    </p:panelGrid>
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:autoComplete style="width:300px" id="themeCustom" value="#{bienController.selected}" completeMethod="#{bienController.complete}"
+                                            var="bien" itemLabel="#{bien.bienPK.codbien}-#{bien.bienPK.correla}: #{bien.tipoBien.descripcion}" itemValue="#{bien}" forceSelection="true">
+                                
+                                <p:column>
+                                    <h:outputText value="#{bien.bienPK.codbien}-#{bien.bienPK.correla}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{bien.tipoBien.descripcion}" />
+                                </p:column>
+                            </p:autoComplete>
+                            <p:commandButton actionListener="#{patriMovimientoController.update}" value="+" />
+                        </f:facet>
+                    </p:toolbar>
+                    <p:dataTable  var="car" value="#{patriMovimientoController.selected.patriMovimientoDetCollection}">
+                        <p:column headerText="CodBien" width="100">
+                            <h:outputText value="#{car.patriMovimientoDetPK.codbien}" />
+                        </p:column>
+                        <p:column headerText="Correla" width="100">
+                            <h:outputText value="#{car.patriMovimientoDetPK.correla}" />
+                        </p:column>
+                        <p:column headerText="Tipo Bien">
+                            <h:outputText value="#{car.mbienes0.tipoBien.descripcion}" />
+                        </p:column>
+                        <p:column headerText="Detalle Técnico">
+                            <h:outputText value="#{bienController.getDetalleTecnico(car.mbienes0)}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:commandButton actionListener="#{patriMovimientoController.update}" value="#{bundle.Save}" update="display,:PatriMovimientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PatriMovimientoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PatriMovimientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

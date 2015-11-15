@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/munisoft"/>
+<Context antiJARLocking="true" path="/munisoft">
+    
+<!--Resource name="BeanManager" 
+        auth="Container"
+        type="javax.enterprise.inject.spi.BeanManager"
+        factory="org.jboss.weld.resources.ManagerObjectFactory" /-->
+        
+    <Resource auth="container" connectionProperties="FAKE_METADATA=false"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        maxActive="20" maxWait="100000" maxldle="3" name="siigaa  " password="Srp007" type="javax.sql.DataSource" 
+        url="jdbc:sqlserver://;databaseName=pegasus" username="sa"/>
+  <Resource auth="container" connectionProperties="FAKE_METADATA=false"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        maxActive="20" maxWait="100000" maxldle="3" name="siigaa " password="Srp007" type="javax.sql.DataSource" 
+        url="jdbc:sqlserver://;databaseName=pegasus" username="sa"/>
+    <Resource auth="container" connectionProperties="FAKE_METADATA=false"
+        driverClassName="org.postgresql.Driver"
+        maxActive="20" maxWait="100000" maxldle="3" name="siigaa" password="admin" type="javax.sql.DataSource" 
+        url="jdbc:postgresql://localhost/angela" username="postgres"/>
+</Context>

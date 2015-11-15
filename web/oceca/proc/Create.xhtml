@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcProcCreateDlg" widgetVar="SgcProcCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcProcTitle}">
+            <h:form id="SgcProcCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcProcController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idProc}" for="idProc" />
+                        <p:inputText id="idProc" value="#{sgcProcController.selected.idProc}" title="#{bundle.CreateSgcProcTitle_idProc}" required="true" requiredMessage="#{bundle.CreateSgcProcRequiredMessage_idProc}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idTipoproc}" for="idTipoproc" />
+                        <p:inputText id="idTipoproc" value="#{sgcProcController.selected.idTipoproc}" title="#{bundle.CreateSgcProcTitle_idTipoproc}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{sgcProcController.selected.codigo}" title="#{bundle.CreateSgcProcTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_proceso}" for="proceso" />
+                        <p:inputText id="proceso" value="#{sgcProcController.selected.proceso}" title="#{bundle.CreateSgcProcTitle_proceso}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idDoc}" for="idDoc" />
+                        <p:inputText id="idDoc" value="#{sgcProcController.selected.idDoc}" title="#{bundle.CreateSgcProcTitle_idDoc}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{sgcProcController.selected.idDir}" title="#{bundle.CreateSgcProcTitle_idDir}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idDirDoc}" for="idDirDoc" />
+                        <p:inputText id="idDirDoc" value="#{sgcProcController.selected.idDirDoc}" title="#{bundle.CreateSgcProcTitle_idDirDoc}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idDepAdministra}" for="idDepAdministra" />
+                        <p:inputText id="idDepAdministra" value="#{sgcProcController.selected.idDepAdministra}" title="#{bundle.CreateSgcProcTitle_idDepAdministra}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{sgcProcController.selected.idDep}" title="#{bundle.CreateSgcProcTitle_idDep}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_idCap}" for="idCap" />
+                        <p:inputText id="idCap" value="#{sgcProcController.selected.idCap}" title="#{bundle.CreateSgcProcTitle_idCap}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_depResponsable}" for="depResponsable" />
+                        <p:inputText id="depResponsable" value="#{sgcProcController.selected.depResponsable}" title="#{bundle.CreateSgcProcTitle_depResponsable}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_meta}" for="meta" />
+                        <p:inputTextarea rows="4" cols="30" id="meta" value="#{sgcProcController.selected.meta}" title="#{bundle.CreateSgcProcTitle_meta}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{sgcProcController.selected.descripcion}" title="#{bundle.CreateSgcProcTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_baseLegal}" for="baseLegal" />
+                        <p:inputTextarea rows="4" cols="30" id="baseLegal" value="#{sgcProcController.selected.baseLegal}" title="#{bundle.CreateSgcProcTitle_baseLegal}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_requisitos}" for="requisitos" />
+                        <p:inputTextarea rows="4" cols="30" id="requisitos" value="#{sgcProcController.selected.requisitos}" title="#{bundle.CreateSgcProcTitle_requisitos}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_disposicion}" for="disposicion" />
+                        <p:inputTextarea rows="4" cols="30" id="disposicion" value="#{sgcProcController.selected.disposicion}" title="#{bundle.CreateSgcProcTitle_disposicion}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_creador}" for="creador" />
+                        <p:inputText id="creador" value="#{sgcProcController.selected.creador}" title="#{bundle.CreateSgcProcTitle_creador}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_responsabilidad}" for="responsabilidad" />
+                        <p:inputTextarea rows="4" cols="30" id="responsabilidad" value="#{sgcProcController.selected.responsabilidad}" title="#{bundle.CreateSgcProcTitle_responsabilidad}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_otrasDep}" for="otrasDep" />
+                        <p:inputTextarea rows="4" cols="30" id="otrasDep" value="#{sgcProcController.selected.otrasDep}" title="#{bundle.CreateSgcProcTitle_otrasDep}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_documentosGenerados}" for="documentosGenerados" />
+                        <p:inputTextarea rows="4" cols="30" id="documentosGenerados" value="#{sgcProcController.selected.documentosGenerados}" title="#{bundle.CreateSgcProcTitle_documentosGenerados}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_clase}" for="clase" />
+                        <p:inputText id="clase" value="#{sgcProcController.selected.clase}" title="#{bundle.CreateSgcProcTitle_clase}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{sgcProcController.selected.nivel}" title="#{bundle.CreateSgcProcTitle_nivel}" />
+                        <p:outputLabel value="#{bundle.CreateSgcProcLabel_enlace}" for="enlace" />
+                        <p:inputText id="enlace" value="#{sgcProcController.selected.enlace}" title="#{bundle.CreateSgcProcTitle_enlace}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcProcController.create}" value="#{bundle.Save}" update="display,:SgcProcListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcProcCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcProcCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

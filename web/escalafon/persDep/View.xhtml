@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscPersDepViewDlg" widgetVar="EscPersDepViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscPersDepTitle}">
+            <h:form id="EscPersDepViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escPersDepController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_idPd}"/>
+                        <h:outputText value="#{escPersDepController.selected.idPd}" title="#{bundle.ViewEscPersDepTitle_idPd}"/>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_fecInicio}"/>
+                        <h:outputText value="#{escPersDepController.selected.fecInicio}" title="#{bundle.ViewEscPersDepTitle_fecInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_fecFin}"/>
+                        <h:outputText value="#{escPersDepController.selected.fecFin}" title="#{bundle.ViewEscPersDepTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escPersDepController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_idDtra}"/>
+                        <h:outputText value="#{escPersDepController.selected.idDtra}" title="#{bundle.ViewEscPersDepTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_escCap}"/>
+                        <h:outputText value="#{escPersDepController.selected.escCap}" title="#{bundle.ViewEscPersDepTitle_escCap}"/>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_idDesp}"/>
+                        <h:outputText value="#{escPersDepController.selected.idDesp}" title="#{bundle.ViewEscPersDepTitle_idDesp}"/>
+                        <h:outputText value="#{bundle.ViewEscPersDepLabel_idEsc}"/>
+                        <h:outputText value="#{escPersDepController.selected.idEsc}" title="#{bundle.ViewEscPersDepTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscPersDepViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

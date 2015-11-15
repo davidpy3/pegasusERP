@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComUnidadConversionCreateDlg" widgetVar="ComUnidadConversionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComUnidadConversionTitle}">
+            <h:form id="ComUnidadConversionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comUnidadConversionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComUnidadConversionLabel_comUnidadConversionPK_idUnidadB}" for="comUnidadConversionPK_idUnidadB" />
+                        <p:inputText id="comUnidadConversionPK_idUnidadB" value="#{comUnidadConversionController.selected.comUnidadConversionPK.idUnidadB}" title="#{bundle.CreateComUnidadConversionTitle_comUnidadConversionPK_idUnidadB}" required="true" requiredMessage="#{bundle.CreateComUnidadConversionRequiredMessage_comUnidadConversionPK_idUnidadB}"/>
+                        <p:outputLabel value="#{bundle.CreateComUnidadConversionLabel_comUnidadConversionPK_idUnidadA}" for="comUnidadConversionPK_idUnidadA" />
+                        <p:inputText id="comUnidadConversionPK_idUnidadA" value="#{comUnidadConversionController.selected.comUnidadConversionPK.idUnidadA}" title="#{bundle.CreateComUnidadConversionTitle_comUnidadConversionPK_idUnidadA}" required="true" requiredMessage="#{bundle.CreateComUnidadConversionRequiredMessage_comUnidadConversionPK_idUnidadA}"/>
+                        <p:outputLabel value="#{bundle.CreateComUnidadConversionLabel_factor}" for="factor" />
+                        <p:inputText id="factor" value="#{comUnidadConversionController.selected.factor}" title="#{bundle.CreateComUnidadConversionTitle_factor}" required="true" requiredMessage="#{bundle.CreateComUnidadConversionRequiredMessage_factor}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comUnidadConversionController.create}" value="#{bundle.Save}" update="display,:ComUnidadConversionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComUnidadConversionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComUnidadConversionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

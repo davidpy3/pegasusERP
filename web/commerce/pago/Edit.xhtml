@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PagoEditDlg" widgetVar="PagoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPagoTitle}">
+            <h:form id="PagoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPagoLabel_idPago}" for="idPago" />
+                        <p:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.EditPagoTitle_idPago}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idPago}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_dni}" for="dni" />
+                        <p:inputText id="dni" value="#{pagoController.selected.dni}" title="#{bundle.EditPagoTitle_dni}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_dni}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{pagoController.selected.fecha}" title="#{bundle.EditPagoTitle_fecha}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_comision}" for="comision" />
+                        <p:inputText id="comision" value="#{pagoController.selected.comision}" title="#{bundle.EditPagoTitle_comision}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_comision}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_otroIngreso}" for="otroIngreso" />
+                        <p:inputText id="otroIngreso" value="#{pagoController.selected.otroIngreso}" title="#{bundle.EditPagoTitle_otroIngreso}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_otroIngreso}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_adelanto}" for="adelanto" />
+                        <p:inputText id="adelanto" value="#{pagoController.selected.adelanto}" title="#{bundle.EditPagoTitle_adelanto}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_adelanto}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_otroDescuento}" for="otroDescuento" />
+                        <p:inputText id="otroDescuento" value="#{pagoController.selected.otroDescuento}" title="#{bundle.EditPagoTitle_otroDescuento}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_otroDescuento}"/>
+                        <p:outputLabel value="#{bundle.EditPagoLabel_salario}" for="salario" />
+                        <p:inputText id="salario" value="#{pagoController.selected.salario}" title="#{bundle.EditPagoTitle_salario}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_salario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pagoController.update}" value="#{bundle.Save}" update="display,:PagoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PagoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PagoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

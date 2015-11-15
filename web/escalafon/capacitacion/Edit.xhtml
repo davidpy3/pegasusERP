@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapacitacionEditDlg" widgetVar="EscCapacitacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscCapacitacionTitle}">
+            <h:form id="EscCapacitacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapacitacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{escCapacitacionController.selected.id}" title="#{bundle.EditEscCapacitacionTitle_id}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_capacitacion}" for="capacitacion" />
+                        <p:inputText id="capacitacion" value="#{escCapacitacionController.selected.capacitacion}" title="#{bundle.EditEscCapacitacionTitle_capacitacion}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_capacitacion}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escCapacitacionController.selected.fechaIni}" title="#{bundle.EditEscCapacitacionTitle_fechaIni}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_fechaIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escCapacitacionController.selected.fechaFin}" title="#{bundle.EditEscCapacitacionTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_horas}" for="horas" />
+                        <p:inputText id="horas" value="#{escCapacitacionController.selected.horas}" title="#{bundle.EditEscCapacitacionTitle_horas}" />
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_horasText}" for="horasText" />
+                        <p:inputText id="horasText" value="#{escCapacitacionController.selected.horasText}" title="#{bundle.EditEscCapacitacionTitle_horasText}" />
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escCapacitacionController.selected.mencion}" title="#{bundle.EditEscCapacitacionTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_idCc}" for="idCc" />
+                        <p:selectOneMenu id="idCc" value="#{escCapacitacionController.selected.idCc}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_idCc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCondicionCapController.itemsAvailableSelectOne}"
+                                           var="idCcItem"
+                                           itemValue="#{idCcItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_idInst}" for="idInst" />
+                        <p:selectOneMenu id="idInst" value="#{escCapacitacionController.selected.idInst}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_idInst}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escInstitucionesController.itemsAvailableSelectOne}"
+                                           var="idInstItem"
+                                           itemValue="#{idInstItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escCapacitacionController.selected.idEsc}" title="#{bundle.EditEscCapacitacionTitle_idEsc}" />
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_idTc}" for="idTc" />
+                        <p:selectOneMenu id="idTc" value="#{escCapacitacionController.selected.idTc}" required="true" requiredMessage="#{bundle.EditEscCapacitacionRequiredMessage_idTc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escTipoCapController.itemsAvailableSelectOne}"
+                                           var="idTcItem"
+                                           itemValue="#{idTcItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCapacitacionLabel_perPermisoPersonal}" for="perPermisoPersonal" />
+                        <p:selectOneMenu id="perPermisoPersonal" value="#{escCapacitacionController.selected.perPermisoPersonal}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{perPermisoPersonalController.itemsAvailableSelectOne}"
+                                           var="perPermisoPersonalItem"
+                                           itemValue="#{perPermisoPersonalItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCapacitacionController.update}" value="#{bundle.Save}" update="display,:EscCapacitacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscCapacitacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCapacitacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

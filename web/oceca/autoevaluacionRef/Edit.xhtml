@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAutoevaluacionRefEditDlg" widgetVar="SgcAutoevaluacionRefEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcAutoevaluacionRefTitle}">
+            <h:form id="SgcAutoevaluacionRefEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAutoevaluacionRefController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_idAutref}" for="idAutref" />
+                        <p:inputText id="idAutref" value="#{sgcAutoevaluacionRefController.selected.idAutref}" title="#{bundle.EditSgcAutoevaluacionRefTitle_idAutref}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_idAutref}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_idAutoevaluacion}" for="idAutoevaluacion" />
+                        <p:inputText id="idAutoevaluacion" value="#{sgcAutoevaluacionRefController.selected.idAutoevaluacion}" title="#{bundle.EditSgcAutoevaluacionRefTitle_idAutoevaluacion}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_idAutoevaluacion}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcAutoevaluacionRefController.selected.idFuente}" title="#{bundle.EditSgcAutoevaluacionRefTitle_idFuente}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_idFuente}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_fase}" for="fase" />
+                        <p:inputText id="fase" value="#{sgcAutoevaluacionRefController.selected.fase}" title="#{bundle.EditSgcAutoevaluacionRefTitle_fase}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_fase}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_observacion}" for="observacion" />
+                        <p:inputTextarea rows="4" cols="30" id="observacion" value="#{sgcAutoevaluacionRefController.selected.observacion}" title="#{bundle.EditSgcAutoevaluacionRefTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{sgcAutoevaluacionRefController.selected.idDir}" title="#{bundle.EditSgcAutoevaluacionRefTitle_idDir}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sgcAutoevaluacionRefController.selected.estado}" title="#{bundle.EditSgcAutoevaluacionRefTitle_estado}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAutoevaluacionRefLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcAutoevaluacionRefController.selected.fechaReg}" title="#{bundle.EditSgcAutoevaluacionRefTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSgcAutoevaluacionRefRequiredMessage_fechaReg}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcAutoevaluacionRefController.update}" value="#{bundle.Save}" update="display,:SgcAutoevaluacionRefListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcAutoevaluacionRefEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcAutoevaluacionRefEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

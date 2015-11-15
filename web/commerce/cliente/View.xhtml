@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClienteViewDlg" widgetVar="ClienteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewClienteTitle}">
+            <h:form id="ClienteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewClienteLabel_nroDoc}"/>
+                        <h:outputText value="#{clienteController.selected.nroDoc}" title="#{bundle.ViewClienteTitle_nroDoc}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_tipoDoc}"/>
+                        <h:outputText value="#{clienteController.selected.tipoDoc}" title="#{bundle.ViewClienteTitle_tipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_nombreCompleto}"/>
+                        <h:outputText value="#{clienteController.selected.nombreCompleto}" title="#{bundle.ViewClienteTitle_nombreCompleto}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_dirPer}"/>
+                        <h:outputText value="#{clienteController.selected.dirPer}" title="#{bundle.ViewClienteTitle_dirPer}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_telPer}"/>
+                        <h:outputText value="#{clienteController.selected.telPer}" title="#{bundle.ViewClienteTitle_telPer}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_telefono2}"/>
+                        <h:outputText value="#{clienteController.selected.telefono2}" title="#{bundle.ViewClienteTitle_telefono2}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_estPer}"/>
+                        <h:outputText value="#{clienteController.selected.estPer}" title="#{bundle.ViewClienteTitle_estPer}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ClienteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

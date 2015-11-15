@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscPersonalCreateDlg" widgetVar="EscPersonalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscPersonalTitle}">
+            <h:form id="EscPersonalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escPersonalController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escPersonalController.selected.idEsc}" title="#{bundle.CreateEscPersonalTitle_idEsc}" required="true" requiredMessage="#{bundle.CreateEscPersonalRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_fechaIng}" for="fechaIng" />
+                        <p:calendar id="fechaIng" pattern="MM/dd/yyyy" value="#{escPersonalController.selected.fechaIng}" title="#{bundle.EditEscPersonalTitle_fechaIng}" required="true" requiredMessage="#{bundle.EditEscPersonalRequiredMessage_fechaIng}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_condicion}" for="condicion" />
+                        <p:selectBooleanCheckbox id="condicion" value="#{escPersonalController.selected.condicion}" required="true" requiredMessage="#{bundle.EditEscPersonalRequiredMessage_condicion}"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{escPersonalController.selected.ruc}" title="#{bundle.CreateEscPersonalTitle_ruc}" />
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_especialidad}" for="especialidad" />
+                        <p:inputText id="especialidad" value="#{escPersonalController.selected.especialidad}" title="#{bundle.CreateEscPersonalTitle_especialidad}" />
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_abrevEsp}" for="abrevEsp" />
+                        <p:inputText id="abrevEsp" value="#{escPersonalController.selected.abrevEsp}" title="#{bundle.CreateEscPersonalTitle_abrevEsp}" />
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_fechaCese}" for="fechaCese" />
+                        <p:calendar id="fechaCese" pattern="MM/dd/yyyy" value="#{escPersonalController.selected.fechaCese}" title="#{bundle.EditEscPersonalTitle_fechaCese}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{escPersonalController.selected.observaciones}" title="#{bundle.CreateEscPersonalTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_idDtraCese}" for="idDtraCese" />
+                        <p:inputText id="idDtraCese" value="#{escPersonalController.selected.idDtraCese}" title="#{bundle.CreateEscPersonalTitle_idDtraCese}" />
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_escTipoPersonal}" for="escTipoPersonal" />
+                        <p:selectOneMenu id="escTipoPersonal" value="#{escPersonalController.selected.escTipoPersonal}" required="true" requiredMessage="#{bundle.EditEscPersonalRequiredMessage_escTipoPersonal}">
+                            <f:selectItems value="#{escTipoPersonalController.itemsAvailableSelectOne}"
+                                           var="escTipoPersonalItem"
+                                           itemValue="#{escTipoPersonalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_escEstadoTrabajador}" for="escEstadoTrabajador" />
+                        <p:selectOneMenu id="escEstadoTrabajador" value="#{escPersonalController.selected.escEstadoTrabajador}" required="true" requiredMessage="#{bundle.EditEscPersonalRequiredMessage_escEstadoTrabajador}">
+                            <f:selectItems value="#{escEstadoTrabajadorController.itemsAvailableSelectOne}"
+                                           var="escEstadoTrabajadorItem"
+                                           itemValue="#{escEstadoTrabajadorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscPersonalLabel_idDir}" for="idDir" />
+                        <p:selectOneMenu id="idDir" value="#{escPersonalController.selected.idDir}" required="true" requiredMessage="#{bundle.EditEscPersonalRequiredMessage_idDir}">
+                            <f:selectItems value="#{drtPernatUnsController.itemsAvailableSelectOne}"
+                                           var="idDirItem"
+                                           itemValue="#{idDirItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escPersonalController.create}" value="#{bundle.Save}" update="display,:EscPersonalListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscPersonalCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscPersonalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

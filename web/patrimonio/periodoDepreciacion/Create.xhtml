@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeriodoDepreciacionCreateDlg" widgetVar="PeriodoDepreciacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePeriodoDepreciacionTitle}">
+            <h:form id="PeriodoDepreciacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{periodoDepreciacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_codPeriodo}" for="codPeriodo" />
+                        <p:inputText id="codPeriodo" value="#{periodoDepreciacionController.selected.codPeriodo}" title="#{bundle.CreatePeriodoDepreciacionTitle_codPeriodo}" required="true" requiredMessage="#{bundle.CreatePeriodoDepreciacionRequiredMessage_codPeriodo}"/>
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_periodo}" for="periodo" />
+                        <p:calendar id="periodo" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.periodo}" title="#{bundle.EditPeriodoDepreciacionTitle_periodo}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_userRegistra}" for="userRegistra" />
+                        <p:inputText id="userRegistra" value="#{periodoDepreciacionController.selected.userRegistra}" title="#{bundle.CreatePeriodoDepreciacionTitle_userRegistra}" />
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_fechaRegistra}" for="fechaRegistra" />
+                        <p:calendar id="fechaRegistra" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.fechaRegistra}" title="#{bundle.EditPeriodoDepreciacionTitle_fechaRegistra}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_userCierre}" for="userCierre" />
+                        <p:inputText id="userCierre" value="#{periodoDepreciacionController.selected.userCierre}" title="#{bundle.CreatePeriodoDepreciacionTitle_userCierre}" />
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_fechaCierre}" for="fechaCierre" />
+                        <p:calendar id="fechaCierre" pattern="dd/MM/yyyy HH:mm:ss" value="#{periodoDepreciacionController.selected.fechaCierre}" title="#{bundle.EditPeriodoDepreciacionTitle_fechaCierre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{periodoDepreciacionController.selected.estado}" title="#{bundle.CreatePeriodoDepreciacionTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_anoInv}" for="anoInv" />
+                        <p:inputText id="anoInv" value="#{periodoDepreciacionController.selected.anoInv}" title="#{bundle.CreatePeriodoDepreciacionTitle_anoInv}" />
+                        <p:outputLabel value="#{bundle.CreatePeriodoDepreciacionLabel_numInv}" for="numInv" />
+                        <p:inputText id="numInv" value="#{periodoDepreciacionController.selected.numInv}" title="#{bundle.CreatePeriodoDepreciacionTitle_numInv}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{periodoDepreciacionController.create}" value="#{bundle.Save}" update="display,:PeriodoDepreciacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'PeriodoDepreciacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PeriodoDepreciacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

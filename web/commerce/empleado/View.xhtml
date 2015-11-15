@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoViewDlg" widgetVar="EmpleadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmpleadoTitle}">
+            <h:form id="EmpleadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empleadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_dni}"/>
+                        <h:outputText value="#{empleadoController.selected.dni}" title="#{bundle.ViewEmpleadoTitle_dni}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_nombreCompleto}"/>
+                        <h:outputText value="#{empleadoController.selected.nombreCompleto}" title="#{bundle.ViewEmpleadoTitle_nombreCompleto}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_direccion}"/>
+                        <h:outputText value="#{empleadoController.selected.direccion}" title="#{bundle.ViewEmpleadoTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_telefono}"/>
+                        <h:outputText value="#{empleadoController.selected.telefono}" title="#{bundle.ViewEmpleadoTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_telefono2}"/>
+                        <h:outputText value="#{empleadoController.selected.telefono2}" title="#{bundle.ViewEmpleadoTitle_telefono2}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_image}"/>
+                        <h:outputText value="#{empleadoController.selected.image}" title="#{bundle.ViewEmpleadoTitle_image}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_estPer}"/>
+                        <h:outputText value="#{empleadoController.selected.estPer}" title="#{bundle.ViewEmpleadoTitle_estPer}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_sueldo}"/>
+                        <h:outputText value="#{empleadoController.selected.sueldo}" title="#{bundle.ViewEmpleadoTitle_sueldo}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_fechaNac}"/>
+                        <h:outputText value="#{empleadoController.selected.fechaNac}" title="#{bundle.ViewEmpleadoTitle_fechaNac}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_cargo}"/>
+                        <h:outputText value="#{empleadoController.selected.cargo}" title="#{bundle.ViewEmpleadoTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_almacen}"/>
+                        <h:outputText value="#{empleadoController.selected.almacen}" title="#{bundle.ViewEmpleadoTitle_almacen}"/>
+                        <h:outputText value="#{bundle.ViewEmpleadoLabel_meta}"/>
+                        <h:outputText value="#{empleadoController.selected.meta}" title="#{bundle.ViewEmpleadoTitle_meta}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EmpleadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

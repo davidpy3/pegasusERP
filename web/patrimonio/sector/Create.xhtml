@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SectoresCreateDlg" widgetVar="SectoresCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSectoresTitle}">
+            <h:form id="SectoresCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sectoresController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSectoresLabel_codSect}" for="codSect" />
+                        <p:inputText id="codSect" value="#{sectoresController.selected.codSect}" title="#{bundle.CreateSectoresTitle_codSect}" required="true" requiredMessage="#{bundle.CreateSectoresRequiredMessage_codSect}"/>
+                        <p:outputLabel value="#{bundle.CreateSectoresLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{sectoresController.selected.nombres}" title="#{bundle.CreateSectoresTitle_nombres}" required="true" requiredMessage="#{bundle.CreateSectoresRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.CreateSectoresLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{sectoresController.selected.abrev}" title="#{bundle.CreateSectoresTitle_abrev}" required="true" requiredMessage="#{bundle.CreateSectoresRequiredMessage_abrev}"/>
+                        <p:outputLabel value="#{bundle.CreateSectoresLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sectoresController.selected.estado}" title="#{bundle.CreateSectoresTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sectoresController.create}" value="#{bundle.Save}" update="display,:SectoresListForm:datalist,:growl" oncomplete="handleSubmit(args,'SectoresCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SectoresCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

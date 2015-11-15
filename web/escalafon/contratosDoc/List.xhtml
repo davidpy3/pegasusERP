@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEscContratosDocTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EscContratosDocListForm">
+                <p:panel header="#{bundle.ListEscContratosDocTitle}">
+                    <p:dataTable id="datalist" value="#{escContratosDocController.items}" var="item"
+                                 selectionMode="single" selection="#{escContratosDocController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idCnd}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_idCnd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCnd}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_fechaIni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaIni}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_estado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_idDtra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDtra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_horas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_mencion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mencion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_periodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_escCapDocente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.escCapDocente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscContratosDocTitle_idEsc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEsc}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{escContratosDocController.prepareCreate}" update=":EscContratosDocCreateForm" oncomplete="PF('EscContratosDocCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EscContratosDocViewForm" oncomplete="PF('EscContratosDocViewDialog').show()" disabled="#{empty escContratosDocController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EscContratosDocEditForm" oncomplete="PF('EscContratosDocEditDialog').show()" disabled="#{empty escContratosDocController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{escContratosDocController.destroy}" update=":growl,datalist" disabled="#{empty escContratosDocController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

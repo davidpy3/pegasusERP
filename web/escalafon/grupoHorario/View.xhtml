@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscGrupoHorarioViewDlg" widgetVar="EscGrupoHorarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscGrupoHorarioTitle}">
+            <h:form id="EscGrupoHorarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escGrupoHorarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_idGrupo}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.idGrupo}" title="#{bundle.ViewEscGrupoHorarioTitle_idGrupo}"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_horaIn}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.horaIn}" title="#{bundle.ViewEscGrupoHorarioTitle_horaIn}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_horaOut}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.horaOut}" title="#{bundle.ViewEscGrupoHorarioTitle_horaOut}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_horaRefrigerio}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.horaRefrigerio}" title="#{bundle.ViewEscGrupoHorarioTitle_horaRefrigerio}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_horaRetorno}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.horaRetorno}" title="#{bundle.ViewEscGrupoHorarioTitle_horaRetorno}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_toleranciaRefrigerio}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.toleranciaRefrigerio}" title="#{bundle.ViewEscGrupoHorarioTitle_toleranciaRefrigerio}"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_lunes}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.lunes}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_martes}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.martes}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_miercoles}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.miercoles}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_jueves}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.jueves}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_viernes}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.viernes}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_sabado}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.sabado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_domingo}"/>
+                        <p:selectBooleanCheckbox value="#{escGrupoHorarioController.selected.domingo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_idDep}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.idDep}" title="#{bundle.ViewEscGrupoHorarioTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewEscGrupoHorarioLabel_idTurno}"/>
+                        <h:outputText value="#{escGrupoHorarioController.selected.idTurno}" title="#{bundle.ViewEscGrupoHorarioTitle_idTurno}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscGrupoHorarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

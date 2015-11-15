@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentaEditDlg" widgetVar="CuentaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCuentaTitle}">
+            <h:form id="CuentaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_idCuenta}" for="idCuenta" />
+                        <p:inputText id="idCuenta" value="#{cuentaController.selected.idCuenta}" title="#{bundle.EditCuentaTitle_idCuenta}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_idCuenta}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_tipoCuenta}" for="tipoCuenta" />
+                        <p:inputText id="tipoCuenta" value="#{cuentaController.selected.tipoCuenta}" title="#{bundle.EditCuentaTitle_tipoCuenta}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_tipoCuenta}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_nroCuenta}" for="nroCuenta" />
+                        <p:inputText id="nroCuenta" value="#{cuentaController.selected.nroCuenta}" title="#{bundle.EditCuentaTitle_nroCuenta}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_nroCuenta}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{cuentaController.selected.monto}" title="#{bundle.EditCuentaTitle_monto}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_monto}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_moneda}" for="moneda" />
+                        <p:inputText id="moneda" value="#{cuentaController.selected.moneda}" title="#{bundle.EditCuentaTitle_moneda}" />
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_banco}" for="banco" />
+                        <p:inputText id="banco" value="#{cuentaController.selected.banco}" title="#{bundle.EditCuentaTitle_banco}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuentaController.update}" value="#{bundle.Save}" update="display,:CuentaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CuentaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuentaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

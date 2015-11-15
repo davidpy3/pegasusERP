@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDejuPeriodoViewDlg" widgetVar="EscDejuPeriodoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscDejuPeriodoTitle}">
+            <h:form id="EscDejuPeriodoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDejuPeriodoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_idPeriodo}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.idPeriodo}" title="#{bundle.ViewEscDejuPeriodoTitle_idPeriodo}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_fechaInicio}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.fechaInicio}" title="#{bundle.ViewEscDejuPeriodoTitle_fechaInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_fechaTermino}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.fechaTermino}" title="#{bundle.ViewEscDejuPeriodoTitle_fechaTermino}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{escDejuPeriodoController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_ejerPresupuestal}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.ejerPresupuestal}" title="#{bundle.ViewEscDejuPeriodoTitle_ejerPresupuestal}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_titular}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.titular}" title="#{bundle.ViewEscDejuPeriodoTitle_titular}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_direccion}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.direccion}" title="#{bundle.ViewEscDejuPeriodoTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuPeriodoLabel_entidad}"/>
+                        <h:outputText value="#{escDejuPeriodoController.selected.entidad}" title="#{bundle.ViewEscDejuPeriodoTitle_entidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscDejuPeriodoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

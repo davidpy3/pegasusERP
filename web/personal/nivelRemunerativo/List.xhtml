@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListNivelRemunerativoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="NivelRemunerativoListForm">
+                <p:panel header="#{bundle.ListNivelRemunerativoTitle}">
+                    <p:dataTable id="datalist" value="#{nivelRemunerativoController.items}" var="item"
+                                 selectionMode="single" selection="#{nivelRemunerativoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.nivelRemunerativoPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_nivelRemunerativoPK_nivelRem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivelRemunerativoPK.nivelRem}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_abrev}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.abrev}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_periodicidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodicidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_montoBasico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montoBasico}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_montoTope}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montoTope}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_buc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.buc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNivelRemunerativoTitle_tipoTrabajador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoTrabajador}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{nivelRemunerativoController.prepareCreate}" update=":NivelRemunerativoCreateForm" oncomplete="PF('NivelRemunerativoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":NivelRemunerativoViewForm" oncomplete="PF('NivelRemunerativoViewDialog').show()" disabled="#{empty nivelRemunerativoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":NivelRemunerativoEditForm" oncomplete="PF('NivelRemunerativoEditDialog').show()" disabled="#{empty nivelRemunerativoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{nivelRemunerativoController.destroy}" update=":growl,datalist" disabled="#{empty nivelRemunerativoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

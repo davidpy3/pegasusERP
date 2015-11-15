@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComCajaArqueoDetalleEditDlg" widgetVar="ComCajaArqueoDetalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComCajaArqueoDetalleTitle}">
+            <h:form id="ComCajaArqueoDetalleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comCajaArqueoDetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idArqueo}" for="comCajaArqueoDetallePK_idArqueo" />
+                        <p:inputText id="comCajaArqueoDetallePK_idArqueo" value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idArqueo}" title="#{bundle.EditComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idArqueo}" required="true" requiredMessage="#{bundle.EditComCajaArqueoDetalleRequiredMessage_comCajaArqueoDetallePK_idArqueo}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idMoneda}" for="comCajaArqueoDetallePK_idMoneda" />
+                        <p:inputText id="comCajaArqueoDetallePK_idMoneda" value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idMoneda}" title="#{bundle.EditComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idMoneda}" required="true" requiredMessage="#{bundle.EditComCajaArqueoDetalleRequiredMessage_comCajaArqueoDetallePK_idMoneda}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idMedio}" for="comCajaArqueoDetallePK_idMedio" />
+                        <p:inputText id="comCajaArqueoDetallePK_idMedio" value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idMedio}" title="#{bundle.EditComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idMedio}" required="true" requiredMessage="#{bundle.EditComCajaArqueoDetalleRequiredMessage_comCajaArqueoDetallePK_idMedio}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoDetalleLabel_razonCambio}" for="razonCambio" />
+                        <p:inputText id="razonCambio" value="#{comCajaArqueoDetalleController.selected.razonCambio}" title="#{bundle.EditComCajaArqueoDetalleTitle_razonCambio}" required="true" requiredMessage="#{bundle.EditComCajaArqueoDetalleRequiredMessage_razonCambio}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoDetalleLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comCajaArqueoDetalleController.selected.cantidad}" title="#{bundle.EditComCajaArqueoDetalleTitle_cantidad}" required="true" requiredMessage="#{bundle.EditComCajaArqueoDetalleRequiredMessage_cantidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comCajaArqueoDetalleController.update}" value="#{bundle.Save}" update="display,:ComCajaArqueoDetalleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComCajaArqueoDetalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComCajaArqueoDetalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioDetalleEditDlg" widgetVar="InventarioDetalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInventarioDetalleTitle}">
+            <h:form id="InventarioDetalleEditForm">
+                <h:panelGroup id="display" rendered="#{inventarioDetalleController.selected != null}">
+                    <p:fieldset legend="#{bundle.DetalleTecnico}">
+                    <p:panelGrid columns="4">
+                        
+                        
+                        <p:outputLabel value="#{bundle.Marca}"  />
+                        <p:inputText id="marca" value="#{inventarioDetalleController.selected.bien.marca}"  />
+                        <p:outputLabel value="#{bundle.Modelo}"  />
+                        <p:inputText id="modelo" value="#{inventarioDetalleController.selected.bien.modelo}"  />
+                        <p:outputLabel value="#{bundle.Tipo}"  />
+                        <p:inputText id="tipo" value="#{inventarioDetalleController.selected.bien.tipo}"  />
+                        <p:outputLabel value="#{bundle.Color}"  />
+                        <p:inputText id="color" value="#{inventarioDetalleController.selected.bien.color}"  />
+                        <p:outputLabel value="#{bundle.Dimension}"  />
+                        <p:inputText id="dimension" value="#{inventarioDetalleController.selected.bien.dimension}"  />
+                        <p:outputLabel value="#{bundle.Serie}"  />
+                        <p:inputText id="serie" value="#{inventarioDetalleController.selected.bien.serie}"  />
+                        <p:outputLabel value="#{bundle.Edad}"  />
+                        <p:inputText id="edad" value="#{inventarioDetalleController.selected.bien.edad}"  />
+                        <p:outputLabel value="#{bundle.Placa}"  />
+                        <p:inputText id="placa" value="#{inventarioDetalleController.selected.bien.placa}"  />
+                        
+                        
+                    </p:panelGrid></p:fieldset>
+                    <p:fieldset style="margin-top:10px" legend="#{bundle.UbicacionFisica} y #{bundle.Responsable}">
+                        <p:panelGrid columns="2"  style="width:100%"   >
+                        
+                        
+                        <p:outputLabel value="#{bundle.Local}"  />
+                        <p:inputText styleClass="td-center" id="codlocal" value="#{inventarioDetalleController.selected.bien.codlocal}"  />
+                        <p:outputLabel value="#{bundle.Oficina}"  />
+                        <p:inputText styleClass="td-center" id="codoficina" value="#{inventarioDetalleController.selected.bien.codoficina}"  />
+                        <p:outputLabel value="#{bundle.Area}"  />
+                        <p:inputText styleClass="td-center" id="codarea" value="#{inventarioDetalleController.selected.bien.codarea}"  />
+                        <p:outputLabel value="#{bundle.Ambiente}"  />
+                        <p:inputText styleClass="td-center" id="codambiente" value="#{inventarioDetalleController.selected.bien.codambiente}"  />
+                        <p:outputLabel value="#{bundle.Usuario}"  />
+                        <p:inputText styleClass="td-center"  id="codusuario" value="#{inventarioDetalleController.selected.bien.codusuario}"  />
+                        
+                        
+                    </p:panelGrid></p:fieldset>
+                    <p:commandButton actionListener="#{inventarioDetalleController.update}" value="#{bundle.Save}" oncomplete="handleSubmit(args, 'InventarioDetalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InventarioDetalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

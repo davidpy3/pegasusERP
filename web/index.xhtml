@@ -1,14 +1,65 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-    </h:body>
-</html>
+        <h:head>
+            <f:facet  rendered="#{empty request.getAttribute('url')}" name="first"></f:facet>
+        </h:head>
+        <f:facet name="first"></f:facet>
+        <style>
+            .jmenucolumn button{ height:36px;width:36px}
+            .jm   .ui-button-text{height:36px;width:36px}
 
+            .fileupload-buttonbar .fileinput-button .ui-icon-plusthick{
+                background-image: url(http://localhost:8088/jsf/images/upload-16.png)!important;
+            }
+
+            .jm span  {height:36px;width:36px}
+            .jm input  {height:36px;width:36px; display:  none}
+            .ui-fileupload-filename{ display: none}
+            .ui-fileupload-choose .ui-icon {
+                visibility: hidden !important;
+            }
+            .ui-fileupload-upload .ui-icon {
+                visibility: hidden !important;
+            }
+            .ui-fileupload-cancel .ui-icon {
+                visibility: hidden !important;
+            }
+            .ui-button-icon-left .ui-icon ui-c .ui-icon-plusthick   .fileupload-buttonbar ui-button-icon-left .fileinput-button {
+                background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+            }
+            .ui-icon ui-c .ui-icon-plusthick {
+                background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+            }
+
+
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;
+            }
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+            .xx ul{
+                left:-114px !important
+            }
+            .ui-layout-resizer .ui-layout-resizer-north .ui-layout-resizer-open .ui-layout-resizer-north-open{
+                height:0px !important;
+                height:0px;
+            }
+        </style>
+    </h:head>
+    <p:layout fullPage="true" >
+        <p:layoutUnit position="north"  collapsible="true" gutter="0" size="60" >
+            <ui:include rendered="#{not empty systemController.menu}" src="#{systemController.menu}" />
+        </p:layoutUnit>
+        <p:layoutUnit id="center" position="center" >
+            <ui:include rendered="#{not empty systemController.body}" src="#{systemController.body}" />
+        </p:layoutUnit>
+    </p:layout>
+
+</html>

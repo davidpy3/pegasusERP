@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFactorCreateDlg" widgetVar="SgcFactorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcFactorTitle}">
+            <h:form id="SgcFactorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFactorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcFactorLabel_idFactor}" for="idFactor" />
+                        <p:inputText id="idFactor" value="#{sgcFactorController.selected.idFactor}" title="#{bundle.CreateSgcFactorTitle_idFactor}" requiredMessage="#{bundle.CreateSgcFactorRequiredMessage_idFactor}"/>
+                        <p:outputLabel value="#{bundle.Dimension}" for="idDimension" />
+                        <p:inputText id="idDimension" value="#{sgcFactorController.selected.idDimension}" title="#{bundle.CreateSgcFactorTitle_idDimension}" required="true" requiredMessage="#{bundle.CreateSgcFactorRequiredMessage_idDimension}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFactorLabel_factor}" for="factor" />
+                        <p:inputText id="factor" value="#{sgcFactorController.selected.factor}" title="#{bundle.CreateSgcFactorTitle_factor}" required="true" requiredMessage="#{bundle.CreateSgcFactorRequiredMessage_factor}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcFactorLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{sgcFactorController.selected.descripcion}" title="#{bundle.CreateSgcFactorTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateSgcFactorRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFactorController.create}" value="#{bundle.Save}" update="display,:SgcFactorListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcFactorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFactorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

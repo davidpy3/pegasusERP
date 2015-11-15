@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcIsoEditDlg" widgetVar="SgcIsoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcIsoTitle}">
+            <h:form id="SgcIsoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcIsoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcIsoLabel_idEstandar}" for="idEstandar" />
+                        <p:inputText id="idEstandar" value="#{sgcIsoController.selected.idEstandar}" title="#{bundle.EditSgcIsoTitle_idEstandar}" required="true" requiredMessage="#{bundle.EditSgcIsoRequiredMessage_idEstandar}"/>
+                        <p:outputLabel value="#{bundle.EditSgcIsoLabel_idTipoIso}" for="idTipoIso" />
+                        <p:inputText id="idTipoIso" value="#{sgcIsoController.selected.idTipoIso}" title="#{bundle.EditSgcIsoTitle_idTipoIso}" />
+                        <p:outputLabel value="#{bundle.EditSgcIsoLabel_capitulo}" for="capitulo" />
+                        <p:inputText id="capitulo" value="#{sgcIsoController.selected.capitulo}" title="#{bundle.EditSgcIsoTitle_capitulo}" />
+                        <p:outputLabel value="#{bundle.EditSgcIsoLabel_capituloNombre}" for="capituloNombre" />
+                        <p:inputText id="capituloNombre" value="#{sgcIsoController.selected.capituloNombre}" title="#{bundle.EditSgcIsoTitle_capituloNombre}" />
+                        <p:outputLabel value="#{bundle.EditSgcIsoLabel_requerimientos}" for="requerimientos" />
+                        <p:inputTextarea rows="4" cols="30" id="requerimientos" value="#{sgcIsoController.selected.requerimientos}" title="#{bundle.EditSgcIsoTitle_requerimientos}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcIsoController.update}" value="#{bundle.Save}" update="display,:SgcIsoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcIsoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcIsoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

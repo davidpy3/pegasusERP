@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConceptoEditDlg" widgetVar="ConceptoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConceptoTitle}">
+            <h:form id="ConceptoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{conceptoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{conceptoController.selected.codigo}" title="#{bundle.EditConceptoTitle_codigo}" required="true" requiredMessage="#{bundle.EditConceptoRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_concepto}" for="concepto" />
+                        <p:inputText id="concepto" value="#{conceptoController.selected.concepto}" title="#{bundle.EditConceptoTitle_concepto}" />
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_codPDT}" for="codPDT" />
+                        <p:inputText id="codPDT" value="#{conceptoController.selected.codPDT}" title="#{bundle.EditConceptoTitle_codPDT}" required="true" requiredMessage="#{bundle.EditConceptoRequiredMessage_codPDT}"/>
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_calculo}" for="calculo" />
+                        <p:inputText id="calculo" value="#{conceptoController.selected.calculo}" title="#{bundle.EditConceptoTitle_calculo}" />
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_procesar}" for="procesar" />
+                        <p:inputText id="procesar" value="#{conceptoController.selected.procesar}" title="#{bundle.EditConceptoTitle_procesar}" />
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_selec}" for="selec" />
+                        <p:inputText id="selec" value="#{conceptoController.selected.selec}" title="#{bundle.EditConceptoTitle_selec}" />
+                        <p:outputLabel value="#{bundle.EditConceptoLabel_glosa}" for="glosa" />
+                        <p:inputText id="glosa" value="#{conceptoController.selected.glosa}" title="#{bundle.EditConceptoTitle_glosa}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{conceptoController.update}" value="#{bundle.Save}" update="display,:ConceptoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConceptoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConceptoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

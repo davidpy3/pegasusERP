@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscSuscdiplomaEditDlg" widgetVar="EscSuscdiplomaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscSuscdiplomaTitle}">
+            <h:form id="EscSuscdiplomaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escSuscdiplomaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscSuscdiplomaLabel_escSuscdiplomaPK_cargoSus}" for="escSuscdiplomaPK_cargoSus" />
+                        <p:inputText id="escSuscdiplomaPK_cargoSus" value="#{escSuscdiplomaController.selected.escSuscdiplomaPK.cargoSus}" title="#{bundle.EditEscSuscdiplomaTitle_escSuscdiplomaPK_cargoSus}" required="true" requiredMessage="#{bundle.EditEscSuscdiplomaRequiredMessage_escSuscdiplomaPK_cargoSus}"/>
+                        <p:outputLabel value="#{bundle.EditEscSuscdiplomaLabel_escSuscdiplomaPK_id}" for="escSuscdiplomaPK_id" />
+                        <p:inputText id="escSuscdiplomaPK_id" value="#{escSuscdiplomaController.selected.escSuscdiplomaPK.id}" title="#{bundle.EditEscSuscdiplomaTitle_escSuscdiplomaPK_id}" required="true" requiredMessage="#{bundle.EditEscSuscdiplomaRequiredMessage_escSuscdiplomaPK_id}"/>
+                        <p:outputLabel value="#{bundle.EditEscSuscdiplomaLabel_nombreSus}" for="nombreSus" />
+                        <p:inputText id="nombreSus" value="#{escSuscdiplomaController.selected.nombreSus}" title="#{bundle.EditEscSuscdiplomaTitle_nombreSus}" required="true" requiredMessage="#{bundle.EditEscSuscdiplomaRequiredMessage_nombreSus}"/>
+                        <p:outputLabel value="#{bundle.EditEscSuscdiplomaLabel_escEstudio}" for="escEstudio" />
+                        <p:selectOneMenu id="escEstudio" value="#{escSuscdiplomaController.selected.escEstudio}" required="true" requiredMessage="#{bundle.EditEscSuscdiplomaRequiredMessage_escEstudio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escEstudioController.itemsAvailableSelectOne}"
+                                           var="escEstudioItem"
+                                           itemValue="#{escEstudioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escSuscdiplomaController.update}" value="#{bundle.Save}" update="display,:EscSuscdiplomaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscSuscdiplomaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscSuscdiplomaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

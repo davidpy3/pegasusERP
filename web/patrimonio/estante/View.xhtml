@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstanteViewDlg" widgetVar="EstanteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEstanteTitle}">
+            <h:form id="EstanteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estanteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEstanteLabel_NEstante}"/>
+                        <h:outputText value="#{estanteController.selected.NEstante}" title="#{bundle.ViewEstanteTitle_NEstante}"/>
+                        <h:outputText value="#{bundle.ViewEstanteLabel_codBien}"/>
+                        <h:outputText value="#{estanteController.selected.codBien}" title="#{bundle.ViewEstanteTitle_codBien}"/>
+                        <h:outputText value="#{bundle.ViewEstanteLabel_correla}"/>
+                        <h:outputText value="#{estanteController.selected.correla}" title="#{bundle.ViewEstanteTitle_correla}"/>
+                        <h:outputText value="#{bundle.ViewEstanteLabel_NPisos}"/>
+                        <h:outputText value="#{estanteController.selected.NPisos}" title="#{bundle.ViewEstanteTitle_NPisos}"/>
+                        <h:outputText value="#{bundle.ViewEstanteLabel_estado}"/>
+                        <h:outputText value="#{estanteController.selected.estado}" title="#{bundle.ViewEstanteTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewEstanteLabel_observaciones}"/>
+                        <h:outputText value="#{estanteController.selected.observaciones}" title="#{bundle.ViewEstanteTitle_observaciones}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EstanteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

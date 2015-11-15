@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PersonalListForm">
+                <p:panel id="container" header="#{bundle.ListPersonalTitle}">
+                    <p:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.dni}:"/>
+                        <p:inputText value="#{personalController.params['dni']}">
+                            <p:ajax update="container"/>
+                        </p:inputText>
+                        <h:outputLabel value="#{bundle.nombComp}:"/>
+                        <p:inputText value="#{personalController.params['nombComp']}">
+                            <p:ajax update="container"/>
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:dataTable id="datalist" value="#{personalController.items}" var="item"
+                                 selectionMode="single" selection="#{personalController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.dni}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="marcacionButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="marcacionButton createButton viewButton editButton deleteButton"/>
+                        <p:column width="45">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column width="80">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.modLaboral}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modLaboral.abrev}"/>
+                        </p:column>
+                        <p:column width="65">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.dni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.nombComp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombComp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.tipoTrabajador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoTrabajador.nombre}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fechaNac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaNac}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="40">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.edad}"/>
+                            </f:facet>
+                            <h:outputText value="#{personalController.getEdad(item.fechaNac)}"/>
+                        </p:column>
+                        <p:column width="40">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.sexo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexo eq '1'?'M':'F'}"/>
+                        </p:column>
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{personalController.prepareCreate}"  oncomplete="PF('PersonalCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PersonalViewForm" oncomplete="PF('PersonalViewDialog').show()" disabled="#{empty personalController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PersonalEditForm" oncomplete="PF('PersonalEditDialog').show()" disabled="#{empty personalController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{personalController.destroy}" update=":growl,datalist" disabled="#{empty personalController.selected}"/>
+                        
+                            
+                        <p:button id="marcacionButton"   value="#{personalController.selected eq null?'xx':personalController.selected.dni}"
+                                      outcome="/personal/report/marcacion.xhtml" 
+                                      disabled="#{empty personalController.selected}">
+                                <f:param name="dni" value="#{personalController.selected.dni}" ></f:param>
+                            </p:button>
+                        
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

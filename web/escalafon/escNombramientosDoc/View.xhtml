@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNombramientosDocViewDlg" widgetVar="EscNombramientosDocViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscNombramientosDocTitle}">
+            <h:form id="EscNombramientosDocViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNombramientosDocController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_idNomd}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.idNomd}" title="#{bundle.ViewEscNombramientosDocTitle_idNomd}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_fechaNomb}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.fechaNomb}" title="#{bundle.ViewEscNombramientosDocTitle_fechaNomb}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_idDtra}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.idDtra}" title="#{bundle.ViewEscNombramientosDocTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_fechaFin}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.fechaFin}" title="#{bundle.ViewEscNombramientosDocTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_horas}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.horas}" title="#{bundle.ViewEscNombramientosDocTitle_horas}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escNombramientosDocController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_escCapDocente}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.escCapDocente}" title="#{bundle.ViewEscNombramientosDocTitle_escCapDocente}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosDocLabel_idEsc}"/>
+                        <h:outputText value="#{escNombramientosDocController.selected.idEsc}" title="#{bundle.ViewEscNombramientosDocTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscNombramientosDocViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

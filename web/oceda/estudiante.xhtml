@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:form>
+        <h:panelGrid style=" float: right" columns="2" cellpadding="5">
+            <p:commandButton value="Nuevo" icon="ui-icon-extlink" actionListener="#{dialogController.open()}">
+            <p:ajax/>
+            </p:commandButton>
+        </h:panelGrid>
+        <h:panelGrid width="100%">
+            <p:dataTable var="car2" value="#{ocedaService.getEstudianteList2(size)}">
+                <p:column width="36">
+                    <p:menuButton class="jmenucolumn" value="">
+                        <p:menuitem value="Descargar" actionListener="#{ocedaService.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Aprobar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Observar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Editar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Eliminar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                    </p:menuButton>
+                </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car2[0]}" />
+                </p:column>
+                <p:column headerText="Participante">
+                    <p:link value="#{car2[1]}">
+                        <f:param name="productId" value="10" />
+                    </p:link>
+                </p:column>
+                <p:column headerText="Especialidad2">
+                    <h:outputText value="#{car2[2]}" />
+                </p:column>
+                <p:column style="width:40px;text-align: center">
+                    <p:commandButton icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener value="#{car2}" target="#{demoView.estudiante}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid>
+    </h:form>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SMetaViewDlg" widgetVar="SMetaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSMetaTitle}">
+            <h:form id="SMetaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sMetaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSMetaLabel_idMeta}"/>
+                        <h:outputText value="#{sMetaController.selected.idMeta}" title="#{bundle.ViewSMetaTitle_idMeta}"/>
+                        <h:outputText value="#{bundle.ViewSMetaLabel_monto}"/>
+                        <h:outputText value="#{sMetaController.selected.monto}" title="#{bundle.ViewSMetaTitle_monto}"/>
+                        <h:outputText value="#{bundle.ViewSMetaLabel_estado}"/>
+                        <h:outputText value="#{sMetaController.selected.estado}" title="#{bundle.ViewSMetaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewSMetaLabel_fechaIni}"/>
+                        <h:outputText value="#{sMetaController.selected.fechaIni}" title="#{bundle.ViewSMetaTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSMetaLabel_fechaFin}"/>
+                        <h:outputText value="#{sMetaController.selected.fechaFin}" title="#{bundle.ViewSMetaTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSMetaLabel_idCargo}"/>
+                        <h:outputText value="#{sMetaController.selected.idCargo}" title="#{bundle.ViewSMetaTitle_idCargo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SMetaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

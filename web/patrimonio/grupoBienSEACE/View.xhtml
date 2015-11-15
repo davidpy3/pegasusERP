@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GrupoBienSEACEViewDlg" widgetVar="GrupoBienSEACEViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGrupoBienSEACETitle}">
+            <h:form id="GrupoBienSEACEViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{grupoBienSEACEController.selected != null}">
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_grupoBienSEACEPK_grupoBien}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.grupoBienSEACEPK.grupoBien}" title="#{bundle.ViewGrupoBienSEACETitle_grupoBienSEACEPK_grupoBien}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_grupoBienSEACEPK_tipoBien}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.grupoBienSEACEPK.tipoBien}" title="#{bundle.ViewGrupoBienSEACETitle_grupoBienSEACEPK_tipoBien}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_nombreGru}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.nombreGru}" title="#{bundle.ViewGrupoBienSEACETitle_nombreGru}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_alcanceGru}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.alcanceGru}" title="#{bundle.ViewGrupoBienSEACETitle_alcanceGru}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_flagActiv}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.flagActiv}" title="#{bundle.ViewGrupoBienSEACETitle_flagActiv}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_flagSbn}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.flagSbn}" title="#{bundle.ViewGrupoBienSEACETitle_flagSbn}"/>
+                        <h:outputText value="#{bundle.ViewGrupoBienSEACELabel_estado}"/>
+                        <h:outputText value="#{grupoBienSEACEController.selected.estado}" title="#{bundle.ViewGrupoBienSEACETitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="GrupoBienSEACEViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

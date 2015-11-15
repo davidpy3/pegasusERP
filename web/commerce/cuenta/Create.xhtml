@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentaCreateDlg" widgetVar="CuentaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCuentaTitle}">
+            <h:form id="CuentaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{cuentaController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_idCuenta}" for="idCuenta" />
+                        <p:inputText id="idCuenta" value="#{cuentaController.selected.idCuenta}" title="#{bundle.CreateCuentaTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreateCuentaRequiredMessage_idCuenta}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_tipoCuenta}" for="tipoCuenta" />
+                        <p:inputText id="tipoCuenta" value="#{cuentaController.selected.tipoCuenta}" title="#{bundle.CreateCuentaTitle_tipoCuenta}" required="true" requiredMessage="#{bundle.CreateCuentaRequiredMessage_tipoCuenta}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_moneda}" for="moneda" />
+                        <p:selectOneMenu style="width:200px" id="moneda" value="#{cuentaController.selected.moneda}" required="true">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{comMonedaController.itemsAvailableSelectOne}" var="item" 
+                                           itemValue="#{item}" itemLabel="#{item.moneda}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_banco}" for="banco" />
+                        <p:selectOneMenu style="width:200px" id="banco" value="#{cuentaController.selected.banco}" required="true">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bancoController.itemsAvailableSelectOne}" var="item" 
+                                           itemValue="#{item}" itemLabel="#{item.nombre}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_nroCuenta}" for="nroCuenta" />
+                        <p:inputText id="nroCuenta" value="#{cuentaController.selected.nroCuenta}" title="#{bundle.CreateCuentaTitle_nroCuenta}" required="true" requiredMessage="#{bundle.CreateCuentaRequiredMessage_nroCuenta}"/>
+                        <p:outputLabel value="#{bundle.CreateCuentaLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{cuentaController.selected.monto}" title="#{bundle.CreateCuentaTitle_monto}" required="true" requiredMessage="#{bundle.CreateCuentaRequiredMessage_monto}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuentaController.create}" value="#{bundle.Save}" update="display,:CuentaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CuentaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuentaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

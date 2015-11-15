@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscTipoCapCreateDlg" widgetVar="EscTipoCapCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscTipoCapTitle}">
+            <h:form id="EscTipoCapCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escTipoCapController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscTipoCapLabel_idTc}" for="idTc" />
+                        <p:inputText id="idTc" value="#{escTipoCapController.selected.idTc}" title="#{bundle.CreateEscTipoCapTitle_idTc}" required="true" requiredMessage="#{bundle.CreateEscTipoCapRequiredMessage_idTc}"/>
+                        <p:outputLabel value="#{bundle.CreateEscTipoCapLabel_tipos}" for="tipos" />
+                        <p:inputText id="tipos" value="#{escTipoCapController.selected.tipos}" title="#{bundle.CreateEscTipoCapTitle_tipos}" required="true" requiredMessage="#{bundle.CreateEscTipoCapRequiredMessage_tipos}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escTipoCapController.create}" value="#{bundle.Save}" update="display,:EscTipoCapListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscTipoCapCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscTipoCapCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

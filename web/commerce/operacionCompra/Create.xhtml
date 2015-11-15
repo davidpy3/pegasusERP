@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionCompraCreateDlg" widgetVar="ComOperacionCompraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOperacionCompraTitle}">
+            <h:form id="ComOperacionCompraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionCompraController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionCompraController.selected.idOperacion}" title="#{bundle.CreateComOperacionCompraTitle_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_idDirProveedor}" for="idDirProveedor" />
+                        <p:inputText id="idDirProveedor" value="#{comOperacionCompraController.selected.idDirProveedor}" title="#{bundle.CreateComOperacionCompraTitle_idDirProveedor}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comOperacionCompraController.selected.idFuenteFinanciamiento}" title="#{bundle.CreateComOperacionCompraTitle_idFuenteFinanciamiento}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_idPrograma}" for="idPrograma" />
+                        <p:inputText id="idPrograma" value="#{comOperacionCompraController.selected.idPrograma}" title="#{bundle.CreateComOperacionCompraTitle_idPrograma}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_tasaImpuesto}" for="tasaImpuesto" />
+                        <p:inputText id="tasaImpuesto" value="#{comOperacionCompraController.selected.tasaImpuesto}" title="#{bundle.CreateComOperacionCompraTitle_tasaImpuesto}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_tasaImpuesto}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOperacionCompraController.selected.subTotal}" title="#{bundle.CreateComOperacionCompraTitle_subTotal}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_subTotal}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_impuesto}" for="impuesto" />
+                        <p:inputText id="impuesto" value="#{comOperacionCompraController.selected.impuesto}" title="#{bundle.CreateComOperacionCompraTitle_impuesto}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_impuesto}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{comOperacionCompraController.selected.total}" title="#{bundle.CreateComOperacionCompraTitle_total}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_saldo}" for="saldo" />
+                        <p:inputText id="saldo" value="#{comOperacionCompraController.selected.saldo}" title="#{bundle.CreateComOperacionCompraTitle_saldo}" required="true" requiredMessage="#{bundle.CreateComOperacionCompraRequiredMessage_saldo}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionCompraLabel_idPecosa}" for="idPecosa" />
+                        <p:inputText id="idPecosa" value="#{comOperacionCompraController.selected.idPecosa}" title="#{bundle.CreateComOperacionCompraTitle_idPecosa}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionCompraController.create}" value="#{bundle.Save}" update="display,:ComOperacionCompraListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOperacionCompraCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionCompraCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcDocRevisionCreateDlg" widgetVar="SgcDocRevisionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcDocRevisionTitle}">
+            <h:form id="SgcDocRevisionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcDocRevisionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_idDocrev}" for="idDocrev" />
+                        <p:inputText id="idDocrev" value="#{sgcDocRevisionController.selected.idDocrev}" title="#{bundle.CreateSgcDocRevisionTitle_idDocrev}" required="true" requiredMessage="#{bundle.CreateSgcDocRevisionRequiredMessage_idDocrev}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_idDoc}" for="idDoc" />
+                        <p:inputText id="idDoc" value="#{sgcDocRevisionController.selected.idDoc}" title="#{bundle.CreateSgcDocRevisionTitle_idDoc}" required="true" requiredMessage="#{bundle.CreateSgcDocRevisionRequiredMessage_idDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcDocRevisionController.selected.idFuente}" title="#{bundle.CreateSgcDocRevisionTitle_idFuente}" />
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{sgcDocRevisionController.selected.codigo}" title="#{bundle.CreateSgcDocRevisionTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcDocRevisionController.selected.fecha}" title="#{bundle.EditSgcDocRevisionTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_revision}" for="revision" />
+                        <p:inputTextarea rows="4" cols="30" id="revision" value="#{sgcDocRevisionController.selected.revision}" title="#{bundle.CreateSgcDocRevisionTitle_revision}" />
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_paginas}" for="paginas" />
+                        <p:inputText id="paginas" value="#{sgcDocRevisionController.selected.paginas}" title="#{bundle.CreateSgcDocRevisionTitle_paginas}" />
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_filename}" for="filename" />
+                        <p:inputText id="filename" value="#{sgcDocRevisionController.selected.filename}" title="#{bundle.CreateSgcDocRevisionTitle_filename}" required="true" requiredMessage="#{bundle.CreateSgcDocRevisionRequiredMessage_filename}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcDocRevisionLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{sgcDocRevisionController.selected.idCreador}" title="#{bundle.CreateSgcDocRevisionTitle_idCreador}" required="true" requiredMessage="#{bundle.CreateSgcDocRevisionRequiredMessage_idCreador}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcDocRevisionController.create}" value="#{bundle.Save}" update="display,:SgcDocRevisionListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcDocRevisionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcDocRevisionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

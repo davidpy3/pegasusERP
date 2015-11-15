@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEstudioViewDlg" widgetVar="EscEstudioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscEstudioTitle}">
+            <h:form id="EscEstudioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEstudioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_idEsc}"/>
+                        <h:outputText value="#{escEstudioController.selected.idEsc}" title="#{bundle.ViewEscEstudioTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_fecha}"/>
+                        <h:outputText value="#{escEstudioController.selected.fecha}" title="#{bundle.ViewEscEstudioTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_mension}"/>
+                        <h:outputText value="#{escEstudioController.selected.mension}" title="#{bundle.ViewEscEstudioTitle_mension}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_materia}"/>
+                        <h:outputText value="#{escEstudioController.selected.materia}" title="#{bundle.ViewEscEstudioTitle_materia}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_id}"/>
+                        <h:outputText value="#{escEstudioController.selected.id}" title="#{bundle.ViewEscEstudioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escEstudioController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_fechaIni}"/>
+                        <h:outputText value="#{escEstudioController.selected.fechaIni}" title="#{bundle.ViewEscEstudioTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_fechaFin}"/>
+                        <h:outputText value="#{escEstudioController.selected.fechaFin}" title="#{bundle.ViewEscEstudioTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_fechaAprcu}"/>
+                        <h:outputText value="#{escEstudioController.selected.fechaAprcu}" title="#{bundle.ViewEscEstudioTitle_fechaAprcu}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_nroLibro}"/>
+                        <h:outputText value="#{escEstudioController.selected.nroLibro}" title="#{bundle.ViewEscEstudioTitle_nroLibro}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_folio}"/>
+                        <h:outputText value="#{escEstudioController.selected.folio}" title="#{bundle.ViewEscEstudioTitle_folio}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_nroOrden}"/>
+                        <h:outputText value="#{escEstudioController.selected.nroOrden}" title="#{bundle.ViewEscEstudioTitle_nroOrden}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_gradoAbrev}"/>
+                        <h:outputText value="#{escEstudioController.selected.gradoAbrev}" title="#{bundle.ViewEscEstudioTitle_gradoAbrev}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_nroMatricula}"/>
+                        <h:outputText value="#{escEstudioController.selected.nroMatricula}" title="#{bundle.ViewEscEstudioTitle_nroMatricula}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_escInstituciones}"/>
+                        <h:outputText value="#{escEstudioController.selected.escInstituciones}" title="#{bundle.ViewEscEstudioTitle_escInstituciones}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_escNivelEstudios}"/>
+                        <h:outputText value="#{escEstudioController.selected.escNivelEstudios}" title="#{bundle.ViewEscEstudioTitle_escNivelEstudios}"/>
+                        <h:outputText value="#{bundle.ViewEscEstudioLabel_idPl}"/>
+                        <h:outputText value="#{escEstudioController.selected.idPl}" title="#{bundle.ViewEscEstudioTitle_idPl}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscEstudioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

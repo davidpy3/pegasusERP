@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SvaEncuestaEspecialidadListForm">
+                <p:panel header="#{bundle.ListSvaEncuestaEspecialidadTitle}">
+                    <p:dataTable id="datalist" value="#{svaEncuestaEspecialidadController.items}" var="item"
+                                 selectionMode="single" selection="#{svaEncuestaEspecialidadController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idEncuesta}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 
+                                 
+                                 
+                                 
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEncuesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEncuesta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idAutoevaluacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutoevaluacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idAcper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAcper}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEspecialidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idModelo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idModelo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idCuestionario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCuestionario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaIni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaIni}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEditor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEditor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idCreador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCreador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_activo}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaReg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaReg}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{svaEncuestaEspecialidadController.prepareCreate}" update=":SvaEncuestaEspecialidadCreateForm" oncomplete="PF('SvaEncuestaEspecialidadCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SvaEncuestaEspecialidadViewForm" oncomplete="PF('SvaEncuestaEspecialidadViewDialog').show()" disabled="#{empty svaEncuestaEspecialidadController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SvaEncuestaEspecialidadEditForm" oncomplete="PF('SvaEncuestaEspecialidadEditDialog').show()" disabled="#{empty svaEncuestaEspecialidadController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{svaEncuestaEspecialidadController.destroy}" update=":growl,datalist" disabled="#{empty svaEncuestaEspecialidadController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsAmbitoAcadEditDlg" widgetVar="ApsAmbitoAcadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditApsAmbitoAcadTitle}">
+            <h:form id="ApsAmbitoAcadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsAmbitoAcadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditApsAmbitoAcadLabel_idAmbito}" for="idAmbito" />
+                        <p:inputText id="idAmbito" value="#{apsAmbitoAcadController.selected.idAmbito}" title="#{bundle.EditApsAmbitoAcadTitle_idAmbito}" required="true" requiredMessage="#{bundle.EditApsAmbitoAcadRequiredMessage_idAmbito}"/>
+                        <p:outputLabel value="#{bundle.EditApsAmbitoAcadLabel_ambito}" for="ambito" />
+                        <p:inputText id="ambito" value="#{apsAmbitoAcadController.selected.ambito}" title="#{bundle.EditApsAmbitoAcadTitle_ambito}" />
+                        <p:outputLabel value="#{bundle.EditApsAmbitoAcadLabel_fechaInsert}" for="fechaInsert" />
+                        <p:calendar id="fechaInsert" pattern="MM/dd/yyyy" value="#{apsAmbitoAcadController.selected.fechaInsert}" title="#{bundle.EditApsAmbitoAcadTitle_fechaInsert}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditApsAmbitoAcadLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{apsAmbitoAcadController.selected.estado}" required="true" requiredMessage="#{bundle.EditApsAmbitoAcadRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditApsAmbitoAcadLabel_abr}" for="abr" />
+                        <p:inputText id="abr" value="#{apsAmbitoAcadController.selected.abr}" title="#{bundle.EditApsAmbitoAcadTitle_abr}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsAmbitoAcadController.update}" value="#{bundle.Save}" update="display,:ApsAmbitoAcadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ApsAmbitoAcadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsAmbitoAcadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

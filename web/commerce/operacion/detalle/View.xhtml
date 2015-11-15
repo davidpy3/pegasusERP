@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionDetalleViewDlg" widgetVar="ComOperacionDetalleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOperacionDetalleTitle}">
+            <h:form id="ComOperacionDetalleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionDetalleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_comOperacionDetallePK_idItem}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.comOperacionDetallePK.idItem}" title="#{bundle.ViewComOperacionDetalleTitle_comOperacionDetallePK_idItem}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_comOperacionDetallePK_idOperacion}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.comOperacionDetallePK.idOperacion}" title="#{bundle.ViewComOperacionDetalleTitle_comOperacionDetallePK_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idArticulo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idArticulo}" title="#{bundle.ViewComOperacionDetalleTitle_idArticulo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_descripcion}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.descripcion}" title="#{bundle.ViewComOperacionDetalleTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_codigo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.codigo}" title="#{bundle.ViewComOperacionDetalleTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_cantidad}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.cantidad}" title="#{bundle.ViewComOperacionDetalleTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idPlan}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idPlan}" title="#{bundle.ViewComOperacionDetalleTitle_idPlan}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_meses}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.meses}" title="#{bundle.ViewComOperacionDetalleTitle_meses}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idGrupo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idGrupo}" title="#{bundle.ViewComOperacionDetalleTitle_idGrupo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_precio}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.precio}" title="#{bundle.ViewComOperacionDetalleTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_costo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.costo}" title="#{bundle.ViewComOperacionDetalleTitle_costo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_tipo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.tipo}" title="#{bundle.ViewComOperacionDetalleTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_alta}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.alta}" title="#{bundle.ViewComOperacionDetalleTitle_alta}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idMarca}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idMarca}" title="#{bundle.ViewComOperacionDetalleTitle_idMarca}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idModelo}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idModelo}" title="#{bundle.ViewComOperacionDetalleTitle_idModelo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_disponible}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.disponible}" title="#{bundle.ViewComOperacionDetalleTitle_disponible}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_detalle}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.detalle}" title="#{bundle.ViewComOperacionDetalleTitle_detalle}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idUnidad}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idUnidad}" title="#{bundle.ViewComOperacionDetalleTitle_idUnidad}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_cantidadPaquete}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.cantidadPaquete}" title="#{bundle.ViewComOperacionDetalleTitle_cantidadPaquete}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_subTotal}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.subTotal}" title="#{bundle.ViewComOperacionDetalleTitle_subTotal}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idOperacionOrigen}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idOperacionOrigen}" title="#{bundle.ViewComOperacionDetalleTitle_idOperacionOrigen}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idItemOrigen}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idItemOrigen}" title="#{bundle.ViewComOperacionDetalleTitle_idItemOrigen}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{comOperacionDetalleController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewComOperacionDetalleLabel_idAlta}"/>
+                        <h:outputText value="#{comOperacionDetalleController.selected.idAlta}" title="#{bundle.ViewComOperacionDetalleTitle_idAlta}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOperacionDetalleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

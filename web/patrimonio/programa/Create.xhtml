@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProgramaCreateDlg" widgetVar="ProgramaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProgramaTitle}">
+            <h:form id="ProgramaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{programaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProgramaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{programaController.selected.estado}" title="#{bundle.CreateProgramaTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateProgramaLabel_funcion1}" for="funcion1" />
+                        <p:selectOneMenu id="funcion1" value="#{programaController.selected.funcion1}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_funcion1}">
+                            <f:selectItems value="#{funcionController.itemsAvailableSelectOne}"
+                                           var="funcion1Item"
+                                           itemValue="#{funcion1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProgramaLabel_programaNombre}" for="programaNombre" />
+                        <p:selectOneMenu id="programaNombre" value="#{programaController.selected.programaNombre}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_programaNombre}">
+                            <f:selectItems value="#{programaNombreController.itemsAvailableSelectOne}"
+                                           var="programaNombreItem"
+                                           itemValue="#{programaNombreItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{programaController.create}" value="#{bundle.Save}" update="display,:ProgramaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProgramaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProgramaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

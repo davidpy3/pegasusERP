@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtPersonaNaturalCreateDlg" widgetVar="DrtPersonaNaturalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDrtPersonaNaturalTitle}">
+            <h:form id="DrtPersonaNaturalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtPersonaNaturalController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{drtPersonaNaturalController.selected.idDir}" title="#{bundle.CreateDrtPersonaNaturalTitle_idDir}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idUbgNac}" for="idUbgNac" />
+                        <p:inputText id="idUbgNac" value="#{drtPersonaNaturalController.selected.idUbgNac}" title="#{bundle.CreateDrtPersonaNaturalTitle_idUbgNac}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_apMaterno}" for="apMaterno" />
+                        <p:inputText id="apMaterno" value="#{drtPersonaNaturalController.selected.apMaterno}" title="#{bundle.CreateDrtPersonaNaturalTitle_apMaterno}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_apMaterno}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_apPaterno}" for="apPaterno" />
+                        <p:inputText id="apPaterno" value="#{drtPersonaNaturalController.selected.apPaterno}" title="#{bundle.CreateDrtPersonaNaturalTitle_apPaterno}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_apPaterno}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{drtPersonaNaturalController.selected.nombre}" title="#{bundle.CreateDrtPersonaNaturalTitle_nombre}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{drtPersonaNaturalController.selected.sexo}" title="#{bundle.CreateDrtPersonaNaturalTitle_sexo}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_sexo}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_fechaNac}" for="fechaNac" />
+                        <p:calendar id="fechaNac" pattern="MM/dd/yyyy" value="#{drtPersonaNaturalController.selected.fechaNac}" title="#{bundle.EditDrtPersonaNaturalTitle_fechaNac}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_estadoPernat}" for="estadoPernat" />
+                        <p:inputText id="estadoPernat" value="#{drtPersonaNaturalController.selected.estadoPernat}" title="#{bundle.CreateDrtPersonaNaturalTitle_estadoPernat}" required="true" requiredMessage="#{bundle.CreateDrtPersonaNaturalRequiredMessage_estadoPernat}"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_fechaIng}" for="fechaIng" />
+                        <p:calendar id="fechaIng" pattern="MM/dd/yyyy" value="#{drtPersonaNaturalController.selected.fechaIng}" title="#{bundle.EditDrtPersonaNaturalTitle_fechaIng}" required="true" requiredMessage="#{bundle.EditDrtPersonaNaturalRequiredMessage_fechaIng}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{drtPersonaNaturalController.selected.direccion}" title="#{bundle.CreateDrtPersonaNaturalTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idUbgPro}" for="idUbgPro" />
+                        <p:inputText id="idUbgPro" value="#{drtPersonaNaturalController.selected.idUbgPro}" title="#{bundle.CreateDrtPersonaNaturalTitle_idUbgPro}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{drtPersonaNaturalController.selected.observacion}" title="#{bundle.CreateDrtPersonaNaturalTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idPdid}" for="idPdid" />
+                        <p:inputText id="idPdid" value="#{drtPersonaNaturalController.selected.idPdid}" title="#{bundle.CreateDrtPersonaNaturalTitle_idPdid}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_numeroPndid}" for="numeroPndid" />
+                        <p:inputText id="numeroPndid" value="#{drtPersonaNaturalController.selected.numeroPndid}" title="#{bundle.CreateDrtPersonaNaturalTitle_numeroPndid}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idPnec}" for="idPnec" />
+                        <p:inputText id="idPnec" value="#{drtPersonaNaturalController.selected.idPnec}" title="#{bundle.CreateDrtPersonaNaturalTitle_idPnec}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idGrpsng}" for="idGrpsng" />
+                        <p:inputText id="idGrpsng" value="#{drtPersonaNaturalController.selected.idGrpsng}" title="#{bundle.CreateDrtPersonaNaturalTitle_idGrpsng}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_nombreCompleto}" for="nombreCompleto" />
+                        <p:inputText id="nombreCompleto" value="#{drtPersonaNaturalController.selected.nombreCompleto}" title="#{bundle.CreateDrtPersonaNaturalTitle_nombreCompleto}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_idColegio}" for="idColegio" />
+                        <p:inputText id="idColegio" value="#{drtPersonaNaturalController.selected.idColegio}" title="#{bundle.CreateDrtPersonaNaturalTitle_idColegio}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_anioEgresoCole}" for="anioEgresoCole" />
+                        <p:inputText id="anioEgresoCole" value="#{drtPersonaNaturalController.selected.anioEgresoCole}" title="#{bundle.CreateDrtPersonaNaturalTitle_anioEgresoCole}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_updateFlow}" for="updateFlow" />
+                        <p:inputText id="updateFlow" value="#{drtPersonaNaturalController.selected.updateFlow}" title="#{bundle.CreateDrtPersonaNaturalTitle_updateFlow}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_emailPrin}" for="emailPrin" />
+                        <p:inputText id="emailPrin" value="#{drtPersonaNaturalController.selected.emailPrin}" title="#{bundle.CreateDrtPersonaNaturalTitle_emailPrin}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_telefonoPrin}" for="telefonoPrin" />
+                        <p:inputText id="telefonoPrin" value="#{drtPersonaNaturalController.selected.telefonoPrin}" title="#{bundle.CreateDrtPersonaNaturalTitle_telefonoPrin}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_celularPrin}" for="celularPrin" />
+                        <p:inputText id="celularPrin" value="#{drtPersonaNaturalController.selected.celularPrin}" title="#{bundle.CreateDrtPersonaNaturalTitle_celularPrin}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_updateSelf}" for="updateSelf" />
+                        <p:inputText id="updateSelf" value="#{drtPersonaNaturalController.selected.updateSelf}" title="#{bundle.CreateDrtPersonaNaturalTitle_updateSelf}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_otroColegio}" for="otroColegio" />
+                        <p:inputText id="otroColegio" value="#{drtPersonaNaturalController.selected.otroColegio}" title="#{bundle.CreateDrtPersonaNaturalTitle_otroColegio}" />
+                        <p:outputLabel value="#{bundle.CreateDrtPersonaNaturalLabel_drtDirectorio}" for="drtDirectorio" />
+                        <p:selectOneMenu id="drtDirectorio" value="#{drtPersonaNaturalController.selected.drtDirectorio}" required="true" requiredMessage="#{bundle.EditDrtPersonaNaturalRequiredMessage_drtDirectorio}">
+                            <f:selectItems value="#{drtDirectorioController.itemsAvailableSelectOne}"
+                                           var="drtDirectorioItem"
+                                           itemValue="#{drtDirectorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{drtPersonaNaturalController.create}" value="#{bundle.Save}" update="display,:DrtPersonaNaturalListForm:datalist,:growl" oncomplete="handleSubmit(args,'DrtPersonaNaturalCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DrtPersonaNaturalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

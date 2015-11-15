@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListComOperacionDetalleTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ComOperacionDetalleListForm">
+                <p:panel header="#{bundle.ListComOperacionDetalleTitle}">
+                    <p:dataTable id="datalist" value="#{comOperacionDetalleController.items}" var="item"
+                                 selectionMode="single" selection="#{comOperacionDetalleController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.comOperacionDetallePK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_comOperacionDetallePK_idOperacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comOperacionDetallePK.idOperacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_comOperacionDetallePK_idItem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comOperacionDetallePK.idItem}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idArticulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idArticulo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idPlan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPlan}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_meses}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.meses}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idGrupo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idGrupo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_precio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.precio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_costo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.costo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_tipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_alta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idMarca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMarca}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idModelo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idModelo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_disponible}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.disponible}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_detalle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detalle}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idUnidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUnidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_cantidadPaquete}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadPaquete}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_subTotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idOperacionOrigen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOperacionOrigen}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idItemOrigen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idItemOrigen}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_estado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComOperacionDetalleTitle_idAlta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAlta}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{comOperacionDetalleController.prepareCreate}" update=":ComOperacionDetalleCreateForm" oncomplete="PF('ComOperacionDetalleCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ComOperacionDetalleViewForm" oncomplete="PF('ComOperacionDetalleViewDialog').show()" disabled="#{empty comOperacionDetalleController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ComOperacionDetalleEditForm" oncomplete="PF('ComOperacionDetalleEditDialog').show()" disabled="#{empty comOperacionDetalleController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{comOperacionDetalleController.destroy}" update=":growl,datalist" disabled="#{empty comOperacionDetalleController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

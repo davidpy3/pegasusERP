@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoRepresentanteEditDlg" widgetVar="ComTipoRepresentanteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComTipoRepresentanteTitle}">
+            <h:form id="ComTipoRepresentanteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoRepresentanteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComTipoRepresentanteLabel_idTiprep}" for="idTiprep" />
+                        <p:inputText id="idTiprep" value="#{comTipoRepresentanteController.selected.idTiprep}" title="#{bundle.EditComTipoRepresentanteTitle_idTiprep}" required="true" requiredMessage="#{bundle.EditComTipoRepresentanteRequiredMessage_idTiprep}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoRepresentanteLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{comTipoRepresentanteController.selected.nombre}" title="#{bundle.EditComTipoRepresentanteTitle_nombre}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTipoRepresentanteController.update}" value="#{bundle.Save}" update="display,:ComTipoRepresentanteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComTipoRepresentanteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTipoRepresentanteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

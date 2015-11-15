@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscRotacionesCasViewDlg" widgetVar="EscRotacionesCasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscRotacionesCasTitle}">
+            <h:form id="EscRotacionesCasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escRotacionesCasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_idRot}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.idRot}" title="#{bundle.ViewEscRotacionesCasTitle_idRot}"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_fecInicio}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.fecInicio}" title="#{bundle.ViewEscRotacionesCasTitle_fecInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_fecFin}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.fecFin}" title="#{bundle.ViewEscRotacionesCasTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escRotacionesCasController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_idDtra}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.idDtra}" title="#{bundle.ViewEscRotacionesCasTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_mencion}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.mencion}" title="#{bundle.ViewEscRotacionesCasTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_jefe}"/>
+                        <p:selectBooleanCheckbox value="#{escRotacionesCasController.selected.jefe}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_escCap}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.escCap}" title="#{bundle.ViewEscRotacionesCasTitle_escCap}"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_idDesp}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.idDesp}" title="#{bundle.ViewEscRotacionesCasTitle_idDesp}"/>
+                        <h:outputText value="#{bundle.ViewEscRotacionesCasLabel_idEsc}"/>
+                        <h:outputText value="#{escRotacionesCasController.selected.idEsc}" title="#{bundle.ViewEscRotacionesCasTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscRotacionesCasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

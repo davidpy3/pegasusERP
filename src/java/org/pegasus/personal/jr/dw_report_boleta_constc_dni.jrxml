@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="068943b7-30a8-4288-855f-caba6ce6efb8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="213"/>
+	<parameter name="YEAR_NAME" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="anoEje" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.planillaPK.anoEje]]></fieldDescription>
+	</field>
+	<field name="NMes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[planilla.mes.NMes]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.modalidadLaboral.id]]></fieldDescription>
+	</field>
+	<field name="abrev" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.modalidadLaboral.abrev]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.modalidadLaboral.nombre]]></fieldDescription>
+	</field>
+	<field name="tipoTrab" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.tipoTrab]]></fieldDescription>
+	</field>
+	<field name="periodoIni" class="java.util.Date">
+		<fieldDescription><![CDATA[planilla.periodoIni]]></fieldDescription>
+	</field>
+	<field name="periodoFin" class="java.util.Date">
+		<fieldDescription><![CDATA[planilla.periodoFin]]></fieldDescription>
+	</field>
+	<field name="nivelRem" class="java.lang.String">
+		<fieldDescription><![CDATA[nivelRemunerativo.nivelRemunerativoPK.nivelRem]]></fieldDescription>
+	</field>
+	<field name="abrev_1" class="java.lang.String">
+		<fieldDescription><![CDATA[nivelRemunerativo.abrev]]></fieldDescription>
+	</field>
+	<field name="diasDm" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasDm]]></fieldDescription>
+	</field>
+	<field name="diasAgua" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasAgua]]></fieldDescription>
+	</field>
+	<field name="diasDom" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasDom]]></fieldDescription>
+	</field>
+	<field name="diasFer" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasFer]]></fieldDescription>
+	</field>
+	<field name="diasNor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasNor]]></fieldDescription>
+	</field>
+	<field name="diasFtrab" class="java.lang.Integer">
+		<fieldDescription><![CDATA[diasFtrab]]></fieldDescription>
+	</field>
+	<field name="nombreNm" class="java.lang.String">
+		<fieldDescription><![CDATA[planilla.meta.nombreNm]]></fieldDescription>
+	</field>
+	<field name="nombComp" class="java.lang.String">
+		<fieldDescription><![CDATA[personal.nombComp]]></fieldDescription>
+	</field>
+	<field name="nombre_1" class="java.lang.String">
+		<fieldDescription><![CDATA[nivelRemunerativo.nombre]]></fieldDescription>
+	</field>
+	<field name="dni" class="java.lang.String">
+		<fieldDescription><![CDATA[planillaTrabPK.dni]]></fieldDescription>
+	</field>
+	<group name="anoEje">
+		<groupExpression><![CDATA[$F{anoEje}]]></groupExpression>
+		<groupHeader>
+			<band height="61">
+				<textField>
+					<reportElement x="17" y="12" width="100" height="20" uuid="61db6b89-aaf9-4215-b33b-02a7f3aed6c3"/>
+					<textFieldExpression><![CDATA[$F{anoEje}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="127" y="12" width="100" height="20" uuid="53f39b74-3a15-4cd4-91ba-39af6941e3e8"/>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="74" y="36" width="295" height="20" uuid="4e6e0dbd-0411-479c-8977-271a00148dbc"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECORD LABORAL E HISTORICO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="74" y="0" width="371" height="20" uuid="aa3afa4e-92cc-425e-a044-e0826c9f6891"/>
+				<textFieldExpression><![CDATA[$P{YEAR_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="232" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="51" width="475" height="34" uuid="dc1aceef-4e64-42c1-90bd-c7f5a1255f8c"/>
+				<text><![CDATA[LA QUE SUSCRIBE, JEFE DE LA OFICINA DE RECURSOS HUMANOS DE LA SUB REGION PACÍFICO - REGIÓN ANCASH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="83" width="100" height="20" uuid="f808a069-8855-499d-b7c7-43c11c0b6f73"/>
+				<text><![CDATA[C E R T I F I C A]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="27" y="103" width="100" height="20" uuid="2a073529-3d32-41a0-a85b-1e81e3ecdfcc"/>
+				<textFieldExpression><![CDATA["Que el SR. "+$F{nombComp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="137" width="520" height="57" uuid="2a1df400-ed04-4e81-90f2-a7a36dc32908"/>
+				<textFieldExpression><![CDATA["                  Identificado con D.N.I. Nº " + $F{dni} + ", ha trabajado bajo la Modalidad de Régimen " + 
+(  "4".equals($F{id})?"Construcción Civil": "Común") + " en las siguientes Obras:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f33152e3-d8e9-4ea9-8269-443f5b1e2bb1"/>
+				<text><![CDATA[planilla.mes.NMes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="0" width="100" height="20" uuid="6582427c-1f29-4068-84ed-6a76fff1aea3"/>
+				<text><![CDATA[nivelRemunerativo.nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="100" height="20" uuid="3a38ba16-6cb7-44d1-8b69-86ee0ebe4e95"/>
+				<text><![CDATA[planilla.meta.nombreNm]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="27" y="2" width="100" height="20" uuid="da930c32-f057-4247-b33a-cbfaa1a145a0"/>
+				<textFieldExpression><![CDATA[$F{NMes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="2" width="100" height="20" uuid="1d75b7ef-1566-4da7-b115-2ec779cfa76d"/>
+				<textFieldExpression><![CDATA[$F{nombre_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="14" width="100" height="20" uuid="d1769cdc-959d-4faa-a683-12edcee5b57d"/>
+				<textFieldExpression><![CDATA[$F{nombreNm}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="48" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="0" width="436" height="54" uuid="2afbac2c-ad77-46b7-8a52-487fd4324c66"/>
+				<text><![CDATA[                   Se expide el presente documento a solicitud del interesado para los fines que estime conveniente.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

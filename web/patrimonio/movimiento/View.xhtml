@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatriMovimientoViewDlg" widgetVar="PatriMovimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPatriMovimientoTitle}">
+            <h:form id="PatriMovimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{patriMovimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_patriMovimientoPK_numMov}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.patriMovimientoPK.numMov}" title="#{bundle.ViewPatriMovimientoTitle_patriMovimientoPK_numMov}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_patriMovimientoPK_anoEje}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.patriMovimientoPK.anoEje}" title="#{bundle.ViewPatriMovimientoTitle_patriMovimientoPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_patriMovimientoPK_tipoMov}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.patriMovimientoPK.tipoMov}" title="#{bundle.ViewPatriMovimientoTitle_patriMovimientoPK_tipoMov}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_fechaReg}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.fechaReg}" title="#{bundle.ViewPatriMovimientoTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_fechaMov}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.fechaMov}" title="#{bundle.ViewPatriMovimientoTitle_fechaMov}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_fechaSalida}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.fechaSalida}" title="#{bundle.ViewPatriMovimientoTitle_fechaSalida}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_fechaRetorno}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.fechaRetorno}" title="#{bundle.ViewPatriMovimientoTitle_fechaRetorno}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_retorno}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.retorno}" title="#{bundle.ViewPatriMovimientoTitle_retorno}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_emplOrigen}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.emplOrigen}" title="#{bundle.ViewPatriMovimientoTitle_emplOrigen}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_emplDestino}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.emplDestino}" title="#{bundle.ViewPatriMovimientoTitle_emplDestino}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_localOrigen}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.localOrigen}" title="#{bundle.ViewPatriMovimientoTitle_localOrigen}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_localDestino}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.localDestino}" title="#{bundle.ViewPatriMovimientoTitle_localDestino}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_descDestino}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.descDestino}" title="#{bundle.ViewPatriMovimientoTitle_descDestino}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_areaOrigen}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.areaOrigen}" title="#{bundle.ViewPatriMovimientoTitle_areaOrigen}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_areaDestino}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.areaDestino}" title="#{bundle.ViewPatriMovimientoTitle_areaDestino}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_oficinaOrigen}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.oficinaOrigen}" title="#{bundle.ViewPatriMovimientoTitle_oficinaOrigen}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_oficinaDestino}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.oficinaDestino}" title="#{bundle.ViewPatriMovimientoTitle_oficinaDestino}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_motivo}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.motivo}" title="#{bundle.ViewPatriMovimientoTitle_motivo}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_estado}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.estado}" title="#{bundle.ViewPatriMovimientoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_selec}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.selec}" title="#{bundle.ViewPatriMovimientoTitle_selec}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoLabel_observaciones}"/>
+                        <h:outputText value="#{patriMovimientoController.selected.observaciones}" title="#{bundle.ViewPatriMovimientoTitle_observaciones}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PatriMovimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

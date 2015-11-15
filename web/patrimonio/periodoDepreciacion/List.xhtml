@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPeriodoDepreciacionTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PeriodoDepreciacionListForm">
+                <p:panel header="#{bundle.ListPeriodoDepreciacionTitle}">
+                    <p:dataTable styleClass="td-center" id="datalist" value="#{periodoDepreciacionController.items}" var="item"
+                                 selectionMode="single" selection="#{periodoDepreciacionController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codPeriodo}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton reportMenu gearButton closeButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton reportMenu gearButton closeButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.codPeriodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPeriodo}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Periodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodo}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Anio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anoInv}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numInv}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.RegistradoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userRegistra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.FechaReg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistra}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.CerradoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userCierre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.FechaCierre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCierre}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column styleClass="centeredColumn">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado eq '1'?'CERRADO':'INICIADO'}"/>
+
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{periodoDepreciacionController.prepareCreate}" update=":PeriodoDepreciacionCreateForm" oncomplete="PF('PeriodoDepreciacionCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PeriodoDepreciacionViewForm" oncomplete="PF('PeriodoDepreciacionViewDialog').show()" disabled="#{empty periodoDepreciacionController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PeriodoDepreciacionEditForm" oncomplete="PF('PeriodoDepreciacionEditDialog').show()" disabled="#{empty periodoDepreciacionController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{periodoDepreciacionController.destroy}" update=":growl,datalist" disabled="#{empty periodoDepreciacionController.selected}"/>
+                            <p:spacer width="16"  />
+                            <p:commandButton id="gearButton" icon="ui-icon-gear"  value="#{bundle.Procesar}" actionListener="#{periodoDepreciacionController.procesar}" update=":growl,datalist" disabled="#{empty periodoDepreciacionController.selected or periodoDepreciacionController.selected.estado eq '1'}"/>
+                            <p:commandButton id="closeButton" icon="ui-icon-close"  value="#{bundle.Cerrar}" actionListener="#{periodoDepreciacionController.cerrar}" update=":growl,datalist" disabled="#{empty periodoDepreciacionController.selected or periodoDepreciacionController.selected.estado eq '1'}"/>
+                            <p:menuButton id="reportMenu" value="#{bundle.Report}" disabled="#{empty periodoDepreciacionController.selected}">
+                                <p:menuitem id="reportButton1" icon="ui-icon-search" value="Detallado por Cuenta" update=":PeriodoDepreciacionViewForm" oncomplete="PF('PeriodoDepreciacionViewDialog').show()" />
+                                <p:menuitem id="reportButton2" icon="ui-icon-search" value="Simple por Cuenta" update=":PeriodoDepreciacionViewForm" oncomplete="PF('PeriodoDepreciacionViewDialog').show()" />
+                            </p:menuButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

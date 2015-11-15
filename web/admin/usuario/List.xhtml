@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle0.ListUsuarioTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="UsuarioListForm">
+                <p:panel header="#{bundle0.ListUsuarioTitle}">
+                    <p:dataTable id="datalist" value="#{usuarioController.items}" var="item"
+                                 selectionMode="single" selection="#{usuarioController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.usuarioPK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_usuarioPK_anoEje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioPK.anoEje}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_usuarioPK_dni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioPK.dni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_IDcargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.IDcargo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_anio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_obra}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.obra}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_actProy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.actProy}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_secFunc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.secFunc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_autoriza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autoriza}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_localHost}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localHost}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_localIp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localIp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_fecHora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecHora}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_ventana}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ventana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PConfig}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PConfig}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PPresu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PPresu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PReque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PReque}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PAltad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PAltad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PAbast}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PAbast}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PAdqui}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PAdqui}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PAlmac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PAlmac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PPerso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PPerso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PPaac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PPaac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PConta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PConta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle0.ListUsuarioTitle_PPatri}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PPatri}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle0.Create}" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle0.View}" update=":UsuarioViewForm" oncomplete="PF('UsuarioViewDialog').show()" disabled="#{empty usuarioController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle0.Edit}" update=":UsuarioEditForm" oncomplete="PF('UsuarioEditDialog').show()" disabled="#{empty usuarioController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle0.Delete}" actionListener="#{usuarioController.destroy}" update=":growl,datalist" disabled="#{empty usuarioController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

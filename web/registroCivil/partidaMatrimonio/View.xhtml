@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OmarPartidaMatViewDlg" widgetVar="OmarPartidaMatViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOmarPartidaMatTitle}">
+            <h:form id="OmarPartidaMatViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{omarPartidaMatController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_idPartidamat}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.idPartidamat}" title="#{bundle.ViewOmarPartidaMatTitle_idPartidamat}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_idUsuario}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.idUsuario}" title="#{bundle.ViewOmarPartidaMatTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_nombPartida}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.nombPartida}" title="#{bundle.ViewOmarPartidaMatTitle_nombPartida}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_nombPartidar}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.nombPartidar}" title="#{bundle.ViewOmarPartidaMatTitle_nombPartidar}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_libro}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.libro}" title="#{bundle.ViewOmarPartidaMatTitle_libro}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_folio}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.folio}" title="#{bundle.ViewOmarPartidaMatTitle_folio}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_esposo}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.esposo}" title="#{bundle.ViewOmarPartidaMatTitle_esposo}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_edadEsposo}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.edadEsposo}" title="#{bundle.ViewOmarPartidaMatTitle_edadEsposo}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_esposa}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.esposa}" title="#{bundle.ViewOmarPartidaMatTitle_esposa}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_edadEsposa}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.edadEsposa}" title="#{bundle.ViewOmarPartidaMatTitle_edadEsposa}"/>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_fechaMatrimonio}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.fechaMatrimonio}" title="#{bundle.ViewOmarPartidaMatTitle_fechaMatrimonio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOmarPartidaMatLabel_fechaRegistro}"/>
+                        <h:outputText value="#{omarPartidaMatController.selected.fechaRegistro}" title="#{bundle.ViewOmarPartidaMatTitle_fechaRegistro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OmarPartidaMatViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

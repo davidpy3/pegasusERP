@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsEscuelaEfcapEditDlg" widgetVar="ApsEscuelaEfcapEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditApsEscuelaEfcapTitle}">
+            <h:form id="ApsEscuelaEfcapEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsEscuelaEfcapController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_idEscuela}" for="idEscuela" />
+                        <p:inputText id="idEscuela" value="#{apsEscuelaEfcapController.selected.idEscuela}" title="#{bundle.EditApsEscuelaEfcapTitle_idEscuela}" required="true" requiredMessage="#{bundle.EditApsEscuelaEfcapRequiredMessage_idEscuela}"/>
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_codEap}" for="codEap" />
+                        <p:inputText id="codEap" value="#{apsEscuelaEfcapController.selected.codEap}" title="#{bundle.EditApsEscuelaEfcapTitle_codEap}" />
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{apsEscuelaEfcapController.selected.nombre}" title="#{bundle.EditApsEscuelaEfcapTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_abr}" for="abr" />
+                        <p:inputText id="abr" value="#{apsEscuelaEfcapController.selected.abr}" title="#{bundle.EditApsEscuelaEfcapTitle_abr}" />
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{apsEscuelaEfcapController.selected.estado}" required="true" requiredMessage="#{bundle.EditApsEscuelaEfcapRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditApsEscuelaEfcapLabel_idFacultad}" for="idFacultad" />
+                        <p:selectOneMenu id="idFacultad" value="#{apsEscuelaEfcapController.selected.idFacultad}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsFacultadEfcapController.itemsAvailableSelectOne}"
+                                           var="idFacultadItem"
+                                           itemValue="#{idFacultadItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsEscuelaEfcapController.update}" value="#{bundle.Save}" update="display,:ApsEscuelaEfcapListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ApsEscuelaEfcapEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsEscuelaEfcapEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

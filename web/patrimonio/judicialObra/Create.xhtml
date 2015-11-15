@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JudicialObraCreateDlg" widgetVar="JudicialObraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateJudicialObraTitle}">
+            <h:form id="JudicialObraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{judicialObraController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_judicialObraPK_docudem}" for="judicialObraPK_docudem" />
+                        <p:inputText id="judicialObraPK_docudem" value="#{judicialObraController.selected.judicialObraPK.docudem}" title="#{bundle.CreateJudicialObraTitle_judicialObraPK_docudem}" required="true" requiredMessage="#{bundle.CreateJudicialObraRequiredMessage_judicialObraPK_docudem}"/>
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_judicialObraPK_docuiden}" for="judicialObraPK_docuiden" />
+                        <p:inputText id="judicialObraPK_docuiden" value="#{judicialObraController.selected.judicialObraPK.docuiden}" title="#{bundle.CreateJudicialObraTitle_judicialObraPK_docuiden}" required="true" requiredMessage="#{bundle.CreateJudicialObraRequiredMessage_judicialObraPK_docuiden}"/>
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_nomDeman}" for="nomDeman" />
+                        <p:inputText id="nomDeman" value="#{judicialObraController.selected.nomDeman}" title="#{bundle.CreateJudicialObraTitle_nomDeman}" />
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_descJudi}" for="descJudi" />
+                        <p:inputText id="descJudi" value="#{judicialObraController.selected.descJudi}" title="#{bundle.CreateJudicialObraTitle_descJudi}" />
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_porcJudi}" for="porcJudi" />
+                        <p:inputText id="porcJudi" value="#{judicialObraController.selected.porcJudi}" title="#{bundle.CreateJudicialObraTitle_porcJudi}" required="true" requiredMessage="#{bundle.CreateJudicialObraRequiredMessage_porcJudi}"/>
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_tipoAbono}" for="tipoAbono" />
+                        <p:inputText id="tipoAbono" value="#{judicialObraController.selected.tipoAbono}" title="#{bundle.CreateJudicialObraTitle_tipoAbono}" />
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_cuentaAbono}" for="cuentaAbono" />
+                        <p:inputText id="cuentaAbono" value="#{judicialObraController.selected.cuentaAbono}" title="#{bundle.CreateJudicialObraTitle_cuentaAbono}" />
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_indDesc}" for="indDesc" />
+                        <p:inputText id="indDesc" value="#{judicialObraController.selected.indDesc}" title="#{bundle.CreateJudicialObraTitle_indDesc}" />
+                        <p:outputLabel value="#{bundle.CreateJudicialObraLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{judicialObraController.selected.estado}" title="#{bundle.CreateJudicialObraTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{judicialObraController.create}" value="#{bundle.Save}" update="display,:JudicialObraListForm:datalist,:growl" oncomplete="handleSubmit(args,'JudicialObraCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="JudicialObraCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

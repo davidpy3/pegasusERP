@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListValorizacionTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ValorizacionListForm">
+                <p:panel header="#{bundle.ListValorizacionTitle}">
+                    <p:dataTable id="datalist" value="#{valorizacionController.items}" var="item"
+                                 selectionMode="single" selection="#{valorizacionController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.valorizacionPK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_valorizacionPK_NValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorizacionPK.NValor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_valorizacionPK_tipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorizacionPK.tipo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_valorizacionPK_NOrden}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorizacionPK.NOrden}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_valorizacionPK_tipoValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorizacionPK.tipoValor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_valorizacionPK_anoEje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorizacionPK.anoEje}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_porcProp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcProp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_porcValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcValor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_montoProp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montoProp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_montoValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montoValor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListValorizacionTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{valorizacionController.prepareCreate}" update=":ValorizacionCreateForm" oncomplete="PF('ValorizacionCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ValorizacionViewForm" oncomplete="PF('ValorizacionViewDialog').show()" disabled="#{empty valorizacionController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ValorizacionEditForm" oncomplete="PF('ValorizacionEditDialog').show()" disabled="#{empty valorizacionController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{valorizacionController.destroy}" update=":growl,datalist" disabled="#{empty valorizacionController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

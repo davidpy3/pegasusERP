@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalEditDlg" widgetVar="PersonalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPersonalTitle}">
+            <h:form id="PersonalEditForm">
+                <h:panelGroup id="display">
+                    <p:tabView rendered="#{personalController.selected != null}">
+
+                        <p:tab title="#{bundle.datosPersonales}">
+
+
+                            <p:panelGrid columns="6">
+
+                                <p:outputLabel value="#{bundle.dni}" for="dni" />
+                                <p:inputText id="dni" value="#{personalController.selected.dni}" title="#{bundle.EditPersonalTitle_dni}" required="true" requiredMessage="#{bundle.EditPersonalRequiredMessage_dni}"/>
+                                <p:outputLabel value="#{bundle.apPaterno}" for="apPaterno" />
+                                <p:inputText id="apPaterno" value="#{personalController.selected.apPaterno}" title="#{bundle.EditPersonalTitle_apPaterno}" />
+                                <p:outputLabel value="#{bundle.apMaterno}" for="apMaterno" />
+                                <p:inputText id="apMaterno" value="#{personalController.selected.apMaterno}" title="#{bundle.EditPersonalTitle_apMaterno}" />
+                                <p:outputLabel value="#{bundle.nombres}" for="nombres" />
+                                <p:inputText id="nombres" value="#{personalController.selected.nombres}" title="#{bundle.EditPersonalTitle_nombres}" />
+                                <p:outputLabel value="#{bundle.fechaNac}" for="fechaNac" />
+                                <p:calendar id="fechaNac" pattern="dd/MM/yyyy HH:mm:ss" value="#{personalController.selected.fechaNac}" title="#{bundle.EditPersonalTitle_fechaNac}"  showOn="button"/>
+                                <p:outputLabel value="#{bundle.sexo}" for="sexo" />
+                                <p:inputText id="sexo" value="#{personalController.selected.sexo}" title="#{bundle.EditPersonalTitle_sexo}" />
+                                <p:outputLabel value="#{bundle.entidad}" for="entidad" />
+                                <p:inputText id="entidad" value="#{personalController.selected.entidad}" title="#{bundle.EditPersonalTitle_entidad}" />
+                                <p:outputLabel value="#{bundle.estadoCivil}" for="estadoCivil" />
+                                <p:inputText id="estadoCivil" value="#{personalController.selected.estadoCivil}" title="#{bundle.EditPersonalTitle_estadoCivil}" />
+                                <p:outputLabel value="#{bundle.nombrePareja}" for="nombrePareja" />
+                                <p:inputText id="nombrePareja" value="#{personalController.selected.nombrePareja}" title="#{bundle.EditPersonalTitle_nombrePareja}" />
+                                <p:outputLabel value="#{bundle.numHijos}" for="numHijos" />
+                                <p:inputText id="numHijos" value="#{personalController.selected.numHijos}" title="#{bundle.EditPersonalTitle_numHijos}" />
+                                <p:outputLabel value="#{bundle.ubicaFoto}" for="ubicaFoto" />
+                                <p:inputText id="ubicaFoto" value="#{personalController.selected.ubicaFoto}" title="#{bundle.EditPersonalTitle_ubicaFoto}" />
+                                <p:outputLabel value="#{bundle.ruc}" for="ruc" />
+                                <p:inputText id="ruc" value="#{personalController.selected.ruc}" title="#{bundle.EditPersonalTitle_ruc}" />
+
+
+                                <p:outputLabel value="#{bundle.sitEspecial}" for="sitEspecial" />
+                                <p:inputText id="sitEspecial" value="#{personalController.selected.sitEspecial}" title="#{bundle.EditPersonalTitle_sitEspecial}" />
+                                <p:outputLabel value="#{bundle.nivelRem}" for="nivelRem" />
+                                <p:inputText id="nivelRem" value="#{personalController.selected.nivelRem}" title="#{bundle.EditPersonalTitle_nivelRem}" />
+                                <p:outputLabel value="#{bundle.cargoFunc}" for="cargoFunc" />
+                                <p:inputText id="cargoFunc" value="#{personalController.selected.cargoFunc}" title="#{bundle.EditPersonalTitle_cargoFunc}" />
+                                <p:outputLabel value="#{bundle.estado}" for="estado" />
+                                <p:inputText id="estado" value="#{personalController.selected.estado}" title="#{bundle.EditPersonalTitle_estado}" />
+                                <p:outputLabel value="#{bundle.funcionario}" for="funcionario" />
+                                <p:inputText id="funcionario" value="#{personalController.selected.funcionario}" title="#{bundle.EditPersonalTitle_funcionario}" />
+
+                                <p:outputLabel value="#{bundle.telefono}" for="telefono" />
+                                <p:inputText id="telefono" value="#{personalController.selected.telefono}" title="#{bundle.EditPersonalTitle_telefono}" />
+                                <p:outputLabel value="#{bundle.correoE}" for="correoE" />
+                                <p:inputText id="correoE" value="#{personalController.selected.correoE}" title="#{bundle.EditPersonalTitle_correoE}" />
+                                <p:outputLabel value="#{bundle.nacionalidad}" for="nacionalidad" />
+                                <p:autoComplete size="20" id="nacionalidad" value="#{personalController.selected.nacionalidad}" completeMethod="#{paisController.complete}"
+                                                var="v" itemLabel="#{v.id}: #{v.nombre}" itemValue="#{v}" forceSelection="true">
+                                    <p:column>
+                                        <h:outputText value="#{v.id}: #{v.nombre}" />
+                                    </p:column>
+                                </p:autoComplete>
+                                <p:outputLabel value="#{bundle.tipoContrato}" for="tipoContrato" />
+                                <p:selectOneMenu style="width:190px" id="tipoContrato" value="#{personalController.selected.tipoContrato}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tipoContratoController.items}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.tipoContrato}: #{mi.nombre}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.tipoTrabajador}" for="tipoTrabajador" />
+                                <p:selectOneMenu style="width:190px" id="tipoTrabajador" value="#{personalController.selected.tipoTrabajador}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tipoTrabajadorController.items}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.id}: #{mi.nombre}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.zona}" for="zona" />
+                                <p:selectOneMenu style="width:190px" id="zona" value="#{personalController.selected.zona}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{zonaController.items}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.id}: #{mi.nombre}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.domicilio}" for="domicilio" />
+                                <p:inputText id="domicilio" value="#{personalController.selected.domicilio}" title="#{bundle.EditPersonalTitle_domicilio}" />
+
+                                <p:outputLabel value="#{bundle.tipoPension}" for="tipoPension" />
+                                <p:inputText id="tipoPension" value="#{personalController.selected.tipoPension}" title="#{bundle.EditPersonalTitle_tipoPension}" />
+
+                            </p:panelGrid>
+
+                        </p:tab>
+                        <p:tab title="#{bundle.datosTrabajador}">
+
+                            <p:panelGrid columns="6">
+                                <p:outputLabel value="#{bundle.regPension}" for="regPension" />
+                                <p:selectOneMenu style="width:190px" id="regPension" value="#{personalController.selected.regPension}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{regimenPensionarioController.items}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.id}: #{mi.nombre}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.fechaInscrip}" for="fechaInscrip" />
+                                <p:calendar id="fechaInscrip" pattern="dd/MM/yyyy HH:mm:ss" value="#{personalController.selected.fechaInscrip}" title="#{bundle.EditPersonalTitle_fechaInscrip}"  showOn="button"/>
+                                <p:outputLabel value="#{bundle.cuspp}" for="cuspp" />
+                                <p:inputText id="cuspp" value="#{personalController.selected.cuspp}" title="#{bundle.EditPersonalTitle_cuspp}" />
+                                <p:outputLabel value="#{bundle.ocupacion}" for="ocupacion" />
+
+
+
+                                <p:autoComplete size="20" id="ocupacion" value="#{personalController.selected.ocupacion}" completeMethod="#{ocupacionController.complete}"
+                                                var="v" itemLabel="#{v.id}: #{v.nombre}" itemValue="#{v}" forceSelection="true">
+                                    <p:column>
+                                        <h:outputText value="#{v.id}: #{v.nombre}" />
+                                    </p:column>
+                                </p:autoComplete>
+                                <p:outputLabel value="#{bundle.nivelEducativo}" for="nivelEducativo" />
+                                <p:selectOneMenu style="width:190px" id="nivelEducativo" value="#{personalController.selected.nivelEducativo}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectOne}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.id}: #{mi.descripcion}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.retencion}" for="retencion" />
+                                <p:selectBooleanCheckbox  id="retencion" value="#{personalController.retencion}"/>
+                                <p:outputLabel value="#{bundle.essaludVida}" for="essaludVida" />
+                                <p:inputText id="essaludVida" value="#{personalController.selected.essaludVida}" title="#{bundle.EditPersonalTitle_essaludVida}" />
+                                <p:outputLabel value="#{bundle.discapacidad}" for="discapacidad" />
+                                <p:inputText id="discapacidad" value="#{personalController.selected.discapacidad}" title="#{bundle.EditPersonalTitle_discapacidad}" />
+                                <p:outputLabel value="#{bundle.sctrSalud}" for="sctrSalud" />
+                                <p:inputText id="sctrSalud" value="#{personalController.selected.sctrSalud}" title="#{bundle.EditPersonalTitle_sctrSalud}" />
+                                <p:outputLabel value="#{bundle.sctrPension}" for="sctrPension" />
+                                <p:inputText id="sctrPension" value="#{personalController.selected.sctrPension}" title="#{bundle.EditPersonalTitle_sctrPension}" />
+                                <p:outputLabel value="#{bundle.descJudicial}" for="descJudicial" />
+                                <p:inputText id="descJudicial" value="#{personalController.selected.descJudicial}" title="#{bundle.EditPersonalTitle_descJudicial}" />
+                              </p:panelGrid>
+                        </p:tab>
+                        <p:tab title="#{bundle.situacionLaboral}">
+                            <p:panelGrid columns="6">
+                                <p:outputLabel value="#{bundle.situacion}" for="situacion" />
+                                <p:selectOneMenu style="width:190px" id="situacion" value="#{personalController.selected.situacion}" title="#{bundle.EditPersonalTitle_situacion}" >
+                                    <f:selectItem itemValue="11" itemLabel="#{bundle.activo}"/>
+                                    <f:selectItem itemValue="13" itemLabel="#{bundle.baja}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.local}" for="codlocal" />
+                                <p:selectOneMenu style="width:190px" id="codlocal" value="#{personalController.selected.codlocal}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{localController.itemsAvailableSelectOne}"
+                                                   var="codlocalItem"
+                                                   itemValue="#{codlocalItem}" itemLabel="#{codlocalItem.id}: #{codlocalItem.nombre}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.tipoHor}" for="tipoHor" />
+                                <p:selectOneMenu style="width:190px" id="tipoHor" value="#{personalController.selected.tipoHor}" title="#{bundle.EditPersonalTitle_tipoHor}" >
+                                    <f:selectItem itemValue="1" itemLabel="1: ADMINISTRATIVO"/>
+                                    <f:selectItem itemValue="2" itemLabel="2: VIGILANTE DIA"/>
+                                    <f:selectItem itemValue="3" itemLabel="3: VIGILANTE NOCHE"/>
+                                    <f:selectItem itemValue="4" itemLabel="4: LIMPIEZA"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.fechaIngreso}" for="fechaIngreso" />
+                                <p:calendar id="fechaIngreso" pattern="dd/MM/yyyy HH:mm:ss" value="#{personalController.selected.fechaIngreso}" title="#{bundle.EditPersonalTitle_fechaIngreso}"  showOn="button"/>
+                                <p:outputLabel value="#{bundle.fechaCese}" for="fechaCese" />
+                                <p:calendar id="fechaCese" pattern="dd/MM/yyyy HH:mm:ss" value="#{personalController.selected.fechaCese}" title="#{bundle.EditPersonalTitle_fechaCese}"  showOn="button"/>
+                                <p:outputLabel value="#{bundle.modLaboral}" for="modLaboral" />
+                                <p:selectOneMenu style="width:190px" id="modLaboral" value="#{personalController.selected.modLaboral}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{modalidadLaboralController.itemsAvailableSelectOne}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.id}: #{mi.nombre}"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{bundle.tipoPago}" for="tipoPago" />
+                                <p:inputText id="tipoPago" value="#{personalController.selected.tipoPago}" title="#{bundle.EditPersonalTitle_tipoPago}" />
+                                <p:outputLabel value="#{bundle.numCuenta}" for="numCuenta" />
+                                <p:inputText id="numCuenta" value="#{personalController.selected.numCuenta}" title="#{bundle.EditPersonalTitle_numCuenta}" />
+                                <p:outputLabel value="#{bundle.sindicalizado}" for="sindicalizado" />
+                                <p:inputText id="sindicalizado" value="#{personalController.selected.sindicalizado}" title="#{bundle.EditPersonalTitle_sindicalizado}" />
+                                <p:outputLabel value="#{bundle.cargoFunc}" for="cargo" />
+                                <p:selectOneMenu style="width:190px" id="cargo" value="#{personalController.selected.cargo}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"
+                                                   var="mi"
+                                                   itemValue="#{mi}"  itemLabel="#{mi.idCargo}: #{mi.nomCargo}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.descCargo}" for="descCargo" />
+                                <p:inputText id="descCargo" value="#{personalController.selected.descCargo}" title="#{bundle.EditPersonalTitle_descCargo}" />
+
+                                <p:outputLabel value="#{bundle.oficina}" for="oficina" />
+                                <p:selectOneMenu style="width:190px" id="oficina" value="#{personalController.selected.oficina}" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{oficinaController.itemsAvailableSelectOne}"
+                                                   var="mi"
+                                                   itemValue="#{mi}" itemLabel="#{mi.oficina}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.secFun}" for="secFun" />
+                                <p:inputText id="secFun" value="#{personalController.selected.secFun}" title="#{bundle.EditPersonalTitle_secFun}" />
+                                <p:outputLabel value="#{bundle.fuenteF}" for="fuenteF" />
+                                <p:inputText id="fuenteF" value="#{personalController.selected.fuenteF}" title="#{bundle.EditPersonalTitle_fuenteF}" />
+                                <p:outputLabel value="#{bundle.periodicidad}" for="periodicidad" />
+                                <p:selectOneMenu style="width:190px"  id="periodicidad" value="#{personalController.selected.periodicidad}" title="#{bundle.EditPersonalTitle_periodicidad}" >
+                                    <f:selectItem itemValue="1" itemLabel="1: MENSUAL"/>
+                                    <f:selectItem itemValue="2" itemLabel="2: QUINCENAL"/>
+                                    <f:selectItem itemValue="3" itemLabel="3: SEMANAL"/>
+                                    <f:selectItem itemValue="4" itemLabel="4: DIARIA"/>
+                                    <f:selectItem itemValue="5" itemLabel="5: OTROS"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.montoRem}" for="montoRem" />
+                                <p:inputText id="montoRem" value="#{personalController.selected.montoRem}" title="#{bundle.EditPersonalTitle_montoRem}" />
+                                <p:outputLabel value="#{bundle.montoIncafp}" for="montoIncafp" />
+                                <p:inputText id="montoIncafp" value="#{personalController.selected.montoIncafp}" title="#{bundle.EditPersonalTitle_montoIncafp}" />
+                                <p:outputLabel value="#{bundle.marcacion}" for="marcacion" />
+                                <p:selectOneMenu style="width:190px" id="marcacion" value="#{personalController.selected.marcacion}" title="#{bundle.EditPersonalTitle_marcacion}">
+                                    <f:selectItem itemValue="H" itemLabel="Huella Dactilar"/>
+                                    <f:selectItem itemValue="D" itemLabel="DNI (Sin huella)"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.horNocturno}" for="horNocturno" />
+                                <p:inputText id="horNocturno" value="#{personalController.selected.horNocturno}" title="#{bundle.EditPersonalTitle_horNocturno}" />
+                            </p:panelGrid>
+
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{personalController.update}" value="#{bundle.Save}" update="display,:PersonalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonalEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PersonalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

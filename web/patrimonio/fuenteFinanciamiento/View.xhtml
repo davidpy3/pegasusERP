@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuenteFinancViewDlg" widgetVar="FuenteFinancViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFuenteFinancTitle}">
+            <h:form id="FuenteFinancViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fuenteFinancController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFuenteFinancLabel_fuenteFinancPK_anoEje}"/>
+                        <h:outputText value="#{fuenteFinancController.selected.fuenteFinancPK.anoEje}" title="#{bundle.ViewFuenteFinancTitle_fuenteFinancPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewFuenteFinancLabel_fuenteFinancPK_fuenteFinanc}"/>
+                        <h:outputText value="#{fuenteFinancController.selected.fuenteFinancPK.fuenteFinanc}" title="#{bundle.ViewFuenteFinancTitle_fuenteFinancPK_fuenteFinanc}"/>
+                        <h:outputText value="#{bundle.ViewFuenteFinancLabel_nombre}"/>
+                        <h:outputText value="#{fuenteFinancController.selected.nombre}" title="#{bundle.ViewFuenteFinancTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewFuenteFinancLabel_abrev}"/>
+                        <h:outputText value="#{fuenteFinancController.selected.abrev}" title="#{bundle.ViewFuenteFinancTitle_abrev}"/>
+                        <h:outputText value="#{bundle.ViewFuenteFinancLabel_estado}"/>
+                        <h:outputText value="#{fuenteFinancController.selected.estado}" title="#{bundle.ViewFuenteFinancTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FuenteFinancViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExpedienteCreateDlg" widgetVar="ExpedienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateExpedienteTitle}">
+            <h:form id="ExpedienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{expedienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_expedientePK_anoEje}" for="expedientePK_anoEje" />
+                        <p:inputText id="expedientePK_anoEje" value="#{expedienteController.selected.expedientePK.anoEje}" title="#{bundle.CreateExpedienteTitle_expedientePK_anoEje}" required="true" requiredMessage="#{bundle.CreateExpedienteRequiredMessage_expedientePK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_expedientePK_NExpediente}" for="expedientePK_NExpediente" />
+                        <p:inputText id="expedientePK_NExpediente" value="#{expedienteController.selected.expedientePK.NExpediente}" title="#{bundle.CreateExpedienteTitle_expedientePK_NExpediente}" required="true" requiredMessage="#{bundle.CreateExpedienteRequiredMessage_expedientePK_NExpediente}"/>
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{expedienteController.selected.fecha}" title="#{bundle.EditExpedienteTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_descripcionExp}" for="descripcionExp" />
+                        <p:inputText id="descripcionExp" value="#{expedienteController.selected.descripcionExp}" title="#{bundle.CreateExpedienteTitle_descripcionExp}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_codOficina}" for="codOficina" />
+                        <p:inputText id="codOficina" value="#{expedienteController.selected.codOficina}" title="#{bundle.CreateExpedienteTitle_codOficina}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_dni}" for="dni" />
+                        <p:inputText id="dni" value="#{expedienteController.selected.dni}" title="#{bundle.CreateExpedienteTitle_dni}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_idCargo}" for="idCargo" />
+                        <p:inputText id="idCargo" value="#{expedienteController.selected.idCargo}" title="#{bundle.CreateExpedienteTitle_idCargo}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_expOrigen}" for="expOrigen" />
+                        <p:inputText id="expOrigen" value="#{expedienteController.selected.expOrigen}" title="#{bundle.CreateExpedienteTitle_expOrigen}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_flgOrigen}" for="flgOrigen" />
+                        <p:inputText id="flgOrigen" value="#{expedienteController.selected.flgOrigen}" title="#{bundle.CreateExpedienteTitle_flgOrigen}" />
+                        <p:outputLabel value="#{bundle.CreateExpedienteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{expedienteController.selected.estado}" title="#{bundle.CreateExpedienteTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{expedienteController.create}" value="#{bundle.Save}" update="display,:ExpedienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'ExpedienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExpedienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

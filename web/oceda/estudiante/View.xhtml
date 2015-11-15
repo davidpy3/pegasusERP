@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FxaEstudianteViewDlg" widgetVar="FxaEstudianteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFxaEstudianteTitle}">
+            <h:form id="FxaEstudianteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fxaEstudianteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_nivelAcademico}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.nivelAcademico}" title="#{bundle.ViewFxaEstudianteTitle_nivelAcademico}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_situacionAcademico}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.situacionAcademico}" title="#{bundle.ViewFxaEstudianteTitle_situacionAcademico}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_personaNatural}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.personaNatural}" title="#{bundle.ViewFxaEstudianteTitle_personaNatural}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_idAcexp}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.idAcexp}" title="#{bundle.ViewFxaEstudianteTitle_idAcexp}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_codigoEstudiante}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.codigoEstudiante}" title="#{bundle.ViewFxaEstudianteTitle_codigoEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_promSeccion}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.promSeccion}" title="#{bundle.ViewFxaEstudianteTitle_promSeccion}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_cicloNumero}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.cicloNumero}" title="#{bundle.ViewFxaEstudianteTitle_cicloNumero}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{fxaEstudianteController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_anulado}"/>
+                        <p:selectBooleanCheckbox value="#{fxaEstudianteController.selected.anulado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_situacion}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.situacion}" title="#{bundle.ViewFxaEstudianteTitle_situacion}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_dateinsert}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.dateinsert}" title="#{bundle.ViewFxaEstudianteTitle_dateinsert}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_migrado}"/>
+                        <p:selectBooleanCheckbox value="#{fxaEstudianteController.selected.migrado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_promocionId}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.promocionId}" title="#{bundle.ViewFxaEstudianteTitle_promocionId}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_passEnc}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.passEnc}" title="#{bundle.ViewFxaEstudianteTitle_passEnc}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_passVerifica}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.passVerifica}" title="#{bundle.ViewFxaEstudianteTitle_passVerifica}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_idAmbito}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.idAmbito}" title="#{bundle.ViewFxaEstudianteTitle_idAmbito}"/>
+                        <h:outputText value="#{bundle.ViewFxaEstudianteLabel_especialidad}"/>
+                        <h:outputText value="#{fxaEstudianteController.selected.especialidad}" title="#{bundle.ViewFxaEstudianteTitle_especialidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FxaEstudianteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

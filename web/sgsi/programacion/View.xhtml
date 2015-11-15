@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GsiPrrbProgBackupViewDlg" widgetVar="GsiPrrbProgBackupViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGsiPrrbProgBackupTitle}">
+            <h:form id="GsiPrrbProgBackupViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gsiPrrbProgBackupController.selected != null}">
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_idProg}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.idProg}" title="#{bundle.ViewGsiPrrbProgBackupTitle_idProg}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_idEsc}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.idEsc}" title="#{bundle.ViewGsiPrrbProgBackupTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_fechaProgInicio}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.fechaProgInicio}" title="#{bundle.ViewGsiPrrbProgBackupTitle_fechaProgInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_fechaProgFin}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.fechaProgFin}" title="#{bundle.ViewGsiPrrbProgBackupTitle_fechaProgFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_compresion}"/>
+                        <p:selectBooleanCheckbox value="#{gsiPrrbProgBackupController.selected.compresion}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_cifrado}"/>
+                        <p:selectBooleanCheckbox value="#{gsiPrrbProgBackupController.selected.cifrado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_interval}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.interval}" title="#{bundle.ViewGsiPrrbProgBackupTitle_interval}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_pathDestLocal}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.pathDestLocal}" title="#{bundle.ViewGsiPrrbProgBackupTitle_pathDestLocal}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_pathDestFtp}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.pathDestFtp}" title="#{bundle.ViewGsiPrrbProgBackupTitle_pathDestFtp}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_tareaNombre}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.tareaNombre}" title="#{bundle.ViewGsiPrrbProgBackupTitle_tareaNombre}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ubigeoDestLocal}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ubigeoDestLocal}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ubigeoDestLocal}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ubigeoDestFtp}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ubigeoDestFtp}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ubigeoDestFtp}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ubigeoFuente}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ubigeoFuente}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ubigeoFuente}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_pathFuente}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.pathFuente}" title="#{bundle.ViewGsiPrrbProgBackupTitle_pathFuente}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ftpIp}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ftpIp}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ftpIp}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ftpPort}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ftpPort}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ftpPort}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ftpUsuario}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ftpUsuario}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ftpUsuario}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ftpPass}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ftpPass}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ftpPass}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_ftpPathFile}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.ftpPathFile}" title="#{bundle.ViewGsiPrrbProgBackupTitle_ftpPathFile}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_emailNotificador}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.emailNotificador}" title="#{bundle.ViewGsiPrrbProgBackupTitle_emailNotificador}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_emailDestino}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.emailDestino}" title="#{bundle.ViewGsiPrrbProgBackupTitle_emailDestino}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_telefonoNotificador}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.telefonoNotificador}" title="#{bundle.ViewGsiPrrbProgBackupTitle_telefonoNotificador}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_telefonoDestino}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.telefonoDestino}" title="#{bundle.ViewGsiPrrbProgBackupTitle_telefonoDestino}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_emailSujeto}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.emailSujeto}" title="#{bundle.ViewGsiPrrbProgBackupTitle_emailSujeto}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbProgBackupLabel_emailPassNotificador}"/>
+                        <h:outputText value="#{gsiPrrbProgBackupController.selected.emailPassNotificador}" title="#{bundle.ViewGsiPrrbProgBackupTitle_emailPassNotificador}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="GsiPrrbProgBackupViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

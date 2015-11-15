@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaTrabViewDlg" widgetVar="PlanillaTrabViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPlanillaTrabTitle}">
+            <h:form id="PlanillaTrabViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planillaTrabController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_planillaDetCollection}"/>
+                        <h:outputText value="#{planillaTrabController.selected.planillaDetCollection}" title="#{bundle.ViewPlanillaTrabTitle_planillaDetCollection}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_regPension}"/>
+                        <h:outputText value="#{planillaTrabController.selected.regPension}" title="#{bundle.ViewPlanillaTrabTitle_regPension}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_NOrden}"/>
+                        <h:outputText value="#{planillaTrabController.selected.NOrden}" title="#{bundle.ViewPlanillaTrabTitle_NOrden}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_tipoTrab}"/>
+                        <h:outputText value="#{planillaTrabController.selected.tipoTrab}" title="#{bundle.ViewPlanillaTrabTitle_tipoTrab}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_nivelRem}"/>
+                        <h:outputText value="#{planillaTrabController.selected.nivelRem}" title="#{bundle.ViewPlanillaTrabTitle_nivelRem}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_cargoFunc}"/>
+                        <h:outputText value="#{planillaTrabController.selected.cargoFunc}" title="#{bundle.ViewPlanillaTrabTitle_cargoFunc}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_descCargo}"/>
+                        <h:outputText value="#{planillaTrabController.selected.descCargo}" title="#{bundle.ViewPlanillaTrabTitle_descCargo}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_fechaIngreso}"/>
+                        <h:outputText value="#{planillaTrabController.selected.fechaIngreso}" title="#{bundle.ViewPlanillaTrabTitle_fechaIngreso}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_fechaModi}"/>
+                        <h:outputText value="#{planillaTrabController.selected.fechaModi}" title="#{bundle.ViewPlanillaTrabTitle_fechaModi}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_dniModi}"/>
+                        <h:outputText value="#{planillaTrabController.selected.dniModi}" title="#{bundle.ViewPlanillaTrabTitle_dniModi}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_montoRem}"/>
+                        <h:outputText value="#{planillaTrabController.selected.montoRem}" title="#{bundle.ViewPlanillaTrabTitle_montoRem}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_remAseg}"/>
+                        <h:outputText value="#{planillaTrabController.selected.remAseg}" title="#{bundle.ViewPlanillaTrabTitle_remAseg}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasNor}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasNor}" title="#{bundle.ViewPlanillaTrabTitle_diasNor}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasDom}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasDom}" title="#{bundle.ViewPlanillaTrabTitle_diasDom}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasAgua}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasAgua}" title="#{bundle.ViewPlanillaTrabTitle_diasAgua}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasFalt}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasFalt}" title="#{bundle.ViewPlanillaTrabTitle_diasFalt}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_minTard}"/>
+                        <h:outputText value="#{planillaTrabController.selected.minTard}" title="#{bundle.ViewPlanillaTrabTitle_minTard}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasFer}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasFer}" title="#{bundle.ViewPlanillaTrabTitle_diasFer}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasFtrab}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasFtrab}" title="#{bundle.ViewPlanillaTrabTitle_diasFtrab}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_horaExtra}"/>
+                        <h:outputText value="#{planillaTrabController.selected.horaExtra}" title="#{bundle.ViewPlanillaTrabTitle_horaExtra}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasDm}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasDm}" title="#{bundle.ViewPlanillaTrabTitle_diasDm}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasVac}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasVac}" title="#{bundle.ViewPlanillaTrabTitle_diasVac}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_diasTot}"/>
+                        <h:outputText value="#{planillaTrabController.selected.diasTot}" title="#{bundle.ViewPlanillaTrabTitle_diasTot}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_NHijos}"/>
+                        <h:outputText value="#{planillaTrabController.selected.NHijos}" title="#{bundle.ViewPlanillaTrabTitle_NHijos}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_NSerie}"/>
+                        <h:outputText value="#{planillaTrabController.selected.NSerie}" title="#{bundle.ViewPlanillaTrabTitle_NSerie}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_NRecibo}"/>
+                        <h:outputText value="#{planillaTrabController.selected.NRecibo}" title="#{bundle.ViewPlanillaTrabTitle_NRecibo}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_totalIngr}"/>
+                        <h:outputText value="#{planillaTrabController.selected.totalIngr}" title="#{bundle.ViewPlanillaTrabTitle_totalIngr}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_totalDesc}"/>
+                        <h:outputText value="#{planillaTrabController.selected.totalDesc}" title="#{bundle.ViewPlanillaTrabTitle_totalDesc}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_totalApor}"/>
+                        <h:outputText value="#{planillaTrabController.selected.totalApor}" title="#{bundle.ViewPlanillaTrabTitle_totalApor}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d01}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d01}" title="#{bundle.ViewPlanillaTrabTitle_d01}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d02}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d02}" title="#{bundle.ViewPlanillaTrabTitle_d02}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d03}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d03}" title="#{bundle.ViewPlanillaTrabTitle_d03}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d04}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d04}" title="#{bundle.ViewPlanillaTrabTitle_d04}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d05}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d05}" title="#{bundle.ViewPlanillaTrabTitle_d05}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d06}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d06}" title="#{bundle.ViewPlanillaTrabTitle_d06}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d07}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d07}" title="#{bundle.ViewPlanillaTrabTitle_d07}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d08}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d08}" title="#{bundle.ViewPlanillaTrabTitle_d08}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d09}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d09}" title="#{bundle.ViewPlanillaTrabTitle_d09}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d10}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d10}" title="#{bundle.ViewPlanillaTrabTitle_d10}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d11}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d11}" title="#{bundle.ViewPlanillaTrabTitle_d11}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d12}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d12}" title="#{bundle.ViewPlanillaTrabTitle_d12}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d13}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d13}" title="#{bundle.ViewPlanillaTrabTitle_d13}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d14}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d14}" title="#{bundle.ViewPlanillaTrabTitle_d14}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d15}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d15}" title="#{bundle.ViewPlanillaTrabTitle_d15}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d16}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d16}" title="#{bundle.ViewPlanillaTrabTitle_d16}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d17}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d17}" title="#{bundle.ViewPlanillaTrabTitle_d17}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d18}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d18}" title="#{bundle.ViewPlanillaTrabTitle_d18}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d19}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d19}" title="#{bundle.ViewPlanillaTrabTitle_d19}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d20}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d20}" title="#{bundle.ViewPlanillaTrabTitle_d20}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d21}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d21}" title="#{bundle.ViewPlanillaTrabTitle_d21}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d22}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d22}" title="#{bundle.ViewPlanillaTrabTitle_d22}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d23}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d23}" title="#{bundle.ViewPlanillaTrabTitle_d23}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d24}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d24}" title="#{bundle.ViewPlanillaTrabTitle_d24}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d25}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d25}" title="#{bundle.ViewPlanillaTrabTitle_d25}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d26}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d26}" title="#{bundle.ViewPlanillaTrabTitle_d26}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d27}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d27}" title="#{bundle.ViewPlanillaTrabTitle_d27}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d28}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d28}" title="#{bundle.ViewPlanillaTrabTitle_d28}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d29}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d29}" title="#{bundle.ViewPlanillaTrabTitle_d29}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d30}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d30}" title="#{bundle.ViewPlanillaTrabTitle_d30}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_d31}"/>
+                        <h:outputText value="#{planillaTrabController.selected.d31}" title="#{bundle.ViewPlanillaTrabTitle_d31}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_personal}"/>
+                        <h:outputText value="#{planillaTrabController.selected.personal}" title="#{bundle.ViewPlanillaTrabTitle_personal}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaTrabLabel_planilla}"/>
+                        <h:outputText value="#{planillaTrabController.selected.planilla}" title="#{bundle.ViewPlanillaTrabTitle_planilla}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PlanillaTrabViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

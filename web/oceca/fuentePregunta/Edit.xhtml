@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuentePreguntaEditDlg" widgetVar="SgcFuentePreguntaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcFuentePreguntaTitle}">
+            <h:form id="SgcFuentePreguntaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuentePreguntaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcFuentePreguntaController.selected.idFuente}" title="#{bundle.EditSgcFuentePreguntaTitle_idFuente}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_idFuente}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_idPregunta}" for="idPregunta" />
+                        <p:inputText id="idPregunta" value="#{sgcFuentePreguntaController.selected.idPregunta}" title="#{bundle.EditSgcFuentePreguntaTitle_idPregunta}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_idPregunta}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_e}" for="e" />
+                        <p:selectBooleanCheckbox id="e" value="#{sgcFuentePreguntaController.selected.e}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_e}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_s}" for="s" />
+                        <p:selectBooleanCheckbox id="s" value="#{sgcFuentePreguntaController.selected.s}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_s}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_d}" for="d" />
+                        <p:selectBooleanCheckbox id="d" value="#{sgcFuentePreguntaController.selected.d}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_d}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_a}" for="a" />
+                        <p:selectBooleanCheckbox id="a" value="#{sgcFuentePreguntaController.selected.a}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_a}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_b}" for="b" />
+                        <p:selectBooleanCheckbox id="b" value="#{sgcFuentePreguntaController.selected.b}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_b}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_c}" for="c" />
+                        <p:selectBooleanCheckbox id="c" value="#{sgcFuentePreguntaController.selected.c}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_c}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_g}" for="g" />
+                        <p:selectBooleanCheckbox id="g" value="#{sgcFuentePreguntaController.selected.g}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_g}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_v}" for="v" />
+                        <p:selectBooleanCheckbox id="v" value="#{sgcFuentePreguntaController.selected.v}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_v}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_t}" for="t" />
+                        <p:selectBooleanCheckbox id="t" value="#{sgcFuentePreguntaController.selected.t}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_t}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuentePreguntaLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{sgcFuentePreguntaController.selected.estado}" required="true" requiredMessage="#{bundle.EditSgcFuentePreguntaRequiredMessage_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFuentePreguntaController.update}" value="#{bundle.Save}" update="display,:SgcFuentePreguntaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcFuentePreguntaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFuentePreguntaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

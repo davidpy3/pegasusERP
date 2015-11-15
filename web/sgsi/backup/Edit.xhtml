@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GsiPrrbBackupEditDlg" widgetVar="GsiPrrbBackupEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditGsiPrrbBackupTitle}">
+            <h:form id="GsiPrrbBackupEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gsiPrrbBackupController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_idBackup}" for="idBackup" />
+                        <p:inputText id="idBackup" value="#{gsiPrrbBackupController.selected.idBackup}" title="#{bundle.EditGsiPrrbBackupTitle_idBackup}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_idBackup}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{gsiPrrbBackupController.selected.nombre}" title="#{bundle.EditGsiPrrbBackupTitle_nombre}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="dd/MM/yyyy HH:mm:ss" value="#{gsiPrrbBackupController.selected.fechaInicio}" title="#{bundle.EditGsiPrrbBackupTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_fechaInicio}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_fechaTermino}" for="fechaTermino" />
+                        <p:calendar id="fechaTermino" pattern="dd/MM/yyyy HH:mm:ss" value="#{gsiPrrbBackupController.selected.fechaTermino}" title="#{bundle.EditGsiPrrbBackupTitle_fechaTermino}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_fechaTermino}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_tiempo}" for="tiempo" />
+                        <p:calendar id="tiempo" pattern="dd/MM/yyyy HH:mm:ss" value="#{gsiPrrbBackupController.selected.tiempo}" title="#{bundle.EditGsiPrrbBackupTitle_tiempo}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_tiempo}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_tamano}" for="tamano" />
+                        <p:inputText id="tamano" value="#{gsiPrrbBackupController.selected.tamano}" title="#{bundle.EditGsiPrrbBackupTitle_tamano}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_tamano}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_cifrado}" for="cifrado" />
+                        <p:inputText id="cifrado" value="#{gsiPrrbBackupController.selected.cifrado}" title="#{bundle.EditGsiPrrbBackupTitle_cifrado}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_cifrado}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_servidor}" for="servidor" />
+                        <p:inputText id="servidor" value="#{gsiPrrbBackupController.selected.servidor}" title="#{bundle.EditGsiPrrbBackupTitle_servidor}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_servidor}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_resultado}" for="resultado" />
+                        <p:selectBooleanCheckbox id="resultado" value="#{gsiPrrbBackupController.selected.resultado}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_resultado}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbBackupLabel_idProg}" for="idProg" />
+                        <p:selectOneMenu id="idProg" value="#{gsiPrrbBackupController.selected.idProg}" required="true" requiredMessage="#{bundle.EditGsiPrrbBackupRequiredMessage_idProg}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{gsiPrrbProgBackupController.itemsAvailableSelectOne}"
+                                           var="idProgItem"
+                                           itemValue="#{idProgItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{gsiPrrbBackupController.update}" value="#{bundle.Save}" update="display,:GsiPrrbBackupListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GsiPrrbBackupEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GsiPrrbBackupEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

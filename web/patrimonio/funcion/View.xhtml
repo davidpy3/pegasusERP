@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuncionViewDlg" widgetVar="FuncionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFuncionTitle}">
+            <h:form id="FuncionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{funcionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFuncionLabel_funcionPK_funcion}"/>
+                        <h:outputText value="#{funcionController.selected.funcionPK.funcion}" title="#{bundle.ViewFuncionTitle_funcionPK_funcion}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_funcionPK_anoEje}"/>
+                        <h:outputText value="#{funcionController.selected.funcionPK.anoEje}" title="#{bundle.ViewFuncionTitle_funcionPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_nombre}"/>
+                        <h:outputText value="#{funcionController.selected.nombre}" title="#{bundle.ViewFuncionTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_cuentaBien}"/>
+                        <h:outputText value="#{funcionController.selected.cuentaBien}" title="#{bundle.ViewFuncionTitle_cuentaBien}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_clasiContrata}"/>
+                        <h:outputText value="#{funcionController.selected.clasiContrata}" title="#{bundle.ViewFuncionTitle_clasiContrata}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_clasiPlanilla}"/>
+                        <h:outputText value="#{funcionController.selected.clasiPlanilla}" title="#{bundle.ViewFuncionTitle_clasiPlanilla}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_clasiBien}"/>
+                        <h:outputText value="#{funcionController.selected.clasiBien}" title="#{bundle.ViewFuncionTitle_clasiBien}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_clasiServicio}"/>
+                        <h:outputText value="#{funcionController.selected.clasiServicio}" title="#{bundle.ViewFuncionTitle_clasiServicio}"/>
+                        <h:outputText value="#{bundle.ViewFuncionLabel_estado}"/>
+                        <h:outputText value="#{funcionController.selected.estado}" title="#{bundle.ViewFuncionTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FuncionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

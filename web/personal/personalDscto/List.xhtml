@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalDsctoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PersonalDsctoListForm">
+                <p:panel id="container" header="#{bundle.ListPersonalDsctoTitle}">
+                    <p:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.personal}:"/>
+                        
+                        <p:autoComplete autocomplete="true"  size="60" id="personalDsctoPK_dni" value="#{personalDsctoController.params['personal']}" completeMethod="#{personalController.complete}"
+                                        var="v" itemLabel="#{v.dni}: #{v.nombComp}" converter="personalControllerConverter" itemValue="#{v}" forceSelection="true">
+                            <p:column>
+                                <h:outputText value="#{v.dni}" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="#{v.nombComp}" />
+                            </p:column>
+                            <p:ajax event="itemSelect" update="container" listener="#{personalDsctoController.ajaxListener}"/>
+                        </p:autoComplete>
+                        <h:outputLabel value="#{bundle.concepto}:"/>
+                        <p:autoComplete  emptyMessage="Buscar por nombre (2 caracteres min.)" autocomplete="true"  size="60" value="#{personalDsctoController.params['concepto']}" completeMethod="#{conceptoController.complete}"
+                                        var="v" itemLabel="#{v.codigo}: #{v.concepto}" converter="conceptoControllerConverter" itemValue="#{v}" forceSelection="true">
+                         
+                            <p:column>
+                                <h:outputText value="#{v.codigo}" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="#{v.concepto}" />
+                            </p:column>
+                        </p:autoComplete>
+                    </p:panelGrid>
+                    <p:dataTable id="datalist" value="#{personalDsctoController.items}" var="item"
+                                 selectionMode="single" selection="#{personalDsctoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.personalDsctoPK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        
+                        <p:column  width="65">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.dni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalDsctoPK.dni}"/>
+                        </p:column>
+                        <p:column width="50">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalDsctoPK.codigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.concepto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.concepto.concepto}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.monto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.monto}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.porcentaje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcentaje}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fechaIni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaIni}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.glosa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.glosa}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{personalDsctoController.prepareCreate}" update=":PersonalDsctoCreateForm" oncomplete="PF('PersonalDsctoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PersonalDsctoViewForm" oncomplete="PF('PersonalDsctoViewDialog').show()" disabled="#{empty personalDsctoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PersonalDsctoEditForm" oncomplete="PF('PersonalDsctoEditDialog').show()" disabled="#{empty personalDsctoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{personalDsctoController.destroy}" update=":growl,datalist" disabled="#{empty personalDsctoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

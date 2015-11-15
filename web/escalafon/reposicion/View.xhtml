@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscReposicionesViewDlg" widgetVar="EscReposicionesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscReposicionesTitle}">
+            <h:form id="EscReposicionesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escReposicionesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_idRep}"/>
+                        <h:outputText value="#{escReposicionesController.selected.idRep}" title="#{bundle.ViewEscReposicionesTitle_idRep}"/>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_idDtra}"/>
+                        <h:outputText value="#{escReposicionesController.selected.idDtra}" title="#{bundle.ViewEscReposicionesTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_mencion}"/>
+                        <h:outputText value="#{escReposicionesController.selected.mencion}" title="#{bundle.ViewEscReposicionesTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_fechaRep}"/>
+                        <h:outputText value="#{escReposicionesController.selected.fechaRep}" title="#{bundle.ViewEscReposicionesTitle_fechaRep}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_fechaIni}"/>
+                        <h:outputText value="#{escReposicionesController.selected.fechaIni}" title="#{bundle.ViewEscReposicionesTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{escReposicionesController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_id}"/>
+                        <h:outputText value="#{escReposicionesController.selected.id}" title="#{bundle.ViewEscReposicionesTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscReposicionesLabel_idEsc}"/>
+                        <h:outputText value="#{escReposicionesController.selected.idEsc}" title="#{bundle.ViewEscReposicionesTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscReposicionesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

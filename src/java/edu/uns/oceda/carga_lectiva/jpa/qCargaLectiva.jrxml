@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="772" pageHeight="595" orientation="Landscape" columnWidth="772" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="606c3874-069a-4971-88f0-681d02d0bb24">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="style1_1">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="blanco">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.0"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<queryString>
+		<![CDATA[SELECT crl_carga_lectiva_cab.id_carglect,cod_acper,crl_carga_lectiva_cab.id_clcab,crl_carga_lectiva_cab.id_dir,drt_personanatural.nombre_completo,crl_carga_lectiva_cab.tipo,crl_carga_lectiva_cab.id_categoria,esc_categoria_doc.nombre,crl_carga_lectiva_cab.id_dedicacion,anr_dedicacion_docente.abrev_ded,crl_carga_lectiva_cab.total_horas,crl_carga_lectiva_cab.estado,cur_asignatura.nombre asignatura,cur_ciclo.num_romano,cur_asignatura.creditaje,crl_carga_lectiva_det.id_esp,aps_especialidad.especialidad,
+crl_carga_lectiva_det.nro_alum,
+crl_carga_lectiva_det.grupt_teor,
+crl_carga_lectiva_det.grupt_prac,
+crl_carga_lectiva_det.ht,crl_carga_lectiva_det.hp,
+crl_carga_lectiva_det.grup_teor,
+crl_carga_lectiva_det.grupo_t,
+crl_carga_lectiva_det.grup_prac,crl_carga_lectiva_det.grupo_p,
+crl_carga_lectiva_det.hor_teor,
+crl_carga_lectiva_det.hor_prac,
+crl_carga_lectiva_det.subtotal,crl_carga_lectiva_det.id_estado,crl_carga_lectiva_cab.total_horas FROM crl_carga_lectiva_cab 
+INNER JOIN crl_carga_lectiva ON crl_carga_lectiva.id_carglect=crl_carga_lectiva_cab.id_carglect INNER JOIN apc_periodo_academico pa ON pa.id_acper=crl_carga_lectiva.id_acper left outer join drt_personanatural ON drt_personanatural.id_dir=crl_carga_lectiva_cab.id_dir left outer join esc_categoria_doc ON crl_carga_lectiva_cab.id_categoria=esc_categoria_doc.id_cat 
+left outer join anr_dedicacion_docente ON (0+anr_dedicacion_docente.dedo_codigo)=crl_carga_lectiva_cab.id_dedicacion
+inner join crl_carga_lectiva_det ON crl_carga_lectiva_det.id_clcab=crl_carga_lectiva_cab.id_clcab
+INNER JOIN cur_asignatura on cur_asignatura.id_asignatura=crl_carga_lectiva_det.id_asignatura 
+left outer join cur_ciclo on cur_ciclo.id_ciclo=cur_asignatura.id_ciclo 
+INNER JOIN aps_especialidad on aps_especialidad.id_especialidad=crl_carga_lectiva_det.id_esp   WHERE  crl_carga_lectiva_det.id_esp IN (13, 39)  ORDER BY  2,5]]>
+	</queryString>
+	<field name="id_carglect" class="java.lang.Integer"/>
+	<field name="cod_acper" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo cadena de periodo "2006-01"]]></fieldDescription>
+	</field>
+	<field name="id_clcab" class="java.lang.Integer"/>
+	<field name="id_dir" class="java.lang.Integer"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="id_categoria" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="id_dedicacion" class="java.lang.Integer"/>
+	<field name="abrev_ded" class="java.lang.String"/>
+	<field name="total_horas" class="java.lang.Integer"/>
+	<field name="estado" class="java.lang.Integer"/>
+	<field name="asignatura" class="java.lang.String"/>
+	<field name="num_romano" class="java.lang.String"/>
+	<field name="creditaje" class="java.lang.Integer"/>
+	<field name="id_esp" class="java.lang.Integer"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="nro_alum" class="java.lang.Integer"/>
+	<field name="grupt_teor" class="java.lang.Integer"/>
+	<field name="grupt_prac" class="java.lang.Integer"/>
+	<field name="ht" class="java.lang.Integer"/>
+	<field name="hp" class="java.lang.Integer"/>
+	<field name="grup_teor" class="java.lang.Integer"/>
+	<field name="grupo_t" class="java.lang.String"/>
+	<field name="grup_prac" class="java.lang.Integer"/>
+	<field name="grupo_p" class="java.lang.String"/>
+	<field name="hor_teor" class="java.lang.Integer"/>
+	<field name="hor_prac" class="java.lang.Integer"/>
+	<field name="subtotal" class="java.lang.Integer"/>
+	<field name="id_estado" class="java.lang.String"/>
+	<variable name="id_clcab_1" class="java.lang.Integer" resetType="Group" resetGroup="id_carglect" calculation="Count">
+		<variableExpression><![CDATA[$F{id_clcab}]]></variableExpression>
+	</variable>
+	<group name="id_carglect" isReprintHeaderOnEachPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{cod_acper}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="22" y="13" width="189" height="32" uuid="d96f8570-8d60-4e1a-a89b-4f68d09e2343"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[DOCENTE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="0" y="13" width="22" height="32" uuid="24312026-6ba9-4eb2-9b67-f56cb3ff8a8d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[N°]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="211" y="13" width="143" height="32" uuid="3c165233-332f-499b-962b-bb9d471db156"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[ASIGNATURA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="450" y="13" width="100" height="32" uuid="a45cdfb5-b003-4a80-ae0d-a04debe6ee1a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[ESCUELA ACADEMICO PROFESIONAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="550" y="13" width="38" height="32" uuid="effac425-a661-43c6-b707-695e927eab3d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[N° ESTUD.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="622" y="29" width="34" height="16" uuid="c37c9bab-86f7-41d1-b8f4-ad3415970ff0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[P]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="588" y="29" width="34" height="16" uuid="663e8737-b124-470f-a375-852aff3ae302"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[T]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="588" y="13" width="68" height="16" uuid="2d46b9a9-736a-4a6e-8221-94c88037336f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[GRUPOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="354" y="13" width="36" height="32" uuid="af230cd0-c202-4535-b6de-1356bc7f19da"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[CICLO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="390" y="29" width="30" height="16" uuid="4bf45b05-97b6-4465-b6e3-9d7be18ca8b4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[T]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="420" y="29" width="30" height="16" uuid="7d75a131-19fe-4579-a15c-1c82b6f551ae"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[P]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="390" y="13" width="60" height="16" uuid="48a25873-88d1-4feb-8e88-fc125a1e425e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[HORAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="731" y="13" width="41" height="32" uuid="49455438-3b5f-409e-88a1-c6409dbdc261"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[TOTAL HRS.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" positionType="Float" x="656" y="13" width="75" height="32" uuid="5e58b556-d699-4377-82b1-11bc18ff2b1f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[LABORAT.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="0" y="0" width="772" height="13" uuid="345a1bfd-5ef6-48d1-9a57-0dc215fa1744"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["PERIODO: "+$F{cod_acper}+"\n"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="22" y="0" width="189" height="36" uuid="a4bbed18-880d-44d6-a77a-1332498ce37a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_completo}+"\n"+
+$F{nombre}+" "+$F{abrev_ded}]]></textFieldExpression>
+			</textField>
+			<textField pattern="00">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="0" y="0" width="22" height="36" uuid="d6eebf0e-68c9-467e-9bbc-3c462e80ae19"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{id_clcab_1}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement stretchType="RelativeToTallestObject" x="211" y="0" width="561" height="36" uuid="001525e9-7570-4c80-8144-3afb9acda150"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="id_carglect">
+					<subreportParameterExpression><![CDATA[$F{id_carglect}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id_clcab">
+					<subreportParameterExpression><![CDATA[$F{id_clcab}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[Class.forName("org.jsuns.jreport.JReportAction").getMethod("reset",net.sf.jasperreports.engine.JRDataSource.class).invoke(null,
+        $P{REPORT_PARAMETERS_MAP}.get("qCargaLectivaDetalle"))]]></dataSourceExpression>
+				<subreportExpression><![CDATA["org/jsuns/oceda/carga_lectiva/qCargaLectivaDetalle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

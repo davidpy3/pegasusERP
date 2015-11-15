@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TrasladoViewDlg" widgetVar="TrasladoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTrasladoTitle}">
+            <h:form id="TrasladoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{trasladoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_idTraslado}"/>
+                        <h:outputText value="#{trasladoController.selected.idTraslado}" title="#{bundle.ViewTrasladoTitle_idTraslado}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_fecha}"/>
+                        <h:outputText value="#{trasladoController.selected.fecha}" title="#{bundle.ViewTrasladoTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_motivo}"/>
+                        <h:outputText value="#{trasladoController.selected.motivo}" title="#{bundle.ViewTrasladoTitle_motivo}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_origen}"/>
+                        <h:outputText value="#{trasladoController.selected.origen}" title="#{bundle.ViewTrasladoTitle_origen}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_destino}"/>
+                        <h:outputText value="#{trasladoController.selected.destino}" title="#{bundle.ViewTrasladoTitle_destino}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_rucDest}"/>
+                        <h:outputText value="#{trasladoController.selected.rucDest}" title="#{bundle.ViewTrasladoTitle_rucDest}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_razSocDest}"/>
+                        <h:outputText value="#{trasladoController.selected.razSocDest}" title="#{bundle.ViewTrasladoTitle_razSocDest}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_numero}"/>
+                        <h:outputText value="#{trasladoController.selected.numero}" title="#{bundle.ViewTrasladoTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_serie}"/>
+                        <h:outputText value="#{trasladoController.selected.serie}" title="#{bundle.ViewTrasladoTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_estado}"/>
+                        <h:outputText value="#{trasladoController.selected.estado}" title="#{bundle.ViewTrasladoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_rucTrans}"/>
+                        <h:outputText value="#{trasladoController.selected.rucTrans}" title="#{bundle.ViewTrasladoTitle_rucTrans}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_razTrans}"/>
+                        <h:outputText value="#{trasladoController.selected.razTrans}" title="#{bundle.ViewTrasladoTitle_razTrans}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_marcaVeh}"/>
+                        <h:outputText value="#{trasladoController.selected.marcaVeh}" title="#{bundle.ViewTrasladoTitle_marcaVeh}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_placaVeh}"/>
+                        <h:outputText value="#{trasladoController.selected.placaVeh}" title="#{bundle.ViewTrasladoTitle_placaVeh}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_brevete}"/>
+                        <h:outputText value="#{trasladoController.selected.brevete}" title="#{bundle.ViewTrasladoTitle_brevete}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_constancia}"/>
+                        <h:outputText value="#{trasladoController.selected.constancia}" title="#{bundle.ViewTrasladoTitle_constancia}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_chofer}"/>
+                        <h:outputText value="#{trasladoController.selected.chofer}" title="#{bundle.ViewTrasladoTitle_chofer}"/>
+                        <h:outputText value="#{bundle.ViewTrasladoLabel_nick}"/>
+                        <h:outputText value="#{trasladoController.selected.nick}" title="#{bundle.ViewTrasladoTitle_nick}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TrasladoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

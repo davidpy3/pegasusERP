@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentacEditDlg" widgetVar="CuentacEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCuentacTitle}">
+            <h:form id="CuentacEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuentacController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_anoEje}" for="anoEje" />
+                        <p:inputText id="anoEje" value="#{cuentacController.selected.anoEje}" title="#{bundle.EditCuentacTitle_anoEje}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_cuenta}" for="cuenta" />
+                        <p:inputText id="cuenta" value="#{cuentacController.selected.cuenta}" title="#{bundle.EditCuentacTitle_cuenta}" required="true" requiredMessage="#{bundle.EditCuentacRequiredMessage_cuenta}"/>
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_denomina}" for="denomina" />
+                        <p:inputText id="denomina" value="#{cuentacController.selected.denomina}" title="#{bundle.EditCuentacTitle_denomina}" required="true" requiredMessage="#{bundle.EditCuentacRequiredMessage_denomina}"/>
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_tipoCta}" for="tipoCta" />
+                        <p:inputText id="tipoCta" value="#{cuentacController.selected.tipoCta}" title="#{bundle.EditCuentacTitle_tipoCta}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_flagCtaEsp}" for="flagCtaEsp" />
+                        <p:selectBooleanCheckbox id="flagCtaEsp" value="#{cuentacController.selected.flagCtaEsp}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_tipUsoCta}" for="tipUsoCta" />
+                        <p:inputText id="tipUsoCta" value="#{cuentacController.selected.tipUsoCta}" title="#{bundle.EditCuentacTitle_tipUsoCta}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_procentDepre}" for="procentDepre" />
+                        <p:inputText id="procentDepre" value="#{cuentacController.selected.procentDepre}" title="#{bundle.EditCuentacTitle_procentDepre}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_flgPatri}" for="flgPatri" />
+                        <p:inputText id="flgPatri" value="#{cuentacController.selected.flgPatri}" title="#{bundle.EditCuentacTitle_flgPatri}" />
+                        <p:outputLabel value="#{bundle.EditCuentacLabel_flgAlma}" for="flgAlma" />
+                        <p:inputText id="flgAlma" value="#{cuentacController.selected.flgAlma}" title="#{bundle.EditCuentacTitle_flgAlma}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuentacController.update}" value="#{bundle.Save}" update="display,:CuentacListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CuentacEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuentacEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

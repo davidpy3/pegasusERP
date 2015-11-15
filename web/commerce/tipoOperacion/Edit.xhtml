@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoOperacionEditDlg" widgetVar="ComTipoOperacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComTipoOperacionTitle}">
+            <h:form id="ComTipoOperacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoOperacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComTipoOperacionLabel_idTipoOperacion}" for="idTipoOperacion" />
+                        <p:inputText id="idTipoOperacion" value="#{comTipoOperacionController.selected.idTipoOperacion}" title="#{bundle.EditComTipoOperacionTitle_idTipoOperacion}" required="true" requiredMessage="#{bundle.EditComTipoOperacionRequiredMessage_idTipoOperacion}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoOperacionLabel_tipoOperacion}" for="tipoOperacion" />
+                        <p:inputText id="tipoOperacion" value="#{comTipoOperacionController.selected.tipoOperacion}" title="#{bundle.EditComTipoOperacionTitle_tipoOperacion}" required="true" requiredMessage="#{bundle.EditComTipoOperacionRequiredMessage_tipoOperacion}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoOperacionLabel_movimiento}" for="movimiento" />
+                        <p:inputText id="movimiento" value="#{comTipoOperacionController.selected.movimiento}" title="#{bundle.EditComTipoOperacionTitle_movimiento}" required="true" requiredMessage="#{bundle.EditComTipoOperacionRequiredMessage_movimiento}"/>
+                        <p:outputLabel value="#{bundle.EditComTipoOperacionLabel_cierra}" for="cierra" />
+                        <p:inputText id="cierra" value="#{comTipoOperacionController.selected.cierra}" title="#{bundle.EditComTipoOperacionTitle_cierra}" required="true" requiredMessage="#{bundle.EditComTipoOperacionRequiredMessage_cierra}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTipoOperacionController.update}" value="#{bundle.Save}" update="display,:ComTipoOperacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComTipoOperacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTipoOperacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

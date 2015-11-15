@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapacitacionViewDlg" widgetVar="EscCapacitacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscCapacitacionTitle}">
+            <h:form id="EscCapacitacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapacitacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_id}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.id}" title="#{bundle.ViewEscCapacitacionTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_capacitacion}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.capacitacion}" title="#{bundle.ViewEscCapacitacionTitle_capacitacion}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_fechaIni}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.fechaIni}" title="#{bundle.ViewEscCapacitacionTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_fechaFin}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.fechaFin}" title="#{bundle.ViewEscCapacitacionTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_horas}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.horas}" title="#{bundle.ViewEscCapacitacionTitle_horas}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_horasText}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.horasText}" title="#{bundle.ViewEscCapacitacionTitle_horasText}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_mencion}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.mencion}" title="#{bundle.ViewEscCapacitacionTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_idCc}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.idCc}" title="#{bundle.ViewEscCapacitacionTitle_idCc}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_idInst}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.idInst}" title="#{bundle.ViewEscCapacitacionTitle_idInst}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_idEsc}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.idEsc}" title="#{bundle.ViewEscCapacitacionTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_idTc}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.idTc}" title="#{bundle.ViewEscCapacitacionTitle_idTc}"/>
+                        <h:outputText value="#{bundle.ViewEscCapacitacionLabel_perPermisoPersonal}"/>
+                        <h:outputText value="#{escCapacitacionController.selected.perPermisoPersonal}" title="#{bundle.ViewEscCapacitacionTitle_perPermisoPersonal}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscCapacitacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

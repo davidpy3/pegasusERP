@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNivelEstudiosViewDlg" widgetVar="EscNivelEstudiosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscNivelEstudiosTitle}">
+            <h:form id="EscNivelEstudiosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNivelEstudiosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscNivelEstudiosLabel_idNivel}"/>
+                        <h:outputText value="#{escNivelEstudiosController.selected.idNivel}" title="#{bundle.ViewEscNivelEstudiosTitle_idNivel}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelEstudiosLabel_nivel}"/>
+                        <h:outputText value="#{escNivelEstudiosController.selected.nivel}" title="#{bundle.ViewEscNivelEstudiosTitle_nivel}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelEstudiosLabel_abrev}"/>
+                        <h:outputText value="#{escNivelEstudiosController.selected.abrev}" title="#{bundle.ViewEscNivelEstudiosTitle_abrev}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelEstudiosLabel_ambito}"/>
+                        <h:outputText value="#{escNivelEstudiosController.selected.ambito}" title="#{bundle.ViewEscNivelEstudiosTitle_ambito}"/>
+                        <h:outputText value="#{bundle.ViewEscNivelEstudiosLabel_ultimo}"/>
+                        <p:selectBooleanCheckbox value="#{escNivelEstudiosController.selected.ultimo}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscNivelEstudiosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

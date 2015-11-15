@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d6da0ad5-b98b-4c05-8df5-4a3f683fc15b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="9"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[modLaboral.id]]></fieldDescription>
+	</field>
+	<field name="abrev" class="java.lang.String">
+		<fieldDescription><![CDATA[modLaboral.abrev]]></fieldDescription>
+	</field>
+	<field name="modLaboral" class="org.munisoft.personal.jpa.ModalidadLaboral">
+		<fieldDescription><![CDATA[modLaboral]]></fieldDescription>
+	</field>
+	<field name="dni" class="java.lang.String">
+		<fieldDescription><![CDATA[dni]]></fieldDescription>
+	</field>
+	<field name="nombComp" class="java.lang.String">
+		<fieldDescription><![CDATA[nombComp]]></fieldDescription>
+	</field>
+	<field name="descCargo" class="java.lang.String">
+		<fieldDescription><![CDATA[descCargo]]></fieldDescription>
+	</field>
+	<field name="fechaNac" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaNac]]></fieldDescription>
+	</field>
+	<field name="ubicaFoto" class="java.lang.String">
+		<fieldDescription><![CDATA[ubicaFoto]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="141" y="17" width="319" height="50" uuid="4cdeb87c-f966-4892-b42f-a5c8cebeab53"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ONOMASTICOS DEL PERSONAL ACTIVO
+SUB REGION PACIFICO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="0" width="191" height="20" uuid="40bd0b95-4c61-47f6-9623-c4290f2abd06"/>
+				<text><![CDATA[DATOS DEL TRABAJADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="69" height="20" uuid="98a457d8-4cae-4e08-8f9d-db822ae82e4f"/>
+				<text><![CDATA[FOTOGRAFIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="6d74ccf6-3606-4306-84f4-6794926c4120"/>
+				<text><![CDATA[fechaNac]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="69" height="20" uuid="54b77486-8564-4259-a7d9-214d9faf7eca"/>
+				<text><![CDATA[fechaNac]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="141" y="0" width="69" height="20" uuid="046f1630-c455-4ff1-869b-9f2a7f664824"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="80" width="138" height="20" uuid="6e798e9b-3a28-4fc2-8be1-60cfed2c5bd7"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="69" height="125" uuid="7b5e344c-a83f-4c80-a881-43e00faec2b3"/>
+				<textFieldExpression><![CDATA[$F{ubicaFoto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="60" width="149" height="20" uuid="e20bc16d-bd86-49ce-893b-9055032e2ab7"/>
+				<textFieldExpression><![CDATA[""+$F{modLaboral}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="a03be9e3-d6c2-4fb0-9c9c-2a4f54e8e213"/>
+				<textFieldExpression><![CDATA[$F{fechaNac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="40" width="163" height="20" uuid="658eaa0c-0e1d-44ba-8816-e9a5bf2007e9"/>
+				<textFieldExpression><![CDATA[$F{descCargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="20" width="163" height="20" uuid="fc92ecae-7895-4a0d-940f-436115c819e7"/>
+				<textFieldExpression><![CDATA[$F{nombComp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="69" height="20" uuid="bc2dc98e-8c2e-4421-88ac-fcc78ecc1234"/>
+				<textFieldExpression><![CDATA[$F{fechaNac}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCategoriaDocCreateDlg" widgetVar="EscCategoriaDocCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscCategoriaDocTitle}">
+            <h:form id="EscCategoriaDocCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCategoriaDocController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscCategoriaDocLabel_idCat}" for="idCat" />
+                        <p:inputText id="idCat" value="#{escCategoriaDocController.selected.idCat}" title="#{bundle.CreateEscCategoriaDocTitle_idCat}" required="true" requiredMessage="#{bundle.CreateEscCategoriaDocRequiredMessage_idCat}"/>
+                        <p:outputLabel value="#{bundle.CreateEscCategoriaDocLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{escCategoriaDocController.selected.nombre}" title="#{bundle.CreateEscCategoriaDocTitle_nombre}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCategoriaDocController.create}" value="#{bundle.Save}" update="display,:EscCategoriaDocListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscCategoriaDocCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCategoriaDocCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

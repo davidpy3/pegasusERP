@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscInterrupcionesViewDlg" widgetVar="EscInterrupcionesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscInterrupcionesTitle}">
+            <h:form id="EscInterrupcionesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escInterrupcionesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_idInt}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.idInt}" title="#{bundle.ViewEscInterrupcionesTitle_idInt}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_fechaIni}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.fechaIni}" title="#{bundle.ViewEscInterrupcionesTitle_fechaIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_fechaFin}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.fechaFin}" title="#{bundle.ViewEscInterrupcionesTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_tipo}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.tipo}" title="#{bundle.ViewEscInterrupcionesTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_idOrigen}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.idOrigen}" title="#{bundle.ViewEscInterrupcionesTitle_idOrigen}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_anios}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.anios}" title="#{bundle.ViewEscInterrupcionesTitle_anios}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_meses}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.meses}" title="#{bundle.ViewEscInterrupcionesTitle_meses}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_dias}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.dias}" title="#{bundle.ViewEscInterrupcionesTitle_dias}"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escInterrupcionesController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscInterrupcionesLabel_idEsc}"/>
+                        <h:outputText value="#{escInterrupcionesController.selected.idEsc}" title="#{bundle.ViewEscInterrupcionesTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscInterrupcionesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

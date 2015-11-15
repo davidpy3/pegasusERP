@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEncargaturasEditDlg" widgetVar="EscEncargaturasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscEncargaturasTitle}">
+            <h:form id="EscEncargaturasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEncargaturasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_idEnc}" for="idEnc" />
+                        <p:inputText id="idEnc" value="#{escEncargaturasController.selected.idEnc}" title="#{bundle.EditEscEncargaturasTitle_idEnc}" required="true" requiredMessage="#{bundle.EditEscEncargaturasRequiredMessage_idEnc}"/>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_fecInicio}" for="fecInicio" />
+                        <p:calendar id="fecInicio" pattern="MM/dd/yyyy" value="#{escEncargaturasController.selected.fecInicio}" title="#{bundle.EditEscEncargaturasTitle_fecInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_fecFin}" for="fecFin" />
+                        <p:calendar id="fecFin" pattern="MM/dd/yyyy" value="#{escEncargaturasController.selected.fecFin}" title="#{bundle.EditEscEncargaturasTitle_fecFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escEncargaturasController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscEncargaturasRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escEncargaturasController.selected.idDtra}" title="#{bundle.EditEscEncargaturasTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escEncargaturasController.selected.mencion}" title="#{bundle.EditEscEncargaturasTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_temporadaActual}" for="temporadaActual" />
+                        <p:selectBooleanCheckbox id="temporadaActual" value="#{escEncargaturasController.selected.temporadaActual}" />
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_fecfinProp}" for="fecfinProp" />
+                        <p:calendar id="fecfinProp" pattern="MM/dd/yyyy" value="#{escEncargaturasController.selected.fecfinProp}" title="#{bundle.EditEscEncargaturasTitle_fecfinProp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_escCap}" for="escCap" />
+                        <p:selectOneMenu id="escCap" value="#{escEncargaturasController.selected.escCap}" required="true" requiredMessage="#{bundle.EditEscEncargaturasRequiredMessage_escCap}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCapController.itemsAvailableSelectOne}"
+                                           var="escCapItem"
+                                           itemValue="#{escCapItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_idDesp}" for="idDesp" />
+                        <p:selectOneMenu id="idDesp" value="#{escEncargaturasController.selected.idDesp}" required="true" requiredMessage="#{bundle.EditEscEncargaturasRequiredMessage_idDesp}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escDesplazamientoController.itemsAvailableSelectOne}"
+                                           var="idDespItem"
+                                           itemValue="#{idDespItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscEncargaturasLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escEncargaturasController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscEncargaturasRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escEncargaturasController.update}" value="#{bundle.Save}" update="display,:EscEncargaturasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscEncargaturasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscEncargaturasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

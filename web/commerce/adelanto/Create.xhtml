@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdelantoCreateDlg" widgetVar="AdelantoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAdelantoTitle}">
+            <h:form id="AdelantoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adelantoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAdelantoLabel_idAdelanto}" for="idAdelanto" />
+                        <p:inputText id="idAdelanto" value="#{adelantoController.selected.idAdelanto}" title="#{bundle.CreateAdelantoTitle_idAdelanto}" required="true" requiredMessage="#{bundle.CreateAdelantoRequiredMessage_idAdelanto}"/>
+                        <p:outputLabel value="#{bundle.CreateAdelantoLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{adelantoController.selected.fecha}" title="#{bundle.EditAdelantoTitle_fecha}" required="true" requiredMessage="#{bundle.EditAdelantoRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAdelantoLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{adelantoController.selected.monto}" title="#{bundle.CreateAdelantoTitle_monto}" required="true" requiredMessage="#{bundle.CreateAdelantoRequiredMessage_monto}"/>
+                        <p:outputLabel value="#{bundle.CreateAdelantoLabel_dni}" for="dni" />
+                        <p:inputText id="dni" value="#{adelantoController.selected.dni}" title="#{bundle.CreateAdelantoTitle_dni}" required="true" requiredMessage="#{bundle.CreateAdelantoRequiredMessage_dni}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{adelantoController.create}" value="#{bundle.Save}" update="display,:AdelantoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AdelantoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AdelantoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

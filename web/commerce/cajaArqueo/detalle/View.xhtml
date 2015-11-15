@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComCajaArqueoDetalleViewDlg" widgetVar="ComCajaArqueoDetalleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComCajaArqueoDetalleTitle}">
+            <h:form id="ComCajaArqueoDetalleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comCajaArqueoDetalleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idArqueo}"/>
+                        <h:outputText value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idArqueo}" title="#{bundle.ViewComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idArqueo}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idMoneda}"/>
+                        <h:outputText value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idMoneda}" title="#{bundle.ViewComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idMoneda}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoDetalleLabel_comCajaArqueoDetallePK_idMedio}"/>
+                        <h:outputText value="#{comCajaArqueoDetalleController.selected.comCajaArqueoDetallePK.idMedio}" title="#{bundle.ViewComCajaArqueoDetalleTitle_comCajaArqueoDetallePK_idMedio}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoDetalleLabel_razonCambio}"/>
+                        <h:outputText value="#{comCajaArqueoDetalleController.selected.razonCambio}" title="#{bundle.ViewComCajaArqueoDetalleTitle_razonCambio}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoDetalleLabel_cantidad}"/>
+                        <h:outputText value="#{comCajaArqueoDetalleController.selected.cantidad}" title="#{bundle.ViewComCajaArqueoDetalleTitle_cantidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComCajaArqueoDetalleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

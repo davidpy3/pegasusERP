@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComFuenteFinanciamientoEditDlg" widgetVar="ComFuenteFinanciamientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComFuenteFinanciamientoTitle}">
+            <h:form id="ComFuenteFinanciamientoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comFuenteFinanciamientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComFuenteFinanciamientoLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comFuenteFinanciamientoController.selected.idFuenteFinanciamiento}" title="#{bundle.EditComFuenteFinanciamientoTitle_idFuenteFinanciamiento}" required="true" requiredMessage="#{bundle.EditComFuenteFinanciamientoRequiredMessage_idFuenteFinanciamiento}"/>
+                        <p:outputLabel value="#{bundle.EditComFuenteFinanciamientoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{comFuenteFinanciamientoController.selected.nombre}" title="#{bundle.EditComFuenteFinanciamientoTitle_nombre}" required="true" requiredMessage="#{bundle.EditComFuenteFinanciamientoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditComFuenteFinanciamientoLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{comFuenteFinanciamientoController.selected.ruc}" title="#{bundle.EditComFuenteFinanciamientoTitle_ruc}" />
+                        <p:outputLabel value="#{bundle.EditComFuenteFinanciamientoLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{comFuenteFinanciamientoController.selected.estado}" required="true" requiredMessage="#{bundle.EditComFuenteFinanciamientoRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditComFuenteFinanciamientoLabel_uid}" for="uid" />
+                        <p:inputText id="uid" value="#{comFuenteFinanciamientoController.selected.uid}" title="#{bundle.EditComFuenteFinanciamientoTitle_uid}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comFuenteFinanciamientoController.update}" value="#{bundle.Save}" update="display,:ComFuenteFinanciamientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComFuenteFinanciamientoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComFuenteFinanciamientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

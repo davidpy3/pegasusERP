@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscContratosOtrosViewDlg" widgetVar="EscContratosOtrosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscContratosOtrosTitle}">
+            <h:form id="EscContratosOtrosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escContratosOtrosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idServicio}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idServicio}" title="#{bundle.ViewEscContratosOtrosTitle_idServicio}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idEsc}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idEsc}" title="#{bundle.ViewEscContratosOtrosTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idCap}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idCap}" title="#{bundle.ViewEscContratosOtrosTitle_idCap}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idDep}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idDep}" title="#{bundle.ViewEscContratosOtrosTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idCno}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idCno}" title="#{bundle.ViewEscContratosOtrosTitle_idCno}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_fecInicio}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.fecInicio}" title="#{bundle.ViewEscContratosOtrosTitle_fecInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_fecFin}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.fecFin}" title="#{bundle.ViewEscContratosOtrosTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_monto}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.monto}" title="#{bundle.ViewEscContratosOtrosTitle_monto}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escContratosOtrosController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idDtra}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idDtra}" title="#{bundle.ViewEscContratosOtrosTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_mencion}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.mencion}" title="#{bundle.ViewEscContratosOtrosTitle_mencion}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_periodo}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.periodo}" title="#{bundle.ViewEscContratosOtrosTitle_periodo}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_adhonoren}"/>
+                        <p:selectBooleanCheckbox value="#{escContratosOtrosController.selected.adhonoren}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_escCap}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.escCap}" title="#{bundle.ViewEscContratosOtrosTitle_escCap}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_escPersonal}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.escPersonal}" title="#{bundle.ViewEscContratosOtrosTitle_escPersonal}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_escServicios}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.escServicios}" title="#{bundle.ViewEscContratosOtrosTitle_escServicios}"/>
+                        <h:outputText value="#{bundle.ViewEscContratosOtrosLabel_idTipo}"/>
+                        <h:outputText value="#{escContratosOtrosController.selected.idTipo}" title="#{bundle.ViewEscContratosOtrosTitle_idTipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscContratosOtrosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

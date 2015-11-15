@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BienEditDlg" widgetVar="BienEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBienTitle}">
+            <h:form id="BienEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bienController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBienLabel_MBienes0PK_correla}" for="MBienes0PK_correla" />
+                        <p:inputText id="MBienes0PK_correla" value="#{bienController.selected.bienPK.correla}" title="#{bundle.EditBienTitle_MBienes0PK_correla}" required="true" requiredMessage="#{bundle.EditBienRequiredMessage_MBienes0PK_correla}"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_clasifica}" for="clasifica" />
+                        <p:inputText id="clasifica" value="#{bienController.selected.clasifica}" title="#{bundle.EditBienTitle_clasifica}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codlocal}" for="codlocal" />
+                        <p:inputText id="codlocal" value="#{bienController.selected.codlocal}" title="#{bundle.EditBienTitle_codlocal}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codarea}" for="codarea" />
+                        <p:inputText id="codarea" value="#{bienController.selected.codarea}" title="#{bundle.EditBienTitle_codarea}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codoficina}" for="codoficina" />
+                        <p:inputText id="codoficina" value="#{bienController.selected.codoficina}" title="#{bundle.EditBienTitle_codoficina}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codambiente}" for="codambiente" />
+                        <p:inputText id="codambiente" value="#{bienController.selected.codambiente}" title="#{bundle.EditBienTitle_codambiente}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codanterior}" for="codanterior" />
+                        <p:inputText id="codanterior" value="#{bienController.selected.codanterior}" title="#{bundle.EditBienTitle_codanterior}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codusuario}" for="codusuario" />
+                        <p:inputText id="codusuario" value="#{bienController.selected.codusuario}" title="#{bundle.EditBienTitle_codusuario}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_tipoCta}" for="tipoCta" />
+                        <p:inputText id="tipoCta" value="#{bienController.selected.tipoCta}" title="#{bundle.EditBienTitle_tipoCta}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_cuenta}" for="cuenta" />
+                        <p:inputText id="cuenta" value="#{bienController.selected.cuenta}" title="#{bundle.EditBienTitle_cuenta}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_valorlibro}" for="valorlibro" />
+                        <p:inputText id="valorlibro" value="#{bienController.selected.valorlibro}" title="#{bundle.EditBienTitle_valorlibro}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_valortasa}" for="valortasa" />
+                        <p:inputText id="valortasa" value="#{bienController.selected.valortasa}" title="#{bundle.EditBienTitle_valortasa}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{bienController.selected.estado}" title="#{bundle.EditBienTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{bienController.selected.marca}" title="#{bundle.EditBienTitle_marca}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_modelo}" for="modelo" />
+                        <p:inputText id="modelo" value="#{bienController.selected.modelo}" title="#{bundle.EditBienTitle_modelo}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{bienController.selected.tipo}" title="#{bundle.EditBienTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{bienController.selected.color}" title="#{bundle.EditBienTitle_color}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{bienController.selected.serie}" title="#{bundle.EditBienTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{bienController.selected.titulo}" title="#{bundle.EditBienTitle_titulo}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_edicion}" for="edicion" />
+                        <p:inputText id="edicion" value="#{bienController.selected.edicion}" title="#{bundle.EditBienTitle_edicion}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_autor}" for="autor" />
+                        <p:inputText id="autor" value="#{bienController.selected.autor}" title="#{bundle.EditBienTitle_autor}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_productName}" for="productName" />
+                        <p:inputText id="productName" value="#{bienController.selected.productName}" title="#{bundle.EditBienTitle_productName}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_productKey}" for="productKey" />
+                        <p:inputText id="productKey" value="#{bienController.selected.productKey}" title="#{bundle.EditBienTitle_productKey}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_vigenciaDesde}" for="vigenciaDesde" />
+                        <p:calendar id="vigenciaDesde" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.vigenciaDesde}" title="#{bundle.EditBienTitle_vigenciaDesde}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_vigenciaHasta}" for="vigenciaHasta" />
+                        <p:calendar id="vigenciaHasta" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.vigenciaHasta}" title="#{bundle.EditBienTitle_vigenciaHasta}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_nummotor}" for="nummotor" />
+                        <p:inputText id="nummotor" value="#{bienController.selected.nummotor}" title="#{bundle.EditBienTitle_nummotor}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_numchasis}" for="numchasis" />
+                        <p:inputText id="numchasis" value="#{bienController.selected.numchasis}" title="#{bundle.EditBienTitle_numchasis}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_año}" for="año" />
+                        <p:inputText id="año" value="#{bienController.selected.año}" title="#{bundle.EditBienTitle_año}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_dimension}" for="dimension" />
+                        <p:inputText id="dimension" value="#{bienController.selected.dimension}" title="#{bundle.EditBienTitle_dimension}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_raza}" for="raza" />
+                        <p:inputText id="raza" value="#{bienController.selected.raza}" title="#{bundle.EditBienTitle_raza}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_especie}" for="especie" />
+                        <p:inputText id="especie" value="#{bienController.selected.especie}" title="#{bundle.EditBienTitle_especie}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_otros}" for="otros" />
+                        <p:inputText id="otros" value="#{bienController.selected.otros}" title="#{bundle.EditBienTitle_otros}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecReg}" for="fecReg" />
+                        <p:calendar id="fecReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecReg}" title="#{bundle.EditBienTitle_fecReg}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_placa}" for="placa" />
+                        <p:inputText id="placa" value="#{bienController.selected.placa}" title="#{bundle.EditBienTitle_placa}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_edad}" for="edad" />
+                        <p:inputText id="edad" value="#{bienController.selected.edad}" title="#{bundle.EditBienTitle_edad}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_pais}" for="pais" />
+                        <p:inputText id="pais" value="#{bienController.selected.pais}" title="#{bundle.EditBienTitle_pais}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_condicion}" for="condicion" />
+                        <p:inputText id="condicion" value="#{bienController.selected.condicion}" title="#{bundle.EditBienTitle_condicion}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecAct}" for="fecAct" />
+                        <p:calendar id="fecAct" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecAct}" title="#{bundle.EditBienTitle_fecAct}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_asegurado}" for="asegurado" />
+                        <p:inputText id="asegurado" value="#{bienController.selected.asegurado}" title="#{bundle.EditBienTitle_asegurado}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_estBien}" for="estBien" />
+                        <p:inputText id="estBien" value="#{bienController.selected.estBien}" title="#{bundle.EditBienTitle_estBien}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_flgCausal}" for="flgCausal" />
+                        <p:inputText id="flgCausal" value="#{bienController.selected.flgCausal}" title="#{bundle.EditBienTitle_flgCausal}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_resolBaja}" for="resolBaja" />
+                        <p:inputText id="resolBaja" value="#{bienController.selected.resolBaja}" title="#{bundle.EditBienTitle_resolBaja}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecBaja}" for="fecBaja" />
+                        <p:calendar id="fecBaja" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecBaja}" title="#{bundle.EditBienTitle_fecBaja}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_userBaja}" for="userBaja" />
+                        <p:inputText id="userBaja" value="#{bienController.selected.userBaja}" title="#{bundle.EditBienTitle_userBaja}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_flgActo}" for="flgActo" />
+                        <p:inputText id="flgActo" value="#{bienController.selected.flgActo}" title="#{bundle.EditBienTitle_flgActo}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_resolDisp}" for="resolDisp" />
+                        <p:inputText id="resolDisp" value="#{bienController.selected.resolDisp}" title="#{bundle.EditBienTitle_resolDisp}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecDisp}" for="fecDisp" />
+                        <p:calendar id="fecDisp" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecDisp}" title="#{bundle.EditBienTitle_fecDisp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_causalElim}" for="causalElim" />
+                        <p:inputText id="causalElim" value="#{bienController.selected.causalElim}" title="#{bundle.EditBienTitle_causalElim}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fechaElim}" for="fechaElim" />
+                        <p:calendar id="fechaElim" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fechaElim}" title="#{bundle.EditBienTitle_fechaElim}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_userElim}" for="userElim" />
+                        <p:inputText id="userElim" value="#{bienController.selected.userElim}" title="#{bundle.EditBienTitle_userElim}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_estGestion}" for="estGestion" />
+                        <p:inputText id="estGestion" value="#{bienController.selected.estGestion}" title="#{bundle.EditBienTitle_estGestion}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_resolAfec}" for="resolAfec" />
+                        <p:inputText id="resolAfec" value="#{bienController.selected.resolAfec}" title="#{bundle.EditBienTitle_resolAfec}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecAfec}" for="fecAfec" />
+                        <p:calendar id="fecAfec" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecAfec}" title="#{bundle.EditBienTitle_fecAfec}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecVafec}" for="fecVafec" />
+                        <p:calendar id="fecVafec" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecVafec}" title="#{bundle.EditBienTitle_fecVafec}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_entAfec}" for="entAfec" />
+                        <p:inputText id="entAfec" value="#{bienController.selected.entAfec}" title="#{bundle.EditBienTitle_entAfec}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_resolArre}" for="resolArre" />
+                        <p:inputText id="resolArre" value="#{bienController.selected.resolArre}" title="#{bundle.EditBienTitle_resolArre}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecArre}" for="fecArre" />
+                        <p:calendar id="fecArre" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecArre}" title="#{bundle.EditBienTitle_fecArre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_fecVarre}" for="fecVarre" />
+                        <p:calendar id="fecVarre" pattern="dd/MM/yyyy HH:mm:ss" value="#{bienController.selected.fecVarre}" title="#{bundle.EditBienTitle_fecVarre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBienLabel_entArre}" for="entArre" />
+                        <p:inputText id="entArre" value="#{bienController.selected.entArre}" title="#{bundle.EditBienTitle_entArre}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_docAlta}" for="docAlta" />
+                        <p:inputText id="docAlta" value="#{bienController.selected.docAlta}" title="#{bundle.EditBienTitle_docAlta}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_userAlta}" for="userAlta" />
+                        <p:inputText id="userAlta" value="#{bienController.selected.userAlta}" title="#{bundle.EditBienTitle_userAlta}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_docBaja}" for="docBaja" />
+                        <p:inputText id="docBaja" value="#{bienController.selected.docBaja}" title="#{bundle.EditBienTitle_docBaja}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_flgEstado}" for="flgEstado" />
+                        <p:inputText id="flgEstado" value="#{bienController.selected.flgEstado}" title="#{bundle.EditBienTitle_flgEstado}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_selec}" for="selec" />
+                        <p:inputText id="selec" value="#{bienController.selected.selec}" title="#{bundle.EditBienTitle_selec}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_sbn}" for="sbn" />
+                        <p:inputText id="sbn" value="#{bienController.selected.sbn}" title="#{bundle.EditBienTitle_sbn}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_anoOrden}" for="anoOrden" />
+                        <p:inputText id="anoOrden" value="#{bienController.selected.anoOrden}" title="#{bundle.EditBienTitle_anoOrden}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_NOrden}" for="NOrden" />
+                        <p:inputText id="NOrden" value="#{bienController.selected.NOrden}" title="#{bundle.EditBienTitle_NOrden}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_tipoOrden}" for="tipoOrden" />
+                        <p:inputText id="tipoOrden" value="#{bienController.selected.tipoOrden}" title="#{bundle.EditBienTitle_tipoOrden}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_funcionario}" for="funcionario" />
+                        <p:inputText id="funcionario" value="#{bienController.selected.funcionario}" title="#{bundle.EditBienTitle_funcionario}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_srp}" for="srp" />
+                        <p:inputText id="srp" value="#{bienController.selected.srp}" title="#{bundle.EditBienTitle_srp}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_tasado}" for="tasado" />
+                        <p:inputText id="tasado" value="#{bienController.selected.tasado}" title="#{bundle.EditBienTitle_tasado}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_NNotacargo}" for="NNotacargo" />
+                        <p:inputText id="NNotacargo" value="#{bienController.selected.NNotacargo}" title="#{bundle.EditBienTitle_NNotacargo}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codPadre}" for="codPadre" />
+                        <p:inputText id="codPadre" value="#{bienController.selected.codPadre}" title="#{bundle.EditBienTitle_codPadre}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codMadre}" for="codMadre" />
+                        <p:inputText id="codMadre" value="#{bienController.selected.codMadre}" title="#{bundle.EditBienTitle_codMadre}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_sitBinv}" for="sitBinv" />
+                        <p:inputText id="sitBinv" value="#{bienController.selected.sitBinv}" title="#{bundle.EditBienTitle_sitBinv}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_valoradq}" for="valoradq" />
+                        <p:inputText id="valoradq" value="#{bienController.selected.valoradq}" title="#{bundle.EditBienTitle_valoradq}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_entDisp}" for="entDisp" />
+                        <p:inputText id="entDisp" value="#{bienController.selected.entDisp}" title="#{bundle.EditBienTitle_entDisp}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_matricula}" for="matricula" />
+                        <p:inputText id="matricula" value="#{bienController.selected.matricula}" title="#{bundle.EditBienTitle_matricula}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_anhoFab}" for="anhoFab" />
+                        <p:inputText id="anhoFab" value="#{bienController.selected.anhoFab}" title="#{bundle.EditBienTitle_anhoFab}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_longitud}" for="longitud" />
+                        <p:inputText id="longitud" value="#{bienController.selected.longitud}" title="#{bundle.EditBienTitle_longitud}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_altura}" for="altura" />
+                        <p:inputText id="altura" value="#{bienController.selected.altura}" title="#{bundle.EditBienTitle_altura}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_ancho}" for="ancho" />
+                        <p:inputText id="ancho" value="#{bienController.selected.ancho}" title="#{bundle.EditBienTitle_ancho}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_codbienAux}" for="codbienAux" />
+                        <p:inputText id="codbienAux" value="#{bienController.selected.codbienAux}" title="#{bundle.EditBienTitle_codbienAux}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_correlaAux}" for="correlaAux" />
+                        <p:inputText id="correlaAux" value="#{bienController.selected.correlaAux}" title="#{bundle.EditBienTitle_correlaAux}" />
+                        <p:outputLabel value="#{bundle.EditBienLabel_tipobien}" for="tipoBien" />
+                        <p:selectOneMenu id="tipoBien" value="#{bienController.selected.tipoBien}" required="true" requiredMessage="#{bundle.EditBienRequiredMessage_tipobien}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipobienController.itemsAvailableSelectOne}"
+                                           var="tipobienItem"
+                                           itemValue="#{tipobienItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bienController.update}" value="#{bundle.Save}" update="display,:BienListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BienEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BienEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

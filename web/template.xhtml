@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+    <style>
+        .jmenucolumn button{ height:36px;width:36px}
+        .jm   .ui-button-text{height:36px;width:36px}
+
+        .fileupload-buttonbar .fileinput-button .ui-icon-plusthick{
+            background-image: url(http://localhost:8088/jsf/images/upload-16.png)!important;
+        }
+
+        .jm span  {height:36px;width:36px}
+        .jm input  {height:36px;width:36px; display:  none}
+        .ui-fileupload-filename{ display: none}
+        .ui-fileupload-choose .ui-icon {
+            visibility: hidden !important;
+        }
+        .ui-fileupload-upload .ui-icon {
+            visibility: hidden !important;
+        }
+        .ui-fileupload-cancel .ui-icon {
+            visibility: hidden !important;
+        }
+        .ui-button-icon-left .ui-icon ui-c .ui-icon-plusthick   .fileupload-buttonbar ui-button-icon-left .fileinput-button {
+            background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+        }
+        .ui-icon ui-c .ui-icon-plusthick {
+            background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+        }
+
+
+        .ui-layout-north {
+            z-index:20 !important;
+            overflow:visible !important;
+        }
+        .ui-layout-north .ui-layout-unit-content {
+            overflow:visible !important;
+        }
+        .xx ul{
+            left:-114px !important
+        }
+        .ui-layout-resizer .ui-layout-resizer-north .ui-layout-resizer-open .ui-layout-resizer-north-open{
+            height:0px !important;
+            height:0px;
+        }
+        .td-center{
+            text-align:center !important;
+        }
+        .td-left{
+            text-align:left !important;
+        }.td-right{
+            text-align:right !important;
+        }
+        .ui-layout-unit
+        .ui-layout-unit-content{padding:0px;border:none;padding:0px}
+    </style>
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" gutter="0" collapsible="true" size="50">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="Gestión de Calidad">
+                            <p:menuitem value="Factores" outcome="/oceca/factor/List.xhtml" />
+                            <p:menuitem value="Modelos" outcome="/oceca/modelo/List.xhtml" />
+                            <p:menuitem value="Estandares" outcome="/oceca/estandar/List.xhtml" />
+                            <p:menuitem value="Encuestas" outcome="/oceca/encuesta/List.xhtml" />
+                            <p:menuitem value="Preguntas" outcome="/oceca/pregunta/List.xhtml" />
+                            <p:menuitem value="Cuestionarios" outcome="/oceca/cuestionario/List.xhtml" />
+                            <p:menuitem value="Categorias" outcome="/oceca/categoriaPregunta/List.xhtml" />
+
+                        </p:submenu>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Ambitos" outcome="/oceda/ambitoAcademico/List.xhtml" />
+                            <p:menuitem value="Escuelas" outcome="/oceda/escuela/List.xhtml" />
+                            <p:menuitem value="Tipo Bien" outcome="/patrimonio/bien/tipo/List.xhtml" />
+                            <p:menuitem value="Bienes Culturales" outcome="/patrimonio/bien/cultural/List.xhtml" />
+                            <p:menuitem value="Ordenes de Compra" outcome="/patrimonio/ordenCompra/List.xhtml" />
+                            <p:menuitem value="Nota de Cargo de Bienes" outcome="/patrimonio/notacargo/List.xhtml" />
+                            <p:menuitem value="Backups" outcome="/sgsi/backup/List.xhtml" />
+                            <p:menuitem value="Areas y Oficinas" outcome="/patrimonio/area/List.xhtml" />
+                            <p:menuitem value="Paises" outcome="/patrimonio/pais/List.xhtml" />
+                            <p:menuitem value="Grupos y Clases" outcome="/patrimonio/grupo/List.xhtml" />
+                            <p:menuitem value="Fuentes de Financiamiento" outcome="/patrimonio/fuenteFinanciamiento/List.xhtml" />
+                            <p:menuitem value="Funciones" outcome="/patrimonio/funcion/List.xhtml" />
+                            <p:separator/>
+                            <p:menuitem value="Partidas de Nacimiento" outcome="/registroCivil/partidaNacimiento/List.xhtml" />
+                            <p:menuitem value="Partidas de Matrimonio" outcome="/registroCivil/partidaMatrimonio/List.xhtml" />
+                            <p:menuitem value="Partidas de Defuncion" outcome="/registroCivil/partidaDefuncion/List.xhtml" />
+                            <p:menuitem value="Resultados Gana Diario" outcome="/registroCivil/ganaDiario/List.xhtml" />
+
+                        </p:submenu>
+                        <p:submenu label="Escalafon">
+                            <p:menuitem value="Personal" outcome="/escalafon/personal/List.xhtml" />
+                            <p:menuitem value="Tipo Personal" outcome="/escalafon/tipoPersonal/List.xhtml" />
+                            <p:menuitem value="Tipo Personal" outcome="/escalafon/tipoPersonal/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Oceda">
+                            <p:menuitem value="Estudiantes" outcome="/oceda/estudiante/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Commerce">
+                            <p:submenu label="RR.HH.">
+                                <p:menuitem value="Cargos" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Metas" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:separator/>
+
+                                <p:menuitem value="Empleados" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Adelantos" outcome="/commerce/adelanto/List.xhtml" />
+                                <p:menuitem value="Pagos" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Reporte Pagos" outcome="/oceda/estudiante/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Ventas">
+                                <p:menuitem value="Clientes" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Cotizacion a Cliente" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Listar Ventas" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Ofertas" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:separator/>
+                                <p:menuitem value="Rpt. Venta Total x Empresa" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Venta x Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Venta x Vendedor" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Ventas y Comision" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:separator/>
+                                <p:menuitem value="Rpt. Producto x Cliente" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Ganancias por Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Compras">
+                                <p:menuitem value="Proveedor" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:separator/>
+                                <p:menuitem value="Compras Productos" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Compras Servicios" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:separator/>
+                                <p:menuitem value="Rpt. Compras por Empresa" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Compras por Producto" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Compras por Proveedor" outcome="/oceda/estudiante/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Almacen">
+                                <p:menuitem value="Almacenes" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Traslados" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Articulos en Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Articulos x Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Articulos en General" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Clasificacion" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Und. Medida" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Requerimiento de Articulos" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rotulos por Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Articulos x Almacen" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Articulos en General" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Rpt. Valorizado Art. x Empresa" outcome="/oceda/estudiante/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Contabilidad">
+                                <p:menuitem value="Conf. Documentos" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Caja Chica" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Cierre de Caja" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Mov. Caja en Tienda" outcome="/oceda/estudiante/List.xhtml" />
+                                <p:menuitem value="Mov. Bancos" outcome="/oceda/estudiante/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Datos Generales">
+                                <p:menuitem value="Empresa" url="/faces/commerce/empresa/List.xhtml" />
+                                <p:menuitem value="Bancos" outcome="/commerce/banco/List.xhtml" />
+                                <p:menuitem value="Usuarios" outcome="/commerce/banco/List.xhtml" />
+                                <p:menuitem value="Notas" outcome="/commerce/nota/List.xhtml" />
+                                <p:menuitem value="Cuentas" outcome="/commerce/cuenta/List.xhtml" />
+                                <p:menuitem value="Moneda" outcome="/commerce/moneda/List.xhtml" />
+                                <p:menuitem value="Deposito" actionListener="#{dialogController.open('/commerce/movimiento/CreateDeposito')}" />
+                            </p:submenu>
+                        </p:submenu>
+
+                        <p:submenu label="Patrimonio">
+                            <p:submenu label="Operación">
+                                <p:menuitem value="Registro de Funcionarios" url="/admin/patrimonio/funcionario"/>
+                                <p:separator/>
+                                <p:menuitem value="Registro General de Bienes"
+                                            outcome="/patrimonio/bien/List.xhtml"/>
+                                <p:menuitem value="Registro de Bienes Culturales"  
+                                            url="/personal/w_bandeja_papeletas.xhtml" update=":center"/>
+                                <p:menuitem value="Registro de Bienes Intangibles"
+                                            url="/personal/w_bandeja_planilla.xhtml" update=":center"/>
+                                <p:menuitem value="Registro de Bienes Inmuebles"
+                                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                                <p:menuitem value="Registro Auxiliar de Semovientes"
+                                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                                <p:menuitem value="Registro de Bienes Auxiliares"
+                                            url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                                <p:separator/>
+                                <p:menuitem value="Ordenes de Compra"
+                                            url="/personal/w_resume_planilla.xhtml" update=":center"/>
+                                <p:menuitem value="Notas de Cargo de Bienes"
+                                            outcome="/patrimonio/notaCargo/List.xhtml" update=":center"/>
+                                <p:separator/>
+                                <p:menuitem value="Autorizacion de Movimientos de Bienes"
+                                            outcome="/patrimonio/movimiento/List.xhtml" update=":center"/>
+                            </p:submenu>
+                            <p:submenu label="Inventario">
+                                <p:menuitem value="Registro de Inventario"
+                                            outcome="/patrimonio/inventario/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Periodos de Depreciacion"
+                                            outcome="/patrimonio/periodoDepreciacion/List.xhtml"/>
+                            </p:submenu>
+                            <p:submenu label="Tablas">
+
+                                <p:menuitem value="Locales"
+                                            outcome="/patrimonio/local/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Areas y Oficinas"
+                                            url="/personal/w_registro_conceptos.xhtml" update=":center"/>
+                                <p:menuitem value="Ambientes"
+                                            outcome="/patrimonio/ambiente/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Grupos y Clases"/>
+                                <p:menuitem value="Catalogo del SBN" outcome="/patrimonio/catalogo/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem  value="Plan Contable" outcome="/patrimonio/planContable/List.xhtml"/>
+                            </p:submenu>
+                            <p:submenu label="Reportes">
+
+                                <p:menuitem  value="Ficha de Datos de Bienes"/>
+                                <p:separator/>
+                                <p:menuitem  value="Bienes Activos"/>
+                                <p:menuitem  value="Bienes por Locales"/>
+                                <p:menuitem  value="Bienes por Locales y Ambientes"/>
+                                <p:separator/>
+                                <p:menuitem  value="Bienes Dados de Baja"/>
+                                <p:separator/>
+                                <p:menuitem  value="Resumen General de Bienes Culturales"/>
+                                <p:menuitem  value="Resumen General de Bienes Intangibles"/> 
+                                <p:menuitem  value="Resumen General de Bienes Inmuebles"/>
+                                <p:menuitem  value="Resumen General de Bienes Auxiliares"/>
+                                <p:menuitem  value="Resumen General de Semovientes Auxiliares"/>
+                                <p:separator/>
+                                <p:menuitem  value="Reporte de Oficinas"/> 
+                                <p:separator/>
+                                <p:menuitem  value="Historial de Bienes"/>
+                            </p:submenu>
+                            <p:submenu label="Herramientas">
+                                <p:menuitem  value="Interface SIMI"/>
+                                <p:menuitem  value="Actualización de Cuentas de Bienes"/>
+                                <p:separator/>
+                                <p:menuitem value="Mis Datos Personales" ajax="false"
+                                            action="#{systemController.to('/pegasus/w_cfg_datos_personales')}" update=":center"/>
+                                <p:menuitem  value="Cambio de Contraseña"/>
+                                <p:separator/>
+                                <p:menuitem  value="Año de Ejecucion"/>
+                            </p:submenu>
+                            <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                                <p:menuitem value="Cerrar Sessión" ajax="false" action="#{userController.logout}"/>
+                                <p:menuitem value="Cambiar Contraseña" />
+                            </p:submenu>
+                        </p:submenu>
+
+                        <p:submenu label="Personal">
+                            <p:submenu label="Operación">
+                                <p:menuitem value="Registro de Personal"  outcome="/personal/personal/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Registro de Marcaciones de Asistencia"  outcome="/personal/marcacion/List.xhtml"/>
+                                <p:menuitem value="Bandeja de Papeletas de Salida"  outcome="/personal/papeleta/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Planillas de Trabajadores y Pensionistas"  outcome="/personal/planilla/List.xhtml"/>
+                                <p:menuitem value="Hoja de tareo"  outcome="/personal/planilla/List.xhtml"/>
+
+                            </p:submenu>
+                            <p:submenu label="Tablas">
+                                <p:menuitem value="Niveles Remunerativos"  outcome="/personal/nivelRemunerativo/List.xhtml"/>
+                                <p:menuitem value="Conceptos"  outcome="/personal/concepto/List.xhtml"/>
+                                <p:menuitem value="Cargos Funcionales"  outcome="/personal/personalDscto/List.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Horarios de Marcaciones"  outcome="/personal/marcacion/List.xhtml"/>
+                                <p:menuitem value="Turnos de Vigilantes"  outcome="/personal/turnoVigilante/List.xhtml"/>
+                                <p:separator/>
+
+                                <p:menuitem value="Afectaciones por Trabajador"  outcome="/personal/personalDscto/List.xhtml"/>
+                                <p:menuitem value="Afectaciones por Régimen"  outcome="/personal/afectacion/List.xhtml"/>
+
+                            </p:submenu>
+                            <p:submenu label="Reportes">
+                                <p:menuitem value="Relacion de Personal Activo"  outcome="/personal/report/relacionMensualOnomastico.xhtml"/>
+                                <p:menuitem value="Estadisitca Mensual de Remuneraciones"  outcome="/personal/report/relacionMensualOnomastico.xhtml"/>
+                                <p:separator/>
+                                <p:menuitem value="Relación Mensual de Onomásticos"  outcome="/personal/report/relacionMensualOnomastico.xhtml"/>
+                            </p:submenu>
+
+                        </p:submenu>
+                         <p:submenu label="Sistema">
+                                <p:menuitem value="Usuarios"  outcome="/admin/usuario/List.xhtml"/>
+                        </p:submenu>
+                        
+                        
+                        <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                            <p:menuitem value="Cerrar Sessión" ajax="false" action="#{usuarioController.logout}"/>
+                            <p:menuitem value="Cambiar Contraseña" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

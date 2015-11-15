@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdenDetEditDlg" widgetVar="OrdenDetEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOrdenDetTitle}">
+            <h:form id="OrdenDetEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordenDetController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_ordenDetPK_item}" for="ordenDetPK_item" />
+                        <p:inputText id="ordenDetPK_item" value="#{ordenDetController.selected.ordenDetPK.item}" title="#{bundle.EditOrdenDetTitle_ordenDetPK_item}" required="true" requiredMessage="#{bundle.EditOrdenDetRequiredMessage_ordenDetPK_item}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_numDoc}" for="numDoc" />
+                        <p:inputText id="numDoc" value="#{ordenDetController.selected.numDoc}" title="#{bundle.EditOrdenDetTitle_numDoc}" required="true" requiredMessage="#{bundle.EditOrdenDetRequiredMessage_numDoc}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_especifica}" for="especifica" />
+                        <p:inputText id="especifica" value="#{ordenDetController.selected.especifica}" title="#{bundle.EditOrdenDetTitle_especifica}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{ordenDetController.selected.cantidad}" title="#{bundle.EditOrdenDetTitle_cantidad}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_saldo}" for="saldo" />
+                        <p:inputText id="saldo" value="#{ordenDetController.selected.saldo}" title="#{bundle.EditOrdenDetTitle_saldo}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_factor}" for="factor" />
+                        <p:inputText id="factor" value="#{ordenDetController.selected.factor}" title="#{bundle.EditOrdenDetTitle_factor}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_salida}" for="salida" />
+                        <p:inputText id="salida" value="#{ordenDetController.selected.salida}" title="#{bundle.EditOrdenDetTitle_salida}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_idItem}" for="idItem" />
+                        <p:inputText id="idItem" value="#{ordenDetController.selected.idItem}" title="#{bundle.EditOrdenDetTitle_idItem}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_unidad}" for="unidad" />
+                        <p:inputText id="unidad" value="#{ordenDetController.selected.unidad}" title="#{bundle.EditOrdenDetTitle_unidad}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_descInsumo}" for="descInsumo" />
+                        <p:inputText id="descInsumo" value="#{ordenDetController.selected.descInsumo}" title="#{bundle.EditOrdenDetTitle_descInsumo}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_descCalidad}" for="descCalidad" />
+                        <p:inputText id="descCalidad" value="#{ordenDetController.selected.descCalidad}" title="#{bundle.EditOrdenDetTitle_descCalidad}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_precioAdj}" for="precioAdj" />
+                        <p:inputText id="precioAdj" value="#{ordenDetController.selected.precioAdj}" title="#{bundle.EditOrdenDetTitle_precioAdj}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_cantIng}" for="cantIng" />
+                        <p:inputText id="cantIng" value="#{ordenDetController.selected.cantIng}" title="#{bundle.EditOrdenDetTitle_cantIng}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_temporal}" for="temporal" />
+                        <p:inputText id="temporal" value="#{ordenDetController.selected.temporal}" title="#{bundle.EditOrdenDetTitle_temporal}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_unidadAlm}" for="unidadAlm" />
+                        <p:inputText id="unidadAlm" value="#{ordenDetController.selected.unidadAlm}" title="#{bundle.EditOrdenDetTitle_unidadAlm}" />
+                        <p:outputLabel value="#{bundle.EditOrdenDetLabel_orden}" for="orden" />
+                        <p:selectOneMenu id="orden" value="#{ordenDetController.selected.orden}" required="true" requiredMessage="#{bundle.EditOrdenDetRequiredMessage_orden}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ordenController.itemsAvailableSelectOne}"
+                                           var="ordenItem"
+                                           itemValue="#{ordenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ordenDetController.update}" value="#{bundle.Save}" update="display,:OrdenDetListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OrdenDetEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrdenDetEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

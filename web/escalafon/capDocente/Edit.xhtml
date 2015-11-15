@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapDocenteEditDlg" widgetVar="EscCapDocenteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscCapDocenteTitle}">
+            <h:form id="EscCapDocenteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapDocenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_escCapDocentePK_idCap}" for="escCapDocentePK_idCap" />
+                        <p:inputText id="escCapDocentePK_idCap" value="#{escCapDocenteController.selected.escCapDocentePK.idCap}" title="#{bundle.EditEscCapDocenteTitle_escCapDocentePK_idCap}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_escCapDocentePK_idCap}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_escCapDocentePK_idDep}" for="escCapDocentePK_idDep" />
+                        <p:inputText id="escCapDocentePK_idDep" value="#{escCapDocenteController.selected.escCapDocentePK.idDep}" title="#{bundle.EditEscCapDocenteTitle_escCapDocentePK_idDep}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_escCapDocentePK_idDep}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_nroCargo}" for="nroCargo" />
+                        <p:inputText id="nroCargo" value="#{escCapDocenteController.selected.nroCargo}" title="#{bundle.EditEscCapDocenteTitle_nroCargo}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_nroCargo}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_totalNecesario}" for="totalNecesario" />
+                        <p:inputText id="totalNecesario" value="#{escCapDocenteController.selected.totalNecesario}" title="#{bundle.EditEscCapDocenteTitle_totalNecesario}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_totalNecesario}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_previstos}" for="previstos" />
+                        <p:inputText id="previstos" value="#{escCapDocenteController.selected.previstos}" title="#{bundle.EditEscCapDocenteTitle_previstos}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_previstos}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_nombrados}" for="nombrados" />
+                        <p:inputText id="nombrados" value="#{escCapDocenteController.selected.nombrados}" title="#{bundle.EditEscCapDocenteTitle_nombrados}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_nombrados}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_vacantes}" for="vacantes" />
+                        <p:inputText id="vacantes" value="#{escCapDocenteController.selected.vacantes}" title="#{bundle.EditEscCapDocenteTitle_vacantes}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_vacantes}"/>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{escCapDocenteController.selected.observaciones}" title="#{bundle.EditEscCapDocenteTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{escCapDocenteController.selected.cargo}" title="#{bundle.EditEscCapDocenteTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{escCapDocenteController.selected.codigo}" title="#{bundle.EditEscCapDocenteTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_contratados}" for="contratados" />
+                        <p:inputText id="contratados" value="#{escCapDocenteController.selected.contratados}" title="#{bundle.EditEscCapDocenteTitle_contratados}" />
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_idCategoria}" for="idCategoria" />
+                        <p:selectOneMenu id="idCategoria" value="#{escCapDocenteController.selected.idCategoria}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_idCategoria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCategoriaController.itemsAvailableSelectOne}"
+                                           var="idCategoriaItem"
+                                           itemValue="#{idCategoriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCapDocenteLabel_idHistCap}" for="idHistCap" />
+                        <p:selectOneMenu id="idHistCap" value="#{escCapDocenteController.selected.idHistCap}" required="true" requiredMessage="#{bundle.EditEscCapDocenteRequiredMessage_idHistCap}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escHistoriaCapController.itemsAvailableSelectOne}"
+                                           var="idHistCapItem"
+                                           itemValue="#{idHistCapItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCapDocenteController.update}" value="#{bundle.Save}" update="display,:EscCapDocenteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscCapDocenteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCapDocenteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

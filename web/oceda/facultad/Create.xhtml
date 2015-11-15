@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsFacultadCreateDlg" widgetVar="ApsFacultadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateApsFacultadTitle}">
+            <h:form id="ApsFacultadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsFacultadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateApsFacultadLabel_idFacultad}" for="idFacultad" />
+                        <p:inputText id="idFacultad" value="#{apsFacultadController.selected.idFacultad}" title="#{bundle.CreateApsFacultadTitle_idFacultad}" required="true" requiredMessage="#{bundle.CreateApsFacultadRequiredMessage_idFacultad}"/>
+                        <p:outputLabel value="#{bundle.CreateApsFacultadLabel_facultad}" for="facultad" />
+                        <p:inputText id="facultad" value="#{apsFacultadController.selected.facultad}" title="#{bundle.CreateApsFacultadTitle_facultad}" />
+                        <p:outputLabel value="#{bundle.CreateApsFacultadLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{apsFacultadController.selected.estado}" required="true" requiredMessage="#{bundle.EditApsFacultadRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateApsFacultadLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{apsFacultadController.selected.idAmbito}" >
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsFacultadController.create}" value="#{bundle.Save}" update="display,:ApsFacultadListForm:datalist,:growl" oncomplete="handleSubmit(args,'ApsFacultadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsFacultadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

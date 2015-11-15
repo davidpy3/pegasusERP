@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SonAlmacenCreateDlg" widgetVar="SonAlmacenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSonAlmacenTitle}">
+            <h:form id="SonAlmacenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sonAlmacenController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_idAlmacen}" for="idAlmacen" />
+                        <p:inputText id="idAlmacen" value="#{sonAlmacenController.selected.idAlmacen}" title="#{bundle.CreateSonAlmacenTitle_idAlmacen}" required="true" requiredMessage="#{bundle.CreateSonAlmacenRequiredMessage_idAlmacen}"/>
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{sonAlmacenController.selected.nombre}" title="#{bundle.CreateSonAlmacenTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{sonAlmacenController.selected.direccion}" title="#{bundle.CreateSonAlmacenTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sonAlmacenController.selected.estado}" title="#{bundle.CreateSonAlmacenTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_ciudad}" for="ciudad" />
+                        <p:inputText id="ciudad" value="#{sonAlmacenController.selected.ciudad}" title="#{bundle.CreateSonAlmacenTitle_ciudad}" />
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_razonSocial}" for="razonSocial" />
+                        <p:inputText id="razonSocial" value="#{sonAlmacenController.selected.razonSocial}" title="#{bundle.CreateSonAlmacenTitle_razonSocial}" />
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{sonAlmacenController.selected.ruc}" title="#{bundle.CreateSonAlmacenTitle_ruc}" required="true" requiredMessage="#{bundle.CreateSonAlmacenRequiredMessage_ruc}"/>
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_cuenta}" for="cuenta" />
+                        <p:inputTextarea rows="4" cols="30" id="cuenta" value="#{sonAlmacenController.selected.cuenta}" title="#{bundle.CreateSonAlmacenTitle_cuenta}" required="true" requiredMessage="#{bundle.CreateSonAlmacenRequiredMessage_cuenta}"/>
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_telefono1}" for="telefono1" />
+                        <p:inputText id="telefono1" value="#{sonAlmacenController.selected.telefono1}" title="#{bundle.CreateSonAlmacenTitle_telefono1}" required="true" requiredMessage="#{bundle.CreateSonAlmacenRequiredMessage_telefono1}"/>
+                        <p:outputLabel value="#{bundle.CreateSonAlmacenLabel_telefono2}" for="telefono2" />
+                        <p:inputText id="telefono2" value="#{sonAlmacenController.selected.telefono2}" title="#{bundle.CreateSonAlmacenTitle_telefono2}" required="true" requiredMessage="#{bundle.CreateSonAlmacenRequiredMessage_telefono2}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sonAlmacenController.create}" value="#{bundle.Save}" update="display,:SonAlmacenListForm:datalist,:growl" oncomplete="handleSubmit(args,'SonAlmacenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SonAlmacenCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

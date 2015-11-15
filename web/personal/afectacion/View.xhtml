@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AfectacionesViewDlg" widgetVar="AfectacionesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAfectacionesTitle}">
+            <h:form id="AfectacionesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{afectacionesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_afectacionesPK_tipoTrab}"/>
+                        <h:outputText value="#{afectacionesController.selected.afectacionesPK.tipoTrab}" title="#{bundle.ViewAfectacionesTitle_afectacionesPK_tipoTrab}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_afectacionesPK_codigo}"/>
+                        <h:outputText value="#{afectacionesController.selected.afectacionesPK.codigo}" title="#{bundle.ViewAfectacionesTitle_afectacionesPK_codigo}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_iden}"/>
+                        <h:outputText value="#{afectacionesController.selected.iden}" title="#{bundle.ViewAfectacionesTitle_iden}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_valor}"/>
+                        <h:outputText value="#{afectacionesController.selected.valor}" title="#{bundle.ViewAfectacionesTitle_valor}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_valorMen}"/>
+                        <h:outputText value="#{afectacionesController.selected.valorMen}" title="#{bundle.ViewAfectacionesTitle_valorMen}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_porcen}"/>
+                        <h:outputText value="#{afectacionesController.selected.porcen}" title="#{bundle.ViewAfectacionesTitle_porcen}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_porcenMensual}"/>
+                        <h:outputText value="#{afectacionesController.selected.porcenMensual}" title="#{bundle.ViewAfectacionesTitle_porcenMensual}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_tablaMonto}"/>
+                        <h:outputText value="#{afectacionesController.selected.tablaMonto}" title="#{bundle.ViewAfectacionesTitle_tablaMonto}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_columnaMonto}"/>
+                        <h:outputText value="#{afectacionesController.selected.columnaMonto}" title="#{bundle.ViewAfectacionesTitle_columnaMonto}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_dn}"/>
+                        <h:outputText value="#{afectacionesController.selected.dn}" title="#{bundle.ViewAfectacionesTitle_dn}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_dd}"/>
+                        <h:outputText value="#{afectacionesController.selected.dd}" title="#{bundle.ViewAfectacionesTitle_dd}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_dfer}"/>
+                        <h:outputText value="#{afectacionesController.selected.dfer}" title="#{bundle.ViewAfectacionesTitle_dfer}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_dftrab}"/>
+                        <h:outputText value="#{afectacionesController.selected.dftrab}" title="#{bundle.ViewAfectacionesTitle_dftrab}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_horaExt}"/>
+                        <h:outputText value="#{afectacionesController.selected.horaExt}" title="#{bundle.ViewAfectacionesTitle_horaExt}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_gastoDebe}"/>
+                        <h:outputText value="#{afectacionesController.selected.gastoDebe}" title="#{bundle.ViewAfectacionesTitle_gastoDebe}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_gastoHaber}"/>
+                        <h:outputText value="#{afectacionesController.selected.gastoHaber}" title="#{bundle.ViewAfectacionesTitle_gastoHaber}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_cuenta}"/>
+                        <h:outputText value="#{afectacionesController.selected.cuenta}" title="#{bundle.ViewAfectacionesTitle_cuenta}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_remAseg}"/>
+                        <h:outputText value="#{afectacionesController.selected.remAseg}" title="#{bundle.ViewAfectacionesTitle_remAseg}"/>
+                        <h:outputText value="#{bundle.ViewAfectacionesLabel_exCodigo}"/>
+                        <h:outputText value="#{afectacionesController.selected.exCodigo}" title="#{bundle.ViewAfectacionesTitle_exCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AfectacionesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

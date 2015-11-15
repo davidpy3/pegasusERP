@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SvaRespuestaTextoListForm">
+                <p:panel header="#{bundle.ListSvaRespuestaTextoTitle}">
+                    <p:dataTable id="datalist" value="#{svaRespuestaTextoController.items}" var="item"
+                                 selectionMode="single" selection="#{svaRespuestaTextoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.svaRespuestaTextoPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle_svaRespuestaTextoPK_idPregunta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.svaRespuestaTextoPK.idPregunta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle_svaRespuestaTextoPK_idParticipacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.svaRespuestaTextoPK.idParticipacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle_idEncuesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEncuesta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle_idDir}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDir}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaRespuestaTextoTitle_respuesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.respuesta}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{svaRespuestaTextoController.prepareCreate}" update=":SvaRespuestaTextoCreateForm" oncomplete="PF('SvaRespuestaTextoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SvaRespuestaTextoViewForm" oncomplete="PF('SvaRespuestaTextoViewDialog').show()" disabled="#{empty svaRespuestaTextoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SvaRespuestaTextoEditForm" oncomplete="PF('SvaRespuestaTextoEditDialog').show()" disabled="#{empty svaRespuestaTextoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{svaRespuestaTextoController.destroy}" update=":growl,datalist" disabled="#{empty svaRespuestaTextoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

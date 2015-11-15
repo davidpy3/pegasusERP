@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNivelEstudiosEditDlg" widgetVar="EscNivelEstudiosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscNivelEstudiosTitle}">
+            <h:form id="EscNivelEstudiosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNivelEstudiosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscNivelEstudiosLabel_idNivel}" for="idNivel" />
+                        <p:inputText id="idNivel" value="#{escNivelEstudiosController.selected.idNivel}" title="#{bundle.EditEscNivelEstudiosTitle_idNivel}" required="true" requiredMessage="#{bundle.EditEscNivelEstudiosRequiredMessage_idNivel}"/>
+                        <p:outputLabel value="#{bundle.EditEscNivelEstudiosLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{escNivelEstudiosController.selected.nivel}" title="#{bundle.EditEscNivelEstudiosTitle_nivel}" required="true" requiredMessage="#{bundle.EditEscNivelEstudiosRequiredMessage_nivel}"/>
+                        <p:outputLabel value="#{bundle.EditEscNivelEstudiosLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{escNivelEstudiosController.selected.abrev}" title="#{bundle.EditEscNivelEstudiosTitle_abrev}" required="true" requiredMessage="#{bundle.EditEscNivelEstudiosRequiredMessage_abrev}"/>
+                        <p:outputLabel value="#{bundle.EditEscNivelEstudiosLabel_ambito}" for="ambito" />
+                        <p:inputText id="ambito" value="#{escNivelEstudiosController.selected.ambito}" title="#{bundle.EditEscNivelEstudiosTitle_ambito}" />
+                        <p:outputLabel value="#{bundle.EditEscNivelEstudiosLabel_ultimo}" for="ultimo" />
+                        <p:selectBooleanCheckbox id="ultimo" value="#{escNivelEstudiosController.selected.ultimo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escNivelEstudiosController.update}" value="#{bundle.Save}" update="display,:EscNivelEstudiosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscNivelEstudiosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscNivelEstudiosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

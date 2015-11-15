@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="QuizCategoriaPreguntaListForm">
+                <p:panel header="#{bundle.ListQuizCategoriaPreguntaTitle}">
+                    <p:dataTable id="datalist" value="#{quizCategoriaPreguntaController.items}" var="item"
+                                 selectionMode="single" selection="#{quizCategoriaPreguntaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idCategoria}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle_idCuestionario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCuestionario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle_idCategoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCategoria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuizCategoriaPreguntaTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{quizCategoriaPreguntaController.prepareCreate}" update=":QuizCategoriaPreguntaCreateForm" oncomplete="PF('QuizCategoriaPreguntaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":QuizCategoriaPreguntaViewForm" oncomplete="PF('QuizCategoriaPreguntaViewDialog').show()" disabled="#{empty quizCategoriaPreguntaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":QuizCategoriaPreguntaEditForm" oncomplete="PF('QuizCategoriaPreguntaEditDialog').show()" disabled="#{empty quizCategoriaPreguntaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{quizCategoriaPreguntaController.destroy}" update=":growl,datalist" disabled="#{empty quizCategoriaPreguntaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

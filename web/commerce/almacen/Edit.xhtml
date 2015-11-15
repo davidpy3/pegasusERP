@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SonAlmacenEditDlg" widgetVar="SonAlmacenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSonAlmacenTitle}">
+            <h:form id="SonAlmacenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sonAlmacenController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_idAlmacen}" for="idAlmacen" />
+                        <p:inputText id="idAlmacen" value="#{sonAlmacenController.selected.idAlmacen}" title="#{bundle.EditSonAlmacenTitle_idAlmacen}" required="true" requiredMessage="#{bundle.EditSonAlmacenRequiredMessage_idAlmacen}"/>
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{sonAlmacenController.selected.nombre}" title="#{bundle.EditSonAlmacenTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{sonAlmacenController.selected.direccion}" title="#{bundle.EditSonAlmacenTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sonAlmacenController.selected.estado}" title="#{bundle.EditSonAlmacenTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_ciudad}" for="ciudad" />
+                        <p:inputText id="ciudad" value="#{sonAlmacenController.selected.ciudad}" title="#{bundle.EditSonAlmacenTitle_ciudad}" />
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_razonSocial}" for="razonSocial" />
+                        <p:inputText id="razonSocial" value="#{sonAlmacenController.selected.razonSocial}" title="#{bundle.EditSonAlmacenTitle_razonSocial}" />
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{sonAlmacenController.selected.ruc}" title="#{bundle.EditSonAlmacenTitle_ruc}" required="true" requiredMessage="#{bundle.EditSonAlmacenRequiredMessage_ruc}"/>
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_cuenta}" for="cuenta" />
+                        <p:inputTextarea rows="4" cols="30" id="cuenta" value="#{sonAlmacenController.selected.cuenta}" title="#{bundle.EditSonAlmacenTitle_cuenta}" required="true" requiredMessage="#{bundle.EditSonAlmacenRequiredMessage_cuenta}"/>
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_telefono1}" for="telefono1" />
+                        <p:inputText id="telefono1" value="#{sonAlmacenController.selected.telefono1}" title="#{bundle.EditSonAlmacenTitle_telefono1}" required="true" requiredMessage="#{bundle.EditSonAlmacenRequiredMessage_telefono1}"/>
+                        <p:outputLabel value="#{bundle.EditSonAlmacenLabel_telefono2}" for="telefono2" />
+                        <p:inputText id="telefono2" value="#{sonAlmacenController.selected.telefono2}" title="#{bundle.EditSonAlmacenTitle_telefono2}" required="true" requiredMessage="#{bundle.EditSonAlmacenRequiredMessage_telefono2}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sonAlmacenController.update}" value="#{bundle.Save}" update="display,:SonAlmacenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SonAlmacenEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SonAlmacenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

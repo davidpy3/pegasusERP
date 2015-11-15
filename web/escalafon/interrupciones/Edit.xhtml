@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscInterrupcionesEditDlg" widgetVar="EscInterrupcionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscInterrupcionesTitle}">
+            <h:form id="EscInterrupcionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escInterrupcionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_idInt}" for="idInt" />
+                        <p:inputText id="idInt" value="#{escInterrupcionesController.selected.idInt}" title="#{bundle.EditEscInterrupcionesTitle_idInt}" required="true" requiredMessage="#{bundle.EditEscInterrupcionesRequiredMessage_idInt}"/>
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escInterrupcionesController.selected.fechaIni}" title="#{bundle.EditEscInterrupcionesTitle_fechaIni}" required="true" requiredMessage="#{bundle.EditEscInterrupcionesRequiredMessage_fechaIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escInterrupcionesController.selected.fechaFin}" title="#{bundle.EditEscInterrupcionesTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{escInterrupcionesController.selected.tipo}" title="#{bundle.EditEscInterrupcionesTitle_tipo}" required="true" requiredMessage="#{bundle.EditEscInterrupcionesRequiredMessage_tipo}"/>
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_idOrigen}" for="idOrigen" />
+                        <p:inputText id="idOrigen" value="#{escInterrupcionesController.selected.idOrigen}" title="#{bundle.EditEscInterrupcionesTitle_idOrigen}" />
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_anios}" for="anios" />
+                        <p:inputText id="anios" value="#{escInterrupcionesController.selected.anios}" title="#{bundle.EditEscInterrupcionesTitle_anios}" />
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_meses}" for="meses" />
+                        <p:inputText id="meses" value="#{escInterrupcionesController.selected.meses}" title="#{bundle.EditEscInterrupcionesTitle_meses}" />
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_dias}" for="dias" />
+                        <p:inputText id="dias" value="#{escInterrupcionesController.selected.dias}" title="#{bundle.EditEscInterrupcionesTitle_dias}" />
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escInterrupcionesController.selected.estado}" />
+                        <p:outputLabel value="#{bundle.EditEscInterrupcionesLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escInterrupcionesController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscInterrupcionesRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escInterrupcionesController.update}" value="#{bundle.Save}" update="display,:EscInterrupcionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscInterrupcionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscInterrupcionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

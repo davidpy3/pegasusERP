@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteTextoViewDlg" widgetVar="SgcFuenteTextoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcFuenteTextoTitle}">
+            <h:form id="SgcFuenteTextoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteTextoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_idFuetex}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.idFuetex}" title="#{bundle.ViewSgcFuenteTextoTitle_idFuetex}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_idAutoevaluacion}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.idAutoevaluacion}" title="#{bundle.ViewSgcFuenteTextoTitle_idAutoevaluacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_idFuente}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.idFuente}" title="#{bundle.ViewSgcFuenteTextoTitle_idFuente}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_titulo}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.titulo}" title="#{bundle.ViewSgcFuenteTextoTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_texto}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.texto}" title="#{bundle.ViewSgcFuenteTextoTitle_texto}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_peso}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.peso}" title="#{bundle.ViewSgcFuenteTextoTitle_peso}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_pagina}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.pagina}" title="#{bundle.ViewSgcFuenteTextoTitle_pagina}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteTextoLabel_idEstado}"/>
+                        <h:outputText value="#{sgcFuenteTextoController.selected.idEstado}" title="#{bundle.ViewSgcFuenteTextoTitle_idEstado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcFuenteTextoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

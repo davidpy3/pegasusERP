@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaRespuestaDocenteEstEditDlg" widgetVar="SvaRespuestaDocenteEstEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSvaRespuestaDocenteEstTitle}">
+            <h:form id="SvaRespuestaDocenteEstEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaRespuestaDocenteEstController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_svaRespuestaDocenteEstPK_idParticipacion}" for="svaRespuestaDocenteEstPK_idParticipacion" />
+                        <p:inputText id="svaRespuestaDocenteEstPK_idParticipacion" value="#{svaRespuestaDocenteEstController.selected.svaRespuestaDocenteEstPK.idParticipacion}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_svaRespuestaDocenteEstPK_idParticipacion}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_svaRespuestaDocenteEstPK_idParticipacion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_svaRespuestaDocenteEstPK_idPregunta}" for="svaRespuestaDocenteEstPK_idPregunta" />
+                        <p:inputText id="svaRespuestaDocenteEstPK_idPregunta" value="#{svaRespuestaDocenteEstController.selected.svaRespuestaDocenteEstPK.idPregunta}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_svaRespuestaDocenteEstPK_idPregunta}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_svaRespuestaDocenteEstPK_idPregunta}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_idEncuesta}" for="idEncuesta" />
+                        <p:inputText id="idEncuesta" value="#{svaRespuestaDocenteEstController.selected.idEncuesta}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_idEncuesta}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_idEncuesta}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_idAcexp}" for="idAcexp" />
+                        <p:inputText id="idAcexp" value="#{svaRespuestaDocenteEstController.selected.idAcexp}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_idAcexp}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_idAcexp}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_idDocente}" for="idDocente" />
+                        <p:inputText id="idDocente" value="#{svaRespuestaDocenteEstController.selected.idDocente}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_idDocente}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_idDocente}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_idAsignatura}" for="idAsignatura" />
+                        <p:inputText id="idAsignatura" value="#{svaRespuestaDocenteEstController.selected.idAsignatura}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_idAsignatura}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_idAsignatura}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaDocenteEstLabel_idOpcion}" for="idOpcion" />
+                        <p:inputText id="idOpcion" value="#{svaRespuestaDocenteEstController.selected.idOpcion}" title="#{bundle.EditSvaRespuestaDocenteEstTitle_idOpcion}" required="true" requiredMessage="#{bundle.EditSvaRespuestaDocenteEstRequiredMessage_idOpcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaRespuestaDocenteEstController.update}" value="#{bundle.Save}" update="display,:SvaRespuestaDocenteEstListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SvaRespuestaDocenteEstEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaRespuestaDocenteEstEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNombramientosViewDlg" widgetVar="EscNombramientosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscNombramientosTitle}">
+            <h:form id="EscNombramientosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNombramientosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_idNom}"/>
+                        <h:outputText value="#{escNombramientosController.selected.idNom}" title="#{bundle.ViewEscNombramientosTitle_idNom}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_fechaNomb}"/>
+                        <h:outputText value="#{escNombramientosController.selected.fechaNomb}" title="#{bundle.ViewEscNombramientosTitle_fechaNomb}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_idDtra}"/>
+                        <h:outputText value="#{escNombramientosController.selected.idDtra}" title="#{bundle.ViewEscNombramientosTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_fechaFin}"/>
+                        <h:outputText value="#{escNombramientosController.selected.fechaFin}" title="#{bundle.ViewEscNombramientosTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_escCap}"/>
+                        <h:outputText value="#{escNombramientosController.selected.escCap}" title="#{bundle.ViewEscNombramientosTitle_escCap}"/>
+                        <h:outputText value="#{bundle.ViewEscNombramientosLabel_idEsc}"/>
+                        <h:outputText value="#{escNombramientosController.selected.idEsc}" title="#{bundle.ViewEscNombramientosTitle_idEsc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscNombramientosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

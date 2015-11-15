@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaEvaluacionDocenteParticipacionCreateDlg" widgetVar="SvaEvaluacionDocenteParticipacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle}">
+            <h:form id="SvaEvaluacionDocenteParticipacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaEvaluacionDocenteParticipacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_idParticipacion}" for="idParticipacion" />
+                        <p:inputText id="idParticipacion" value="#{svaEvaluacionDocenteParticipacionController.selected.idParticipacion}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_idParticipacion}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_idParticipacion}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_idEncuesta}" for="idEncuesta" />
+                        <p:inputText id="idEncuesta" value="#{svaEvaluacionDocenteParticipacionController.selected.idEncuesta}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_idEncuesta}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_idEncuesta}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{svaEvaluacionDocenteParticipacionController.selected.idDir}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_idDir}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_idAsignatura}" for="idAsignatura" />
+                        <p:inputText id="idAsignatura" value="#{svaEvaluacionDocenteParticipacionController.selected.idAsignatura}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_idAsignatura}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_idAsignatura}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_idDocente}" for="idDocente" />
+                        <p:inputText id="idDocente" value="#{svaEvaluacionDocenteParticipacionController.selected.idDocente}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_idDocente}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_idDocente}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_puntaje}" for="puntaje" />
+                        <p:inputText id="puntaje" value="#{svaEvaluacionDocenteParticipacionController.selected.puntaje}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_puntaje}" />
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_cerrado}" for="cerrado" />
+                        <p:inputText id="cerrado" value="#{svaEvaluacionDocenteParticipacionController.selected.cerrado}" title="#{bundle.CreateSvaEvaluacionDocenteParticipacionTitle_cerrado}" required="true" requiredMessage="#{bundle.CreateSvaEvaluacionDocenteParticipacionRequiredMessage_cerrado}"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_fechaCierre}" for="fechaCierre" />
+                        <p:calendar id="fechaCierre" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEvaluacionDocenteParticipacionController.selected.fechaCierre}" title="#{bundle.EditSvaEvaluacionDocenteParticipacionTitle_fechaCierre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSvaEvaluacionDocenteParticipacionLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEvaluacionDocenteParticipacionController.selected.fechaReg}" title="#{bundle.EditSvaEvaluacionDocenteParticipacionTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSvaEvaluacionDocenteParticipacionRequiredMessage_fechaReg}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaEvaluacionDocenteParticipacionController.create}" value="#{bundle.Save}" update="display,:SvaEvaluacionDocenteParticipacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'SvaEvaluacionDocenteParticipacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaEvaluacionDocenteParticipacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEspecialidadEditDlg" widgetVar="EscEspecialidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscEspecialidadTitle}">
+            <h:form id="EscEspecialidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEspecialidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscEspecialidadLabel_idEsp}" for="idEsp" />
+                        <p:inputText id="idEsp" value="#{escEspecialidadController.selected.idEsp}" title="#{bundle.EditEscEspecialidadTitle_idEsp}" required="true" requiredMessage="#{bundle.EditEscEspecialidadRequiredMessage_idEsp}"/>
+                        <p:outputLabel value="#{bundle.EditEscEspecialidadLabel_especialidad}" for="especialidad" />
+                        <p:inputText id="especialidad" value="#{escEspecialidadController.selected.especialidad}" title="#{bundle.EditEscEspecialidadTitle_especialidad}" required="true" requiredMessage="#{bundle.EditEscEspecialidadRequiredMessage_especialidad}"/>
+                        <p:outputLabel value="#{bundle.EditEscEspecialidadLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{escEspecialidadController.selected.abrev}" title="#{bundle.EditEscEspecialidadTitle_abrev}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escEspecialidadController.update}" value="#{bundle.Save}" update="display,:EscEspecialidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscEspecialidadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscEspecialidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

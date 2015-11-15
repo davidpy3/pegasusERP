@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProcesoTipoEditDlg" widgetVar="ProcesoTipoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProcesoTipoTitle}">
+            <h:form id="ProcesoTipoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{procesoTipoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProcesoTipoLabel_tipoproceso}" for="tipoproceso" />
+                        <p:inputText id="tipoproceso" value="#{procesoTipoController.selected.tipoproceso}" title="#{bundle.EditProcesoTipoTitle_tipoproceso}" required="true" requiredMessage="#{bundle.EditProcesoTipoRequiredMessage_tipoproceso}"/>
+                        <p:outputLabel value="#{bundle.EditProcesoTipoLabel_nomProceso}" for="nomProceso" />
+                        <p:inputText id="nomProceso" value="#{procesoTipoController.selected.nomProceso}" title="#{bundle.EditProcesoTipoTitle_nomProceso}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{procesoTipoController.update}" value="#{bundle.Save}" update="display,:ProcesoTipoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProcesoTipoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProcesoTipoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

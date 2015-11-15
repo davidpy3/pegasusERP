@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscHistoriaCapViewDlg" widgetVar="EscHistoriaCapViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscHistoriaCapTitle}">
+            <h:form id="EscHistoriaCapViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escHistoriaCapController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscHistoriaCapLabel_idHistCap}"/>
+                        <h:outputText value="#{escHistoriaCapController.selected.idHistCap}" title="#{bundle.ViewEscHistoriaCapTitle_idHistCap}"/>
+                        <h:outputText value="#{bundle.ViewEscHistoriaCapLabel_idDtra}"/>
+                        <h:outputText value="#{escHistoriaCapController.selected.idDtra}" title="#{bundle.ViewEscHistoriaCapTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscHistoriaCapLabel_elaborada}"/>
+                        <h:outputText value="#{escHistoriaCapController.selected.elaborada}" title="#{bundle.ViewEscHistoriaCapTitle_elaborada}"/>
+                        <h:outputText value="#{bundle.ViewEscHistoriaCapLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escHistoriaCapController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscHistoriaCapLabel_fechaDoc}"/>
+                        <h:outputText value="#{escHistoriaCapController.selected.fechaDoc}" title="#{bundle.ViewEscHistoriaCapTitle_fechaDoc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscHistoriaCapViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

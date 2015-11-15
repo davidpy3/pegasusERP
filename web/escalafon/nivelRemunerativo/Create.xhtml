@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscNivelRemunerativoCreateDlg" widgetVar="EscNivelRemunerativoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscNivelRemunerativoTitle}">
+            <h:form id="EscNivelRemunerativoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escNivelRemunerativoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscNivelRemunerativoLabel_idNivel}" for="idNivel" />
+                        <p:inputText id="idNivel" value="#{escNivelRemunerativoController.selected.idNivel}" title="#{bundle.CreateEscNivelRemunerativoTitle_idNivel}" required="true" requiredMessage="#{bundle.CreateEscNivelRemunerativoRequiredMessage_idNivel}"/>
+                        <p:outputLabel value="#{bundle.CreateEscNivelRemunerativoLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{escNivelRemunerativoController.selected.nivel}" title="#{bundle.CreateEscNivelRemunerativoTitle_nivel}" required="true" requiredMessage="#{bundle.CreateEscNivelRemunerativoRequiredMessage_nivel}"/>
+                        <p:outputLabel value="#{bundle.CreateEscNivelRemunerativoLabel_idGo}" for="idGo" />
+                        <p:selectOneMenu id="idGo" value="#{escNivelRemunerativoController.selected.idGo}" required="true" requiredMessage="#{bundle.EditEscNivelRemunerativoRequiredMessage_idGo}">
+                            <f:selectItems value="#{escGrupoOcupacionalController.itemsAvailableSelectOne}"
+                                           var="idGoItem"
+                                           itemValue="#{idGoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escNivelRemunerativoController.create}" value="#{bundle.Save}" update="display,:EscNivelRemunerativoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscNivelRemunerativoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscNivelRemunerativoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

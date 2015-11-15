@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8'
+                      http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+    
+    
+    <h:panelGrid style=" float: right" columns="2" cellpadding="5">
+        <p:link value="Listar"></p:link>
+        <p:link value="Crear registro" href="create"></p:link>
+    </h:panelGrid>
+    <h2 style="margin-top:0">Estudiantes</h2>
+    <p:separator />
+    <h:form>
+        <h:panelGrid columns="3" width="100%" cellpadding="5">
+            <p:outputLabel style="width:160px" class="label" value="Ambito:" />
+            <p:outputLabel class="label" value="Especialidad:" />
+            <p:outputLabel style="width:160px" class="label" value="Nivel Academico:" />
+            <p:selectOneMenu >
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{ocedaService.ambitoAcademicoList}" var="m" itemLabel="#{m.ambito}" />
+            </p:selectOneMenu>
+            <p:selectOneMenu>
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{ocedaService.especialidadList}" var="m" itemLabel="#{m.especialidad}" />
+            </p:selectOneMenu>
+            <p:selectOneMenu>
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{ocedaService.nivelAcademicoList}" var="m" itemLabel="#{m.nombre}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <h:panelGrid columns="4" cellpadding="5" width="100%">
+            <p:outputLabel class="label" value="Codigo:" />
+            <p:outputLabel class="label" value="Nombre completo:" />
+            <p:outputLabel class="label" value="Promocion:" />
+            <p:outputLabel class="label" value="Situación Academico:" />
+            <p:inputText style="width:160px"/>
+            <p:inputText/>
+            <p:inputText/>
+            <p:selectOneMenu>
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{ocedaService.situacionAcademicaList}" var="m" itemLabel="#{m.nombre}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <h:panelGrid style="  float: right" columns="2" cellpadding="5">
+            <p:commandButton value="Recuperar" icon="ui-icon-extlink" actionListener="#{dialogController.open()}">
+            <p:ajax/>
+            </p:commandButton>
+        </h:panelGrid>
+        <h:panelGrid width="100%">
+            <p:dataTable var="estudiante"
+                         value="#{ocedaService.getEstudianteList3()}">
+                <p:column width="36">
+                    <p:menuButton class="jmenucolumn" value="">
+                        <p:menuitem value="Descargar" actionListener="#{ocedaService.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Aprobar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Observar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Editar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Eliminar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                    </p:menuButton>
+                </p:column>
+                <p:column headerText="Codigo" width="100">
+                    <h:outputText value="#{estudiante.codigoEstudiante}" />
+                </p:column>
+                <p:column headerText="Nombre Completo" filterBy="#{estudiante.personaNatural.nombreCompleto}" footerText="contains" filterMatchMode="contains">
+                    <p:link href="/admin/oceda/estudiante/#{estudiante.idAcexp}" value="#{estudiante.personaNatural.nombreCompleto}" >
+                        <f:param name="productId" value="#{estudiante.idAcexp}" />
+                    </p:link>
+                </p:column>
+                <p:column headerText="Especialidad">
+                    <h:outputText value="#{estudiante.especialidad.especialidad}" />
+                </p:column>
+                <p:column headerText="Situación" width="120" filterBy="#{estudiante.situacionAcademico}" footerText="exact" filterMatchMode="exact">
+                    <f:facet name="filter">
+                        <p:selectOneMenu>
+                        <f:selectItem itemLabel="Select One" itemValue="#{null}"/>
+                        <f:selectItems value="#{ocedaService.situacionAcademicaList}" var="m" itemLabel="#{m.nombre}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{estudiante.situacionAcademico.nombre}" />
+                </p:column>
+                <p:column headerText="Nivel Academico" width="120">
+                    <h:outputText value="#{estudiante.nivelAcademico.nombre}" />
+                </p:column>
+                <p:column width="40" style="text-align: center">
+                    <p:commandButton icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener value="#{estudiante}" target="#{demoView.estudiante}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid>
+    </h:form>
+</html>

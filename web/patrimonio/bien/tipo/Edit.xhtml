@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipobienEditDlg" widgetVar="TipobienEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipobienTitle}">
+            <h:form id="TipobienEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipobienController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipobienLabel_codbien}" for="codbien" />
+                        <p:inputText id="codbien" value="#{tipobienController.selected.codbien}" title="#{bundle.EditTipobienTitle_codbien}" required="true" requiredMessage="#{bundle.EditTipobienRequiredMessage_codbien}"/>
+                        <p:outputLabel value="#{bundle.EditTipobienLabel_descripcio}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{tipobienController.selected.descripcion}" title="#{bundle.EditTipobienTitle_descripcio}" required="true" requiredMessage="#{bundle.EditTipobienRequiredMessage_descripcio}"/>
+                        <p:outputLabel value="#{bundle.EditTipobienLabel_correla}" for="correla" />
+                        <p:inputText id="correla" value="#{tipobienController.selected.correla}" title="#{bundle.EditTipobienTitle_correla}" required="true" requiredMessage="#{bundle.EditTipobienRequiredMessage_correla}"/>
+                        <p:outputLabel value="#{bundle.EditTipobienLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{tipobienController.selected.tipo}" title="#{bundle.EditTipobienTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditTipobienLabel_mbienes0Collection}" for="mbienes0Collection" />
+                        <p:inputText id="mbienes0Collection" value="#{tipobienController.selected.mbienes0Collection}" title="#{bundle.EditTipobienTitle_mbienes0Collection}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipobienController.update}" value="#{bundle.Save}" update="display,:TipobienListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipobienEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipobienEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

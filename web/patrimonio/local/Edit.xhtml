@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LocalEditDlg" widgetVar="LocalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLocalTitle}">
+            <h:form id="LocalEditForm">
+                <h:panelGroup id="display">
+                    <p:fieldset legend="Datos Generales">
+                    <p:panelGrid columns="4" rendered="#{localController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLocalLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{localController.selected.id}" title="#{bundle.EditLocalTitle_id}" required="true" requiredMessage="#{bundle.EditLocalRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{localController.selected.nombre}" title="#{bundle.EditLocalTitle_nombre}" required="true" requiredMessage="#{bundle.EditLocalRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditLocalLabel_nombre}" for="flgPropiedad" />
+                        
+                        <p:selectOneMenu id="flgPropiedad" value="#{localController.selected.flgPropiedad}" >
+                            <f:selectItem itemLabel="ESTATAL" itemValue="ESTATAL"/>
+                            <f:selectItem itemLabel="PRIVADA" itemValue="PRIVADA"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditLocalLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{localController.selected.direccion}" title="#{bundle.EditLocalTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_numMun}" for="numMun" />
+                        <p:inputText id="numMun" value="#{localController.selected.numMun}" title="#{bundle.EditLocalTitle_numMun}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscMz}" for="dscMz" />
+                        <p:inputText id="dscMz" value="#{localController.selected.dscMz}" title="#{bundle.EditLocalTitle_dscMz}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscLote}" for="dscLote" />
+                        <p:inputText id="dscLote" value="#{localController.selected.dscLote}" title="#{bundle.EditLocalTitle_dscLote}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_ctdArea}" for="ctdArea" />
+                        <p:inputText id="ctdArea" value="#{localController.selected.ctdArea}" title="#{bundle.EditLocalTitle_ctdArea}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgUm}" for="flgUm" />
+                        <p:selectOneMenu id="flgUm" value="#{localController.selected.flgUm}" >
+                            <f:selectItem itemLabel="m2" itemValue="m2"/>
+                            <f:selectItem itemLabel="Ha" itemValue="Ha"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateLocalLabel_codinst}" for="codinst" />
+                        <p:selectOneMenu style="width:300px" id="codinst" value="#{localController.selected.codinst}" >
+                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
+                                           var="codinstItem"
+                                           itemLabel="#{codinstItem.id}: #{codinstItem.nombre}"
+                                           itemValue="#{codinstItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLocalLabel_tipovia}" for="tipovia" />
+                        <p:selectOneMenu id="tipovia" style="width:300px" value="#{localController.selected.tipovia}" >
+                            <f:selectItems value="#{tipoViaController.itemsAvailableSelectOne}"
+                                           var="tipoviaItem"
+                                           itemLabel="#{tipoviaItem.tipovia}: #{tipoviaItem.nombreVia}"
+                                           itemValue="#{tipoviaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLocalLabel_codubigeo}" for="codubigeo" />
+                        <p:selectOneMenu id="codubigeo" style="width:300px" value="#{localController.selected.codubigeo}" >
+                            <f:selectItems value="#{ubigeoController.itemsAvailableSelectOne}"
+                                           var="codubigeoItem"
+                                           itemLabel="#{codubigeoItem.codubigeo}: #{codubigeoItem.nmbubigeo}"
+                                           itemValue="#{codubigeoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                        </p:fieldset>
+                      <p:fieldset legend="Información Contable">
+                    <p:panelGrid columns="4" rendered="#{localController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscCtactble}" for="dscCtactble" />
+                        <p:selectOneMenu id="dscCtactble" style="width:300px" value="#{localController.selected.dscCtactble}" >
+                            <f:selectItems value="#{cuentacController.itemsAvailableSelectOne}"
+                                           var="dscCtactbleItem"
+                                           itemLabel="#{dscCtactbleItem.cuenta}: #{dscCtactbleItem.denomina}"
+                                           itemValue="#{dscCtactbleItem}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgTipomoneda}" for="flgTipomoneda" />
+                        
+                        
+                        <p:selectOneMenu id="flgTipomoneda" value="#{localController.selected.flgTipomoneda}" >
+                            <f:selectItem itemLabel="SOLES" itemValue="SOLES"/>
+                            <f:selectItem itemLabel="DOLARES" itemValue="DOLARES"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditLocalLabel_ctdValor}" for="ctdValor" />
+                        <p:inputText id="ctdValor" value="#{localController.selected.ctdValor}" title="#{bundle.EditLocalTitle_ctdValor}" />
+                        
+                    </p:panelGrid>
+                        </p:fieldset>
+                      <p:fieldset legend="Información Registral">
+                    <p:panelGrid columns="6" rendered="#{localController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLocalLabel_flgTiporeg}" for="flgTiporeg" />
+                        <p:inputText id="flgTiporeg" value="#{localController.selected.flgTiporeg}" title="#{bundle.EditLocalTitle_flgTiporeg}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscAsiento}" for="dscAsiento" />
+                        <p:inputText id="dscAsiento" value="#{localController.selected.dscAsiento}" title="#{bundle.EditLocalTitle_dscAsiento}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscFojas}" for="dscFojas" />
+                        <p:inputText id="dscFojas" value="#{localController.selected.dscFojas}" title="#{bundle.EditLocalTitle_dscFojas}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscTomo}" for="dscTomo" />
+                        <p:inputText id="dscTomo" value="#{localController.selected.dscTomo}" title="#{bundle.EditLocalTitle_dscTomo}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscPelectro}" for="dscPelectro" />
+                        <p:inputText id="dscPelectro" value="#{localController.selected.dscPelectro}" title="#{bundle.EditLocalTitle_dscPelectro}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_codPredio}" for="codPredio" />
+                        <p:inputText id="codPredio" value="#{localController.selected.codPredio}" title="#{bundle.EditLocalTitle_codPredio}" />
+                        
+                    </p:panelGrid>
+                           <p:panelGrid columns="4" rendered="#{localController.selected != null}">
+                         <p:outputLabel value="#{bundle.EditLocalLabel_dscBeneficiario}" for="dscBeneficiario" />
+                        <p:inputText id="dscBeneficiario" value="#{localController.selected.dscBeneficiario}" title="#{bundle.EditLocalTitle_dscBeneficiario}" />
+                        <p:outputLabel value="#{bundle.EditLocalLabel_dscPropietario}" for="dscPropietario" />
+                        <p:inputText id="dscPropietario" value="#{localController.selected.dscPropietario}" title="#{bundle.EditLocalTitle_dscPropietario}" />
+                    
+                    </p:panelGrid>
+                        </p:fieldset>
+                    <p:commandButton actionListener="#{localController.update}" value="#{bundle.Save}" update="display,:LocalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LocalEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LocalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

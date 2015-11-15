@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCategoriaEditDlg" widgetVar="EscCategoriaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscCategoriaTitle}">
+            <h:form id="EscCategoriaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCategoriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_idCategoria}" for="idCategoria" />
+                        <p:inputText id="idCategoria" value="#{escCategoriaController.selected.idCategoria}" title="#{bundle.EditEscCategoriaTitle_idCategoria}" required="true" requiredMessage="#{bundle.EditEscCategoriaRequiredMessage_idCategoria}"/>
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{escCategoriaController.selected.categoria}" title="#{bundle.EditEscCategoriaTitle_categoria}" required="true" requiredMessage="#{bundle.EditEscCategoriaRequiredMessage_categoria}"/>
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_dedicacion}" for="dedicacion" />
+                        <p:inputText id="dedicacion" value="#{escCategoriaController.selected.dedicacion}" title="#{bundle.EditEscCategoriaTitle_dedicacion}" />
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_abrevCat}" for="abrevCat" />
+                        <p:inputText id="abrevCat" value="#{escCategoriaController.selected.abrevCat}" title="#{bundle.EditEscCategoriaTitle_abrevCat}" required="true" requiredMessage="#{bundle.EditEscCategoriaRequiredMessage_abrevCat}"/>
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_abrevDed}" for="abrevDed" />
+                        <p:inputText id="abrevDed" value="#{escCategoriaController.selected.abrevDed}" title="#{bundle.EditEscCategoriaTitle_abrevDed}" />
+                        <p:outputLabel value="#{bundle.EditEscCategoriaLabel_idCat}" for="idCat" />
+                        <p:selectOneMenu id="idCat" value="#{escCategoriaController.selected.idCat}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCategoriaDocController.itemsAvailableSelectOne}"
+                                           var="idCatItem"
+                                           itemValue="#{idCatItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCategoriaController.update}" value="#{bundle.Save}" update="display,:EscCategoriaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscCategoriaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCategoriaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

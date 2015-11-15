@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioEditDlg" widgetVar="InventarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInventarioTitle}">
+            <h:form id="InventarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.AnoEje}" for="inventarioPK_anoEje" />
+                        <p:inputText id="inventarioPK_anoEje" value="#{inventarioController.selected.inventarioPK.anoEje}" title="#{bundle.EditInventarioTitle_inventarioPK_anoEje}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_inventarioPK_anoEje}"/>
+                         
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_inventarioPK_numInv}" for="inventarioPK_numInv" />
+                        <p:inputText id="inventarioPK_numInv" value="#{inventarioController.selected.inventarioPK.numInv}" title="#{bundle.EditInventarioTitle_inventarioPK_numInv}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_inventarioPK_numInv}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_tipoInventario}" for="tipoInventario" />
+                        <p:selectOneMenu id="tipoInventario" value="#{inventarioController.selected.tipoInventario}" title="#{bundle.EditInventarioTitle_tipoInventario}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItem itemValue="1" itemLabel="Anual"/>
+                        <f:selectItem itemValue="2" itemLabel="Semestral"/>
+                        <f:selectItem itemValue="3" itemLabel="Trimestral"/>
+                        <f:selectItem itemValue="4" itemLabel="Bimestral"/>
+                        
+                    </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_periodo}" for="periodo" />
+                        
+                        <p:calendar id="periodo" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.periodo}" title="#{bundle.EditInventarioTitle_periodo}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.fechaIni}" title="#{bundle.EditInventarioTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.fechaFin}" title="#{bundle.EditInventarioTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_responsable}" for="responsable" />
+                        <p:inputText id="responsable" value="#{inventarioController.selected.responsable}" title="#{bundle.EditInventarioTitle_responsable}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{inventarioController.selected.estado}" title="#{bundle.EditInventarioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{inventarioController.selected.observacion}" title="#{bundle.EditInventarioTitle_observacion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{inventarioController.update}" value="#{bundle.Save}" update="display,:InventarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InventarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InventarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

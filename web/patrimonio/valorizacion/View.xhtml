@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValorizacionViewDlg" widgetVar="ValorizacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewValorizacionTitle}">
+            <h:form id="ValorizacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valorizacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_valorizacionPK_tipoValor}"/>
+                        <h:outputText value="#{valorizacionController.selected.valorizacionPK.tipoValor}" title="#{bundle.ViewValorizacionTitle_valorizacionPK_tipoValor}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_valorizacionPK_NOrden}"/>
+                        <h:outputText value="#{valorizacionController.selected.valorizacionPK.NOrden}" title="#{bundle.ViewValorizacionTitle_valorizacionPK_NOrden}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_valorizacionPK_tipo}"/>
+                        <h:outputText value="#{valorizacionController.selected.valorizacionPK.tipo}" title="#{bundle.ViewValorizacionTitle_valorizacionPK_tipo}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_valorizacionPK_anoEje}"/>
+                        <h:outputText value="#{valorizacionController.selected.valorizacionPK.anoEje}" title="#{bundle.ViewValorizacionTitle_valorizacionPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_valorizacionPK_NValor}"/>
+                        <h:outputText value="#{valorizacionController.selected.valorizacionPK.NValor}" title="#{bundle.ViewValorizacionTitle_valorizacionPK_NValor}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_fecha}"/>
+                        <h:outputText value="#{valorizacionController.selected.fecha}" title="#{bundle.ViewValorizacionTitle_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_porcProp}"/>
+                        <h:outputText value="#{valorizacionController.selected.porcProp}" title="#{bundle.ViewValorizacionTitle_porcProp}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_porcValor}"/>
+                        <h:outputText value="#{valorizacionController.selected.porcValor}" title="#{bundle.ViewValorizacionTitle_porcValor}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_montoProp}"/>
+                        <h:outputText value="#{valorizacionController.selected.montoProp}" title="#{bundle.ViewValorizacionTitle_montoProp}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_montoValor}"/>
+                        <h:outputText value="#{valorizacionController.selected.montoValor}" title="#{bundle.ViewValorizacionTitle_montoValor}"/>
+                        <h:outputText value="#{bundle.ViewValorizacionLabel_estado}"/>
+                        <h:outputText value="#{valorizacionController.selected.estado}" title="#{bundle.ViewValorizacionTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ValorizacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

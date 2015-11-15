@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="560" pageHeight="595" orientation="Landscape" columnWidth="560" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="606c3874-069a-4971-88f0-681d02d0bb24">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="style1_1">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.0"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="bajo">
+		<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+			<topPen lineWidth="0.0"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<parameter name="id_carglect" class="java.lang.Number" isForPrompting="false"/>
+	<parameter name="id_clcab" class="java.lang.Integer" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT 
+            crl_carga_lectiva_cab.id_carglect,
+            cod_acper,
+            crl_carga_lectiva_cab.id_clcab,
+            crl_carga_lectiva_cab.id_dir,
+            drt_personanatural.nombre_completo,
+            crl_carga_lectiva_cab.tipo,
+            crl_carga_lectiva_cab.id_categoria,
+            esc_categoria_doc.nombre,
+            crl_carga_lectiva_cab.id_dedicacion,
+            anr_dedicacion_docente.abrev_ded,
+            
+            crl_carga_lectiva_cab.total_horas,
+            crl_carga_lectiva_cab.estado,
+            cur_asignatura.nombre asignatura,cur_ciclo.num_romano,
+            cur_asignatura.creditaje,
+            crl_carga_lectiva_det.id_esp,
+            aps_especialidad.especialidad,
+            crl_carga_lectiva_det.nro_alum,
+            crl_carga_lectiva_det.grupt_teor,
+            crl_carga_lectiva_det.grupt_prac,
+            crl_carga_lectiva_det.ht,
+            crl_carga_lectiva_det.hp,
+            crl_carga_lectiva_det.grup_teor,
+            crl_carga_lectiva_det.grupo_t,
+            crl_carga_lectiva_det.grup_prac,
+            crl_carga_lectiva_det.grupo_p,
+            crl_carga_lectiva_det.hor_teor,
+            crl_carga_lectiva_det.hor_prac,
+            crl_carga_lectiva_det.subtotal,
+            crl_carga_lectiva_det.id_estado,
+            crl_carga_lectiva_cab.total_horas 
+            from crl_carga_lectiva_cab 
+            INNER JOIN crl_carga_lectiva ON crl_carga_lectiva.id_carglect=crl_carga_lectiva_cab.id_carglect 
+            INNER JOIN apc_periodo_academico pa ON pa.id_acper=crl_carga_lectiva.id_acper 
+            left outer join drt_personanatural on drt_personanatural.id_dir=crl_carga_lectiva_cab.id_dir 
+            left outer join esc_categoria_doc on crl_carga_lectiva_cab.id_categoria=esc_categoria_doc.id_cat 
+            left outer join anr_dedicacion_docente on (0+anr_dedicacion_docente.dedo_codigo)=crl_carga_lectiva_cab.id_dedicacion
+            inner join crl_carga_lectiva_det ON crl_carga_lectiva_det.id_clcab=crl_carga_lectiva_cab.id_clcab
+            INNER JOIN cur_asignatura on cur_asignatura.id_asignatura=crl_carga_lectiva_det.id_asignatura 
+            left outer join cur_ciclo on cur_ciclo.id_ciclo=cur_asignatura.id_ciclo 
+            inner join aps_especialidad on aps_especialidad.id_especialidad=crl_carga_lectiva_det.id_esp 
+             
+            ORDER BY  1,5]]>
+	</queryString>
+	<field name="id_carglect" class="java.lang.Integer"/>
+	<field name="cod_acper" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo cadena de periodo "2006-01"]]></fieldDescription>
+	</field>
+	<field name="id_clcab" class="java.lang.Integer"/>
+	<field name="id_dir" class="java.lang.Integer"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="id_categoria" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="id_dedicacion" class="java.lang.Integer"/>
+	<field name="abrev_ded" class="java.lang.String"/>
+	<field name="total_horas" class="java.lang.Integer"/>
+	<field name="estado" class="java.lang.Integer"/>
+	<field name="asignatura" class="java.lang.String"/>
+	<field name="num_romano" class="java.lang.String"/>
+	<field name="creditaje" class="java.lang.Integer"/>
+	<field name="id_esp" class="java.lang.Integer"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="nro_alum" class="java.lang.Integer"/>
+	<field name="grupt_teor" class="java.lang.Integer"/>
+	<field name="grupt_prac" class="java.lang.Integer"/>
+	<field name="ht" class="java.lang.Integer"/>
+	<field name="hp" class="java.lang.Integer"/>
+	<field name="grup_teor" class="java.lang.Integer"/>
+	<field name="grupo_t" class="java.lang.String"/>
+	<field name="grup_prac" class="java.lang.Integer"/>
+	<field name="grupo_p" class="java.lang.String"/>
+	<field name="hor_teor" class="java.lang.Integer"/>
+	<field name="hor_prac" class="java.lang.Integer"/>
+	<field name="subtotal" class="java.lang.Integer"/>
+	<field name="id_estado" class="java.lang.String"/>
+	<variable name="subtotal_1" class="java.lang.Integer" resetType="Group" resetGroup="id_dir" calculation="Sum">
+		<variableExpression><![CDATA[$F{subtotal}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[($P{id_clcab}==null||$F{id_clcab}.equals($P{id_clcab}))&&
+($P{id_carglect}==null||$F{id_carglect}.equals($P{id_carglect}))]]></filterExpression>
+	<group name="id_dir">
+		<groupExpression><![CDATA[$F{id_dir}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="17">
+				<textField>
+					<reportElement style="style1" x="520" y="0" width="41" height="17" uuid="7930a7c1-877f-40a0-b594-373e0c04d665"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subtotal_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="bajo" x="339" y="0" width="38" height="17" uuid="a6afffa4-b20d-4831-be54-8ad2d6959baf"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="377" y="0" width="34" height="17" uuid="0796bba1-a836-46f0-8278-e16628c07db4"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="0" y="0" width="143" height="17" uuid="b5ba7e32-99c9-45bb-8d22-a12db981b9d9"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="143" y="0" width="36" height="17" uuid="34e28463-4a39-4475-b821-0ac2ba33fabd"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="179" y="0" width="30" height="17" uuid="a4f25fc2-e41c-42d8-ae3e-276af97b1875"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="209" y="0" width="30" height="17" uuid="79e18fd8-8537-47b3-a4d7-3b1bdd4657c3"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="239" y="0" width="100" height="17" uuid="b6b51975-86a3-453c-b21a-2b634c82d54f"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="411" y="0" width="34" height="17" uuid="72f72d16-42bc-4bfb-8c09-52b50f5c17e4"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="bajo" x="445" y="0" width="75" height="17" uuid="93fbcc78-aa84-49cb-8ef0-f63823c4d8ba"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="0" y="0" width="143" height="17" uuid="5a282b37-a3ae-4d0a-99cb-ec4d0ad4f758"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asignatura}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="239" y="0" width="100" height="17" uuid="3dac582f-29e3-497a-8a96-e9791ac110cf"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="339" y="0" width="38" height="17" uuid="1be62d3b-53c3-49b0-8d86-d32c9790f192"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_alum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="377" y="0" width="34" height="17" uuid="4e797cb0-acf2-432d-b73b-7b5e2ee98381"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo_t}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="209" y="0" width="30" height="17" uuid="f431f5ac-f85a-405b-8533-b05cbb245f5e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="179" y="0" width="30" height="17" uuid="37d68011-8d6a-4060-ba66-95ecff24ff0a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ht}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="143" y="0" width="36" height="17" uuid="d529502b-2f4b-40d5-b32d-78cea8d11f2a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_romano}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="411" y="0" width="34" height="17" uuid="5eb74c55-d14b-4bdb-b7b5-c29fa4cbdeac"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo_p}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1_1" stretchType="RelativeToTallestObject" x="520" y="0" width="41" height="17" uuid="4c436c5f-280e-4536-8e02-696f1af64185"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

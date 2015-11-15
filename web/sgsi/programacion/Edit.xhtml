@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GsiPrrbProgBackupEditDlg" widgetVar="GsiPrrbProgBackupEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditGsiPrrbProgBackupTitle}">
+            <h:form id="GsiPrrbProgBackupEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gsiPrrbProgBackupController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_idProg}" for="idProg" />
+                        <p:inputText id="idProg" value="#{gsiPrrbProgBackupController.selected.idProg}" title="#{bundle.EditGsiPrrbProgBackupTitle_idProg}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_idProg}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{gsiPrrbProgBackupController.selected.idEsc}" title="#{bundle.EditGsiPrrbProgBackupTitle_idEsc}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_fechaProgInicio}" for="fechaProgInicio" />
+                        <p:calendar id="fechaProgInicio" pattern="dd/MM/yyyy HH:mm:ss" value="#{gsiPrrbProgBackupController.selected.fechaProgInicio}" title="#{bundle.EditGsiPrrbProgBackupTitle_fechaProgInicio}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_fechaProgInicio}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_fechaProgFin}" for="fechaProgFin" />
+                        <p:calendar id="fechaProgFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{gsiPrrbProgBackupController.selected.fechaProgFin}" title="#{bundle.EditGsiPrrbProgBackupTitle_fechaProgFin}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_fechaProgFin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_compresion}" for="compresion" />
+                        <p:selectBooleanCheckbox id="compresion" value="#{gsiPrrbProgBackupController.selected.compresion}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_compresion}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_cifrado}" for="cifrado" />
+                        <p:selectBooleanCheckbox id="cifrado" value="#{gsiPrrbProgBackupController.selected.cifrado}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_cifrado}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_interval}" for="interval" />
+                        <p:inputText id="interval" value="#{gsiPrrbProgBackupController.selected.interval}" title="#{bundle.EditGsiPrrbProgBackupTitle_interval}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_interval}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_pathDestLocal}" for="pathDestLocal" />
+                        <p:inputText id="pathDestLocal" value="#{gsiPrrbProgBackupController.selected.pathDestLocal}" title="#{bundle.EditGsiPrrbProgBackupTitle_pathDestLocal}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_pathDestLocal}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_pathDestFtp}" for="pathDestFtp" />
+                        <p:inputText id="pathDestFtp" value="#{gsiPrrbProgBackupController.selected.pathDestFtp}" title="#{bundle.EditGsiPrrbProgBackupTitle_pathDestFtp}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_pathDestFtp}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_tareaNombre}" for="tareaNombre" />
+                        <p:inputText id="tareaNombre" value="#{gsiPrrbProgBackupController.selected.tareaNombre}" title="#{bundle.EditGsiPrrbProgBackupTitle_tareaNombre}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_tareaNombre}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ubigeoDestLocal}" for="ubigeoDestLocal" />
+                        <p:inputText id="ubigeoDestLocal" value="#{gsiPrrbProgBackupController.selected.ubigeoDestLocal}" title="#{bundle.EditGsiPrrbProgBackupTitle_ubigeoDestLocal}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ubigeoDestLocal}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ubigeoDestFtp}" for="ubigeoDestFtp" />
+                        <p:inputText id="ubigeoDestFtp" value="#{gsiPrrbProgBackupController.selected.ubigeoDestFtp}" title="#{bundle.EditGsiPrrbProgBackupTitle_ubigeoDestFtp}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ubigeoDestFtp}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ubigeoFuente}" for="ubigeoFuente" />
+                        <p:inputText id="ubigeoFuente" value="#{gsiPrrbProgBackupController.selected.ubigeoFuente}" title="#{bundle.EditGsiPrrbProgBackupTitle_ubigeoFuente}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ubigeoFuente}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_pathFuente}" for="pathFuente" />
+                        <p:inputText id="pathFuente" value="#{gsiPrrbProgBackupController.selected.pathFuente}" title="#{bundle.EditGsiPrrbProgBackupTitle_pathFuente}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_pathFuente}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ftpIp}" for="ftpIp" />
+                        <p:inputText id="ftpIp" value="#{gsiPrrbProgBackupController.selected.ftpIp}" title="#{bundle.EditGsiPrrbProgBackupTitle_ftpIp}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ftpIp}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ftpPort}" for="ftpPort" />
+                        <p:inputText id="ftpPort" value="#{gsiPrrbProgBackupController.selected.ftpPort}" title="#{bundle.EditGsiPrrbProgBackupTitle_ftpPort}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ftpPort}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ftpUsuario}" for="ftpUsuario" />
+                        <p:inputText id="ftpUsuario" value="#{gsiPrrbProgBackupController.selected.ftpUsuario}" title="#{bundle.EditGsiPrrbProgBackupTitle_ftpUsuario}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ftpUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ftpPass}" for="ftpPass" />
+                        <p:inputText id="ftpPass" value="#{gsiPrrbProgBackupController.selected.ftpPass}" title="#{bundle.EditGsiPrrbProgBackupTitle_ftpPass}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ftpPass}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_ftpPathFile}" for="ftpPathFile" />
+                        <p:inputText id="ftpPathFile" value="#{gsiPrrbProgBackupController.selected.ftpPathFile}" title="#{bundle.EditGsiPrrbProgBackupTitle_ftpPathFile}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_ftpPathFile}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_emailNotificador}" for="emailNotificador" />
+                        <p:inputText id="emailNotificador" value="#{gsiPrrbProgBackupController.selected.emailNotificador}" title="#{bundle.EditGsiPrrbProgBackupTitle_emailNotificador}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_emailNotificador}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_emailDestino}" for="emailDestino" />
+                        <p:inputText id="emailDestino" value="#{gsiPrrbProgBackupController.selected.emailDestino}" title="#{bundle.EditGsiPrrbProgBackupTitle_emailDestino}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_emailDestino}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_telefonoNotificador}" for="telefonoNotificador" />
+                        <p:inputText id="telefonoNotificador" value="#{gsiPrrbProgBackupController.selected.telefonoNotificador}" title="#{bundle.EditGsiPrrbProgBackupTitle_telefonoNotificador}" />
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_telefonoDestino}" for="telefonoDestino" />
+                        <p:inputText id="telefonoDestino" value="#{gsiPrrbProgBackupController.selected.telefonoDestino}" title="#{bundle.EditGsiPrrbProgBackupTitle_telefonoDestino}" />
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_emailSujeto}" for="emailSujeto" />
+                        <p:inputTextarea rows="4" cols="30" id="emailSujeto" value="#{gsiPrrbProgBackupController.selected.emailSujeto}" title="#{bundle.EditGsiPrrbProgBackupTitle_emailSujeto}" required="true" requiredMessage="#{bundle.EditGsiPrrbProgBackupRequiredMessage_emailSujeto}"/>
+                        <p:outputLabel value="#{bundle.EditGsiPrrbProgBackupLabel_emailPassNotificador}" for="emailPassNotificador" />
+                        <p:inputText id="emailPassNotificador" value="#{gsiPrrbProgBackupController.selected.emailPassNotificador}" title="#{bundle.EditGsiPrrbProgBackupTitle_emailPassNotificador}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{gsiPrrbProgBackupController.update}" value="#{bundle.Save}" update="display,:GsiPrrbProgBackupListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GsiPrrbProgBackupEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GsiPrrbProgBackupEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

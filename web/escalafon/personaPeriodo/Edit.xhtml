@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDejuPersonaPeriodoEditDlg" widgetVar="EscDejuPersonaPeriodoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscDejuPersonaPeriodoTitle}">
+            <h:form id="EscDejuPersonaPeriodoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDejuPersonaPeriodoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscDejuPersonaPeriodoLabel_escDejuPersonaPeriodoPK_idEsc}" for="escDejuPersonaPeriodoPK_idEsc" />
+                        <p:inputText id="escDejuPersonaPeriodoPK_idEsc" value="#{escDejuPersonaPeriodoController.selected.escDejuPersonaPeriodoPK.idEsc}" title="#{bundle.EditEscDejuPersonaPeriodoTitle_escDejuPersonaPeriodoPK_idEsc}" required="true" requiredMessage="#{bundle.EditEscDejuPersonaPeriodoRequiredMessage_escDejuPersonaPeriodoPK_idEsc}"/>
+                        <p:outputLabel value="#{bundle.EditEscDejuPersonaPeriodoLabel_escDejuPeriodo}" for="escDejuPeriodo" />
+                        <p:selectOneMenu id="escDejuPeriodo" value="#{escDejuPersonaPeriodoController.selected.escDejuPeriodo}" required="true" requiredMessage="#{bundle.EditEscDejuPersonaPeriodoRequiredMessage_escDejuPeriodo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escDejuPeriodoController.itemsAvailableSelectOne}"
+                                           var="escDejuPeriodoItem"
+                                           itemValue="#{escDejuPeriodoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escDejuPersonaPeriodoController.update}" value="#{bundle.Save}" update="display,:EscDejuPersonaPeriodoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscDejuPersonaPeriodoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscDejuPersonaPeriodoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

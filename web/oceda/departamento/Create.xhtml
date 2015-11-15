@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsDepartamentoCreateDlg" widgetVar="ApsDepartamentoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateApsDepartamentoTitle}">
+            <h:form id="ApsDepartamentoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsDepartamentoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_idDepartamento}" for="idDepartamento" />
+                        <p:inputText id="idDepartamento" value="#{apsDepartamentoController.selected.idDepartamento}" title="#{bundle.CreateApsDepartamentoTitle_idDepartamento}" required="true" requiredMessage="#{bundle.CreateApsDepartamentoRequiredMessage_idDepartamento}"/>
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_idFacultad}" for="idFacultad" />
+                        <p:inputText id="idFacultad" value="#{apsDepartamentoController.selected.idFacultad}" title="#{bundle.CreateApsDepartamentoTitle_idFacultad}" />
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_departamento}" for="departamento" />
+                        <p:inputText id="departamento" value="#{apsDepartamentoController.selected.departamento}" title="#{bundle.CreateApsDepartamentoTitle_departamento}" />
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_abr}" for="abr" />
+                        <p:inputText id="abr" value="#{apsDepartamentoController.selected.abr}" title="#{bundle.CreateApsDepartamentoTitle_abr}" />
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_codOld}" for="codOld" />
+                        <p:inputText id="codOld" value="#{apsDepartamentoController.selected.codOld}" title="#{bundle.CreateApsDepartamentoTitle_codOld}" />
+                        <p:outputLabel value="#{bundle.CreateApsDepartamentoLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{apsDepartamentoController.selected.idDep}" title="#{bundle.CreateApsDepartamentoTitle_idDep}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsDepartamentoController.create}" value="#{bundle.Save}" update="display,:ApsDepartamentoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ApsDepartamentoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsDepartamentoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

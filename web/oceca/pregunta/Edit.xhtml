@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuizPreguntaEditDlg" widgetVar="QuizPreguntaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQuizPreguntaTitle}">
+            <h:form id="QuizPreguntaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizPreguntaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idPregunta}" for="idPregunta" />
+                        <p:inputText id="idPregunta" value="#{quizPreguntaController.selected.idPregunta}" title="#{bundle.EditQuizPreguntaTitle_idPregunta}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_idPregunta}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idCuestionario}" for="idCuestionario" />
+                        <p:inputText id="idCuestionario" value="#{quizPreguntaController.selected.idCuestionario}" title="#{bundle.EditQuizPreguntaTitle_idCuestionario}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_idCuestionario}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{quizPreguntaController.selected.numero}" title="#{bundle.EditQuizPreguntaTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idCategoria}" for="idCategoria" />
+                        <p:inputText id="idCategoria" value="#{quizPreguntaController.selected.idCategoria}" title="#{bundle.EditQuizPreguntaTitle_idCategoria}" />
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idTipoPregunta}" for="idTipoPregunta" />
+                        <p:inputText id="idTipoPregunta" value="#{quizPreguntaController.selected.idTipoPregunta}" title="#{bundle.EditQuizPreguntaTitle_idTipoPregunta}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_idTipoPregunta}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_pregunta}" for="pregunta" />
+                        <p:inputText id="pregunta" value="#{quizPreguntaController.selected.pregunta}" title="#{bundle.EditQuizPreguntaTitle_pregunta}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_pregunta}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idLista}" for="idLista" />
+                        <p:inputText id="idLista" value="#{quizPreguntaController.selected.idLista}" title="#{bundle.EditQuizPreguntaTitle_idLista}" />
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_idRespuesta}" for="idRespuesta" />
+                        <p:inputText id="idRespuesta" value="#{quizPreguntaController.selected.idRespuesta}" title="#{bundle.EditQuizPreguntaTitle_idRespuesta}" />
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{quizPreguntaController.selected.activo}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_opcional}" for="opcional" />
+                        <p:selectBooleanCheckbox id="opcional" value="#{quizPreguntaController.selected.opcional}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_opcional}"/>
+                        <p:outputLabel value="#{bundle.EditQuizPreguntaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{quizPreguntaController.selected.estado}" title="#{bundle.EditQuizPreguntaTitle_estado}" required="true" requiredMessage="#{bundle.EditQuizPreguntaRequiredMessage_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{quizPreguntaController.update}" value="#{bundle.Save}" update="display,:QuizPreguntaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuizPreguntaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QuizPreguntaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

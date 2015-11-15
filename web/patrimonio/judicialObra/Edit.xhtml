@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JudicialObraEditDlg" widgetVar="JudicialObraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditJudicialObraTitle}">
+            <h:form id="JudicialObraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{judicialObraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_judicialObraPK_docudem}" for="judicialObraPK_docudem" />
+                        <p:inputText id="judicialObraPK_docudem" value="#{judicialObraController.selected.judicialObraPK.docudem}" title="#{bundle.EditJudicialObraTitle_judicialObraPK_docudem}" required="true" requiredMessage="#{bundle.EditJudicialObraRequiredMessage_judicialObraPK_docudem}"/>
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_judicialObraPK_docuiden}" for="judicialObraPK_docuiden" />
+                        <p:inputText id="judicialObraPK_docuiden" value="#{judicialObraController.selected.judicialObraPK.docuiden}" title="#{bundle.EditJudicialObraTitle_judicialObraPK_docuiden}" required="true" requiredMessage="#{bundle.EditJudicialObraRequiredMessage_judicialObraPK_docuiden}"/>
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_nomDeman}" for="nomDeman" />
+                        <p:inputText id="nomDeman" value="#{judicialObraController.selected.nomDeman}" title="#{bundle.EditJudicialObraTitle_nomDeman}" />
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_descJudi}" for="descJudi" />
+                        <p:inputText id="descJudi" value="#{judicialObraController.selected.descJudi}" title="#{bundle.EditJudicialObraTitle_descJudi}" />
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_porcJudi}" for="porcJudi" />
+                        <p:inputText id="porcJudi" value="#{judicialObraController.selected.porcJudi}" title="#{bundle.EditJudicialObraTitle_porcJudi}" required="true" requiredMessage="#{bundle.EditJudicialObraRequiredMessage_porcJudi}"/>
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_tipoAbono}" for="tipoAbono" />
+                        <p:inputText id="tipoAbono" value="#{judicialObraController.selected.tipoAbono}" title="#{bundle.EditJudicialObraTitle_tipoAbono}" />
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_cuentaAbono}" for="cuentaAbono" />
+                        <p:inputText id="cuentaAbono" value="#{judicialObraController.selected.cuentaAbono}" title="#{bundle.EditJudicialObraTitle_cuentaAbono}" />
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_indDesc}" for="indDesc" />
+                        <p:inputText id="indDesc" value="#{judicialObraController.selected.indDesc}" title="#{bundle.EditJudicialObraTitle_indDesc}" />
+                        <p:outputLabel value="#{bundle.EditJudicialObraLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{judicialObraController.selected.estado}" title="#{bundle.EditJudicialObraTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{judicialObraController.update}" value="#{bundle.Save}" update="display,:JudicialObraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'JudicialObraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="JudicialObraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

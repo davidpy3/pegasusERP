@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCargoInstitucionalEditDlg" widgetVar="EscCargoInstitucionalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscCargoInstitucionalTitle}">
+            <h:form id="EscCargoInstitucionalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCargoInstitucionalController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_desde}" for="desde" />
+                        <p:calendar id="desde" pattern="MM/dd/yyyy" value="#{escCargoInstitucionalController.selected.desde}" title="#{bundle.EditEscCargoInstitucionalTitle_desde}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_desde}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_hasta}" for="hasta" />
+                        <p:calendar id="hasta" pattern="MM/dd/yyyy" value="#{escCargoInstitucionalController.selected.hasta}" title="#{bundle.EditEscCargoInstitucionalTitle_hasta}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_hasta}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{escCargoInstitucionalController.selected.cargo}" title="#{bundle.EditEscCargoInstitucionalTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_condicion}" for="condicion" />
+                        <p:inputText id="condicion" value="#{escCargoInstitucionalController.selected.condicion}" title="#{bundle.EditEscCargoInstitucionalTitle_condicion}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_condicion}"/>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{escCargoInstitucionalController.selected.id}" title="#{bundle.EditEscCargoInstitucionalTitle_id}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_aprobado}" for="aprobado" />
+                        <p:selectBooleanCheckbox id="aprobado" value="#{escCargoInstitucionalController.selected.aprobado}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_aprobado}"/>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_codDtra}" for="codDtra" />
+                        <p:inputText id="codDtra" value="#{escCargoInstitucionalController.selected.codDtra}" title="#{bundle.EditEscCargoInstitucionalTitle_codDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_idInst}" for="idInst" />
+                        <p:selectOneMenu id="idInst" value="#{escCargoInstitucionalController.selected.idInst}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_idInst}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escInstitucionesController.itemsAvailableSelectOne}"
+                                           var="idInstItem"
+                                           itemValue="#{idInstItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escCargoInstitucionalController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscCargoInstitucionalRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCargoInstitucionalLabel_idTc}" for="idTc" />
+                        <p:selectOneMenu id="idTc" value="#{escCargoInstitucionalController.selected.idTc}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escTipCController.itemsAvailableSelectOne}"
+                                           var="idTcItem"
+                                           itemValue="#{idTcItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCargoInstitucionalController.update}" value="#{bundle.Save}" update="display,:EscCargoInstitucionalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscCargoInstitucionalEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCargoInstitucionalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClienteEditDlg" widgetVar="ClienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditClienteTitle}">
+            <h:form id="ClienteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditClienteLabel_nroDoc}" for="nroDoc" />
+                        <p:inputText id="nroDoc" value="#{clienteController.selected.nroDoc}" title="#{bundle.EditClienteTitle_nroDoc}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_nroDoc}"/>
+                        <p:outputLabel value="#{bundle.EditClienteLabel_tipoDoc}" for="tipoDoc" />
+                        <p:inputText id="tipoDoc" value="#{clienteController.selected.tipoDoc}" title="#{bundle.EditClienteTitle_tipoDoc}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_nombreCompleto}" for="nombreCompleto" />
+                        <p:inputText id="nombreCompleto" value="#{clienteController.selected.nombreCompleto}" title="#{bundle.EditClienteTitle_nombreCompleto}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_dirPer}" for="dirPer" />
+                        <p:inputText id="dirPer" value="#{clienteController.selected.dirPer}" title="#{bundle.EditClienteTitle_dirPer}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_telPer}" for="telPer" />
+                        <p:inputText id="telPer" value="#{clienteController.selected.telPer}" title="#{bundle.EditClienteTitle_telPer}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_telefono2}" for="telefono2" />
+                        <p:inputText id="telefono2" value="#{clienteController.selected.telefono2}" title="#{bundle.EditClienteTitle_telefono2}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_estPer}" for="estPer" />
+                        <p:inputText id="estPer" value="#{clienteController.selected.estPer}" title="#{bundle.EditClienteTitle_estPer}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clienteController.update}" value="#{bundle.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClienteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClienteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

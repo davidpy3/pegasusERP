@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OficinaViewDlg" widgetVar="OficinaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOficinaTitle}">
+            <h:form id="OficinaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{oficinaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOficinaLabel_oficinaPK_codoficina}"/>
+                        <h:outputText value="#{oficinaController.selected.oficinaPK.codoficina}" title="#{bundle.ViewOficinaTitle_oficinaPK_codoficina}"/>
+                        <h:outputText value="#{bundle.ViewOficinaLabel_codlocal}"/>
+                        <h:outputText value="#{oficinaController.selected.codlocal}" title="#{bundle.ViewOficinaTitle_codlocal}"/>
+                        <h:outputText value="#{bundle.ViewOficinaLabel_oficina}"/>
+                        <h:outputText value="#{oficinaController.selected.oficina}" title="#{bundle.ViewOficinaTitle_oficina}"/>
+                        <h:outputText value="#{bundle.ViewOficinaLabel_abrev}"/>
+                        <h:outputText value="#{oficinaController.selected.abrev}" title="#{bundle.ViewOficinaTitle_abrev}"/>
+                        <h:outputText value="#{bundle.ViewOficinaLabel_area}"/>
+                        <h:outputText value="#{oficinaController.selected.area}" title="#{bundle.ViewOficinaTitle_area}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OficinaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

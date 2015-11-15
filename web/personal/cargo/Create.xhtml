@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargoCreateDlg" widgetVar="CargoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCargoTitle}">
+            <h:form id="CargoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_idCargo}" for="idCargo" />
+                        <p:inputText id="idCargo" value="#{cargoController.selected.idCargo}" title="#{bundle.CreateCargoTitle_idCargo}" required="true" requiredMessage="#{bundle.CreateCargoRequiredMessage_idCargo}"/>
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_codPdt}" for="codPdt" />
+                        <p:inputText id="codPdt" value="#{cargoController.selected.codPdt}" title="#{bundle.CreateCargoTitle_codPdt}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_nomCargo}" for="nomCargo" />
+                        <p:inputText id="nomCargo" value="#{cargoController.selected.nomCargo}" title="#{bundle.CreateCargoTitle_nomCargo}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{cargoController.selected.nivel}" title="#{bundle.CreateCargoTitle_nivel}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_ordenFirma}" for="ordenFirma" />
+                        <p:inputText id="ordenFirma" value="#{cargoController.selected.ordenFirma}" title="#{bundle.CreateCargoTitle_ordenFirma}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_abreviatura}" for="abreviatura" />
+                        <p:inputText id="abreviatura" value="#{cargoController.selected.abreviatura}" title="#{bundle.CreateCargoTitle_abreviatura}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{cargoController.selected.abrev}" title="#{bundle.CreateCargoTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.CreateCargoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{cargoController.selected.estado}" title="#{bundle.CreateCargoTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargoController.create}" value="#{bundle.Save}" update="display,:CargoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CargoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

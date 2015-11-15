@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscRotacionesEditDlg" widgetVar="EscRotacionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscRotacionesTitle}">
+            <h:form id="EscRotacionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escRotacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_idRot}" for="idRot" />
+                        <p:inputText id="idRot" value="#{escRotacionesController.selected.idRot}" title="#{bundle.EditEscRotacionesTitle_idRot}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_idRot}"/>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_fecInicio}" for="fecInicio" />
+                        <p:calendar id="fecInicio" pattern="MM/dd/yyyy" value="#{escRotacionesController.selected.fecInicio}" title="#{bundle.EditEscRotacionesTitle_fecInicio}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_fecInicio}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_fecFin}" for="fecFin" />
+                        <p:calendar id="fecFin" pattern="MM/dd/yyyy" value="#{escRotacionesController.selected.fecFin}" title="#{bundle.EditEscRotacionesTitle_fecFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escRotacionesController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escRotacionesController.selected.idDtra}" title="#{bundle.EditEscRotacionesTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escRotacionesController.selected.mencion}" title="#{bundle.EditEscRotacionesTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_jefe}" for="jefe" />
+                        <p:selectBooleanCheckbox id="jefe" value="#{escRotacionesController.selected.jefe}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_jefe}"/>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_escCap}" for="escCap" />
+                        <p:selectOneMenu id="escCap" value="#{escRotacionesController.selected.escCap}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_escCap}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCapController.itemsAvailableSelectOne}"
+                                           var="escCapItem"
+                                           itemValue="#{escCapItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_idDesp}" for="idDesp" />
+                        <p:selectOneMenu id="idDesp" value="#{escRotacionesController.selected.idDesp}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_idDesp}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escDesplazamientoController.itemsAvailableSelectOne}"
+                                           var="idDespItem"
+                                           itemValue="#{idDespItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscRotacionesLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escRotacionesController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscRotacionesRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escRotacionesController.update}" value="#{bundle.Save}" update="display,:EscRotacionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscRotacionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscRotacionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

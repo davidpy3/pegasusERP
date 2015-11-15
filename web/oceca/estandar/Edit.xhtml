@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcEstandarEditDlg" widgetVar="SgcEstandarEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcEstandarTitle}">
+            <h:form id="SgcEstandarEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcEstandarController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_idEstandar}" for="idEstandar" />
+                        <p:inputText id="idEstandar" value="#{sgcEstandarController.selected.idEstandar}" title="#{bundle.EditSgcEstandarTitle_idEstandar}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_idEstandar}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{sgcEstandarController.selected.numero}" title="#{bundle.EditSgcEstandarTitle_numero}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_numero}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_idFactor}" for="idFactor" />
+                        <p:inputText id="idFactor" value="#{sgcEstandarController.selected.idFactor}" title="#{bundle.EditSgcEstandarTitle_idFactor}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_idFactor}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_idCriterio}" for="idCriterio" />
+                        <p:inputText id="idCriterio" value="#{sgcEstandarController.selected.idCriterio}" title="#{bundle.EditSgcEstandarTitle_idCriterio}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_idCriterio}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_idModelo}" for="idModelo" />
+                        <p:inputText id="idModelo" value="#{sgcEstandarController.selected.idModelo}" title="#{bundle.EditSgcEstandarTitle_idModelo}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_idModelo}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_estandar}" for="estandar" />
+                        <p:inputTextarea rows="4" cols="30" id="estandar" value="#{sgcEstandarController.selected.estandar}" title="#{bundle.EditSgcEstandarTitle_estandar}" required="true" requiredMessage="#{bundle.EditSgcEstandarRequiredMessage_estandar}"/>
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_idTipo}" for="idTipo" />
+                        
+                        
+                        <p:selectOneMenu id="idTipo" value="#{sgcEstandarController.selected.idTipo}" required="true">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sgcTipoEstandarController.itemsAvailableSelectOne}"
+                                           var="tipobienItem"
+                                           itemValue="#{tipobienItem.idTipo}" itemDescription="#{tipobienItem.descripcion}" itemLabel="#{tipobienItem.tipo}"/>
+                        </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditSgcEstandarLabel_consideracion}" for="consideracion" />
+                        <p:inputTextarea rows="4" cols="30" id="consideracion" value="#{sgcEstandarController.selected.consideracion}" title="#{bundle.EditSgcEstandarTitle_consideracion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcEstandarController.update}" value="#{bundle.Save}" update="display,:SgcEstandarListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcEstandarEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcEstandarEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

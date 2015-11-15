@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaLectivaDocenteViewDlg" widgetVar="CargaLectivaDocenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCargaLectivaDocenteTitle}">
+            <h:form id="CargaLectivaDocenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaLectivaDocenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idEsc}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idEsc}" title="#{bundle.ViewCargaLectivaDocenteTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idClcab}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idClcab}" title="#{bundle.ViewCargaLectivaDocenteTitle_idClcab}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idDcexp}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idDcexp}" title="#{bundle.ViewCargaLectivaDocenteTitle_idDcexp}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idDir}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idDir}" title="#{bundle.ViewCargaLectivaDocenteTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_horas}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.horas}" title="#{bundle.ViewCargaLectivaDocenteTitle_horas}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idCategoria}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idCategoria}" title="#{bundle.ViewCargaLectivaDocenteTitle_idCategoria}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idDedicacion}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idDedicacion}" title="#{bundle.ViewCargaLectivaDocenteTitle_idDedicacion}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_idCarglect}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.idCarglect}" title="#{bundle.ViewCargaLectivaDocenteTitle_idCarglect}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_totalHoras}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.totalHoras}" title="#{bundle.ViewCargaLectivaDocenteTitle_totalHoras}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_descripcion}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.descripcion}" title="#{bundle.ViewCargaLectivaDocenteTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaDocenteController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_orden}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.orden}" title="#{bundle.ViewCargaLectivaDocenteTitle_orden}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaDocenteLabel_tipo}"/>
+                        <h:outputText value="#{cargaLectivaDocenteController.selected.tipo}" title="#{bundle.ViewCargaLectivaDocenteTitle_tipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CargaLectivaDocenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

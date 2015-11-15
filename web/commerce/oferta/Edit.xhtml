@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OfertaEditDlg" widgetVar="OfertaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOfertaTitle}">
+            <h:form id="OfertaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ofertaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_idOferta}" for="idOferta" />
+                        <p:inputText id="idOferta" value="#{ofertaController.selected.idOferta}" title="#{bundle.EditOfertaTitle_idOferta}" required="true" requiredMessage="#{bundle.EditOfertaRequiredMessage_idOferta}"/>
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_nomOfer}" for="nomOfer" />
+                        <p:inputText id="nomOfer" value="#{ofertaController.selected.nomOfer}" title="#{bundle.EditOfertaTitle_nomOfer}" />
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_fechaOfer}" for="fechaOfer" />
+                        <p:calendar id="fechaOfer" pattern="MM/dd/yyyy" value="#{ofertaController.selected.fechaOfer}" title="#{bundle.EditOfertaTitle_fechaOfer}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_fechaVenc}" for="fechaVenc" />
+                        <p:calendar id="fechaVenc" pattern="MM/dd/yyyy" value="#{ofertaController.selected.fechaVenc}" title="#{bundle.EditOfertaTitle_fechaVenc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{ofertaController.selected.estado}" title="#{bundle.EditOfertaTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditOfertaLabel_idAlmacen}" for="idAlmacen" />
+                        <p:selectOneMenu id="idAlmacen" value="#{ofertaController.selected.idAlmacen}" required="true" requiredMessage="#{bundle.EditOfertaRequiredMessage_idAlmacen}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sonAlmacenController.itemsAvailableSelectOne}"
+                                           var="idAlmacenItem"
+                                           itemValue="#{idAlmacenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ofertaController.update}" value="#{bundle.Save}" update="display,:OfertaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OfertaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OfertaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtPersonaJuridicaEditDlg" widgetVar="DrtPersonaJuridicaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDrtPersonaJuridicaTitle}">
+            <h:form id="DrtPersonaJuridicaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtPersonaJuridicaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{drtPersonaJuridicaController.selected.idDir}" title="#{bundle.EditDrtPersonaJuridicaTitle_idDir}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_idUbg}" for="idUbg" />
+                        <p:inputText id="idUbg" value="#{drtPersonaJuridicaController.selected.idUbg}" title="#{bundle.EditDrtPersonaJuridicaTitle_idUbg}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_idUbg}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_razonSocial}" for="razonSocial" />
+                        <p:inputText id="razonSocial" value="#{drtPersonaJuridicaController.selected.razonSocial}" title="#{bundle.EditDrtPersonaJuridicaTitle_razonSocial}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_razonSocial}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{drtPersonaJuridicaController.selected.ruc}" title="#{bundle.EditDrtPersonaJuridicaTitle_ruc}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_ruc}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{drtPersonaJuridicaController.selected.direccion}" title="#{bundle.EditDrtPersonaJuridicaTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_provclie}" for="provclie" />
+                        <p:inputText id="provclie" value="#{drtPersonaJuridicaController.selected.provclie}" title="#{bundle.EditDrtPersonaJuridicaTitle_provclie}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_provclie}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_estadoPerjur}" for="estadoPerjur" />
+                        <p:inputText id="estadoPerjur" value="#{drtPersonaJuridicaController.selected.estadoPerjur}" title="#{bundle.EditDrtPersonaJuridicaTitle_estadoPerjur}" required="true" requiredMessage="#{bundle.EditDrtPersonaJuridicaRequiredMessage_estadoPerjur}"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_fechaIng}" for="fechaIng" />
+                        <p:calendar id="fechaIng" pattern="MM/dd/yyyy" value="#{drtPersonaJuridicaController.selected.fechaIng}" title="#{bundle.EditDrtPersonaJuridicaTitle_fechaIng}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDrtPersonaJuridicaLabel_updateFlow}" for="updateFlow" />
+                        <p:inputText id="updateFlow" value="#{drtPersonaJuridicaController.selected.updateFlow}" title="#{bundle.EditDrtPersonaJuridicaTitle_updateFlow}" />
+                      
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{drtPersonaJuridicaController.update}" value="#{bundle.Save}" update="display,:DrtPersonaJuridicaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DrtPersonaJuridicaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DrtPersonaJuridicaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

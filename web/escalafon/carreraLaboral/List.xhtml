@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEscCarreraLaboralTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EscCarreraLaboralListForm">
+                <p:panel header="#{bundle.ListEscCarreraLaboralTitle}">
+                    <p:dataTable id="datalist" value="#{escCarreraLaboralController.items}" var="item"
+                                 selectionMode="single" selection="#{escCarreraLaboralController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idPercl}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idPercl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPercl}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idPerclDe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPerclDe}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idCap}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCap}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_tipoCap}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.tipoCap}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_fechaIni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaIni}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_codDtra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codDtra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_condicion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.condicion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_estado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.estado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_jefe}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.jefe}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_plaza}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.plaza}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_servicio}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.servicio}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_horas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_monto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.monto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_mencion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mencion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_migrado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.migrado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idAcper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAcper}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idAmbito}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAmbito}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idDesp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDesp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idMov}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMov}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idMovmod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMovmod}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idEsc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEsc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idServicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idServicio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idTipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCarreraLaboralTitle_idTp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTp}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{escCarreraLaboralController.prepareCreate}" update=":EscCarreraLaboralCreateForm" oncomplete="PF('EscCarreraLaboralCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EscCarreraLaboralViewForm" oncomplete="PF('EscCarreraLaboralViewDialog').show()" disabled="#{empty escCarreraLaboralController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EscCarreraLaboralEditForm" oncomplete="PF('EscCarreraLaboralEditDialog').show()" disabled="#{empty escCarreraLaboralController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{escCarreraLaboralController.destroy}" update=":growl,datalist" disabled="#{empty escCarreraLaboralController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

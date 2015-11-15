@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDejuPeriodoEditDlg" widgetVar="EscDejuPeriodoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscDejuPeriodoTitle}">
+            <h:form id="EscDejuPeriodoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDejuPeriodoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_idPeriodo}" for="idPeriodo" />
+                        <p:inputText id="idPeriodo" value="#{escDejuPeriodoController.selected.idPeriodo}" title="#{bundle.EditEscDejuPeriodoTitle_idPeriodo}" required="true" requiredMessage="#{bundle.EditEscDejuPeriodoRequiredMessage_idPeriodo}"/>
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="dd/MM/yyyy HH:mm:ss" value="#{escDejuPeriodoController.selected.fechaInicio}" title="#{bundle.EditEscDejuPeriodoTitle_fechaInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_fechaTermino}" for="fechaTermino" />
+                        <p:calendar id="fechaTermino" pattern="dd/MM/yyyy HH:mm:ss" value="#{escDejuPeriodoController.selected.fechaTermino}" title="#{bundle.EditEscDejuPeriodoTitle_fechaTermino}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escDejuPeriodoController.selected.activo}" required="true" requiredMessage="#{bundle.EditEscDejuPeriodoRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_ejerPresupuestal}" for="ejerPresupuestal" />
+                        <p:inputText id="ejerPresupuestal" value="#{escDejuPeriodoController.selected.ejerPresupuestal}" title="#{bundle.EditEscDejuPeriodoTitle_ejerPresupuestal}" />
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_titular}" for="titular" />
+                        <p:inputText id="titular" value="#{escDejuPeriodoController.selected.titular}" title="#{bundle.EditEscDejuPeriodoTitle_titular}" />
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{escDejuPeriodoController.selected.direccion}" title="#{bundle.EditEscDejuPeriodoTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditEscDejuPeriodoLabel_entidad}" for="entidad" />
+                        <p:inputText id="entidad" value="#{escDejuPeriodoController.selected.entidad}" title="#{bundle.EditEscDejuPeriodoTitle_entidad}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escDejuPeriodoController.update}" value="#{bundle.Save}" update="display,:EscDejuPeriodoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscDejuPeriodoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscDejuPeriodoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

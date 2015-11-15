@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SRequerimientoCreateDlg" widgetVar="SRequerimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSRequerimientoTitle}">
+            <h:form id="SRequerimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sRequerimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_idSolicitud}" for="idSolicitud" />
+                        <p:inputText id="idSolicitud" value="#{sRequerimientoController.selected.idSolicitud}" title="#{bundle.CreateSRequerimientoTitle_idSolicitud}" required="true" requiredMessage="#{bundle.CreateSRequerimientoRequiredMessage_idSolicitud}"/>
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_fecSol}" for="fecSol" />
+                        <p:calendar id="fecSol" pattern="MM/dd/yyyy" value="#{sRequerimientoController.selected.fecSol}" title="#{bundle.EditSRequerimientoTitle_fecSol}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_fecEnv}" for="fecEnv" />
+                        <p:calendar id="fecEnv" pattern="MM/dd/yyyy" value="#{sRequerimientoController.selected.fecEnv}" title="#{bundle.EditSRequerimientoTitle_fecEnv}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_plazo}" for="plazo" />
+                        <p:inputText id="plazo" value="#{sRequerimientoController.selected.plazo}" title="#{bundle.CreateSRequerimientoTitle_plazo}" />
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_idAlmOri}" for="idAlmOri" />
+                        <p:inputText id="idAlmOri" value="#{sRequerimientoController.selected.idAlmOri}" title="#{bundle.CreateSRequerimientoTitle_idAlmOri}" />
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_idAlmDes}" for="idAlmDes" />
+                        <p:inputText id="idAlmDes" value="#{sRequerimientoController.selected.idAlmDes}" title="#{bundle.CreateSRequerimientoTitle_idAlmDes}" />
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sRequerimientoController.selected.estado}" title="#{bundle.CreateSRequerimientoTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_nick}" for="nick" />
+                        <p:selectOneMenu id="nick" value="#{sRequerimientoController.selected.nick}" required="true" requiredMessage="#{bundle.EditSRequerimientoRequiredMessage_nick}">
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="nickItem"
+                                           itemValue="#{nickItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSRequerimientoLabel_solicitudDetalleCollection}" for="solicitudDetalleCollection" />
+                        <p:inputText id="solicitudDetalleCollection" value="#{sRequerimientoController.selected.solicitudDetalleCollection}" title="#{bundle.CreateSRequerimientoTitle_solicitudDetalleCollection}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sRequerimientoController.create}" value="#{bundle.Save}" update="display,:SRequerimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'SRequerimientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SRequerimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

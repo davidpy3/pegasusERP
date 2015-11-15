@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscEstadoTrabajadorCreateDlg" widgetVar="EscEstadoTrabajadorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscEstadoTrabajadorTitle}">
+            <h:form id="EscEstadoTrabajadorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escEstadoTrabajadorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscEstadoTrabajadorLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{escEstadoTrabajadorController.selected.idEstado}" title="#{bundle.CreateEscEstadoTrabajadorTitle_idEstado}" required="true" requiredMessage="#{bundle.CreateEscEstadoTrabajadorRequiredMessage_idEstado}"/>
+                        <p:outputLabel value="#{bundle.CreateEscEstadoTrabajadorLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{escEstadoTrabajadorController.selected.estado}" title="#{bundle.CreateEscEstadoTrabajadorTitle_estado}" required="true" requiredMessage="#{bundle.CreateEscEstadoTrabajadorRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateEscEstadoTrabajadorLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escEstadoTrabajadorController.selected.activo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escEstadoTrabajadorController.create}" value="#{bundle.Save}" update="display,:EscEstadoTrabajadorListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscEstadoTrabajadorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscEstadoTrabajadorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

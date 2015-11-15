@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProyectoCreateDlg" widgetVar="ProyectoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProyectoTitle}">
+            <h:form id="ProyectoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{proyectoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_idProy}" for="idProy" />
+                        <p:inputText id="idProy" value="#{proyectoController.selected.idProy}" title="#{bundle.CreateProyectoTitle_idProy}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_idProy}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_actProy}" for="actProy" />
+                        <p:inputText id="actProy" value="#{proyectoController.selected.actProy}" title="#{bundle.CreateProyectoTitle_actProy}" />
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{proyectoController.selected.nombre}" title="#{bundle.CreateProyectoTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_snip}" for="snip" />
+                        <p:inputText id="snip" value="#{proyectoController.selected.snip}" title="#{bundle.CreateProyectoTitle_snip}" />
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{proyectoController.selected.monto}" title="#{bundle.CreateProyectoTitle_monto}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{proyectoController.create}" value="#{bundle.Save}" update="display,:ProyectoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProyectoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProyectoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcEstandarCreateDlg" widgetVar="SgcEstandarCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcEstandarTitle}">
+            <h:form id="SgcEstandarCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcEstandarController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_idEstandar}" for="idEstandar" />
+                        <p:inputText id="idEstandar" value="#{sgcEstandarController.selected.idEstandar}" title="#{bundle.CreateSgcEstandarTitle_idEstandar}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_idEstandar}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{sgcEstandarController.selected.numero}" title="#{bundle.CreateSgcEstandarTitle_numero}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_numero}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_idFactor}" for="idFactor" />
+                        <p:inputText id="idFactor" value="#{sgcEstandarController.selected.idFactor}" title="#{bundle.CreateSgcEstandarTitle_idFactor}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_idFactor}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_idCriterio}" for="idCriterio" />
+                        <p:inputText id="idCriterio" value="#{sgcEstandarController.selected.idCriterio}" title="#{bundle.CreateSgcEstandarTitle_idCriterio}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_idCriterio}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_idModelo}" for="idModelo" />
+                        <p:inputText id="idModelo" value="#{sgcEstandarController.selected.idModelo}" title="#{bundle.CreateSgcEstandarTitle_idModelo}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_idModelo}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_estandar}" for="estandar" />
+                        <p:inputTextarea rows="4" cols="30" id="estandar" value="#{sgcEstandarController.selected.estandar}" title="#{bundle.CreateSgcEstandarTitle_estandar}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_estandar}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_idTipo}" for="idTipo" />
+                        <p:inputText id="idTipo" value="#{sgcEstandarController.selected.idTipo}" title="#{bundle.CreateSgcEstandarTitle_idTipo}" required="true" requiredMessage="#{bundle.CreateSgcEstandarRequiredMessage_idTipo}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcEstandarLabel_consideracion}" for="consideracion" />
+                        <p:inputTextarea rows="4" cols="30" id="consideracion" value="#{sgcEstandarController.selected.consideracion}" title="#{bundle.CreateSgcEstandarTitle_consideracion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcEstandarController.create}" value="#{bundle.Save}" update="display,:SgcEstandarListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcEstandarCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcEstandarCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscFinCarreraLaboralViewDlg" widgetVar="EscFinCarreraLaboralViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscFinCarreraLaboralTitle}">
+            <h:form id="EscFinCarreraLaboralViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escFinCarreraLaboralController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_idRcj}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.idRcj}" title="#{bundle.ViewEscFinCarreraLaboralTitle_idRcj}"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_fechaEfectiva}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.fechaEfectiva}" title="#{bundle.ViewEscFinCarreraLaboralTitle_fechaEfectiva}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_cts}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.cts}" title="#{bundle.ViewEscFinCarreraLaboralTitle_cts}"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_idDtra}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.idDtra}" title="#{bundle.ViewEscFinCarreraLaboralTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_motivo}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.motivo}" title="#{bundle.ViewEscFinCarreraLaboralTitle_motivo}"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{escFinCarreraLaboralController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_idEsc}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.idEsc}" title="#{bundle.ViewEscFinCarreraLaboralTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscFinCarreraLaboralLabel_tipo}"/>
+                        <h:outputText value="#{escFinCarreraLaboralController.selected.tipo}" title="#{bundle.ViewEscFinCarreraLaboralTitle_tipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscFinCarreraLaboralViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

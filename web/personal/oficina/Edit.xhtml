@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OficinaEditDlg" widgetVar="OficinaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOficinaTitle}">
+            <h:form id="OficinaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{oficinaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOficinaLabel_oficinaPK_codoficina}" for="oficinaPK_codoficina" />
+                        <p:inputText id="oficinaPK_codoficina" value="#{oficinaController.selected.oficinaPK.codoficina}" title="#{bundle.EditOficinaTitle_oficinaPK_codoficina}" required="true" requiredMessage="#{bundle.EditOficinaRequiredMessage_oficinaPK_codoficina}"/>
+                        <p:outputLabel value="#{bundle.EditOficinaLabel_codlocal}" for="codlocal" />
+                        <p:inputText id="codlocal" value="#{oficinaController.selected.codlocal}" title="#{bundle.EditOficinaTitle_codlocal}" />
+                        <p:outputLabel value="#{bundle.EditOficinaLabel_oficina}" for="oficina" />
+                        <p:inputText id="oficina" value="#{oficinaController.selected.oficina}" title="#{bundle.EditOficinaTitle_oficina}" />
+                        <p:outputLabel value="#{bundle.EditOficinaLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{oficinaController.selected.abrev}" title="#{bundle.EditOficinaTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.EditOficinaLabel_area}" for="area" />
+                        <p:selectOneMenu id="area" value="#{oficinaController.selected.area}" required="true" requiredMessage="#{bundle.EditOficinaRequiredMessage_area}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectOne}"
+                                           var="areaItem"
+                                           itemValue="#{areaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{oficinaController.update}" value="#{bundle.Save}" update="display,:OficinaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OficinaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OficinaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

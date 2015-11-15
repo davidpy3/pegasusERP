@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionTrasladoCreateDlg" widgetVar="ComOperacionTrasladoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOperacionTrasladoTitle}">
+            <h:form id="ComOperacionTrasladoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionTrasladoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionTrasladoController.selected.idOperacion}" title="#{bundle.CreateComOperacionTrasladoTitle_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionTrasladoRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comOperacionTrasladoController.selected.idFuenteFinanciamiento}" title="#{bundle.CreateComOperacionTrasladoTitle_idFuenteFinanciamiento}" required="true" requiredMessage="#{bundle.CreateComOperacionTrasladoRequiredMessage_idFuenteFinanciamiento}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idPrograma}" for="idPrograma" />
+                        <p:inputText id="idPrograma" value="#{comOperacionTrasladoController.selected.idPrograma}" title="#{bundle.CreateComOperacionTrasladoTitle_idPrograma}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idPecosa}" for="idPecosa" />
+                        <p:inputText id="idPecosa" value="#{comOperacionTrasladoController.selected.idPecosa}" title="#{bundle.CreateComOperacionTrasladoTitle_idPecosa}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idSolicitante}" for="idSolicitante" />
+                        <p:inputText id="idSolicitante" value="#{comOperacionTrasladoController.selected.idSolicitante}" title="#{bundle.CreateComOperacionTrasladoTitle_idSolicitante}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idDirRecibe}" for="idDirRecibe" />
+                        <p:inputText id="idDirRecibe" value="#{comOperacionTrasladoController.selected.idDirRecibe}" title="#{bundle.CreateComOperacionTrasladoTitle_idDirRecibe}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="MM/dd/yyyy" value="#{comOperacionTrasladoController.selected.fechaReg}" title="#{bundle.EditComOperacionTrasladoTitle_fechaReg}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{comOperacionTrasladoController.selected.idCreador}" title="#{bundle.CreateComOperacionTrasladoTitle_idCreador}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionTrasladoLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{comOperacionTrasladoController.selected.idEstado}" title="#{bundle.CreateComOperacionTrasladoTitle_idEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionTrasladoController.create}" value="#{bundle.Save}" update="display,:ComOperacionTrasladoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOperacionTrasladoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionTrasladoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

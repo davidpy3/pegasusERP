@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionCompraEditDlg" widgetVar="ComOperacionCompraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComOperacionCompraTitle}">
+            <h:form id="ComOperacionCompraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionCompraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionCompraController.selected.idOperacion}" title="#{bundle.EditComOperacionCompraTitle_idOperacion}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_idDirProveedor}" for="idDirProveedor" />
+                        <p:inputText id="idDirProveedor" value="#{comOperacionCompraController.selected.idDirProveedor}" title="#{bundle.EditComOperacionCompraTitle_idDirProveedor}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comOperacionCompraController.selected.idFuenteFinanciamiento}" title="#{bundle.EditComOperacionCompraTitle_idFuenteFinanciamiento}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_idPrograma}" for="idPrograma" />
+                        <p:inputText id="idPrograma" value="#{comOperacionCompraController.selected.idPrograma}" title="#{bundle.EditComOperacionCompraTitle_idPrograma}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_tasaImpuesto}" for="tasaImpuesto" />
+                        <p:inputText id="tasaImpuesto" value="#{comOperacionCompraController.selected.tasaImpuesto}" title="#{bundle.EditComOperacionCompraTitle_tasaImpuesto}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_tasaImpuesto}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOperacionCompraController.selected.subTotal}" title="#{bundle.EditComOperacionCompraTitle_subTotal}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_subTotal}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_impuesto}" for="impuesto" />
+                        <p:inputText id="impuesto" value="#{comOperacionCompraController.selected.impuesto}" title="#{bundle.EditComOperacionCompraTitle_impuesto}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_impuesto}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{comOperacionCompraController.selected.total}" title="#{bundle.EditComOperacionCompraTitle_total}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_saldo}" for="saldo" />
+                        <p:inputText id="saldo" value="#{comOperacionCompraController.selected.saldo}" title="#{bundle.EditComOperacionCompraTitle_saldo}" required="true" requiredMessage="#{bundle.EditComOperacionCompraRequiredMessage_saldo}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionCompraLabel_idPecosa}" for="idPecosa" />
+                        <p:inputText id="idPecosa" value="#{comOperacionCompraController.selected.idPecosa}" title="#{bundle.EditComOperacionCompraTitle_idPecosa}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionCompraController.update}" value="#{bundle.Save}" update="display,:ComOperacionCompraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComOperacionCompraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionCompraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

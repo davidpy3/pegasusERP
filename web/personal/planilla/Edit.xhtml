@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaEditDlg" widgetVar="PlanillaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPlanillaTitle}">
+            <h:form id="PlanillaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planillaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_planillaPK_NExpediente}" for="planillaPK_NExpediente" />
+                        <p:inputText id="planillaPK_NExpediente" value="#{planillaController.selected.planillaPK.NExpediente}" title="#{bundle.EditPlanillaTitle_planillaPK_NExpediente}" required="true" requiredMessage="#{bundle.EditPlanillaRequiredMessage_planillaPK_NExpediente}"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_planillaPK_anoEje}" for="planillaPK_anoEje" />
+                        <p:inputText id="planillaPK_anoEje" value="#{planillaController.selected.planillaPK.anoEje}" title="#{bundle.EditPlanillaTitle_planillaPK_anoEje}" required="true" requiredMessage="#{bundle.EditPlanillaRequiredMessage_planillaPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_NPlanilla}" for="NPlanilla" />
+                        <p:inputText id="NPlanilla" value="#{planillaController.selected.NPlanilla}" title="#{bundle.EditPlanillaTitle_NPlanilla}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_entidad}" for="entidad" />
+                        <p:inputText id="entidad" value="#{planillaController.selected.entidad}" title="#{bundle.EditPlanillaTitle_entidad}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_secFunc}" for="secFunc" />
+                        <p:inputText id="secFunc" value="#{planillaController.selected.secFunc}" title="#{bundle.EditPlanillaTitle_secFunc}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_fuenteFinanc}" for="fuenteFinanc" />
+                        <p:inputText id="fuenteFinanc" value="#{planillaController.selected.fuenteFinanc}" title="#{bundle.EditPlanillaTitle_fuenteFinanc}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_tipoTrab}" for="tipoTrab" />
+                        <p:inputText id="tipoTrab" value="#{planillaController.selected.tipoTrab}" title="#{bundle.EditPlanillaTitle_tipoTrab}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_modalidadLaboral}" for="modalidadLaboral" />
+                        <p:inputText id="modalidadLaboral" value="#{planillaController.selected.modalidadLaboral}" title="#{bundle.EditPlanillaTitle_modalidadLaboral}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_trabajos}" for="trabajos" />
+                        <p:inputText id="trabajos" value="#{planillaController.selected.trabajos}" title="#{bundle.EditPlanillaTitle_trabajos}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_fechaExp}" for="fechaExp" />
+                        <p:calendar id="fechaExp" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaController.selected.fechaExp}" title="#{bundle.EditPlanillaTitle_fechaExp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_fechaPlan}" for="fechaPlan" />
+                        <p:calendar id="fechaPlan" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaController.selected.fechaPlan}" title="#{bundle.EditPlanillaTitle_fechaPlan}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_periodoIni}" for="periodoIni" />
+                        <p:calendar id="periodoIni" pattern="MM/dd/yyyy" value="#{planillaController.selected.periodoIni}" title="#{bundle.EditPlanillaTitle_periodoIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_periodoFin}" for="periodoFin" />
+                        <p:calendar id="periodoFin" pattern="MM/dd/yyyy" value="#{planillaController.selected.periodoFin}" title="#{bundle.EditPlanillaTitle_periodoFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_elaboradoPor}" for="elaboradoPor" />
+                        <p:inputText id="elaboradoPor" value="#{planillaController.selected.elaboradoPor}" title="#{bundle.EditPlanillaTitle_elaboradoPor}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_tareadoPor}" for="tareadoPor" />
+                        <p:inputText id="tareadoPor" value="#{planillaController.selected.tareadoPor}" title="#{bundle.EditPlanillaTitle_tareadoPor}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{planillaController.selected.observaciones}" title="#{bundle.EditPlanillaTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{planillaController.selected.estado}" title="#{bundle.EditPlanillaTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_selec}" for="selec" />
+                        <p:inputText id="selec" value="#{planillaController.selected.selec}" title="#{bundle.EditPlanillaTitle_selec}" />
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_mes}" for="mes" />
+                        <p:selectOneMenu id="mes" value="#{planillaController.selected.mes}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mesController.itemsAvailableSelectOne}"
+                                           var="mesItem"
+                                           itemValue="#{mesItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPlanillaLabel_tipoPlanilla}" for="tipoPlanilla" />
+                        <p:selectOneMenu id="tipoPlanilla" value="#{planillaController.selected.tipoPlanilla}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoPlanillaController.itemsAvailableSelectOne}"
+                                           var="tipoPlanillaItem"
+                                           itemValue="#{tipoPlanillaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planillaController.update}" value="#{bundle.Save}" update="display,:PlanillaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PlanillaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanillaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

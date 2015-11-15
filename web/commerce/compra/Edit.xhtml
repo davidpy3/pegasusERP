@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompraEditDlg" widgetVar="CompraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCompraTitle}">
+            <h:form id="CompraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{compraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCompraLabel_idCompra}" for="idCompra" />
+                        <p:inputText id="idCompra" value="#{compraController.selected.idCompra}" title="#{bundle.EditCompraTitle_idCompra}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_idCompra}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_rucPro}" for="rucPro" />
+                        <p:inputText id="rucPro" value="#{compraController.selected.rucPro}" title="#{bundle.EditCompraTitle_rucPro}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_rucPro}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_glosa}" for="glosa" />
+                        <p:inputText id="glosa" value="#{compraController.selected.glosa}" title="#{bundle.EditCompraTitle_glosa}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{compraController.selected.serie}" title="#{bundle.EditCompraTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{compraController.selected.numero}" title="#{bundle.EditCompraTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_fechaDoc}" for="fechaDoc" />
+                        <p:calendar id="fechaDoc" pattern="MM/dd/yyyy" value="#{compraController.selected.fechaDoc}" title="#{bundle.EditCompraTitle_fechaDoc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_idTipoPago}" for="idTipoPago" />
+                        <p:inputText id="idTipoPago" value="#{compraController.selected.idTipoPago}" title="#{bundle.EditCompraTitle_idTipoPago}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_idTipoPago}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_fechaPago}" for="fechaPago" />
+                        <p:calendar id="fechaPago" pattern="MM/dd/yyyy" value="#{compraController.selected.fechaPago}" title="#{bundle.EditCompraTitle_fechaPago}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{compraController.selected.estado}" title="#{bundle.EditCompraTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_nick}" for="nick" />
+                        <p:inputText id="nick" value="#{compraController.selected.nick}" title="#{bundle.EditCompraTitle_nick}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_nick}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_idAlmacen}" for="idAlmacen" />
+                        <p:inputText id="idAlmacen" value="#{compraController.selected.idAlmacen}" title="#{bundle.EditCompraTitle_idAlmacen}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_idAlmacen}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{compraController.selected.total}" title="#{bundle.EditCompraTitle_total}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_tipoCompra}" for="tipoCompra" />
+                        <p:inputText id="tipoCompra" value="#{compraController.selected.tipoCompra}" title="#{bundle.EditCompraTitle_tipoCompra}" />
+                        <p:outputLabel value="#{bundle.EditCompraLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{compraController.selected.ruc}" title="#{bundle.EditCompraTitle_ruc}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_ruc}"/>
+                        <p:outputLabel value="#{bundle.EditCompraLabel_tipoDoc}" for="tipoDoc" />
+                        <p:inputText id="tipoDoc" value="#{compraController.selected.tipoDoc}" title="#{bundle.EditCompraTitle_tipoDoc}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{compraController.update}" value="#{bundle.Save}" update="display,:CompraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CompraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdelantoViewDlg" widgetVar="AdelantoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAdelantoTitle}">
+            <h:form id="AdelantoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adelantoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAdelantoLabel_idAdelanto}"/>
+                        <h:outputText value="#{adelantoController.selected.idAdelanto}" title="#{bundle.ViewAdelantoTitle_idAdelanto}"/>
+                        <h:outputText value="#{bundle.ViewAdelantoLabel_fecha}"/>
+                        <h:outputText value="#{adelantoController.selected.fecha}" title="#{bundle.ViewAdelantoTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAdelantoLabel_monto}"/>
+                        <h:outputText value="#{adelantoController.selected.monto}" title="#{bundle.ViewAdelantoTitle_monto}"/>
+                        <h:outputText value="#{bundle.ViewAdelantoLabel_dni}"/>
+                        <h:outputText value="#{adelantoController.selected.dni}" title="#{bundle.ViewAdelantoTitle_dni}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AdelantoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

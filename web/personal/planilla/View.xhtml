@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaViewDlg" widgetVar="PlanillaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPlanillaTitle}">
+            <h:form id="PlanillaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planillaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_planillaPK_NExpediente}"/>
+                        <h:outputText value="#{planillaController.selected.planillaPK.NExpediente}" title="#{bundle.ViewPlanillaTitle_planillaPK_NExpediente}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_planillaPK_anoEje}"/>
+                        <h:outputText value="#{planillaController.selected.planillaPK.anoEje}" title="#{bundle.ViewPlanillaTitle_planillaPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_NPlanilla}"/>
+                        <h:outputText value="#{planillaController.selected.NPlanilla}" title="#{bundle.ViewPlanillaTitle_NPlanilla}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_entidad}"/>
+                        <h:outputText value="#{planillaController.selected.entidad}" title="#{bundle.ViewPlanillaTitle_entidad}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_secFunc}"/>
+                        <h:outputText value="#{planillaController.selected.secFunc}" title="#{bundle.ViewPlanillaTitle_secFunc}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_fuenteFinanc}"/>
+                        <h:outputText value="#{planillaController.selected.fuenteFinanc}" title="#{bundle.ViewPlanillaTitle_fuenteFinanc}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_tipoTrab}"/>
+                        <h:outputText value="#{planillaController.selected.tipoTrab}" title="#{bundle.ViewPlanillaTitle_tipoTrab}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_modalidadLaboral}"/>
+                        <h:outputText value="#{planillaController.selected.modalidadLaboral}" title="#{bundle.ViewPlanillaTitle_modalidadLaboral}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_trabajos}"/>
+                        <h:outputText value="#{planillaController.selected.trabajos}" title="#{bundle.ViewPlanillaTitle_trabajos}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_fechaExp}"/>
+                        <h:outputText value="#{planillaController.selected.fechaExp}" title="#{bundle.ViewPlanillaTitle_fechaExp}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_fechaPlan}"/>
+                        <h:outputText value="#{planillaController.selected.fechaPlan}" title="#{bundle.ViewPlanillaTitle_fechaPlan}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_periodoIni}"/>
+                        <h:outputText value="#{planillaController.selected.periodoIni}" title="#{bundle.ViewPlanillaTitle_periodoIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_periodoFin}"/>
+                        <h:outputText value="#{planillaController.selected.periodoFin}" title="#{bundle.ViewPlanillaTitle_periodoFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_elaboradoPor}"/>
+                        <h:outputText value="#{planillaController.selected.elaboradoPor}" title="#{bundle.ViewPlanillaTitle_elaboradoPor}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_tareadoPor}"/>
+                        <h:outputText value="#{planillaController.selected.tareadoPor}" title="#{bundle.ViewPlanillaTitle_tareadoPor}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_observaciones}"/>
+                        <h:outputText value="#{planillaController.selected.observaciones}" title="#{bundle.ViewPlanillaTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_estado}"/>
+                        <h:outputText value="#{planillaController.selected.estado}" title="#{bundle.ViewPlanillaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_selec}"/>
+                        <h:outputText value="#{planillaController.selected.selec}" title="#{bundle.ViewPlanillaTitle_selec}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_mes}"/>
+                        <h:outputText value="#{planillaController.selected.mes}" title="#{bundle.ViewPlanillaTitle_mes}"/>
+                        <h:outputText value="#{bundle.ViewPlanillaLabel_tipoPlanilla}"/>
+                        <h:outputText value="#{planillaController.selected.tipoPlanilla}" title="#{bundle.ViewPlanillaTitle_tipoPlanilla}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PlanillaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValorizacionEditDlg" widgetVar="ValorizacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditValorizacionTitle}">
+            <h:form id="ValorizacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valorizacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_valorizacionPK_tipoValor}" for="valorizacionPK_tipoValor" />
+                        <p:inputText id="valorizacionPK_tipoValor" value="#{valorizacionController.selected.valorizacionPK.tipoValor}" title="#{bundle.EditValorizacionTitle_valorizacionPK_tipoValor}" required="true" requiredMessage="#{bundle.EditValorizacionRequiredMessage_valorizacionPK_tipoValor}"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_valorizacionPK_NOrden}" for="valorizacionPK_NOrden" />
+                        <p:inputText id="valorizacionPK_NOrden" value="#{valorizacionController.selected.valorizacionPK.NOrden}" title="#{bundle.EditValorizacionTitle_valorizacionPK_NOrden}" required="true" requiredMessage="#{bundle.EditValorizacionRequiredMessage_valorizacionPK_NOrden}"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_valorizacionPK_tipo}" for="valorizacionPK_tipo" />
+                        <p:inputText id="valorizacionPK_tipo" value="#{valorizacionController.selected.valorizacionPK.tipo}" title="#{bundle.EditValorizacionTitle_valorizacionPK_tipo}" required="true" requiredMessage="#{bundle.EditValorizacionRequiredMessage_valorizacionPK_tipo}"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_valorizacionPK_anoEje}" for="valorizacionPK_anoEje" />
+                        <p:inputText id="valorizacionPK_anoEje" value="#{valorizacionController.selected.valorizacionPK.anoEje}" title="#{bundle.EditValorizacionTitle_valorizacionPK_anoEje}" required="true" requiredMessage="#{bundle.EditValorizacionRequiredMessage_valorizacionPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_valorizacionPK_NValor}" for="valorizacionPK_NValor" />
+                        <p:inputText id="valorizacionPK_NValor" value="#{valorizacionController.selected.valorizacionPK.NValor}" title="#{bundle.EditValorizacionTitle_valorizacionPK_NValor}" required="true" requiredMessage="#{bundle.EditValorizacionRequiredMessage_valorizacionPK_NValor}"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{valorizacionController.selected.fecha}" title="#{bundle.EditValorizacionTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_porcProp}" for="porcProp" />
+                        <p:inputText id="porcProp" value="#{valorizacionController.selected.porcProp}" title="#{bundle.EditValorizacionTitle_porcProp}" />
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_porcValor}" for="porcValor" />
+                        <p:inputText id="porcValor" value="#{valorizacionController.selected.porcValor}" title="#{bundle.EditValorizacionTitle_porcValor}" />
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_montoProp}" for="montoProp" />
+                        <p:inputText id="montoProp" value="#{valorizacionController.selected.montoProp}" title="#{bundle.EditValorizacionTitle_montoProp}" />
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_montoValor}" for="montoValor" />
+                        <p:inputText id="montoValor" value="#{valorizacionController.selected.montoValor}" title="#{bundle.EditValorizacionTitle_montoValor}" />
+                        <p:outputLabel value="#{bundle.EditValorizacionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{valorizacionController.selected.estado}" title="#{bundle.EditValorizacionTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{valorizacionController.update}" value="#{bundle.Save}" update="display,:ValorizacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ValorizacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ValorizacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcTipoEstandarEditDlg" widgetVar="SgcTipoEstandarEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcTipoEstandarTitle}">
+            <h:form id="SgcTipoEstandarEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcTipoEstandarController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcTipoEstandarLabel_idTipo}" for="idTipo" />
+                        <p:inputText id="idTipo" value="#{sgcTipoEstandarController.selected.idTipo}" title="#{bundle.EditSgcTipoEstandarTitle_idTipo}" required="true" requiredMessage="#{bundle.EditSgcTipoEstandarRequiredMessage_idTipo}"/>
+                        <p:outputLabel value="#{bundle.EditSgcTipoEstandarLabel_simbolo}" for="simbolo" />
+                        <p:inputText id="simbolo" value="#{sgcTipoEstandarController.selected.simbolo}" title="#{bundle.EditSgcTipoEstandarTitle_simbolo}" required="true" requiredMessage="#{bundle.EditSgcTipoEstandarRequiredMessage_simbolo}"/>
+                        <p:outputLabel value="#{bundle.EditSgcTipoEstandarLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{sgcTipoEstandarController.selected.tipo}" title="#{bundle.EditSgcTipoEstandarTitle_tipo}" required="true" requiredMessage="#{bundle.EditSgcTipoEstandarRequiredMessage_tipo}"/>
+                        <p:outputLabel value="#{bundle.EditSgcTipoEstandarLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{sgcTipoEstandarController.selected.descripcion}" title="#{bundle.EditSgcTipoEstandarTitle_descripcion}" required="true" requiredMessage="#{bundle.EditSgcTipoEstandarRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcTipoEstandarController.update}" value="#{bundle.Save}" update="display,:SgcTipoEstandarListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcTipoEstandarEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcTipoEstandarEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

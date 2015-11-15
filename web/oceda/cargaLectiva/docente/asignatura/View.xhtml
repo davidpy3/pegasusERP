@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaLectivaAsignaturaViewDlg" widgetVar="CargaLectivaAsignaturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCargaLectivaAsignaturaTitle}">
+            <h:form id="CargaLectivaAsignaturaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaLectivaAsignaturaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idCldet}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idCldet}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idCldet}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idAsignatura}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idAsignatura}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idAsignatura}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idClcab}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idClcab}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idClcab}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idCldetDep}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idCldetDep}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idCldetDep}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idTcl}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idTcl}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idTcl}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_codPrioridad}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.codPrioridad}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_codPrioridad}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_nroAlum}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.nroAlum}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_nroAlum}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_gruptTeor}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.gruptTeor}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_gruptTeor}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_gruptPrac}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.gruptPrac}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_gruptPrac}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_grupTeor}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.grupTeor}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_grupTeor}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_grupoT}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.grupoT}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_grupoT}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_grupPrac}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.grupPrac}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_grupPrac}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_grupoP}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.grupoP}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_grupoP}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_horTeor}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.horTeor}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_horTeor}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_horPrac}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.horPrac}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_horPrac}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_subtotal}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.subtotal}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_subtotal}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_estEncarg}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaAsignaturaController.selected.estEncarg}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_estAsigna}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaAsignaturaController.selected.estAsigna}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_estCompartido}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaAsignaturaController.selected.estCompartido}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_tipComp}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.tipComp}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_tipComp}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_tipEnca}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.tipEnca}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_tipEnca}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_ht}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.ht}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_ht}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_hp}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.hp}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_hp}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_asigCompartidas}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.asigCompartidas}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_asigCompartidas}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_uso}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaAsignaturaController.selected.uso}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idEsp}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idEsp}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idEsp}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_estException}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.estException}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_estException}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_idEstado}"/>
+                        <h:outputText value="#{cargaLectivaAsignaturaController.selected.idEstado}" title="#{bundle.ViewCargaLectivaAsignaturaTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewCargaLectivaAsignaturaLabel_original}"/>
+                        <p:selectBooleanCheckbox value="#{cargaLectivaAsignaturaController.selected.original}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CargaLectivaAsignaturaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PapeletaCreateDlg" widgetVar="PapeletaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePapeletaTitle}">
+            <h:form id="PapeletaCreateForm">
+                <h:panelGroup id="display" rendered="#{papeletaController.selected != null}">
+                    <p:panelGrid columns="4" >
+                        <p:outputLabel value="#{bundle.AnoEje}" for="papeletaPK_anoEje" />
+                        <p:inputText id="papeletaPK_anoEje" value="#{papeletaController.selected.papeletaPK.anoEje}" title="#{AnoEje}" required="true" requiredMessage="#{bundle.CreatePapeletaRequiredMessage_papeletaPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.NPapeleta}" for="papeletaPK_NPapeleta" />
+                        <p:inputText id="papeletaPK_NPapeleta" readonly="true" value="#{papeletaController.selected.papeletaPK.NPapeleta}" title="#{bundle.N_Papeleta}" required="true" requiredMessage="#{bundle.CreatePapeletaRequiredMessage_papeletaPK_NPapeleta}"/>
+                    </p:panelGrid>
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="#{bundle.Personal}" for="personal" />
+                        <p:autoComplete size="70" id="personal" value="#{personalController.selected}" completeMethod="#{personalController.complete}"
+                                        var="v" itemLabel="#{v.dni}: #{v.nombComp}" itemValue="#{v}" forceSelection="true">
+                            <p:column>
+                                <h:outputText value="#{v.dni}" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="#{v.nombComp}" />
+                            </p:column>
+                        </p:autoComplete>
+                    </p:panelGrid>
+                    <p:panelGrid columns="4">
+
+
+
+
+                        <p:outputLabel value="#{bundle.regulariza}" for="regulariza" />
+                        <p:selectOneMenu id="regulariza" value="#{papeletaController.selected.regulariza}" 
+                                         title="#{bundle.tipoPape}" >
+                            <f:selectItems value="#{papeletaController.getRegularizaList()}" var="v" itemLabel="#{v[1]}" itemValue="#{v[0]}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.tipoPape}" for="tipoPape" />
+                        <p:selectOneMenu id="tipoPape" value="#{papeletaController.selected.tipoPape}" 
+                                         title="#{bundle.tipoPape}" >
+                            <f:selectItems value="#{tipoPapeletaController.items}" var="v" itemLabel="#{v.descripcion}" itemValue="#{v.tipoPape}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.periPape}" for="periPape" />
+                        <p:selectOneMenu id="periPape" value="#{papeletaController.selected.periPape}" 
+                                         title="#{bundle.periPape}" >
+                            <f:selectItems value="#{papeletaController.getPeriodoList()}" var="v" itemLabel="#{v[1]}" itemValue="#{v[0]}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.fechaPape}" for="fechaPape" />
+                        <p:calendar id="fechaPape" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaPape}" title="#{bundle.EditPapeletaTitle_fechaPape}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.fechaDel}" for="fechaDel" />
+                        <p:calendar id="fechaDel" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaDel}" title="#{bundle.EditPapeletaTitle_fechaDel}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.fechaAl}" for="fechaAl" />
+                        <p:calendar id="fechaAl" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaAl}" title="#{bundle.EditPapeletaTitle_fechaAl}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.horaIni}" for="horaIni" />
+                        <p:calendar id="horaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.horaIni}" title="#{bundle.EditPapeletaTitle_horaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.horaFin}" for="horaFin" />
+                        <p:calendar id="horaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.horaFin}" title="#{bundle.EditPapeletaTitle_horaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.lugar}" for="lugar" />
+                        <p:inputText id="lugar" value="#{papeletaController.selected.lugar}" title="#{bundle.lugar}" />
+                        <p:outputLabel value="#{bundle.motivo}" for="motivo" />
+                        <p:inputText id="motivo" value="#{papeletaController.selected.motivo}" title="#{bundle.motivo}" />
+                        <p:outputLabel value="#{bundle.observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{papeletaController.selected.observaciones}" title="#{bundle.observaciones}" />
+                        <p:outputLabel value="#{bundle.estado}" for="estado" />
+                        <p:inputText id="estado" value="#{papeletaController.selected.estado}" title="#{bundle.estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{papeletaController.create}" value="#{bundle.Save}" update="display,:PapeletaListForm:datalist,:growl" oncomplete="handleSubmit(args,'PapeletaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PapeletaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

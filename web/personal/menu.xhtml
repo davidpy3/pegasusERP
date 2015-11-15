@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+            <h:form>
+                <p:growl id="msg"/>
+                <p:menubar>
+                    <p:submenu label="Operación">
+                        <p:menuitem value="Registro de Personal"
+                                    url="/admin/personal/" />
+                        <p:separator/>
+                        <p:menuitem value="Registro de Marcaciones de Asistencia"
+                                    url="/personal/w_registro_marcacion.xhtml" update=":center"/>
+                        <p:menuitem value="Bandeja de Papeletas de Salida" 
+                                    url="/personal/w_bandeja_papeletas.xhtml" update=":center"/>
+                        <p:separator/>
+                        <p:menuitem value="Planillas de Trabajadores y Pensionistas"
+                                    url="/personal/w_bandeja_planilla.xhtml" update=":center"/>
+                        <p:menuitem value="Hoja de Tareo"
+                                    url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                        <p:separator/>
+                        <p:menuitem value="Consolidado Resumen de Planillas"
+                                    url="/personal/w_resume_planilla.xhtml" update=":center"/>
+
+                    </p:submenu>
+                    <p:submenu label="Tablas">
+
+                        <p:menuitem value="Niveles Remunerativos"
+                                    url="/personal/w_registro_nivel_rem.xhtml" update=":center"/>
+                        <p:menuitem value="Mantenimiento Conceptos"
+                                    url="/personal/w_registro_conceptos.xhtml" update=":center"/>
+                        <p:menuitem value="Mantenimiento Glosa Conceptos"
+                                    url="/personal/w_bandeja_htareo_1.xhtml" update=":center"/>
+                        <p:menuitem value="Cargos Funcionales"
+                                    url="/personal/w_mant_tipo_situ_labo.xhtml" update=":center"/>
+                        <p:separator/>
+                        <p:menuitem value="Horarios de Marcaciones"/>
+                        <p:menuitem value="Turnos de Vigilantes"/>
+                        <p:separator/>
+                        <p:menuitem  value="Afectaciones por Trabajador"/> 
+                        <p:menuitem  value="Afectaciones por Régimen"/>
+                        <p:menuitem  value="Configuración de Impresión de Descuentos"/>
+                        <p:menuitem  value="Tabla Salarial - Construcción Civil"/>
+                    </p:submenu>
+                    <p:submenu label="Reportes">
+
+                        <p:menuitem  value="Reporte Diario de Marcaciones"/>
+                        <p:menuitem  value="Reporte Mensual  de Maracaciones por Trabajador"/>
+                        <p:separator/>
+                        <p:menuitem  value="Resumen Mensual de Tardanzas [Administrativo]"/>
+                        <p:menuitem  value="Resumen Mensual de Tardanzas [Vigilancia]"/>
+                        <p:separator/>
+                        <p:menuitem  value="Reporte Mensual de Papeletas de Salida"/>
+                        <p:separator/>
+                        <p:menuitem  value="Resumen mensual Plus"/>
+                        <p:menuitem  value="Resumen Mensual de Descuentos de AFP"/> 
+                        <p:menuitem  value="Resumen Mensual de Gasto en Planillas"/>
+                        <p:separator/>
+                        <p:menuitem  value="Relacion de Personal Activo"/> 
+                        <p:menuitem  value="Estadisitca  Mensual de Remuneraciones"/>
+                        <p:separator/>
+                        <p:menuitem  value="Relación Mensual de Onomásticos"/>
+                    </p:submenu>
+                    <p:submenu label="Herramientas">
+                        <p:menuitem  value="Interfaz PDT 601 - Planillas de Obras"/>
+                        <p:menuitem  value="Interfaz Altas y Bajas T-Registro"/>
+                        <p:menuitem  value="Verificación de Identificación de Personal de Obras"/>
+                        <p:menuitem  value="Impresión de cheques SIAF"/>
+                        <p:separator/>
+                        <p:menuitem value="Mis Datos Personales" ajax="false"
+                                    action="#{systemController.to('/pegasus/w_cfg_datos_personales')}" update=":center"/>
+                        <p:menuitem  value="Cambio de Contraseña"/>
+                        <p:separator/>
+                        <p:menuitem  value="Año de Ejecucion"/>
+                    </p:submenu>
+                    <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                        <p:menuitem value="Cerrar Sessión" ajax="false" action="#{userController.logout}"/>
+                        <p:menuitem value="Cambiar Contraseña" />
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+        
+</html>

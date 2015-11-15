@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscMovmodalidadEditDlg" widgetVar="EscMovmodalidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscMovmodalidadTitle}">
+            <h:form id="EscMovmodalidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escMovmodalidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscMovmodalidadLabel_idMovmod}" for="idMovmod" />
+                        <p:inputText id="idMovmod" value="#{escMovmodalidadController.selected.idMovmod}" title="#{bundle.EditEscMovmodalidadTitle_idMovmod}" required="true" requiredMessage="#{bundle.EditEscMovmodalidadRequiredMessage_idMovmod}"/>
+                        <p:outputLabel value="#{bundle.EditEscMovmodalidadLabel_modalidad}" for="modalidad" />
+                        <p:inputText id="modalidad" value="#{escMovmodalidadController.selected.modalidad}" title="#{bundle.EditEscMovmodalidadTitle_modalidad}" required="true" requiredMessage="#{bundle.EditEscMovmodalidadRequiredMessage_modalidad}"/>
+                        <p:outputLabel value="#{bundle.EditEscMovmodalidadLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{escMovmodalidadController.selected.abrev}" title="#{bundle.EditEscMovmodalidadTitle_abrev}" required="true" requiredMessage="#{bundle.EditEscMovmodalidadRequiredMessage_abrev}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escMovmodalidadController.update}" value="#{bundle.Save}" update="display,:EscMovmodalidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscMovmodalidadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscMovmodalidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcCriterioEditDlg" widgetVar="SgcCriterioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcCriterioTitle}">
+            <h:form id="SgcCriterioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcCriterioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcCriterioLabel_sgcCriterioPK_idCriterio}" for="sgcCriterioPK_idCriterio" />
+                        <p:inputText id="sgcCriterioPK_idCriterio" value="#{sgcCriterioController.selected.sgcCriterioPK.idCriterio}" title="#{bundle.EditSgcCriterioTitle_sgcCriterioPK_idCriterio}" required="true" requiredMessage="#{bundle.EditSgcCriterioRequiredMessage_sgcCriterioPK_idCriterio}"/>
+                        <p:outputLabel value="#{bundle.EditSgcCriterioLabel_sgcCriterioPK_idFactor}" for="sgcCriterioPK_idFactor" />
+                        <p:inputText id="sgcCriterioPK_idFactor" value="#{sgcCriterioController.selected.sgcCriterioPK.idFactor}" title="#{bundle.EditSgcCriterioTitle_sgcCriterioPK_idFactor}" required="true" requiredMessage="#{bundle.EditSgcCriterioRequiredMessage_sgcCriterioPK_idFactor}"/>
+                        <p:outputLabel value="#{bundle.EditSgcCriterioLabel_idDimension}" for="idDimension" />
+                        <p:inputText id="idDimension" value="#{sgcCriterioController.selected.idDimension}" title="#{bundle.EditSgcCriterioTitle_idDimension}" required="true" requiredMessage="#{bundle.EditSgcCriterioRequiredMessage_idDimension}"/>
+                        <p:outputLabel value="#{bundle.EditSgcCriterioLabel_criterio}" for="criterio" />
+                        <p:inputText id="criterio" value="#{sgcCriterioController.selected.criterio}" title="#{bundle.EditSgcCriterioTitle_criterio}" required="true" requiredMessage="#{bundle.EditSgcCriterioRequiredMessage_criterio}"/>
+                        <p:outputLabel value="#{bundle.EditSgcCriterioLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{sgcCriterioController.selected.descripcion}" title="#{bundle.EditSgcCriterioTitle_descripcion}" required="true" requiredMessage="#{bundle.EditSgcCriterioRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcCriterioController.update}" value="#{bundle.Save}" update="display,:SgcCriterioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcCriterioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcCriterioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

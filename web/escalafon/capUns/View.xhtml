@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapUnsViewDlg" widgetVar="EscCapUnsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscCapUnsTitle}">
+            <h:form id="EscCapUnsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapUnsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_escCapUnsPK_idDep}"/>
+                        <h:outputText value="#{escCapUnsController.selected.escCapUnsPK.idDep}" title="#{bundle.ViewEscCapUnsTitle_escCapUnsPK_idDep}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_escCapUnsPK_idCap}"/>
+                        <h:outputText value="#{escCapUnsController.selected.escCapUnsPK.idCap}" title="#{bundle.ViewEscCapUnsTitle_escCapUnsPK_idCap}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_nroCargo}"/>
+                        <h:outputText value="#{escCapUnsController.selected.nroCargo}" title="#{bundle.ViewEscCapUnsTitle_nroCargo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_cargo}"/>
+                        <h:outputText value="#{escCapUnsController.selected.cargo}" title="#{bundle.ViewEscCapUnsTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_totalNecesario}"/>
+                        <h:outputText value="#{escCapUnsController.selected.totalNecesario}" title="#{bundle.ViewEscCapUnsTitle_totalNecesario}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_codigo}"/>
+                        <h:outputText value="#{escCapUnsController.selected.codigo}" title="#{bundle.ViewEscCapUnsTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_previstos}"/>
+                        <h:outputText value="#{escCapUnsController.selected.previstos}" title="#{bundle.ViewEscCapUnsTitle_previstos}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_nombrados}"/>
+                        <h:outputText value="#{escCapUnsController.selected.nombrados}" title="#{bundle.ViewEscCapUnsTitle_nombrados}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_contratados}"/>
+                        <h:outputText value="#{escCapUnsController.selected.contratados}" title="#{bundle.ViewEscCapUnsTitle_contratados}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_vacantes}"/>
+                        <h:outputText value="#{escCapUnsController.selected.vacantes}" title="#{bundle.ViewEscCapUnsTitle_vacantes}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_observaciones}"/>
+                        <h:outputText value="#{escCapUnsController.selected.observaciones}" title="#{bundle.ViewEscCapUnsTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_idHistCap}"/>
+                        <h:outputText value="#{escCapUnsController.selected.idHistCap}" title="#{bundle.ViewEscCapUnsTitle_idHistCap}"/>
+                        <h:outputText value="#{bundle.ViewEscCapUnsLabel_escNivelRemunerativoUns}"/>
+                        <h:outputText value="#{escCapUnsController.selected.escNivelRemunerativoUns}" title="#{bundle.ViewEscCapUnsTitle_escNivelRemunerativoUns}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscCapUnsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TrasladoArticuloCreateDlg" widgetVar="TrasladoArticuloCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTrasladoArticuloTitle}">
+            <h:form id="TrasladoArticuloCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{trasladoArticuloController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTrasladoArticuloLabel_cant}" for="cant" />
+                        <p:inputText id="cant" value="#{trasladoArticuloController.selected.cant}" title="#{bundle.CreateTrasladoArticuloTitle_cant}" />
+                        <p:outputLabel value="#{bundle.CreateTrasladoArticuloLabel_articulo}" for="articulo" />
+                        <p:selectOneMenu id="articulo" value="#{trasladoArticuloController.selected.articulo}" required="true" requiredMessage="#{bundle.EditTrasladoArticuloRequiredMessage_articulo}">
+                            <f:selectItems value="#{comArticuloController.itemsAvailableSelectOne}"
+                                           var="articuloItem"
+                                           itemValue="#{articuloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTrasladoArticuloLabel_traslado}" for="traslado" />
+                        <p:selectOneMenu id="traslado" value="#{trasladoArticuloController.selected.traslado}" required="true" requiredMessage="#{bundle.EditTrasladoArticuloRequiredMessage_traslado}">
+                            <f:selectItems value="#{trasladoController.itemsAvailableSelectOne}"
+                                           var="trasladoItem"
+                                           itemValue="#{trasladoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{trasladoArticuloController.create}" value="#{bundle.Save}" update="display,:TrasladoArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args,'TrasladoArticuloCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TrasladoArticuloCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

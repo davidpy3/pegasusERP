@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComArticuloEditDlg" widgetVar="ComArticuloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComArticuloTitle}">
+            <h:form id="ComArticuloEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comArticuloController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idArticulo}" for="idArticulo" />
+                        <p:inputText id="idArticulo" value="#{comArticuloController.selected.idArticulo}" title="#{bundle.EditComArticuloTitle_idArticulo}" required="true" requiredMessage="#{bundle.EditComArticuloRequiredMessage_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idGrupo}" for="idGrupo" />
+                        <p:inputText id="idGrupo" value="#{comArticuloController.selected.idGrupo}" title="#{bundle.EditComArticuloTitle_idGrupo}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idClase}" for="idClase" />
+                        <p:inputText id="idClase" value="#{comArticuloController.selected.idClase}" title="#{bundle.EditComArticuloTitle_idClase}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idFamilia}" for="idFamilia" />
+                        <p:inputText id="idFamilia" value="#{comArticuloController.selected.idFamilia}" title="#{bundle.EditComArticuloTitle_idFamilia}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{comArticuloController.selected.numero}" title="#{bundle.EditComArticuloTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{comArticuloController.selected.codigo}" title="#{bundle.EditComArticuloTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_siglas}" for="siglas" />
+                        <p:inputText id="siglas" value="#{comArticuloController.selected.siglas}" title="#{bundle.EditComArticuloTitle_siglas}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_barras}" for="barras" />
+                        <p:inputText id="barras" value="#{comArticuloController.selected.barras}" title="#{bundle.EditComArticuloTitle_barras}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{comArticuloController.selected.descripcion}" title="#{bundle.EditComArticuloTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idUnidad}" for="idUnidad" />
+                        <p:inputText id="idUnidad" value="#{comArticuloController.selected.idUnidad}" title="#{bundle.EditComArticuloTitle_idUnidad}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_cantidadUnidad}" for="cantidadUnidad" />
+                        <p:inputText id="cantidadUnidad" value="#{comArticuloController.selected.cantidadUnidad}" title="#{bundle.EditComArticuloTitle_cantidadUnidad}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_composicion}" for="composicion" />
+                        <p:inputText id="composicion" value="#{comArticuloController.selected.composicion}" title="#{bundle.EditComArticuloTitle_composicion}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_stockMin}" for="stockMin" />
+                        <p:inputText id="stockMin" value="#{comArticuloController.selected.stockMin}" title="#{bundle.EditComArticuloTitle_stockMin}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_stockMax}" for="stockMax" />
+                        <p:inputText id="stockMax" value="#{comArticuloController.selected.stockMax}" title="#{bundle.EditComArticuloTitle_stockMax}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_costo}" for="costo" />
+                        <p:inputText id="costo" value="#{comArticuloController.selected.costo}" title="#{bundle.EditComArticuloTitle_costo}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{comArticuloController.selected.precio}" title="#{bundle.EditComArticuloTitle_precio}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{comArticuloController.selected.marca}" title="#{bundle.EditComArticuloTitle_marca}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_modelo}" for="modelo" />
+                        <p:inputText id="modelo" value="#{comArticuloController.selected.modelo}" title="#{bundle.EditComArticuloTitle_modelo}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{comArticuloController.selected.serie}" title="#{bundle.EditComArticuloTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{comArticuloController.selected.color}" title="#{bundle.EditComArticuloTitle_color}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{comArticuloController.selected.estado}" title="#{bundle.EditComArticuloTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_inventariable}" for="inventariable" />
+                        <p:selectBooleanCheckbox id="inventariable" value="#{comArticuloController.selected.inventariable}" required="true" requiredMessage="#{bundle.EditComArticuloRequiredMessage_inventariable}"/>
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idCuentaMayor}" for="idCuentaMayor" />
+                        <p:inputText id="idCuentaMayor" value="#{comArticuloController.selected.idCuentaMayor}" title="#{bundle.EditComArticuloTitle_idCuentaMayor}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idSubCuenta}" for="idSubCuenta" />
+                        <p:inputText id="idSubCuenta" value="#{comArticuloController.selected.idSubCuenta}" title="#{bundle.EditComArticuloTitle_idSubCuenta}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idDivisionaria}" for="idDivisionaria" />
+                        <p:inputText id="idDivisionaria" value="#{comArticuloController.selected.idDivisionaria}" title="#{bundle.EditComArticuloTitle_idDivisionaria}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idSucursal}" for="idSucursal" />
+                        <p:inputText id="idSucursal" value="#{comArticuloController.selected.idSucursal}" title="#{bundle.EditComArticuloTitle_idSucursal}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{comArticuloController.selected.idUsuario}" title="#{bundle.EditComArticuloTitle_idUsuario}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_fid}" for="fid" />
+                        <p:inputText id="fid" value="#{comArticuloController.selected.fid}" title="#{bundle.EditComArticuloTitle_fid}" />
+                        <p:outputLabel value="#{bundle.EditComArticuloLabel_comision}" for="comision" />
+                        <p:inputText id="comision" value="#{comArticuloController.selected.comision}" title="#{bundle.EditComArticuloTitle_comision}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comArticuloController.update}" value="#{bundle.Save}" update="display,:ComArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComArticuloEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComArticuloEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

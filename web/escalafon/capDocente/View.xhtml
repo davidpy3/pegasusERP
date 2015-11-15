@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapDocenteViewDlg" widgetVar="EscCapDocenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscCapDocenteTitle}">
+            <h:form id="EscCapDocenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapDocenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_escCapDocentePK_idCap}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.escCapDocentePK.idCap}" title="#{bundle.ViewEscCapDocenteTitle_escCapDocentePK_idCap}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_escCapDocentePK_idDep}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.escCapDocentePK.idDep}" title="#{bundle.ViewEscCapDocenteTitle_escCapDocentePK_idDep}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_nroCargo}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.nroCargo}" title="#{bundle.ViewEscCapDocenteTitle_nroCargo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_totalNecesario}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.totalNecesario}" title="#{bundle.ViewEscCapDocenteTitle_totalNecesario}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_previstos}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.previstos}" title="#{bundle.ViewEscCapDocenteTitle_previstos}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_nombrados}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.nombrados}" title="#{bundle.ViewEscCapDocenteTitle_nombrados}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_vacantes}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.vacantes}" title="#{bundle.ViewEscCapDocenteTitle_vacantes}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_observaciones}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.observaciones}" title="#{bundle.ViewEscCapDocenteTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_cargo}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.cargo}" title="#{bundle.ViewEscCapDocenteTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_codigo}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.codigo}" title="#{bundle.ViewEscCapDocenteTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_contratados}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.contratados}" title="#{bundle.ViewEscCapDocenteTitle_contratados}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_idCategoria}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.idCategoria}" title="#{bundle.ViewEscCapDocenteTitle_idCategoria}"/>
+                        <h:outputText value="#{bundle.ViewEscCapDocenteLabel_idHistCap}"/>
+                        <h:outputText value="#{escCapDocenteController.selected.idHistCap}" title="#{bundle.ViewEscCapDocenteTitle_idHistCap}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscCapDocenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SMetaEditDlg" widgetVar="SMetaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSMetaTitle}">
+            <h:form id="SMetaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sMetaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_idMeta}" for="idMeta" />
+                        <p:inputText id="idMeta" value="#{sMetaController.selected.idMeta}" title="#{bundle.EditSMetaTitle_idMeta}" required="true" requiredMessage="#{bundle.EditSMetaRequiredMessage_idMeta}"/>
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{sMetaController.selected.monto}" title="#{bundle.EditSMetaTitle_monto}" />
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{sMetaController.selected.estado}" title="#{bundle.EditSMetaTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{sMetaController.selected.fechaIni}" title="#{bundle.EditSMetaTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{sMetaController.selected.fechaFin}" title="#{bundle.EditSMetaTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSMetaLabel_idCargo}" for="idCargo" />
+                        <p:inputText id="idCargo" value="#{sMetaController.selected.idCargo}" title="#{bundle.EditSMetaTitle_idCargo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sMetaController.update}" value="#{bundle.Save}" update="display,:SMetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SMetaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SMetaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

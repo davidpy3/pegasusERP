@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTransporteViewDlg" widgetVar="ComTransporteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComTransporteTitle}">
+            <h:form id="ComTransporteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTransporteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_idTransporte}"/>
+                        <h:outputText value="#{comTransporteController.selected.idTransporte}" title="#{bundle.ViewComTransporteTitle_idTransporte}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_idDir}"/>
+                        <h:outputText value="#{comTransporteController.selected.idDir}" title="#{bundle.ViewComTransporteTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_idTipoTransporte}"/>
+                        <h:outputText value="#{comTransporteController.selected.idTipoTransporte}" title="#{bundle.ViewComTransporteTitle_idTipoTransporte}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_marca}"/>
+                        <h:outputText value="#{comTransporteController.selected.marca}" title="#{bundle.ViewComTransporteTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_anio}"/>
+                        <h:outputText value="#{comTransporteController.selected.anio}" title="#{bundle.ViewComTransporteTitle_anio}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_matricula}"/>
+                        <h:outputText value="#{comTransporteController.selected.matricula}" title="#{bundle.ViewComTransporteTitle_matricula}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_color}"/>
+                        <h:outputText value="#{comTransporteController.selected.color}" title="#{bundle.ViewComTransporteTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_propiedad}"/>
+                        <h:outputText value="#{comTransporteController.selected.propiedad}" title="#{bundle.ViewComTransporteTitle_propiedad}"/>
+                        <h:outputText value="#{bundle.ViewComTransporteLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{comTransporteController.selected.estado}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComTransporteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

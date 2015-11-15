@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatriMovimientoDetCreateDlg" widgetVar="PatriMovimientoDetCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePatriMovimientoDetTitle}">
+            <h:form id="PatriMovimientoDetCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{patriMovimientoDetController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePatriMovimientoDetLabel_ubicaBien}" for="ubicaBien" />
+                        <p:inputText id="ubicaBien" value="#{patriMovimientoDetController.selected.ubicaBien}" title="#{bundle.CreatePatriMovimientoDetTitle_ubicaBien}" />
+                        <p:outputLabel value="#{bundle.CreatePatriMovimientoDetLabel_mbienes0}" for="mbienes0" />
+                        <p:selectOneMenu id="mbienes0" value="#{patriMovimientoDetController.selected.mbienes0}" required="true" requiredMessage="#{bundle.EditPatriMovimientoDetRequiredMessage_mbienes0}">
+                            <f:selectItems value="#{bienController.itemsAvailableSelectOne}"
+                                           var="mbienes0Item"
+                                           itemValue="#{mbienes0Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePatriMovimientoDetLabel_patriMovimiento}" for="patriMovimiento" />
+                        <p:selectOneMenu id="patriMovimiento" value="#{patriMovimientoDetController.selected.patriMovimiento}" required="true" requiredMessage="#{bundle.EditPatriMovimientoDetRequiredMessage_patriMovimiento}">
+                            <f:selectItems value="#{patriMovimientoController.itemsAvailableSelectOne}"
+                                           var="patriMovimientoItem"
+                                           itemValue="#{patriMovimientoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{patriMovimientoDetController.create}" value="#{bundle.Save}" update="display,:PatriMovimientoDetListForm:datalist,:growl" oncomplete="handleSubmit(args,'PatriMovimientoDetCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PatriMovimientoDetCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

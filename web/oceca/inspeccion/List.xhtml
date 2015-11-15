@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSgcInspeccionTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SgcInspeccionListForm">
+                <p:panel header="#{bundle.ListSgcInspeccionTitle}">
+                    <p:dataTable id="datalist" value="#{sgcInspeccionController.items}" var="item"
+                                 selectionMode="single" selection="#{sgcInspeccionController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idInspec}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idInspec}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInspec}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idTipins}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipins}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_detalle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detalle}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_fechaPlan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPlan}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idObjeto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idObjeto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idInspector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInspector}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idTestigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTestigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcInspeccionTitle_idExpe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idExpe}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{sgcInspeccionController.prepareCreate}" update=":SgcInspeccionCreateForm" oncomplete="PF('SgcInspeccionCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SgcInspeccionViewForm" oncomplete="PF('SgcInspeccionViewDialog').show()" disabled="#{empty sgcInspeccionController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SgcInspeccionEditForm" oncomplete="PF('SgcInspeccionEditDialog').show()" disabled="#{empty sgcInspeccionController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{sgcInspeccionController.destroy}" update=":growl,datalist" disabled="#{empty sgcInspeccionController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

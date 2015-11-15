@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="siigaa" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <persistence-unit name="siigaa" transaction-type="JTA">
+    <jta-data-source>java:/comp/env/siigaa</jta-data-source>
     <class>org.jsuns.app.Block</class>
     <class>org.jsuns.app.Box</class>
     <class>org.jsuns.app.Cache</class>
@@ -24,130 +24,135 @@
     <class>org.jsuns.app.module.NodeRevision</class>
     <class>org.jsuns.ocid.DrtDirectorio</class>
     <class>org.jsuns.ocid.DrtPersonaNatural</class>
-    <class>org.munisoft.model.ActProy</class>
-    <class>org.munisoft.model.ActProyNombre</class>
-    <class>org.munisoft.model.ActProyXEntidad</class>
-    <class>org.munisoft.model.Afectaciones</class>
-    <class>org.munisoft.model.AlmMovimiento</class>
-    <class>org.munisoft.model.AlmMovimientoDetalle</class>
-    <class>org.munisoft.model.Almacen</class>
-    <class>org.munisoft.model.Ambiente</class>
-    <class>org.munisoft.model.ArchiDetalle</class>
-    <class>org.munisoft.model.Archivador</class>
-    <class>org.munisoft.model.Area</class>
-    <class>org.munisoft.model.Calendario</class>
-    <class>org.munisoft.model.CalendarioDet</class>
-    <class>org.munisoft.model.Cargo</class>
-    <class>org.munisoft.model.Catalogo</class>
-    <class>org.munisoft.model.CategoriaCCV</class>
-    <class>org.munisoft.model.Clase</class>
-    <class>org.munisoft.model.ClasebienSEACE</class>
-    <class>org.munisoft.model.CodigoPDT</class>
-    <class>org.munisoft.model.Componente</class>
-    <class>org.munisoft.model.ComponenteNombre</class>
-    <class>org.munisoft.model.Configuracion</class>
-    <class>org.munisoft.model.CotizacionDet</class>
-    <class>org.munisoft.model.Cuarta</class>
-    <class>org.munisoft.model.Cuentac</class>
-    <class>org.munisoft.model.DepreciacionBiene</class>
-    <class>org.munisoft.model.Documento</class>
-    <class>org.munisoft.model.Dtproperties</class>
-    <class>org.munisoft.model.ECondicion</class>
-    <class>org.munisoft.model.ENivel</class>
-    <class>org.munisoft.model.EObservacion</class>
-    <class>org.munisoft.model.EOficina</class>
-    <class>org.munisoft.model.EPersonal</class>
-    <class>org.munisoft.model.Especifica</class>
-    <class>org.munisoft.model.EspecificaDet</class>
-    <class>org.munisoft.model.Estante</class>
-    <class>org.munisoft.model.FamiliabienSEACE</class>
-    <class>org.munisoft.model.FuenteFinanc</class>
-    <class>org.munisoft.model.Funcion</class>
-    <class>org.munisoft.model.Generica</class>
-    <class>org.munisoft.model.Grupo</class>
-    <class>org.munisoft.model.GrupoBienSEACE</class>
-    <class>org.munisoft.model.HijosObra</class>
-    <class>org.munisoft.model.Horario</class>
-    <class>org.munisoft.model.Inventario</class>
-    <class>org.munisoft.model.InventarioDetalle</class>
-    <class>org.munisoft.model.ItemBienSEACE</class>
-    <class>org.munisoft.model.ItemSeace</class>
-    <class>org.munisoft.model.JudicialObra</class>
+    <class>org.jsuns.ocid.DrtPersonaJuridica</class>
     <class>org.munisoft.model.ListaPer</class>
     <class>org.munisoft.model.ListaPlani</class>
-    <class>org.munisoft.model.Locales</class>
-    <class>org.munisoft.model.MaestroDocumento</class>
-    <class>org.munisoft.model.MbienesSincerados</class>
-    <class>org.munisoft.model.Meta</class>
-    <class>org.munisoft.model.NivelEducativo</class>
-    <class>org.munisoft.model.NivelRemunerativo</class>
-    <class>org.munisoft.model.Ocupacion</class>
-    <class>org.munisoft.model.Orden</class>
     <class>org.munisoft.model.Ordenes</class>
-    <class>org.munisoft.model.Parametro</class>
-    <class>org.munisoft.model.PatriMovimiento</class>
-    <class>org.munisoft.model.PatriMovimientoDet</class>
-    <class>org.munisoft.model.Pecosa</class>
-    <class>org.munisoft.model.PecosaDetalle</class>
-    <class>org.munisoft.model.PeriodosDepreciacion</class>
-    <class>org.munisoft.model.Personal</class>
-    <class>org.munisoft.model.PlanillaTrab</class>
-    <class>org.munisoft.model.Proceso</class>
-    <class>org.munisoft.model.ProcesoTabla</class>
-    <class>org.munisoft.model.ProcesoTipo</class>
-    <class>org.munisoft.model.Programa</class>
-    <class>org.munisoft.model.ProgramaNombre</class>
-    <class>org.munisoft.model.Proveedores</class>
-    <class>org.munisoft.model.Proyecto</class>
-    <class>org.munisoft.model.Prueba</class>
-    <class>org.munisoft.model.Prueba1</class>
-    <class>org.munisoft.model.RHaberes</class>
-    <class>org.munisoft.model.Requerimiento</class>
-    <class>org.munisoft.model.RequerimientoDet</class>
-    <class>org.munisoft.model.Sectores</class>
-    <class>org.munisoft.model.Squid</class>
-    <class>org.munisoft.model.SubGenericaDet</class>
-    <class>org.munisoft.model.SubPrograma</class>
-    <class>org.munisoft.model.SubProgramaNombre</class>
-    <class>org.munisoft.model.Sysdiagrams</class>
-    <class>org.munisoft.model.Temp2</class>
-    <class>org.munisoft.model.TipoContrato</class>
-    <class>org.munisoft.model.TipoPersona</class>
-    <class>org.munisoft.model.TipoPlanilla</class>
-    <class>org.munisoft.model.TipoProveido</class>
-    <class>org.munisoft.model.TipoTransaccion</class>
-    <class>org.munisoft.model.TipoVia</class>
-    <class>org.munisoft.model.Tipobien</class>
-    <class>org.munisoft.model.TmpHorario</class>
-    <class>org.munisoft.model.TramiteMovimientos</class>
-    <class>org.munisoft.model.TurnosVigilantes</class>
-    <class>org.munisoft.model.Ubigeo</class>
-    <class>org.munisoft.model.UnidadMef</class>
-    <class>org.munisoft.model.Usuario</class>
-    <class>org.munisoft.model.Valorizacion</class>
     <class>org.munisoft.model.View1_1</class>
-    <class>org.munisoft.model.Zona</class>
-    <class>org.munisoft.model.Planilla</class>
-    <class>org.munisoft.model.MBienes0</class>
-    <class>org.munisoft.model.ModalidadLaboral</class>
-    <class>org.munisoft.model.Pais</class>
-    <class>org.munisoft.model.Oficina</class>
-    <class>org.munisoft.model.RegimenPensionario</class>
-    <class>org.munisoft.model.TipoTrabajador</class>
-    <class>org.munisoft.model.Expediente</class>
-    <class>org.munisoft.model.Entidad</class>
-    <class>org.munisoft.model.SubGenerica</class>
-    <class>org.munisoft.model.PlanillaDet</class>
-    <class>org.munisoft.model.Cotizacion</class>
-    <class>org.munisoft.model.OrdenDet</class>
-    <class>org.munisoft.model.PersonalDscto</class>
-    <class>org.munisoft.model.Concepto</class>
+    <class>org.munisoft.model.TipoPlanilla_1</class>
+    <class>org.munisoft.model.Mes_1</class>
+    <class>edu.uns.sgsi.jpa.GsiPrrbRestauracion</class>
+    <class>edu.uns.sgsi.jpa.GsiPrrbBackup</class>
+    <class>edu.uns.sgsi.jpa.GsiPrrbProgBackup</class>
+    <class>org.munisoft.jpa.Tipovia_1</class>
+    <class>org.munisoft.patrimonio.jpa.Cargo</class>
+    <class>org.pegasus.personal.jpa.PlanillaDet</class>
+    <class>org.pegasus.personal.jpa.ModalidadLaboral</class>
+    <class>org.pegasus.personal.jpa.PersonalDscto</class>
+    <class>org.pegasus.personal.jpa.TipoPlanilla</class>
+    <class>org.pegasus.personal.jpa.TipoTrabajador</class>
+    <class>org.pegasus.personal.jpa.PlanillaTrab</class>
+    <class>org.pegasus.personal.jpa.NivelRemunerativo</class>
+    <class>org.pegasus.personal.jpa.Planilla</class>
+    <class>org.pegasus.personal.jpa.TipoPersona</class>
+    <class>org.pegasus.personal.jpa.TipoContrato</class>
+    <class>org.pegasus.personal.jpa.NivelEducativo</class>
+    <class>org.pegasus.personal.jpa.Horario</class>
+    <class>org.pegasus.personal.jpa.RegimenPensionario</class>
+    <class>org.pegasus.personal.jpa.Ocupacion</class>
+    <class>org.pegasus.personal.jpa.Concepto</class>
+    <class>org.pegasus.personal.jpa.Personal</class>
+    <class>org.pegasus.personal.jpa.HijosObra</class>
+    <class>org.pegasus.personal.jpa.TurnosVigilantes</class>
+    <class>org.pegasus.patrimonio.jpa.EspecificaDet</class>
+    <class>org.pegasus.patrimonio.jpa.ProcesoTabla</class>
+    <class>org.pegasus.patrimonio.jpa.MaestroDocumento</class>
+    <class>org.pegasus.patrimonio.jpa.PeriodoDepreciacion</class>
+    <class>org.pegasus.patrimonio.jpa.RHaberes</class>
+    <class>org.pegasus.patrimonio.jpa.ActProyNombre</class>
+    <class>org.pegasus.patrimonio.jpa.Inventario</class>
+    <class>org.pegasus.patrimonio.jpa.ComponenteNombre</class>
+    <class>org.pegasus.patrimonio.jpa.ClasebienSEACE</class>
+    <class>org.pegasus.patrimonio.jpa.ECondicion</class>
+    <class>org.pegasus.patrimonio.jpa.RequerimientoDet</class>
+    <class>org.pegasus.patrimonio.jpa.Generica</class>
+    <class>org.pegasus.patrimonio.jpa.MbienesSincerados</class>
+    <class>org.pegasus.patrimonio.jpa.Programa</class>
+    <class>org.pegasus.patrimonio.jpa.JudicialObra</class>
+    <class>org.pegasus.patrimonio.jpa.SubGenericaDet</class>
+    <class>org.pegasus.patrimonio.jpa.ProcesoTipo</class>
+    <class>org.pegasus.patrimonio.jpa.Proceso</class>
+    <class>org.pegasus.patrimonio.jpa.CodigoPDT</class>
+    <class>org.pegasus.patrimonio.jpa.InventarioDetalle</class>
+    <class>org.pegasus.patrimonio.jpa.Catalogo</class>
+    <class>org.pegasus.patrimonio.jpa.ItemBienSEACE</class>
+    <class>org.pegasus.patrimonio.jpa.AlmMovimientoDetalle</class>
+    <class>org.pegasus.patrimonio.jpa.Cotizacion</class>
+    <class>org.pegasus.patrimonio.jpa.Ambiente</class>
+    <class>org.pegasus.patrimonio.jpa.Cuarta</class>
+    <class>org.pegasus.patrimonio.jpa.Area</class>
+    <class>org.pegasus.patrimonio.jpa.Especifica</class>
+    <class>org.pegasus.patrimonio.jpa.ENivel</class>
+    <class>org.pegasus.patrimonio.jpa.TipoProveido</class>
+    <class>org.pegasus.patrimonio.jpa.PatriMovimientoDet</class>
+    <class>org.pegasus.patrimonio.jpa.FamiliabienSEACE</class>
+    <class>org.pegasus.patrimonio.jpa.Zona</class>
+    <class>org.pegasus.patrimonio.jpa.UnidadMef</class>
+    <class>org.pegasus.patrimonio.jpa.Orden</class>
+    <class>org.pegasus.patrimonio.jpa.ArchiDetalle</class>
+    <class>org.pegasus.patrimonio.jpa.Ubigeo</class>
+    <class>org.pegasus.patrimonio.jpa.Pecosa</class>
+    <class>org.pegasus.patrimonio.jpa.Calendario</class>
+    <class>org.pegasus.patrimonio.jpa.Bien</class>
+    <class>org.pegasus.patrimonio.jpa.Valorizacion</class>
+    <class>org.pegasus.patrimonio.jpa.TipoTransaccion</class>
+    <class>org.pegasus.patrimonio.jpa.Prueba</class>
+    <class>org.pegasus.patrimonio.jpa.Entidad</class>
+    <class>org.pegasus.patrimonio.jpa.Pais</class>
+    <class>org.pegasus.patrimonio.jpa.OrdenDet</class>
+    <class>org.pegasus.patrimonio.jpa.Meta</class>
+    <class>org.pegasus.patrimonio.jpa.SubGenerica</class>
+    <class>org.pegasus.patrimonio.jpa.ActProyXEntidad</class>
+    <class>org.pegasus.patrimonio.jpa.EPersonal</class>
+    <class>org.pegasus.patrimonio.jpa.PatriMovimiento</class>
+    <class>org.pegasus.patrimonio.jpa.ActProy</class>
+    <class>org.pegasus.patrimonio.jpa.Parametro</class>
+    <class>org.pegasus.patrimonio.jpa.CalendarioDet</class>
+    <class>org.pegasus.patrimonio.jpa.Requerimiento</class>
+    <class>org.pegasus.patrimonio.jpa.Temp2</class>
+    <class>org.pegasus.patrimonio.jpa.PecosaDetalle</class>
+    <class>org.pegasus.patrimonio.jpa.Oficina</class>
+    <class>org.pegasus.patrimonio.jpa.CategoriaCCV</class>
+    <class>org.pegasus.patrimonio.jpa.Configuracion</class>
+    <class>org.pegasus.patrimonio.jpa.SubPrograma</class>
+    <class>org.pegasus.patrimonio.jpa.SubProgramaNombre</class>
+    <class>org.pegasus.patrimonio.jpa.Estante</class>
+    <class>org.pegasus.patrimonio.jpa.FuenteFinanc</class>
+    <class>org.pegasus.patrimonio.jpa.Componente</class>
+    <class>org.pegasus.patrimonio.jpa.TipoBien</class>
+    <class>org.pegasus.patrimonio.jpa.ELocal</class>
+    <class>org.pegasus.patrimonio.jpa.Proveedor</class>
+    <class>org.pegasus.patrimonio.jpa.ItemSeace</class>
+    <class>org.pegasus.patrimonio.jpa.Dtproperties</class>
+    <class>org.pegasus.patrimonio.jpa.Funcion</class>
+    <class>org.pegasus.patrimonio.jpa.CotizacionDet</class>
+    <class>org.pegasus.patrimonio.jpa.Sysdiagrams</class>
+    <class>org.pegasus.patrimonio.jpa.EOficina</class>
+    <class>org.pegasus.patrimonio.jpa.Clase</class>
+    <class>org.pegasus.patrimonio.jpa.Proyecto</class>
+    <class>org.pegasus.patrimonio.jpa.Almacen</class>
+    <class>org.pegasus.patrimonio.jpa.ProgramaNombre</class>
+    <class>org.pegasus.patrimonio.jpa.Cuentac</class>
+    <class>org.pegasus.patrimonio.jpa.Archivador</class>
+    <class>org.pegasus.patrimonio.jpa.TmpHorario</class>
+    <class>org.pegasus.patrimonio.jpa.GrupoBienSEACE</class>
+    <class>org.pegasus.patrimonio.jpa.AlmMovimiento</class>
+    <class>org.pegasus.patrimonio.jpa.Squid</class>
+    <class>org.pegasus.patrimonio.jpa.Documento</class>
+    <class>org.pegasus.patrimonio.jpa.TramiteMovimientos</class>
+    <class>org.pegasus.patrimonio.jpa.Grupo</class>
+    <class>org.pegasus.patrimonio.jpa.Expediente</class>
+    <class>org.pegasus.patrimonio.jpa.Sector</class>
+    <class>org.pegasus.patrimonio.jpa.Afectaciones</class>
+    <class>org.pegasus.patrimonio.jpa.Mes</class>
+    <class>org.pegasus.patrimonio.jpa.DepreciacionBien</class>
+    <class>org.pegasus.patrimonio.jpa.Prueba1</class>
+    <class>org.pegasus.patrimonio.jpa.TipoVia</class>
+    <class>org.pegasus.patrimonio.jpa.EObservacion</class>
+    <class>org.pegasus.jpa.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://;databaseName=pegasus"/>
-      <property name="javax.persistence.jdbc.user" value="sa"/>
-      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-      <property name="javax.persistence.jdbc.password" value="Srp007"/>
+      <property name="hibernate.show_sql" value="true"/>
       <property name="javax.persistence.schema-generation.database.action" value="none"/>
     </properties>
   </persistence-unit>

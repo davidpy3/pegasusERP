@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle0.EditUsuarioTitle}">
+            <h:form id="UsuarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.usuarioPK_anoEje}" for="usuarioPK_anoEje" />
+                        <p:inputText id="usuarioPK_anoEje" value="#{usuarioController.selected.usuarioPK.anoEje}" title="#{bundle0.EditUsuarioTitle_usuarioPK_anoEje}" required="true" requiredMessage="#{bundle0.EditUsuarioRequiredMessage_usuarioPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.usuarioPK_dni}" for="usuarioPK_dni" />
+                        <p:inputText id="usuarioPK_dni" value="#{usuarioController.selected.usuarioPK.dni}" title="#{bundle0.EditUsuarioTitle_usuarioPK_dni}" required="true" requiredMessage="#{bundle0.EditUsuarioRequiredMessage_usuarioPK_dni}"/>
+                        <p:outputLabel value="#{bundle.usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle0.EditUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle0.EditUsuarioRequiredMessage_usuario}"/>
+                        <p:outputLabel value="#{bundle.clave}" for="clave" />
+                        <p:password id="clave" value="#{usuarioController.params['clave']}" title="#{bundle0.EditUsuarioTitle_clave}" />
+                        <p:outputLabel value="#{bundle.confirm}" for="confirm" />
+                        <p:password id="confirm" value="#{usuarioController.params['confirm']}" title="#{bundle0.EditUsuarioTitle_clave}" />
+                        
+                        <p:outputLabel value="#{bundle.IDcargo}" for="IDcargo" />
+                        <p:inputText id="IDcargo" value="#{usuarioController.selected.IDcargo}" title="#{bundle0.EditUsuarioTitle_IDcargo}" />
+                        <p:outputLabel value="#{bundle.anio}" for="anio" />
+                        <p:inputText id="anio" value="#{usuarioController.selected.anio}" title="#{bundle0.EditUsuarioTitle_anio}" />
+                        <p:outputLabel value="#{bundle.obra}" for="obra" />
+                        <p:selectBooleanCheckbox id="obra" value="#{usuarioController.selected.obra}" />
+                        <p:outputLabel value="#{bundle.actProy}" for="actProy" />
+                        <p:inputText id="actProy" value="#{usuarioController.selected.actProy}" title="#{bundle0.EditUsuarioTitle_actProy}" />
+                        <p:outputLabel value="#{bundle.secFunc}" for="secFunc" />
+                        <p:inputText id="secFunc" value="#{usuarioController.selected.secFunc}" title="#{bundle0.EditUsuarioTitle_secFunc}" />
+                        <p:outputLabel value="#{bundle.estado}" for="estado" />
+                        <p:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle0.EditUsuarioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.autoriza}" for="autoriza" />
+                        <p:inputText id="autoriza" value="#{usuarioController.selected.autoriza}" title="#{bundle0.EditUsuarioTitle_autoriza}" />
+                        <p:outputLabel value="#{bundle.localHost}" for="localHost" />
+                        <p:inputText id="localHost" value="#{usuarioController.selected.localHost}" title="#{bundle0.EditUsuarioTitle_localHost}" />
+                        <p:outputLabel value="#{bundle.localIp}" for="localIp" />
+                        <p:inputText id="localIp" value="#{usuarioController.selected.localIp}" title="#{bundle0.EditUsuarioTitle_localIp}" />
+                        <p:outputLabel value="#{bundle.fecHora}" for="fecHora" />
+                        <p:calendar id="fecHora" pattern="dd/MM/yyyy HH:mm:ss" value="#{usuarioController.selected.fecHora}" title="#{bundle0.EditUsuarioTitle_fecHora}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.ventana}" for="ventana" />
+                        <p:inputText id="ventana" value="#{usuarioController.selected.ventana}" title="#{bundle0.EditUsuarioTitle_ventana}" />
+                        <p:outputLabel value="#{bundle.PConfig}" for="PConfig" />
+                        <p:inputText id="PConfig" value="#{usuarioController.selected.PConfig}" title="#{bundle0.EditUsuarioTitle_PConfig}" />
+                        <p:outputLabel value="#{bundle.PPresu}" for="PPresu" />
+                        <p:inputText id="PPresu" value="#{usuarioController.selected.PPresu}" title="#{bundle0.EditUsuarioTitle_PPresu}" />
+                        <p:outputLabel value="#{bundle.PReque}" for="PReque" />
+                        <p:inputText id="PReque" value="#{usuarioController.selected.PReque}" title="#{bundle0.EditUsuarioTitle_PReque}" />
+                        <p:outputLabel value="#{bundle.PAltad}" for="PAltad" />
+                        <p:inputText id="PAltad" value="#{usuarioController.selected.PAltad}" title="#{bundle0.EditUsuarioTitle_PAltad}" />
+                        <p:outputLabel value="#{bundle.PAbast}" for="PAbast" />
+                        <p:inputText id="PAbast" value="#{usuarioController.selected.PAbast}" title="#{bundle0.EditUsuarioTitle_PAbast}" />
+                        <p:outputLabel value="#{bundle.PAdqui}" for="PAdqui" />
+                        <p:inputText id="PAdqui" value="#{usuarioController.selected.PAdqui}" title="#{bundle0.EditUsuarioTitle_PAdqui}" />
+                        <p:outputLabel value="#{bundle.PAlmac}" for="PAlmac" />
+                        <p:inputText id="PAlmac" value="#{usuarioController.selected.PAlmac}" title="#{bundle0.EditUsuarioTitle_PAlmac}" />
+                        <p:outputLabel value="#{bundle.PPerso}" for="PPerso" />
+                        <p:inputText id="PPerso" value="#{usuarioController.selected.PPerso}" title="#{bundle0.EditUsuarioTitle_PPerso}" />
+                        <p:outputLabel value="#{bundle.PPaac}" for="PPaac" />
+                        <p:inputText id="PPaac" value="#{usuarioController.selected.PPaac}" title="#{bundle0.EditUsuarioTitle_PPaac}" />
+                        <p:outputLabel value="#{bundle.PConta}" for="PConta" />
+                        <p:inputText id="PConta" value="#{usuarioController.selected.PConta}" title="#{bundle0.EditUsuarioTitle_PConta}" />
+                        <p:outputLabel value="#{bundle.PPatri}" for="PPatri" />
+                        <p:inputText id="PPatri" value="#{usuarioController.selected.PPatri}" title="#{bundle0.EditUsuarioTitle_PPatri}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle0.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
+                    <p:commandButton value="#{bundle0.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

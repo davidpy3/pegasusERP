@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProcesoTablaViewDlg" widgetVar="ProcesoTablaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProcesoTablaTitle}">
+            <h:form id="ProcesoTablaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{procesoTablaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProcesoTablaLabel_procesoTablaPK_clasifica}"/>
+                        <h:outputText value="#{procesoTablaController.selected.procesoTablaPK.clasifica}" title="#{bundle.ViewProcesoTablaTitle_procesoTablaPK_clasifica}"/>
+                        <h:outputText value="#{bundle.ViewProcesoTablaLabel_procesoTablaPK_anno}"/>
+                        <h:outputText value="#{procesoTablaController.selected.procesoTablaPK.anno}" title="#{bundle.ViewProcesoTablaTitle_procesoTablaPK_anno}"/>
+                        <h:outputText value="#{bundle.ViewProcesoTablaLabel_mayor}"/>
+                        <h:outputText value="#{procesoTablaController.selected.mayor}" title="#{bundle.ViewProcesoTablaTitle_mayor}"/>
+                        <h:outputText value="#{bundle.ViewProcesoTablaLabel_menor}"/>
+                        <h:outputText value="#{procesoTablaController.selected.menor}" title="#{bundle.ViewProcesoTablaTitle_menor}"/>
+                        <h:outputText value="#{bundle.ViewProcesoTablaLabel_procesoTipo}"/>
+                        <h:outputText value="#{procesoTablaController.selected.procesoTipo}" title="#{bundle.ViewProcesoTablaTitle_procesoTipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProcesoTablaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

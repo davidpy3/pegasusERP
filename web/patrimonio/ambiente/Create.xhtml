@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AmbienteCreateDlg" widgetVar="AmbienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAmbienteTitle}">
+            <h:form id="AmbienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ambienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAmbienteLabel_ambientePK_codambiente}" for="ambientePK_codambiente" />
+                        <p:inputText id="ambientePK_codambiente" value="#{ambienteController.selected.ambientePK.codambiente}" title="#{bundle.CreateAmbienteTitle_ambientePK_codambiente}" required="true" requiredMessage="#{bundle.CreateAmbienteRequiredMessage_ambientePK_codambiente}"/>
+                        <p:outputLabel value="#{bundle.CreateAmbienteLabel_ambientePK_codlocal}" for="ambientePK_codlocal" />
+                        <p:inputText id="ambientePK_codlocal" value="#{ambienteController.selected.ambientePK.codlocal}" title="#{bundle.CreateAmbienteTitle_ambientePK_codlocal}" required="true" requiredMessage="#{bundle.CreateAmbienteRequiredMessage_ambientePK_codlocal}"/>
+                        <p:outputLabel value="#{bundle.CreateAmbienteLabel_ambiente}" for="ambiente" />
+                        <p:inputText id="ambiente" value="#{ambienteController.selected.ambiente}" title="#{bundle.CreateAmbienteTitle_ambiente}" />
+                        <p:outputLabel value="#{bundle.CreateAmbienteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{ambienteController.selected.estado}" title="#{bundle.CreateAmbienteTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ambienteController.create}" value="#{bundle.Save}" update="display,:AmbienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'AmbienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AmbienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

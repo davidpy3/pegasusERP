@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAuditProcEditDlg" widgetVar="SgcAuditProcEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcAuditProcTitle}">
+            <h:form id="SgcAuditProcEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAuditProcController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcAuditProcLabel_idAudproc}" for="idAudproc" />
+                        <p:inputText id="idAudproc" value="#{sgcAuditProcController.selected.idAudproc}" title="#{bundle.EditSgcAuditProcTitle_idAudproc}" required="true" requiredMessage="#{bundle.EditSgcAuditProcRequiredMessage_idAudproc}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditProcLabel_idAudit}" for="idAudit" />
+                        <p:inputText id="idAudit" value="#{sgcAuditProcController.selected.idAudit}" title="#{bundle.EditSgcAuditProcTitle_idAudit}" required="true" requiredMessage="#{bundle.EditSgcAuditProcRequiredMessage_idAudit}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditProcLabel_idProc}" for="idProc" />
+                        <p:inputText id="idProc" value="#{sgcAuditProcController.selected.idProc}" title="#{bundle.EditSgcAuditProcTitle_idProc}" required="true" requiredMessage="#{bundle.EditSgcAuditProcRequiredMessage_idProc}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcAuditProcController.update}" value="#{bundle.Save}" update="display,:SgcAuditProcListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcAuditProcEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcAuditProcEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

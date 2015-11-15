@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDejuDeclaracionViewDlg" widgetVar="EscDejuDeclaracionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscDejuDeclaracionTitle}">
+            <h:form id="EscDejuDeclaracionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDejuDeclaracionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_idDec}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.idDec}" title="#{bundle.ViewEscDejuDeclaracionTitle_idDec}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_idEsc}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.idEsc}" title="#{bundle.ViewEscDejuDeclaracionTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_entidad}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.entidad}" title="#{bundle.ViewEscDejuDeclaracionTitle_entidad}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direccion}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direccion}" title="#{bundle.ViewEscDejuDeclaracionTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ejerPre}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ejerPre}" title="#{bundle.ViewEscDejuDeclaracionTitle_ejerPre}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_cargo}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.cargo}" title="#{bundle.ViewEscDejuDeclaracionTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_fechaAsume}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.fechaAsume}" title="#{bundle.ViewEscDejuDeclaracionTitle_fechaAsume}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_fechaCese}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.fechaCese}" title="#{bundle.ViewEscDejuDeclaracionTitle_fechaCese}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tiempoServ}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tiempoServ}" title="#{bundle.ViewEscDejuDeclaracionTitle_tiempoServ}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_alInicio}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.alInicio}" title="#{bundle.ViewEscDejuDeclaracionTitle_alInicio}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbPu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbPu}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbPu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbPr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbPr}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbPr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbTot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbTot}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbTot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbiPu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbiPu}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbiPu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbiPr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbiPr}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbiPr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_rbiTot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.rbiTot}" title="#{bundle.ViewEscDejuDeclaracionTitle_rbiTot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim1Pu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim1Pu}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim1Pu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim1Pr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim1Pr}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim1Pr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim1Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim1Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim1Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim2Pu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim2Pu}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim2Pu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim2Pr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim2Pr}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim2Pr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim2Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim2Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim2Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim3Pu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim3Pu}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim3Pu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim3Pr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim3Pr}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim3Pr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_oim3Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.oim3Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_oim3Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien1}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien1}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha1}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval1}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien2}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien2}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha2}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval2}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien3}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien3}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha3}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval3}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien4}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien4}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha4}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval4}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien5}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien5}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha5}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval5}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_tipBien6}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.tipBien6}" title="#{bundle.ViewEscDejuDeclaracionTitle_tipBien6}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_direBien6}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.direBien6}" title="#{bundle.ViewEscDejuDeclaracionTitle_direBien6}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numFicha6}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numFicha6}" title="#{bundle.ViewEscDejuDeclaracionTitle_numFicha6}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_autoval6}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.autoval6}" title="#{bundle.ViewEscDejuDeclaracionTitle_autoval6}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehi1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehi1}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehi1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiMarca1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiMarca1}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiMarca1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiPlaca1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiPlaca1}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiPlaca1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiValor1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiValor1}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiValor1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehi2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehi2}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehi2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiMarca2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiMarca2}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiMarca2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiPlaca2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiPlaca2}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiPlaca2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiValor2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiValor2}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiValor2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehi3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehi3}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehi3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiMarca3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiMarca3}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiMarca3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiPlaca3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiPlaca3}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiPlaca3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiValor3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiValor3}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiValor3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehi4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehi4}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehi4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiMarca4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiMarca4}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiMarca4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiPlaca4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiPlaca4}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiPlaca4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_vehiValor4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.vehiValor4}" title="#{bundle.ViewEscDejuDeclaracionTitle_vehiValor4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ef1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ef1}" title="#{bundle.ViewEscDejuDeclaracionTitle_ef1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_if1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.if1}" title="#{bundle.ViewEscDejuDeclaracionTitle_if1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_val1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.val1}" title="#{bundle.ViewEscDejuDeclaracionTitle_val1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ef2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ef2}" title="#{bundle.ViewEscDejuDeclaracionTitle_ef2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_if2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.if2}" title="#{bundle.ViewEscDejuDeclaracionTitle_if2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_val2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.val2}" title="#{bundle.ViewEscDejuDeclaracionTitle_val2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ef3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ef3}" title="#{bundle.ViewEscDejuDeclaracionTitle_ef3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_if3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.if3}" title="#{bundle.ViewEscDejuDeclaracionTitle_if3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_val3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.val3}" title="#{bundle.ViewEscDejuDeclaracionTitle_val3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ef4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ef4}" title="#{bundle.ViewEscDejuDeclaracionTitle_ef4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_if4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.if4}" title="#{bundle.ViewEscDejuDeclaracionTitle_if4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_val4}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.val4}" title="#{bundle.ViewEscDejuDeclaracionTitle_val4}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_ef5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.ef5}" title="#{bundle.ViewEscDejuDeclaracionTitle_ef5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_if5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.if5}" title="#{bundle.ViewEscDejuDeclaracionTitle_if5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_val5}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.val5}" title="#{bundle.ViewEscDejuDeclaracionTitle_val5}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein1}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein1Pu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein1Pu}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein1Pu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein1Pr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein1Pr}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein1Pr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein1Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein1Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein1Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein2}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein2Pu}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein2Pu}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein2Pu}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein2Pr}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein2Pr}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein2Pr}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dein2Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dein2Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_dein2Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi1}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi1Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi1Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi1Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi2}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi2Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi2Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi2Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi3}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_debi3Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.debi3Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_debi3Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre1}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre1}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre1}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre1Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre1Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre1Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre2}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre2}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre2}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre2Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre2Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre2Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre3}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre3}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre3}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_acre3Tot}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.acre3Tot}" title="#{bundle.ViewEscDejuDeclaracionTitle_acre3Tot}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_numPerDep}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.numPerDep}" title="#{bundle.ViewEscDejuDeclaracionTitle_numPerDep}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_fechaElab}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.fechaElab}" title="#{bundle.ViewEscDejuDeclaracionTitle_fechaElab}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_otraInfo}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.otraInfo}" title="#{bundle.ViewEscDejuDeclaracionTitle_otraInfo}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_otraInfoTotal}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.otraInfoTotal}" title="#{bundle.ViewEscDejuDeclaracionTitle_otraInfoTotal}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_conDni}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.conDni}" title="#{bundle.ViewEscDejuDeclaracionTitle_conDni}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_conApaterno}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.conApaterno}" title="#{bundle.ViewEscDejuDeclaracionTitle_conApaterno}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_conAmaterno}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.conAmaterno}" title="#{bundle.ViewEscDejuDeclaracionTitle_conAmaterno}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_conNombre}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.conNombre}" title="#{bundle.ViewEscDejuDeclaracionTitle_conNombre}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_conRuc}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.conRuc}" title="#{bundle.ViewEscDejuDeclaracionTitle_conRuc}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_idMov}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.idMov}" title="#{bundle.ViewEscDejuDeclaracionTitle_idMov}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_idDtra}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.idDtra}" title="#{bundle.ViewEscDejuDeclaracionTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_bonificaciones}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.bonificaciones}" title="#{bundle.ViewEscDejuDeclaracionTitle_bonificaciones}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_remuneracion}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.remuneracion}" title="#{bundle.ViewEscDejuDeclaracionTitle_remuneracion}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_honorarios}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.honorarios}" title="#{bundle.ViewEscDejuDeclaracionTitle_honorarios}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_gratificaciones}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.gratificaciones}" title="#{bundle.ViewEscDejuDeclaracionTitle_gratificaciones}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_utilidades}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.utilidades}" title="#{bundle.ViewEscDejuDeclaracionTitle_utilidades}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_dietas}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.dietas}" title="#{bundle.ViewEscDejuDeclaracionTitle_dietas}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_otros}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.otros}" title="#{bundle.ViewEscDejuDeclaracionTitle_otros}"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{escDejuDeclaracionController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscDejuDeclaracionLabel_idPeriodo}"/>
+                        <h:outputText value="#{escDejuDeclaracionController.selected.idPeriodo}" title="#{bundle.ViewEscDejuDeclaracionTitle_idPeriodo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscDejuDeclaracionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

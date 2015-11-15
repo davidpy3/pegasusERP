@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComPrecioViewDlg" widgetVar="ComPrecioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComPrecioTitle}">
+            <h:form id="ComPrecioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comPrecioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_idPrecio}"/>
+                        <h:outputText value="#{comPrecioController.selected.idPrecio}" title="#{bundle.ViewComPrecioTitle_idPrecio}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_idArticulo}"/>
+                        <h:outputText value="#{comPrecioController.selected.idArticulo}" title="#{bundle.ViewComPrecioTitle_idArticulo}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_idUnidad}"/>
+                        <h:outputText value="#{comPrecioController.selected.idUnidad}" title="#{bundle.ViewComPrecioTitle_idUnidad}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_cantidad}"/>
+                        <h:outputText value="#{comPrecioController.selected.cantidad}" title="#{bundle.ViewComPrecioTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_idPlan}"/>
+                        <h:outputText value="#{comPrecioController.selected.idPlan}" title="#{bundle.ViewComPrecioTitle_idPlan}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_meses}"/>
+                        <h:outputText value="#{comPrecioController.selected.meses}" title="#{bundle.ViewComPrecioTitle_meses}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_idGrupo}"/>
+                        <h:outputText value="#{comPrecioController.selected.idGrupo}" title="#{bundle.ViewComPrecioTitle_idGrupo}"/>
+                        <h:outputText value="#{bundle.ViewComPrecioLabel_precio}"/>
+                        <h:outputText value="#{comPrecioController.selected.precio}" title="#{bundle.ViewComPrecioTitle_precio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComPrecioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

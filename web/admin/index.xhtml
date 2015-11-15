@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+        <style>.label{font-weight:bold} h2{ margin-top: 0px; color: saddlebrown  } .jtable td{ padding-bottom:10px }</style>
+            
+        <p:growl id="growl" showDetail="true" />
+        
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="40" resizable="true" closable="true" collapsible="true">
+                    <b>Universidad Nacional del Santa - Usuario: Jorik</b>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="30" closable="true" collapsible="true">
+                   
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="244" header="Left" resizable="true" collapsible="true">
+                    <p:menu >
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                        </p:submenu>
+                    </p:menu>
+                    <p:menu >
+                        <p:submenu label="Reportes">
+                            <p:menuitem style=" line-height:25px ; text-spacing: space-adjacent" value="Desempeño de Estudiantes por Promoción" url="/admin/reports/egresados" />
+                            <p:menuitem value="Bachilleres" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Titulados" url="http://forum.primefaces.org/" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" >
+                   <h:form style="padding:20px">
+                       <h:panelGrid columns="1" width="100%">
+                           <h2>#{demoView.estudiante.personaNatural.nombreCompleto}</h2>
+        <h:panelGrid columns="2" width="100%">
+            <h:panelGrid width="400px" columns="1" class="jtable">
+            <p:outputLabel class="label" value="Codigo Estudiante:" />
+            <p:outputLabel value="#{demoView.estudiante.codigoEstudiante}"/>
+            <p:outputLabel class="label"  value="Especialidad:" />
+            <p:outputLabel value="#{demoView.estudiante.especialidad.especialidad}"/>
+            <p:outputLabel  class="label"  value="Fecha inicio:" />
+            <p:outputLabel value="#{demoView.estudiante.dateinsert}"/>
+            </h:panelGrid>
+            <p:graphicImage  name="demo/images/nature/1" styleClass="content" width="200px" height="250px" />
+        </h:panelGrid>
+            <p:fieldset rendered="#{demoView.egreso ne null}" legend="Egreso" style="margin-bottom:10px">
+            <h:panelGrid columns="2" cellpadding="5" >
+                <p:outputLabel class="label" value="Fecha Egreso:" />
+                    <p:outputLabel class="label" value="Promedio Ponderado:" />
+                <p:calendar styleClass=" text-align: center" value="#{demoView.date}" showOn="button" />
+                <p:inputText  value="#{demoView.egreso.promedio}" />
+            </h:panelGrid>
+        </p:fieldset>
+        <p:fieldset rendered="#{demoView.egreso ne null}" legend="Bachillerato" style="margin-bottom:10px">
+            <h:panelGrid columns="2" cellpadding="5" >
+                <p:outputLabel class="label" value="Fecha Sustentacion:" />
+                    <p:outputLabel class="label" value="Fecha Exp. Diploma:" />
+                <p:calendar styleClass=" text-align: center" value="#{demoView.date}" showOn="button" />
+                    <p:calendar styleClass=" text-align: center" value="#{demoView.date}" showOn="button" />
+            </h:panelGrid>
+        </p:fieldset>
+        <p:fieldset legend="Titulo" style="margin-bottom:10px">
+        <h:panelGrid rendered="#{demoView.egreso ne null}" columns="3" cellpadding="5" >
+            <p:outputLabel class="label" value="Modalidad:" />
+            <p:outputLabel class="label" value="Fecha Acto:"  />
+            <p:outputLabel class="label" value="Fecha Exp. Diploma:" />
+            <p:selectOneMenu id="console" value="#{demoView.egreso.idModegr}" style="width:250px">
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{demoView.modoTitulacion}" var="m" itemLabel="#{m.modoTitulacion}" />
+            </p:selectOneMenu>
+            <p:calendar styleClass=" text-align: center" value="#{demoView.egreso.fechaTitulacion}" showOn="button" />
+            <p:calendar styleClass=" text-align: center" value="#{demoView.egreso.fechaTitulacion}" showOn="button" />
+        </h:panelGrid>
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel class="label" value="Proyecto:" />
+                <p:outputLabel value=""  />
+            <p:inputTextarea rows="10" cols="50" completeMethod="#{demoView.getString2(200)}" queryDelay="750" minQueryLength="4" />
+          
+            
+                     <p:commandButton value="Buscar proyecto" icon="ui-icon-extlink" process="@this" actionListener="#{dialogController.open}">
+            <p:ajax event="dialogReturn" listener="#{dialogController.onSelect}" update="growl" />
+            </p:commandButton>
+        </h:panelGrid>
+        </p:fieldset>
+                        <h:panelGrid columns="3" cellpadding="5">
+                        <p:commandButton value="Nuevo" icon="ui-icon-extlink"  actionListener="dlg.show()">
+                            <p:ajax/>
+                        </p:commandButton>
+                        <p:commandButton value="Reset" type="reset" />
+                        <p:commandButton value="Submit" label="Grabar" update="display" oncomplete="PF('dlg').show()"/>
+                        </h:panelGrid>
+                        </h:panelGrid>
+                        <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade"> 
+                            <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                            </p:panelGrid>
+                        </p:dialog>
+                        <p:dialog  widgetVar="dlg2" header="Picture of the Day" width="425" height="300"  
+                            resizable="false" showEffect="clip" hideEffect="clip">  
+                            <h:form>  
+                                <p:graphicImage value="/images/nature3.jpg" />  
+                            </h:form>  
+                        </p:dialog>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+

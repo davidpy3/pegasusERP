@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GrupoBienSEACECreateDlg" widgetVar="GrupoBienSEACECreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGrupoBienSEACETitle}">
+            <h:form id="GrupoBienSEACECreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{grupoBienSEACEController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_grupoBienSEACEPK_grupoBien}" for="grupoBienSEACEPK_grupoBien" />
+                        <p:inputText id="grupoBienSEACEPK_grupoBien" value="#{grupoBienSEACEController.selected.grupoBienSEACEPK.grupoBien}" title="#{bundle.CreateGrupoBienSEACETitle_grupoBienSEACEPK_grupoBien}" required="true" requiredMessage="#{bundle.CreateGrupoBienSEACERequiredMessage_grupoBienSEACEPK_grupoBien}"/>
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_grupoBienSEACEPK_tipoBien}" for="grupoBienSEACEPK_tipoBien" />
+                        <p:inputText id="grupoBienSEACEPK_tipoBien" value="#{grupoBienSEACEController.selected.grupoBienSEACEPK.tipoBien}" title="#{bundle.CreateGrupoBienSEACETitle_grupoBienSEACEPK_tipoBien}" required="true" requiredMessage="#{bundle.CreateGrupoBienSEACERequiredMessage_grupoBienSEACEPK_tipoBien}"/>
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_nombreGru}" for="nombreGru" />
+                        <p:inputText id="nombreGru" value="#{grupoBienSEACEController.selected.nombreGru}" title="#{bundle.CreateGrupoBienSEACETitle_nombreGru}" />
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_alcanceGru}" for="alcanceGru" />
+                        <p:inputText id="alcanceGru" value="#{grupoBienSEACEController.selected.alcanceGru}" title="#{bundle.CreateGrupoBienSEACETitle_alcanceGru}" />
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_flagActiv}" for="flagActiv" />
+                        <p:inputText id="flagActiv" value="#{grupoBienSEACEController.selected.flagActiv}" title="#{bundle.CreateGrupoBienSEACETitle_flagActiv}" />
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_flagSbn}" for="flagSbn" />
+                        <p:inputText id="flagSbn" value="#{grupoBienSEACEController.selected.flagSbn}" title="#{bundle.CreateGrupoBienSEACETitle_flagSbn}" />
+                        <p:outputLabel value="#{bundle.CreateGrupoBienSEACELabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{grupoBienSEACEController.selected.estado}" title="#{bundle.CreateGrupoBienSEACETitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{grupoBienSEACEController.create}" value="#{bundle.Save}" update="display,:GrupoBienSEACEListForm:datalist,:growl" oncomplete="handleSubmit(args,'GrupoBienSEACECreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GrupoBienSEACECreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

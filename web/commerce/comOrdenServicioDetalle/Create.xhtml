@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOrdenServicioDetalleCreateDlg" widgetVar="ComOrdenServicioDetalleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOrdenServicioDetalleTitle}">
+            <h:form id="ComOrdenServicioDetalleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOrdenServicioDetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_comOrdenServicioDetallePK_idItem}" for="comOrdenServicioDetallePK_idItem" />
+                        <p:inputText id="comOrdenServicioDetallePK_idItem" value="#{comOrdenServicioDetalleController.selected.comOrdenServicioDetallePK.idItem}" title="#{bundle.CreateComOrdenServicioDetalleTitle_comOrdenServicioDetallePK_idItem}" required="true" requiredMessage="#{bundle.CreateComOrdenServicioDetalleRequiredMessage_comOrdenServicioDetallePK_idItem}"/>
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_comOrdenServicioDetallePK_idOperacion}" for="comOrdenServicioDetallePK_idOperacion" />
+                        <p:inputText id="comOrdenServicioDetallePK_idOperacion" value="#{comOrdenServicioDetalleController.selected.comOrdenServicioDetallePK.idOperacion}" title="#{bundle.CreateComOrdenServicioDetalleTitle_comOrdenServicioDetallePK_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOrdenServicioDetalleRequiredMessage_comOrdenServicioDetallePK_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_idServicio}" for="idServicio" />
+                        <p:inputText id="idServicio" value="#{comOrdenServicioDetalleController.selected.idServicio}" title="#{bundle.CreateComOrdenServicioDetalleTitle_idServicio}" required="true" requiredMessage="#{bundle.CreateComOrdenServicioDetalleRequiredMessage_idServicio}"/>
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{comOrdenServicioDetalleController.selected.descripcion}" title="#{bundle.CreateComOrdenServicioDetalleTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_idUnidad}" for="idUnidad" />
+                        <p:inputText id="idUnidad" value="#{comOrdenServicioDetalleController.selected.idUnidad}" title="#{bundle.CreateComOrdenServicioDetalleTitle_idUnidad}" />
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comOrdenServicioDetalleController.selected.cantidad}" title="#{bundle.CreateComOrdenServicioDetalleTitle_cantidad}" />
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{comOrdenServicioDetalleController.selected.precio}" title="#{bundle.CreateComOrdenServicioDetalleTitle_precio}" />
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOrdenServicioDetalleController.selected.subTotal}" title="#{bundle.CreateComOrdenServicioDetalleTitle_subTotal}" />
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{comOrdenServicioDetalleController.selected.fechaIni}" title="#{bundle.EditComOrdenServicioDetalleTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{comOrdenServicioDetalleController.selected.fechaFin}" title="#{bundle.EditComOrdenServicioDetalleTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateComOrdenServicioDetalleLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{comOrdenServicioDetalleController.selected.estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOrdenServicioDetalleController.create}" value="#{bundle.Save}" update="display,:ComOrdenServicioDetalleListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOrdenServicioDetalleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOrdenServicioDetalleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

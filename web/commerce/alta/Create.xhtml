@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComAltaCreateDlg" widgetVar="ComAltaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComAltaTitle}">
+            <h:form id="ComAltaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comAltaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idAlta}" for="idAlta" />
+                        <p:inputText id="idAlta" value="#{comAltaController.selected.idAlta}" title="#{bundle.CreateComAltaTitle_idAlta}" required="true" requiredMessage="#{bundle.CreateComAltaRequiredMessage_idAlta}"/>
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idFormaAdquisicion}" for="idFormaAdquisicion" />
+                        <p:inputText id="idFormaAdquisicion" value="#{comAltaController.selected.idFormaAdquisicion}" title="#{bundle.CreateComAltaTitle_idFormaAdquisicion}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idArticulo}" for="idArticulo" />
+                        <p:inputText id="idArticulo" value="#{comAltaController.selected.idArticulo}" title="#{bundle.CreateComAltaTitle_idArticulo}" required="true" requiredMessage="#{bundle.CreateComAltaRequiredMessage_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_correlativo}" for="correlativo" />
+                        <p:inputText id="correlativo" value="#{comAltaController.selected.correlativo}" title="#{bundle.CreateComAltaTitle_correlativo}" required="true" requiredMessage="#{bundle.CreateComAltaRequiredMessage_correlativo}"/>
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comAltaController.selected.idOperacion}" title="#{bundle.CreateComAltaTitle_idOperacion}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idItem}" for="idItem" />
+                        <p:inputText id="idItem" value="#{comAltaController.selected.idItem}" title="#{bundle.CreateComAltaTitle_idItem}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_identificador}" for="identificador" />
+                        <p:inputText id="identificador" value="#{comAltaController.selected.identificador}" title="#{bundle.CreateComAltaTitle_identificador}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_detalle}" for="detalle" />
+                        <p:inputText id="detalle" value="#{comAltaController.selected.detalle}" title="#{bundle.CreateComAltaTitle_detalle}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{comAltaController.selected.idDep}" title="#{bundle.CreateComAltaTitle_idDep}" required="true" requiredMessage="#{bundle.CreateComAltaRequiredMessage_idDep}"/>
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{comAltaController.selected.idEstado}" title="#{bundle.CreateComAltaTitle_idEstado}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{comAltaController.selected.valor}" title="#{bundle.CreateComAltaTitle_valor}" />
+                        <p:outputLabel value="#{bundle.CreateComAltaLabel_idUltope}" for="idUltope" />
+                        <p:inputText id="idUltope" value="#{comAltaController.selected.idUltope}" title="#{bundle.CreateComAltaTitle_idUltope}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comAltaController.create}" value="#{bundle.Save}" update="display,:ComAltaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComAltaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComAltaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GsiPrrbBackupViewDlg" widgetVar="GsiPrrbBackupViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGsiPrrbBackupTitle}">
+            <h:form id="GsiPrrbBackupViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gsiPrrbBackupController.selected != null}">
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_idBackup}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.idBackup}" title="#{bundle.ViewGsiPrrbBackupTitle_idBackup}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_nombre}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.nombre}" title="#{bundle.ViewGsiPrrbBackupTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_fechaInicio}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.fechaInicio}" title="#{bundle.ViewGsiPrrbBackupTitle_fechaInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_fechaTermino}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.fechaTermino}" title="#{bundle.ViewGsiPrrbBackupTitle_fechaTermino}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_tiempo}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.tiempo}" title="#{bundle.ViewGsiPrrbBackupTitle_tiempo}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_tamano}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.tamano}" title="#{bundle.ViewGsiPrrbBackupTitle_tamano}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_cifrado}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.cifrado}" title="#{bundle.ViewGsiPrrbBackupTitle_cifrado}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_servidor}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.servidor}" title="#{bundle.ViewGsiPrrbBackupTitle_servidor}"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_resultado}"/>
+                        <p:selectBooleanCheckbox value="#{gsiPrrbBackupController.selected.resultado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewGsiPrrbBackupLabel_idProg}"/>
+                        <h:outputText value="#{gsiPrrbBackupController.selected.idProg}" title="#{bundle.ViewGsiPrrbBackupTitle_idProg}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="GsiPrrbBackupViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

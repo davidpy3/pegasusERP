@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcObservacionEditDlg" widgetVar="SgcObservacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcObservacionTitle}">
+            <h:form id="SgcObservacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcObservacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idObservacion}" for="idObservacion" />
+                        <p:inputText id="idObservacion" value="#{sgcObservacionController.selected.idObservacion}" title="#{bundle.EditSgcObservacionTitle_idObservacion}" required="true" requiredMessage="#{bundle.EditSgcObservacionRequiredMessage_idObservacion}"/>
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{sgcObservacionController.selected.tipo}" title="#{bundle.EditSgcObservacionTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{sgcObservacionController.selected.descripcion}" title="#{bundle.EditSgcObservacionTitle_descripcion}" required="true" requiredMessage="#{bundle.EditSgcObservacionRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{sgcObservacionController.selected.idEstado}" title="#{bundle.EditSgcObservacionTitle_idEstado}" />
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcObservacionController.selected.fecha}" title="#{bundle.EditSgcObservacionTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{sgcObservacionController.selected.idDir}" title="#{bundle.EditSgcObservacionTitle_idDir}" />
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idAutoevaluacion}" for="idAutoevaluacion" />
+                        <p:inputText id="idAutoevaluacion" value="#{sgcObservacionController.selected.idAutoevaluacion}" title="#{bundle.EditSgcObservacionTitle_idAutoevaluacion}" />
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idEstandar}" for="idEstandar" />
+                        <p:inputText id="idEstandar" value="#{sgcObservacionController.selected.idEstandar}" title="#{bundle.EditSgcObservacionTitle_idEstandar}" />
+                        <p:outputLabel value="#{bundle.EditSgcObservacionLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcObservacionController.selected.idFuente}" title="#{bundle.EditSgcObservacionTitle_idFuente}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcObservacionController.update}" value="#{bundle.Save}" update="display,:SgcObservacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcObservacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcObservacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

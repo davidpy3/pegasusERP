@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOrdenServicioDetalleViewDlg" widgetVar="ComOrdenServicioDetalleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOrdenServicioDetalleTitle}">
+            <h:form id="ComOrdenServicioDetalleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOrdenServicioDetalleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_comOrdenServicioDetallePK_idItem}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.comOrdenServicioDetallePK.idItem}" title="#{bundle.ViewComOrdenServicioDetalleTitle_comOrdenServicioDetallePK_idItem}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_comOrdenServicioDetallePK_idOperacion}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.comOrdenServicioDetallePK.idOperacion}" title="#{bundle.ViewComOrdenServicioDetalleTitle_comOrdenServicioDetallePK_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_idServicio}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.idServicio}" title="#{bundle.ViewComOrdenServicioDetalleTitle_idServicio}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_descripcion}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.descripcion}" title="#{bundle.ViewComOrdenServicioDetalleTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_idUnidad}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.idUnidad}" title="#{bundle.ViewComOrdenServicioDetalleTitle_idUnidad}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_cantidad}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.cantidad}" title="#{bundle.ViewComOrdenServicioDetalleTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_precio}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.precio}" title="#{bundle.ViewComOrdenServicioDetalleTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_subTotal}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.subTotal}" title="#{bundle.ViewComOrdenServicioDetalleTitle_subTotal}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_fechaIni}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.fechaIni}" title="#{bundle.ViewComOrdenServicioDetalleTitle_fechaIni}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_fechaFin}"/>
+                        <h:outputText value="#{comOrdenServicioDetalleController.selected.fechaFin}" title="#{bundle.ViewComOrdenServicioDetalleTitle_fechaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioDetalleLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{comOrdenServicioDetalleController.selected.estado}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOrdenServicioDetalleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

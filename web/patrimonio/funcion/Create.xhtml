@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuncionCreateDlg" widgetVar="FuncionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFuncionTitle}">
+            <h:form id="FuncionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{funcionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_funcionPK_funcion}" for="funcionPK_funcion" />
+                        <p:inputText id="funcionPK_funcion" value="#{funcionController.selected.funcionPK.funcion}" title="#{bundle.CreateFuncionTitle_funcionPK_funcion}" required="true" requiredMessage="#{bundle.CreateFuncionRequiredMessage_funcionPK_funcion}"/>
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_funcionPK_anoEje}" for="funcionPK_anoEje" />
+                        <p:inputText id="funcionPK_anoEje" value="#{funcionController.selected.funcionPK.anoEje}" title="#{bundle.CreateFuncionTitle_funcionPK_anoEje}" required="true" requiredMessage="#{bundle.CreateFuncionRequiredMessage_funcionPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{funcionController.selected.nombre}" title="#{bundle.CreateFuncionTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_cuentaBien}" for="cuentaBien" />
+                        <p:inputText id="cuentaBien" value="#{funcionController.selected.cuentaBien}" title="#{bundle.CreateFuncionTitle_cuentaBien}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_clasiContrata}" for="clasiContrata" />
+                        <p:inputText id="clasiContrata" value="#{funcionController.selected.clasiContrata}" title="#{bundle.CreateFuncionTitle_clasiContrata}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_clasiPlanilla}" for="clasiPlanilla" />
+                        <p:inputText id="clasiPlanilla" value="#{funcionController.selected.clasiPlanilla}" title="#{bundle.CreateFuncionTitle_clasiPlanilla}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_clasiBien}" for="clasiBien" />
+                        <p:inputText id="clasiBien" value="#{funcionController.selected.clasiBien}" title="#{bundle.CreateFuncionTitle_clasiBien}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_clasiServicio}" for="clasiServicio" />
+                        <p:inputText id="clasiServicio" value="#{funcionController.selected.clasiServicio}" title="#{bundle.CreateFuncionTitle_clasiServicio}" />
+                        <p:outputLabel value="#{bundle.CreateFuncionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{funcionController.selected.estado}" title="#{bundle.CreateFuncionTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{funcionController.create}" value="#{bundle.Save}" update="display,:FuncionListForm:datalist,:growl" oncomplete="handleSubmit(args,'FuncionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FuncionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

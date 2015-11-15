@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoViaViewDlg" widgetVar="TipoViaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoViaTitle}">
+            <h:form id="TipoViaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoViaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipoViaLabel_tipovia}"/>
+                        <h:outputText value="#{tipoViaController.selected.tipovia}" title="#{bundle.ViewTipoViaTitle_tipovia}"/>
+                        <h:outputText value="#{bundle.ViewTipoViaLabel_nombreVia}"/>
+                        <h:outputText value="#{tipoViaController.selected.nombreVia}" title="#{bundle.ViewTipoViaTitle_nombreVia}"/>
+                        <h:outputText value="#{bundle.ViewTipoViaLabel_abrev}"/>
+                        <h:outputText value="#{tipoViaController.selected.abrev}" title="#{bundle.ViewTipoViaTitle_abrev}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipoViaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

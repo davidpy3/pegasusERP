@@ -1,0 +1,69 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+    <url-mapping id="login">
+        <pattern value="/login" />
+        <view-id value="/legacy/user/login.jsp" />
+    </url-mapping>
+    
+    <url-mapping id="view-user">
+        <pattern value="/user/#{demoView.uid}" />
+        <view-id value="/faces/welcomePrimefaces.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="view-user">
+        <pattern value="/admin/oceca/encuesta" />
+        <view-id value="/faces/oceca/index.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="view-user">
+        <pattern value="/faces/commerce/empresa/List.xhtml" />
+        <view-id value="/faces/ocid/personaJuridica/List.xhtml" />
+    </url-mapping>
+    
+    <url-mapping>
+        <pattern value="/admin/personal/planilla" />
+        <view-id value="/faces/index.xhtml?q=personal:/personal/w_bandeja_planilla.xhtml" />
+    </url-mapping>
+    <url-mapping>
+        <pattern value="/admin/patrimonio/funcionario" />
+        <view-id value="/faces/index.xhtml?q=patrimonio:/patrimonio/w_registro_funcionario.xhtml" />
+    </url-mapping>
+    <url-mapping>
+        <pattern value="/admin/patrimonio/local" />
+        <view-id value="/faces/index.xhtml?q=patrimonio:/patrimonio/w_locales.xhtml" />
+    </url-mapping>
+    <url-mapping>
+        <pattern value="/admin/patrimonio/bien" />
+        <view-id value="/faces/index.xhtml?q=patrimonio:/patrimonio/w_registro_bienes.xhtml" />
+    </url-mapping>
+    <url-mapping>
+        <pattern value="/admin/patrimonio/ambiente" />
+        <view-id value="/faces/index.xhtml?q=patrimonio:/patrimonio/ambiente/list.xhtml" />
+    </url-mapping>  
+    <url-mapping>
+        <pattern value="/admin/personal/#{dni}" />
+        <view-id value="/faces/index.xhtml?center=/personal/w_nuevo_personal.xhtml" />
+    </url-mapping> 
+     
+    <url-mapping>
+        <pattern value="/admin/personal/#{dni}/ingreso-descuento" />
+        <view-id value="/faces/index.xhtml?center=/personal/w_registro_ing_desc.xhtml" />
+    </url-mapping>  
+    
+    <url-mapping id="view-user"> 
+        <pattern value="/admin/personal/" />
+        <view-id value="/faces/index.xhtml?center=/personal/w_registro_personal.xhtml"  />
+    </url-mapping>
+    
+    <url-mapping id="view-user">
+        <pattern value="/admin/oceda/estudiante/" />
+        <view-id value="/faces/oceda/estudiante_list.xhtml" />
+    </url-mapping>
+    <url-mapping id="view-user">
+        <pattern value="/admin/oceda/estudiante/#{demoView.uid}" />
+        <view-id value="/faces/admin/index.xhtml" />
+    </url-mapping>
+</pretty-config>

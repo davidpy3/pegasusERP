@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LocalViewDlg" widgetVar="LocalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLocalTitle}">
+            <h:form id="LocalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{localController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLocalLabel_id}"/>
+                        <h:outputText value="#{localController.selected.id}" title="#{bundle.ViewLocalTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_nombre}"/>
+                        <h:outputText value="#{localController.selected.nombre}" title="#{bundle.ViewLocalTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_direccion}"/>
+                        <h:outputText value="#{localController.selected.direccion}" title="#{bundle.ViewLocalTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_numMun}"/>
+                        <h:outputText value="#{localController.selected.numMun}" title="#{bundle.ViewLocalTitle_numMun}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscMz}"/>
+                        <h:outputText value="#{localController.selected.dscMz}" title="#{bundle.ViewLocalTitle_dscMz}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscLote}"/>
+                        <h:outputText value="#{localController.selected.dscLote}" title="#{bundle.ViewLocalTitle_dscLote}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_ctdArea}"/>
+                        <h:outputText value="#{localController.selected.ctdArea}" title="#{bundle.ViewLocalTitle_ctdArea}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_flgUm}"/>
+                        <h:outputText value="#{localController.selected.flgUm}" title="#{bundle.ViewLocalTitle_flgUm}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_flgTiporeg}"/>
+                        <h:outputText value="#{localController.selected.flgTiporeg}" title="#{bundle.ViewLocalTitle_flgTiporeg}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscAsiento}"/>
+                        <h:outputText value="#{localController.selected.dscAsiento}" title="#{bundle.ViewLocalTitle_dscAsiento}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscFojas}"/>
+                        <h:outputText value="#{localController.selected.dscFojas}" title="#{bundle.ViewLocalTitle_dscFojas}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscTomo}"/>
+                        <h:outputText value="#{localController.selected.dscTomo}" title="#{bundle.ViewLocalTitle_dscTomo}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscPelectro}"/>
+                        <h:outputText value="#{localController.selected.dscPelectro}" title="#{bundle.ViewLocalTitle_dscPelectro}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_codPredio}"/>
+                        <h:outputText value="#{localController.selected.codPredio}" title="#{bundle.ViewLocalTitle_codPredio}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscBeneficiario}"/>
+                        <h:outputText value="#{localController.selected.dscBeneficiario}" title="#{bundle.ViewLocalTitle_dscBeneficiario}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscPropietario}"/>
+                        <h:outputText value="#{localController.selected.dscPropietario}" title="#{bundle.ViewLocalTitle_dscPropietario}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscCtactble}"/>
+                        <h:outputText value="#{localController.selected.dscCtactble}" title="#{bundle.ViewLocalTitle_dscCtactble}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_flgTipomoneda}"/>
+                        <h:outputText value="#{localController.selected.flgTipomoneda}" title="#{bundle.ViewLocalTitle_flgTipomoneda}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_ctdValor}"/>
+                        <h:outputText value="#{localController.selected.ctdValor}" title="#{bundle.ViewLocalTitle_ctdValor}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_flgPropiedad}"/>
+                        <h:outputText value="#{localController.selected.flgPropiedad}" title="#{bundle.ViewLocalTitle_flgPropiedad}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_dscAsinabip}"/>
+                        <h:outputText value="#{localController.selected.dscAsinabip}" title="#{bundle.ViewLocalTitle_dscAsinabip}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_codinst}"/>
+                        <h:outputText value="#{localController.selected.codinst}" title="#{bundle.ViewLocalTitle_codinst}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_tipovia}"/>
+                        <h:outputText value="#{localController.selected.tipovia}" title="#{bundle.ViewLocalTitle_tipovia}"/>
+                        <h:outputText value="#{bundle.ViewLocalLabel_codubigeo}"/>
+                        <h:outputText value="#{localController.selected.codubigeo}" title="#{bundle.ViewLocalTitle_codubigeo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LocalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

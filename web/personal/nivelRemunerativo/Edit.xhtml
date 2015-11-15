@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NivelRemunerativoEditDlg" widgetVar="NivelRemunerativoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditNivelRemunerativoTitle}">
+            <h:form id="NivelRemunerativoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{nivelRemunerativoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_nivelRemunerativoPK_nivelRem}" for="nivelRemunerativoPK_nivelRem" />
+                        <p:inputText id="nivelRemunerativoPK_nivelRem" value="#{nivelRemunerativoController.selected.nivelRemunerativoPK.nivelRem}" title="#{bundle.EditNivelRemunerativoTitle_nivelRemunerativoPK_nivelRem}" required="true" requiredMessage="#{bundle.EditNivelRemunerativoRequiredMessage_nivelRemunerativoPK_nivelRem}"/>
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{nivelRemunerativoController.selected.nombre}" title="#{bundle.EditNivelRemunerativoTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{nivelRemunerativoController.selected.abrev}" title="#{bundle.EditNivelRemunerativoTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_periodicidad}" for="periodicidad" />
+                        <p:inputText id="periodicidad" value="#{nivelRemunerativoController.selected.periodicidad}" title="#{bundle.EditNivelRemunerativoTitle_periodicidad}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_montoBasico}" for="montoBasico" />
+                        <p:inputText id="montoBasico" value="#{nivelRemunerativoController.selected.montoBasico}" title="#{bundle.EditNivelRemunerativoTitle_montoBasico}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_montoTope}" for="montoTope" />
+                        <p:inputText id="montoTope" value="#{nivelRemunerativoController.selected.montoTope}" title="#{bundle.EditNivelRemunerativoTitle_montoTope}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_buc}" for="buc" />
+                        <p:inputText id="buc" value="#{nivelRemunerativoController.selected.buc}" title="#{bundle.EditNivelRemunerativoTitle_buc}" />
+                        <p:outputLabel value="#{bundle.EditNivelRemunerativoLabel_tipoTrabajador}" for="tipoTrabajador" />
+                        <p:selectOneMenu id="tipoTrabajador" value="#{nivelRemunerativoController.selected.tipoTrabajador}" required="true" requiredMessage="#{bundle.EditNivelRemunerativoRequiredMessage_tipoTrabajador}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoTrabajadorController.itemsAvailableSelectOne}"
+                                           var="tipoTrabajadorItem"
+                                           itemValue="#{tipoTrabajadorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{nivelRemunerativoController.update}" value="#{bundle.Save}" update="display,:NivelRemunerativoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'NivelRemunerativoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NivelRemunerativoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

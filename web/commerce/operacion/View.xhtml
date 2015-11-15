@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionViewDlg" widgetVar="ComOperacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOperacionTitle}">
+            <h:form id="ComOperacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idOperacion}"/>
+                        <h:outputText value="#{comOperacionController.selected.idOperacion}" title="#{bundle.ViewComOperacionTitle_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idTipoOperacion}"/>
+                        <h:outputText value="#{comOperacionController.selected.idTipoOperacion}" title="#{bundle.ViewComOperacionTitle_idTipoOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idDep}"/>
+                        <h:outputText value="#{comOperacionController.selected.idDep}" title="#{bundle.ViewComOperacionTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idTerminal}"/>
+                        <h:outputText value="#{comOperacionController.selected.idTerminal}" title="#{bundle.ViewComOperacionTitle_idTerminal}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_correlativo}"/>
+                        <h:outputText value="#{comOperacionController.selected.correlativo}" title="#{bundle.ViewComOperacionTitle_correlativo}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{comOperacionController.selected.idTipoDocumento}" title="#{bundle.ViewComOperacionTitle_idTipoDocumento}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_serie}"/>
+                        <h:outputText value="#{comOperacionController.selected.serie}" title="#{bundle.ViewComOperacionTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_numero}"/>
+                        <h:outputText value="#{comOperacionController.selected.numero}" title="#{bundle.ViewComOperacionTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idDirUpdate}"/>
+                        <h:outputText value="#{comOperacionController.selected.idDirUpdate}" title="#{bundle.ViewComOperacionTitle_idDirUpdate}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idDepDestino}"/>
+                        <h:outputText value="#{comOperacionController.selected.idDepDestino}" title="#{bundle.ViewComOperacionTitle_idDepDestino}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_observacion}"/>
+                        <h:outputText value="#{comOperacionController.selected.observacion}" title="#{bundle.ViewComOperacionTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_fechaReg}"/>
+                        <h:outputText value="#{comOperacionController.selected.fechaReg}" title="#{bundle.ViewComOperacionTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_estado}"/>
+                        <h:outputText value="#{comOperacionController.selected.estado}" title="#{bundle.ViewComOperacionTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_documento}"/>
+                        <h:outputText value="#{comOperacionController.selected.documento}" title="#{bundle.ViewComOperacionTitle_documento}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionLabel_idModalidad}"/>
+                        <h:outputText value="#{comOperacionController.selected.idModalidad}" title="#{bundle.ViewComOperacionTitle_idModalidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOperacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

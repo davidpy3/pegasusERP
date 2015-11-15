@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtPersonaJuridicaViewDlg" widgetVar="DrtPersonaJuridicaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDrtPersonaJuridicaTitle}">
+            <h:form id="DrtPersonaJuridicaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtPersonaJuridicaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_idDir}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.idDir}" title="#{bundle.ViewDrtPersonaJuridicaTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_idUbg}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.idUbg}" title="#{bundle.ViewDrtPersonaJuridicaTitle_idUbg}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_razonSocial}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.razonSocial}" title="#{bundle.ViewDrtPersonaJuridicaTitle_razonSocial}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_ruc}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.ruc}" title="#{bundle.ViewDrtPersonaJuridicaTitle_ruc}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_direccion}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.direccion}" title="#{bundle.ViewDrtPersonaJuridicaTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_provclie}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.provclie}" title="#{bundle.ViewDrtPersonaJuridicaTitle_provclie}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_estadoPerjur}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.estadoPerjur}" title="#{bundle.ViewDrtPersonaJuridicaTitle_estadoPerjur}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_fechaIng}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.fechaIng}" title="#{bundle.ViewDrtPersonaJuridicaTitle_fechaIng}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_updateFlow}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.updateFlow}" title="#{bundle.ViewDrtPersonaJuridicaTitle_updateFlow}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaJuridicaLabel_drtDirectorio}"/>
+                        <h:outputText value="#{drtPersonaJuridicaController.selected.drtDirectorio}" title="#{bundle.ViewDrtPersonaJuridicaTitle_drtDirectorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DrtPersonaJuridicaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

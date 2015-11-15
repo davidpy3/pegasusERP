@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KardexViewDlg" widgetVar="KardexViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewKardexTitle}">
+            <h:form id="KardexViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kardexController.selected != null}">
+                        <h:outputText value="#{bundle.ViewKardexLabel_idKardex}"/>
+                        <h:outputText value="#{kardexController.selected.idKardex}" title="#{bundle.ViewKardexTitle_idKardex}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_fecha}"/>
+                        <h:outputText value="#{kardexController.selected.fecha}" title="#{bundle.ViewKardexTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewKardexLabel_cantIng}"/>
+                        <h:outputText value="#{kardexController.selected.cantIng}" title="#{bundle.ViewKardexTitle_cantIng}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_preUniIng}"/>
+                        <h:outputText value="#{kardexController.selected.preUniIng}" title="#{bundle.ViewKardexTitle_preUniIng}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_cantSal}"/>
+                        <h:outputText value="#{kardexController.selected.cantSal}" title="#{bundle.ViewKardexTitle_cantSal}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_preUniSal}"/>
+                        <h:outputText value="#{kardexController.selected.preUniSal}" title="#{bundle.ViewKardexTitle_preUniSal}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_serie}"/>
+                        <h:outputText value="#{kardexController.selected.serie}" title="#{bundle.ViewKardexTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_numero}"/>
+                        <h:outputText value="#{kardexController.selected.numero}" title="#{bundle.ViewKardexTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_nroDoc}"/>
+                        <h:outputText value="#{kardexController.selected.nroDoc}" title="#{bundle.ViewKardexTitle_nroDoc}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_nombre}"/>
+                        <h:outputText value="#{kardexController.selected.nombre}" title="#{bundle.ViewKardexTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_docNro}"/>
+                        <h:outputText value="#{kardexController.selected.docNro}" title="#{bundle.ViewKardexTitle_docNro}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_idTipoMov}"/>
+                        <h:outputText value="#{kardexController.selected.idTipoMov}" title="#{bundle.ViewKardexTitle_idTipoMov}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_idArticulo}"/>
+                        <h:outputText value="#{kardexController.selected.idArticulo}" title="#{bundle.ViewKardexTitle_idArticulo}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_idTipoDoc}"/>
+                        <h:outputText value="#{kardexController.selected.idTipoDoc}" title="#{bundle.ViewKardexTitle_idTipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewKardexLabel_idAlmacen}"/>
+                        <h:outputText value="#{kardexController.selected.idAlmacen}" title="#{bundle.ViewKardexTitle_idAlmacen}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="KardexViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaDetCreateDlg" widgetVar="PlanillaDetCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlanillaDetTitle}">
+            <h:form id="PlanillaDetCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{planillaDetController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_planillaDetPK_codigo}" for="planillaDetPK_codigo" />
+                        <p:inputText id="planillaDetPK_codigo" value="#{planillaDetController.selected.planillaDetPK.codigo}" title="#{bundle.CreatePlanillaDetTitle_planillaDetPK_codigo}" required="true" requiredMessage="#{bundle.CreatePlanillaDetRequiredMessage_planillaDetPK_codigo}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_planillaDetPK_anoeje}" for="planillaDetPK_anoeje" />
+                        <p:inputText id="planillaDetPK_anoeje" value="#{planillaDetController.selected.planillaDetPK.anoeje}" title="#{bundle.CreatePlanillaDetTitle_planillaDetPK_anoeje}" required="true" requiredMessage="#{bundle.CreatePlanillaDetRequiredMessage_planillaDetPK_anoeje}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_planillaDetPK_dni}" for="planillaDetPK_dni" />
+                        <p:inputText id="planillaDetPK_dni" value="#{planillaDetController.selected.planillaDetPK.dni}" title="#{bundle.CreatePlanillaDetTitle_planillaDetPK_dni}" required="true" requiredMessage="#{bundle.CreatePlanillaDetRequiredMessage_planillaDetPK_dni}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_planillaDetPK_NExpediente}" for="planillaDetPK_NExpediente" />
+                        <p:inputText id="planillaDetPK_NExpediente" value="#{planillaDetController.selected.planillaDetPK.NExpediente}" title="#{bundle.CreatePlanillaDetTitle_planillaDetPK_NExpediente}" required="true" requiredMessage="#{bundle.CreatePlanillaDetRequiredMessage_planillaDetPK_NExpediente}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_ind}" for="ind" />
+                        <p:inputText id="ind" value="#{planillaDetController.selected.ind}" title="#{bundle.CreatePlanillaDetTitle_ind}" required="true" requiredMessage="#{bundle.CreatePlanillaDetRequiredMessage_ind}"/>
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{planillaDetController.selected.valor}" title="#{bundle.CreatePlanillaDetTitle_valor}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_porcen}" for="porcen" />
+                        <p:inputText id="porcen" value="#{planillaDetController.selected.porcen}" title="#{bundle.CreatePlanillaDetTitle_porcen}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{planillaDetController.selected.monto}" title="#{bundle.CreatePlanillaDetTitle_monto}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_debeGasto}" for="debeGasto" />
+                        <p:inputText id="debeGasto" value="#{planillaDetController.selected.debeGasto}" title="#{bundle.CreatePlanillaDetTitle_debeGasto}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_debeMonto}" for="debeMonto" />
+                        <p:inputText id="debeMonto" value="#{planillaDetController.selected.debeMonto}" title="#{bundle.CreatePlanillaDetTitle_debeMonto}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_haberGasto}" for="haberGasto" />
+                        <p:inputText id="haberGasto" value="#{planillaDetController.selected.haberGasto}" title="#{bundle.CreatePlanillaDetTitle_haberGasto}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_haberMonto}" for="haberMonto" />
+                        <p:inputText id="haberMonto" value="#{planillaDetController.selected.haberMonto}" title="#{bundle.CreatePlanillaDetTitle_haberMonto}" />
+                        <p:outputLabel value="#{bundle.CreatePlanillaDetLabel_cuenta}" for="cuenta" />
+                        <p:inputText id="cuenta" value="#{planillaDetController.selected.cuenta}" title="#{bundle.CreatePlanillaDetTitle_cuenta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planillaDetController.create}" value="#{bundle.Save}" update="display,:PlanillaDetListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlanillaDetCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanillaDetCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="525" pageHeight="842" columnWidth="525" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="69dfc299-adfa-4e6d-81b0-09c81393a22c">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="363"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="style2">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+	</style>
+	<queryString>
+		<![CDATA[SELECT a.id_asignatura,a.id_plancur,a.id_ciclo,cur_ciclo.num_romano,
+a.codasig,a.nombre,a.ht,a.hp,(isnull(a.ht,0)+isnull(a.hp,0)) th,a.creditaje ,
+list(a2.codasig,', ') requisitos
+from cur_asignatura a
+left outer join cur_ciclo on  cur_ciclo.id_ciclo=a.id_ciclo  
+
+left outer join cur_plan_asignatura pa on pa.id_asignatura_base=a.id_asignatura
+left outer join cur_asignatura a2 on a2.id_asignatura=pa.id_asignatura_req
+
+WHERE a.id_plancur IN (SELECT TOP 1 id_plancur 
+FROM cur_plan_curricular where id_especialidad =38 ORDER BY id_anio) 
+
+group by a.id_asignatura,a.id_plancur,a.id_ciclo,cur_ciclo.num_romano,
+a.codasig,a.nombre,a.ht,a.hp,th,a.creditaje
+ORDER BY 2,3,1]]>
+	</queryString>
+	<field name="id_asignatura" class="java.lang.Integer"/>
+	<field name="id_plancur" class="java.lang.Integer"/>
+	<field name="id_ciclo" class="java.lang.Integer"/>
+	<field name="num_romano" class="java.lang.String"/>
+	<field name="codasig" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="ht" class="java.lang.Integer"/>
+	<field name="hp" class="java.lang.Integer"/>
+	<field name="th" class="java.lang.Integer"/>
+	<field name="creditaje" class="java.lang.Integer"/>
+	<field name="requisitos" class="java.lang.String"/>
+	<variable name="ht_1" class="java.lang.Integer" resetType="Group" resetGroup="id_ciclo" calculation="Sum">
+		<variableExpression><![CDATA[$F{ht}]]></variableExpression>
+	</variable>
+	<variable name="hp_1" class="java.lang.Integer" resetType="Group" resetGroup="id_ciclo" calculation="Sum">
+		<variableExpression><![CDATA[$F{hp}]]></variableExpression>
+	</variable>
+	<variable name="TH_1" class="java.lang.Integer" resetType="Group" resetGroup="id_ciclo" calculation="Sum">
+		<variableExpression><![CDATA[$F{th}]]></variableExpression>
+	</variable>
+	<variable name="creditaje_1" class="java.lang.Integer" resetType="Group" resetGroup="id_ciclo" calculation="Sum">
+		<variableExpression><![CDATA[$F{creditaje}]]></variableExpression>
+	</variable>
+	<variable name="hp_2" class="java.lang.Integer" resetType="Group" resetGroup="id_plancur" calculation="Sum">
+		<variableExpression><![CDATA[$F{hp}]]></variableExpression>
+	</variable>
+	<variable name="ht_2" class="java.lang.Integer" resetType="Group" resetGroup="id_plancur" calculation="Sum">
+		<variableExpression><![CDATA[$F{ht}]]></variableExpression>
+	</variable>
+	<variable name="th_1" class="java.lang.Integer" resetType="Group" resetGroup="id_plancur" calculation="Sum">
+		<variableExpression><![CDATA[$F{th}]]></variableExpression>
+	</variable>
+	<variable name="creditaje_2" class="java.lang.Integer" resetType="Group" resetGroup="id_plancur" calculation="Sum">
+		<variableExpression><![CDATA[$F{creditaje}]]></variableExpression>
+	</variable>
+	<group name="id_plancur">
+		<groupExpression><![CDATA[$F{id_plancur}]]></groupExpression>
+		<groupHeader>
+			<band height="50"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="28">
+				<textField pattern="00" isBlankWhenNull="false">
+					<reportElement style="style1" mode="Transparent" x="350" y="10" width="35" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="902f0a18-4e99-4327-9d3d-8fa3bd3eb98e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{hp_2}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="false">
+					<reportElement style="style1" mode="Transparent" x="315" y="10" width="35" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="b8a00ea7-f22c-48e9-9d28-adc63eecb6d3"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{ht_2}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="false">
+					<reportElement style="style1" mode="Transparent" x="385" y="10" width="35" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="fa9a21bd-d72d-46ba-89bd-af94ddb491a4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{th_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="false">
+					<reportElement style="style1" mode="Transparent" x="420" y="10" width="40" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="73ccde11-50ea-498f-9c02-e5804c01e13c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{creditaje_2}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="id_ciclo">
+		<groupExpression><![CDATA[$F{id_ciclo}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<staticText>
+					<reportElement style="style1" x="315" y="0" width="35" height="18" uuid="bd3d85b2-de9b-4e18-9e92-b47b6a0de9b7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[HT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="0" y="0" width="55" height="18" uuid="76f2a38e-7be8-445b-941a-44b482d812b9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[CODIGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="55" y="0" width="260" height="18" uuid="3e376843-7d35-45db-88b8-96f5c9cba37d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[NOMBRE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="350" y="0" width="35" height="18" uuid="a1f474cb-f6a3-4a6c-9b6e-f792e17fc564"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[HP]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="385" y="0" width="35" height="18" uuid="913e7cb4-f8f3-4d33-9391-7a3e61682542"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[TH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="420" y="0" width="40" height="18" uuid="bfa5c568-fdaf-46ac-a640-ce5e3824e3ac"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[CRED]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="style1" x="460" y="0" width="65" height="18" uuid="9e9fdda8-a33b-450e-9d90-d9bbba350cb4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[REQUISITOS]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="style2" x="0" y="18" width="55" height="18" uuid="f74ab63b-6149-4c9d-8f29-89080508483e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{num_romano}+" CICLO "]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<textField pattern="00" isBlankWhenNull="true">
+					<reportElement style="style1" x="315" y="0" width="35" height="18" uuid="bbfcae09-4328-46b7-a968-991a32afbf75"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{ht_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="true">
+					<reportElement style="style1" x="350" y="0" width="35" height="18" uuid="6acda6e4-0952-4789-b9e5-139901aa5866"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{hp_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="true">
+					<reportElement style="style1" mode="Transparent" x="385" y="0" width="35" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="67ba5532-c0ae-40e5-bc22-aa49ab70493d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TH_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="00" isBlankWhenNull="false">
+					<reportElement style="style1" mode="Transparent" x="420" y="0" width="40" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="ebb64c7b-bfcc-498f-887c-8ca01eb75e96"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{creditaje_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="00" isBlankWhenNull="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="350" y="0" width="35" height="18" uuid="44925e83-c94c-4bd0-8280-9e538ad088f7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="0" y="0" width="55" height="18" uuid="0417219a-479b-4ce6-b68e-a4a9c538371f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codasig}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="00" isBlankWhenNull="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="315" y="0" width="35" height="18" uuid="7a04b64c-417e-4189-82b5-157dbd542092"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ht}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="00" isBlankWhenNull="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="385" y="0" width="35" height="18" uuid="0f2b3ad0-204c-4afb-b1f6-f956de2a354a"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{th}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="00">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="420" y="0" width="40" height="18" uuid="65970400-99e7-4ad7-9c6e-2c81e48c196f"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{creditaje}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="55" y="0" width="260" height="18" isPrintWhenDetailOverflows="true" uuid="d81609ea-da6e-4a76-b88a-14f587ad003a"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1" stretchType="RelativeToTallestObject" x="460" y="0" width="65" height="18" uuid="f7ebdb48-b8d5-4f20-9ad9-a9ad4e1d16a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requisitos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

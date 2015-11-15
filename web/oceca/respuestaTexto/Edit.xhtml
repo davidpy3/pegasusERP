@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaRespuestaTextoEditDlg" widgetVar="SvaRespuestaTextoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSvaRespuestaTextoTitle}">
+            <h:form id="SvaRespuestaTextoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaRespuestaTextoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaTextoLabel_svaRespuestaTextoPK_idParticipacion}" for="svaRespuestaTextoPK_idParticipacion" />
+                        <p:inputText id="svaRespuestaTextoPK_idParticipacion" value="#{svaRespuestaTextoController.selected.svaRespuestaTextoPK.idParticipacion}" title="#{bundle.EditSvaRespuestaTextoTitle_svaRespuestaTextoPK_idParticipacion}" required="true" requiredMessage="#{bundle.EditSvaRespuestaTextoRequiredMessage_svaRespuestaTextoPK_idParticipacion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaTextoLabel_svaRespuestaTextoPK_idPregunta}" for="svaRespuestaTextoPK_idPregunta" />
+                        <p:inputText id="svaRespuestaTextoPK_idPregunta" value="#{svaRespuestaTextoController.selected.svaRespuestaTextoPK.idPregunta}" title="#{bundle.EditSvaRespuestaTextoTitle_svaRespuestaTextoPK_idPregunta}" required="true" requiredMessage="#{bundle.EditSvaRespuestaTextoRequiredMessage_svaRespuestaTextoPK_idPregunta}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaTextoLabel_idEncuesta}" for="idEncuesta" />
+                        <p:inputText id="idEncuesta" value="#{svaRespuestaTextoController.selected.idEncuesta}" title="#{bundle.EditSvaRespuestaTextoTitle_idEncuesta}" required="true" requiredMessage="#{bundle.EditSvaRespuestaTextoRequiredMessage_idEncuesta}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaTextoLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{svaRespuestaTextoController.selected.idDir}" title="#{bundle.EditSvaRespuestaTextoTitle_idDir}" required="true" requiredMessage="#{bundle.EditSvaRespuestaTextoRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditSvaRespuestaTextoLabel_respuesta}" for="respuesta" />
+                        <p:inputTextarea rows="4" cols="30" id="respuesta" value="#{svaRespuestaTextoController.selected.respuesta}" title="#{bundle.EditSvaRespuestaTextoTitle_respuesta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaRespuestaTextoController.update}" value="#{bundle.Save}" update="display,:SvaRespuestaTextoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SvaRespuestaTextoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaRespuestaTextoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModalidadLaboralEditDlg" widgetVar="ModalidadLaboralEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditModalidadLaboralTitle}">
+            <h:form id="ModalidadLaboralEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modalidadLaboralController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditModalidadLaboralLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{modalidadLaboralController.selected.id}" title="#{bundle.EditModalidadLaboralTitle_id}" required="true" requiredMessage="#{bundle.EditModalidadLaboralRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditModalidadLaboralLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{modalidadLaboralController.selected.nombre}" title="#{bundle.EditModalidadLaboralTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditModalidadLaboralLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{modalidadLaboralController.selected.abrev}" title="#{bundle.EditModalidadLaboralTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.EditModalidadLaboralLabel_tipoTrab}" for="tipoTrab" />
+                        <p:inputText id="tipoTrab" value="#{modalidadLaboralController.selected.tipoTrab}" title="#{bundle.EditModalidadLaboralTitle_tipoTrab}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modalidadLaboralController.update}" value="#{bundle.Save}" update="display,:ModalidadLaboralListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ModalidadLaboralEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ModalidadLaboralEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

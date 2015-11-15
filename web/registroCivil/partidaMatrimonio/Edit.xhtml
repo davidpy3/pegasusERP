@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OmarPartidaMatEditDlg" widgetVar="OmarPartidaMatEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOmarPartidaMatTitle}">
+            <h:form id="OmarPartidaMatEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{omarPartidaMatController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_idPartidamat}" for="idPartidamat" />
+                        <p:inputText id="idPartidamat" value="#{omarPartidaMatController.selected.idPartidamat}" title="#{bundle.EditOmarPartidaMatTitle_idPartidamat}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_idPartidamat}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{omarPartidaMatController.selected.idUsuario}" title="#{bundle.EditOmarPartidaMatTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_idUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_nombPartida}" for="nombPartida" />
+                        <p:inputText id="nombPartida" value="#{omarPartidaMatController.selected.nombPartida}" title="#{bundle.EditOmarPartidaMatTitle_nombPartida}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_nombPartida}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_nombPartidar}" for="nombPartidar" />
+                        <p:inputText id="nombPartidar" value="#{omarPartidaMatController.selected.nombPartidar}" title="#{bundle.EditOmarPartidaMatTitle_nombPartidar}" />
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_libro}" for="libro" />
+                        <p:inputText id="libro" value="#{omarPartidaMatController.selected.libro}" title="#{bundle.EditOmarPartidaMatTitle_libro}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_libro}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_folio}" for="folio" />
+                        <p:inputText id="folio" value="#{omarPartidaMatController.selected.folio}" title="#{bundle.EditOmarPartidaMatTitle_folio}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_folio}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_esposo}" for="esposo" />
+                        <p:inputText id="esposo" value="#{omarPartidaMatController.selected.esposo}" title="#{bundle.EditOmarPartidaMatTitle_esposo}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_esposo}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_edadEsposo}" for="edadEsposo" />
+                        <p:inputText id="edadEsposo" value="#{omarPartidaMatController.selected.edadEsposo}" title="#{bundle.EditOmarPartidaMatTitle_edadEsposo}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_edadEsposo}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_esposa}" for="esposa" />
+                        <p:inputText id="esposa" value="#{omarPartidaMatController.selected.esposa}" title="#{bundle.EditOmarPartidaMatTitle_esposa}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_esposa}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_edadEsposa}" for="edadEsposa" />
+                        <p:inputText id="edadEsposa" value="#{omarPartidaMatController.selected.edadEsposa}" title="#{bundle.EditOmarPartidaMatTitle_edadEsposa}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_edadEsposa}"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_fechaMatrimonio}" for="fechaMatrimonio" />
+                        <p:calendar id="fechaMatrimonio" pattern="MM/dd/yyyy" value="#{omarPartidaMatController.selected.fechaMatrimonio}" title="#{bundle.EditOmarPartidaMatTitle_fechaMatrimonio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOmarPartidaMatLabel_fechaRegistro}" for="fechaRegistro" />
+                        <p:calendar id="fechaRegistro" pattern="dd/MM/yyyy HH:mm:ss" value="#{omarPartidaMatController.selected.fechaRegistro}" title="#{bundle.EditOmarPartidaMatTitle_fechaRegistro}" required="true" requiredMessage="#{bundle.EditOmarPartidaMatRequiredMessage_fechaRegistro}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{omarPartidaMatController.update}" value="#{bundle.Save}" update="display,:OmarPartidaMatListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OmarPartidaMatEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OmarPartidaMatEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

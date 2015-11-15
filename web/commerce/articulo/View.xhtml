@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComArticuloViewDlg" widgetVar="ComArticuloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComArticuloTitle}">
+            <h:form id="ComArticuloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{comArticuloController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idArticulo}"/>
+                        <h:outputText value="#{comArticuloController.selected.idArticulo}" title="#{bundle.ViewComArticuloTitle_idArticulo}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idGrupo}"/>
+                        <h:outputText value="#{comArticuloController.selected.idGrupo}" title="#{bundle.ViewComArticuloTitle_idGrupo}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idClase}"/>
+                        <h:outputText value="#{comArticuloController.selected.idClase}" title="#{bundle.ViewComArticuloTitle_idClase}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idFamilia}"/>
+                        <h:outputText value="#{comArticuloController.selected.idFamilia}" title="#{bundle.ViewComArticuloTitle_idFamilia}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_numero}"/>
+                        <h:outputText value="#{comArticuloController.selected.numero}" title="#{bundle.ViewComArticuloTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_codigo}"/>
+                        <h:outputText value="#{comArticuloController.selected.codigo}" title="#{bundle.ViewComArticuloTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_siglas}"/>
+                        <h:outputText value="#{comArticuloController.selected.siglas}" title="#{bundle.ViewComArticuloTitle_siglas}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_barras}"/>
+                        <h:outputText value="#{comArticuloController.selected.barras}" title="#{bundle.ViewComArticuloTitle_barras}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_descripcion}"/>
+                        <h:outputText value="#{comArticuloController.selected.descripcion}" title="#{bundle.ViewComArticuloTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idUnidad}"/>
+                        <h:outputText value="#{comArticuloController.selected.idUnidad}" title="#{bundle.ViewComArticuloTitle_idUnidad}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_cantidadUnidad}"/>
+                        <h:outputText value="#{comArticuloController.selected.cantidadUnidad}" title="#{bundle.ViewComArticuloTitle_cantidadUnidad}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_composicion}"/>
+                        <h:outputText value="#{comArticuloController.selected.composicion}" title="#{bundle.ViewComArticuloTitle_composicion}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_stockMin}"/>
+                        <h:outputText value="#{comArticuloController.selected.stockMin}" title="#{bundle.ViewComArticuloTitle_stockMin}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_stockMax}"/>
+                        <h:outputText value="#{comArticuloController.selected.stockMax}" title="#{bundle.ViewComArticuloTitle_stockMax}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_costo}"/>
+                        <h:outputText value="#{comArticuloController.selected.costo}" title="#{bundle.ViewComArticuloTitle_costo}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_precio}"/>
+                        <h:outputText value="#{comArticuloController.selected.precio}" title="#{bundle.ViewComArticuloTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_marca}"/>
+                        <h:outputText value="#{comArticuloController.selected.marca}" title="#{bundle.ViewComArticuloTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_modelo}"/>
+                        <h:outputText value="#{comArticuloController.selected.modelo}" title="#{bundle.ViewComArticuloTitle_modelo}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_serie}"/>
+                        <h:outputText value="#{comArticuloController.selected.serie}" title="#{bundle.ViewComArticuloTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_color}"/>
+                        <h:outputText value="#{comArticuloController.selected.color}" title="#{bundle.ViewComArticuloTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_estado}"/>
+                        <h:outputText value="#{comArticuloController.selected.estado}" title="#{bundle.ViewComArticuloTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_inventariable}"/>
+                        <p:selectBooleanCheckbox value="#{comArticuloController.selected.inventariable}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idCuentaMayor}"/>
+                        <h:outputText value="#{comArticuloController.selected.idCuentaMayor}" title="#{bundle.ViewComArticuloTitle_idCuentaMayor}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idSubCuenta}"/>
+                        <h:outputText value="#{comArticuloController.selected.idSubCuenta}" title="#{bundle.ViewComArticuloTitle_idSubCuenta}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idDivisionaria}"/>
+                        <h:outputText value="#{comArticuloController.selected.idDivisionaria}" title="#{bundle.ViewComArticuloTitle_idDivisionaria}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idSucursal}"/>
+                        <h:outputText value="#{comArticuloController.selected.idSucursal}" title="#{bundle.ViewComArticuloTitle_idSucursal}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_idUsuario}"/>
+                        <h:outputText value="#{comArticuloController.selected.idUsuario}" title="#{bundle.ViewComArticuloTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_fid}"/>
+                        <h:outputText value="#{comArticuloController.selected.fid}" title="#{bundle.ViewComArticuloTitle_fid}"/>
+                        <h:outputText value="#{bundle.ViewComArticuloLabel_comision}"/>
+                        <h:outputText value="#{comArticuloController.selected.comision}" title="#{bundle.ViewComArticuloTitle_comision}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComArticuloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

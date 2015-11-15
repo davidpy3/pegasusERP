@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscProdCientificaEditDlg" widgetVar="EscProdCientificaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscProdCientificaTitle}">
+            <h:form id="EscProdCientificaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escProdCientificaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscProdCientificaLabel_idProdc}" for="idProdc" />
+                        <p:inputText id="idProdc" value="#{escProdCientificaController.selected.idProdc}" title="#{bundle.EditEscProdCientificaTitle_idProdc}" required="true" requiredMessage="#{bundle.EditEscProdCientificaRequiredMessage_idProdc}"/>
+                        <p:outputLabel value="#{bundle.EditEscProdCientificaLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escProdCientificaController.selected.idEsc}" title="#{bundle.EditEscProdCientificaTitle_idEsc}" required="true" requiredMessage="#{bundle.EditEscProdCientificaRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.EditEscProdCientificaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{escProdCientificaController.selected.descripcion}" title="#{bundle.EditEscProdCientificaTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditEscProdCientificaLabel_fechaPubl}" for="fechaPubl" />
+                        <p:calendar id="fechaPubl" pattern="MM/dd/yyyy" value="#{escProdCientificaController.selected.fechaPubl}" title="#{bundle.EditEscProdCientificaTitle_fechaPubl}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscProdCientificaLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escProdCientificaController.selected.activo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escProdCientificaController.update}" value="#{bundle.Save}" update="display,:EscProdCientificaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscProdCientificaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscProdCientificaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

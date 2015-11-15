@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCargoInstitucionalViewDlg" widgetVar="EscCargoInstitucionalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscCargoInstitucionalTitle}">
+            <h:form id="EscCargoInstitucionalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCargoInstitucionalController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_desde}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.desde}" title="#{bundle.ViewEscCargoInstitucionalTitle_desde}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_hasta}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.hasta}" title="#{bundle.ViewEscCargoInstitucionalTitle_hasta}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_cargo}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.cargo}" title="#{bundle.ViewEscCargoInstitucionalTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_condicion}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.condicion}" title="#{bundle.ViewEscCargoInstitucionalTitle_condicion}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_id}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.id}" title="#{bundle.ViewEscCargoInstitucionalTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_aprobado}"/>
+                        <p:selectBooleanCheckbox value="#{escCargoInstitucionalController.selected.aprobado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_codDtra}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.codDtra}" title="#{bundle.ViewEscCargoInstitucionalTitle_codDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_idInst}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.idInst}" title="#{bundle.ViewEscCargoInstitucionalTitle_idInst}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_idEsc}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.idEsc}" title="#{bundle.ViewEscCargoInstitucionalTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscCargoInstitucionalLabel_idTc}"/>
+                        <h:outputText value="#{escCargoInstitucionalController.selected.idTc}" title="#{bundle.ViewEscCargoInstitucionalTitle_idTc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscCargoInstitucionalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

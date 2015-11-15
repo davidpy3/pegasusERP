@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LotJugadaCreateDlg" widgetVar="LotJugadaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLotJugadaTitle}">
+            <h:form id="LotJugadaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lotJugadaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLotJugadaLabel_sorteo}" for="sorteo" />
+                        <p:inputText id="sorteo" value="#{lotJugadaController.selected.sorteo}" title="#{bundle.CreateLotJugadaTitle_sorteo}" required="true" requiredMessage="#{bundle.CreateLotJugadaRequiredMessage_sorteo}"/>
+                        <p:outputLabel value="#{bundle.CreateLotJugadaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{lotJugadaController.selected.fecha}" title="#{bundle.EditLotJugadaTitle_fecha}" required="true" requiredMessage="#{bundle.EditLotJugadaRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateLotJugadaLabel_jugadaO}" for="jugadaO" />
+                        <p:inputText id="jugadaO" value="#{lotJugadaController.selected.jugadaO}" title="#{bundle.CreateLotJugadaTitle_jugadaO}" required="true" requiredMessage="#{bundle.CreateLotJugadaRequiredMessage_jugadaO}"/>
+                        <p:outputLabel value="#{bundle.CreateLotJugadaLabel_jugada}" for="jugada" />
+                        <p:inputText id="jugada" value="#{lotJugadaController.selected.jugada}" title="#{bundle.CreateLotJugadaTitle_jugada}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{lotJugadaController.create}" value="#{bundle.Save}" update="display,:LotJugadaListForm:datalist,:growl" oncomplete="handleSubmit(args,'LotJugadaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LotJugadaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

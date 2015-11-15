@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProgramaNombreEditDlg" widgetVar="ProgramaNombreEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProgramaNombreTitle}">
+            <h:form id="ProgramaNombreEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{programaNombreController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProgramaNombreLabel_programaNombrePK_anoEje}" for="programaNombrePK_anoEje" />
+                        <p:inputText id="programaNombrePK_anoEje" value="#{programaNombreController.selected.programaNombrePK.anoEje}" title="#{bundle.EditProgramaNombreTitle_programaNombrePK_anoEje}" required="true" requiredMessage="#{bundle.EditProgramaNombreRequiredMessage_programaNombrePK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.EditProgramaNombreLabel_programaNombrePK_programa}" for="programaNombrePK_programa" />
+                        <p:inputText id="programaNombrePK_programa" value="#{programaNombreController.selected.programaNombrePK.programa}" title="#{bundle.EditProgramaNombreTitle_programaNombrePK_programa}" required="true" requiredMessage="#{bundle.EditProgramaNombreRequiredMessage_programaNombrePK_programa}"/>
+                        <p:outputLabel value="#{bundle.EditProgramaNombreLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{programaNombreController.selected.nombre}" title="#{bundle.EditProgramaNombreTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditProgramaNombreLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{programaNombreController.selected.estado}" title="#{bundle.EditProgramaNombreTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{programaNombreController.update}" value="#{bundle.Save}" update="display,:ProgramaNombreListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProgramaNombreEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProgramaNombreEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

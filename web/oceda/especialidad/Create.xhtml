@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsEspecialidadCreateDlg" widgetVar="ApsEspecialidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateApsEspecialidadTitle}">
+            <h:form id="ApsEspecialidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsEspecialidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_idEspecialidad}" for="idEspecialidad" />
+                        <p:inputText id="idEspecialidad" value="#{apsEspecialidadController.selected.idEspecialidad}" title="#{bundle.CreateApsEspecialidadTitle_idEspecialidad}" required="true" requiredMessage="#{bundle.CreateApsEspecialidadRequiredMessage_idEspecialidad}"/>
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_codEspecialidad}" for="codEspecialidad" />
+                        <p:inputText id="codEspecialidad" value="#{apsEspecialidadController.selected.codEspecialidad}" title="#{bundle.CreateApsEspecialidadTitle_codEspecialidad}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_especialidad}" for="especialidad" />
+                        <p:inputText id="especialidad" value="#{apsEspecialidadController.selected.especialidad}" title="#{bundle.CreateApsEspecialidadTitle_especialidad}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_grado}" for="grado" />
+                        <p:inputText id="grado" value="#{apsEspecialidadController.selected.grado}" title="#{bundle.CreateApsEspecialidadTitle_grado}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{apsEspecialidadController.selected.titulo}" title="#{bundle.CreateApsEspecialidadTitle_titulo}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_idResolucion}" for="idResolucion" />
+                        <p:inputText id="idResolucion" value="#{apsEspecialidadController.selected.idResolucion}" title="#{bundle.CreateApsEspecialidadTitle_idResolucion}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_fechaApertura}" for="fechaApertura" />
+                        <p:calendar id="fechaApertura" pattern="MM/dd/yyyy" value="#{apsEspecialidadController.selected.fechaApertura}" title="#{bundle.EditApsEspecialidadTitle_fechaApertura}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_minAlumno}" for="minAlumno" />
+                        <p:inputText id="minAlumno" value="#{apsEspecialidadController.selected.minAlumno}" title="#{bundle.CreateApsEspecialidadTitle_minAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_creditos}" for="creditos" />
+                        <p:inputText id="creditos" value="#{apsEspecialidadController.selected.creditos}" title="#{bundle.CreateApsEspecialidadTitle_creditos}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_ciclos}" for="ciclos" />
+                        <p:inputText id="ciclos" value="#{apsEspecialidadController.selected.ciclos}" title="#{bundle.CreateApsEspecialidadTitle_ciclos}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_codOld}" for="codOld" />
+                        <p:inputText id="codOld" value="#{apsEspecialidadController.selected.codOld}" title="#{bundle.CreateApsEspecialidadTitle_codOld}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_abr}" for="abr" />
+                        <p:inputText id="abr" value="#{apsEspecialidadController.selected.abr}" title="#{bundle.CreateApsEspecialidadTitle_abr}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_abr1}" for="abr1" />
+                        <p:inputText id="abr1" value="#{apsEspecialidadController.selected.abr1}" title="#{bundle.CreateApsEspecialidadTitle_abr1}" />
+                        <p:outputLabel value="#{bundle.CreateApsEspecialidadLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{apsEspecialidadController.selected.idAmbito}" >
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsEspecialidadController.create}" value="#{bundle.Save}" update="display,:ApsEspecialidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'ApsEspecialidadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsEspecialidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClienteCreateDlg" widgetVar="ClienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateClienteTitle}">
+            <h:form id="ClienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_nroDoc}" for="nroDoc" />
+                        <p:inputText id="nroDoc" value="#{clienteController.selected.nroDoc}" title="#{bundle.CreateClienteTitle_nroDoc}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nroDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_tipoDoc}" for="tipoDoc" />
+                        <p:inputText id="tipoDoc" value="#{clienteController.selected.tipoDoc}" title="#{bundle.CreateClienteTitle_tipoDoc}" />
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_nombreCompleto}" for="nombreCompleto" />
+                        <p:inputText id="nombreCompleto" value="#{clienteController.selected.nombreCompleto}" title="#{bundle.CreateClienteTitle_nombreCompleto}" />
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_dirPer}" for="dirPer" />
+                        <p:inputText id="dirPer" value="#{clienteController.selected.dirPer}" title="#{bundle.CreateClienteTitle_dirPer}" />
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_telPer}" for="telPer" />
+                        <p:inputText id="telPer" value="#{clienteController.selected.telPer}" title="#{bundle.CreateClienteTitle_telPer}" />
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_telefono2}" for="telefono2" />
+                        <p:inputText id="telefono2" value="#{clienteController.selected.telefono2}" title="#{bundle.CreateClienteTitle_telefono2}" />
+                        <p:outputLabel value="#{bundle.CreateClienteLabel_estPer}" for="estPer" />
+                        <p:inputText id="estPer" value="#{clienteController.selected.estPer}" title="#{bundle.CreateClienteTitle_estPer}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clienteController.create}" value="#{bundle.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

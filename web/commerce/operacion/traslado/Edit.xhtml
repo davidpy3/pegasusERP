@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionTrasladoEditDlg" widgetVar="ComOperacionTrasladoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComOperacionTrasladoTitle}">
+            <h:form id="ComOperacionTrasladoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionTrasladoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionTrasladoController.selected.idOperacion}" title="#{bundle.EditComOperacionTrasladoTitle_idOperacion}" required="true" requiredMessage="#{bundle.EditComOperacionTrasladoRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idFuenteFinanciamiento}" for="idFuenteFinanciamiento" />
+                        <p:inputText id="idFuenteFinanciamiento" value="#{comOperacionTrasladoController.selected.idFuenteFinanciamiento}" title="#{bundle.EditComOperacionTrasladoTitle_idFuenteFinanciamiento}" required="true" requiredMessage="#{bundle.EditComOperacionTrasladoRequiredMessage_idFuenteFinanciamiento}"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idPrograma}" for="idPrograma" />
+                        <p:inputText id="idPrograma" value="#{comOperacionTrasladoController.selected.idPrograma}" title="#{bundle.EditComOperacionTrasladoTitle_idPrograma}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idPecosa}" for="idPecosa" />
+                        <p:inputText id="idPecosa" value="#{comOperacionTrasladoController.selected.idPecosa}" title="#{bundle.EditComOperacionTrasladoTitle_idPecosa}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idSolicitante}" for="idSolicitante" />
+                        <p:inputText id="idSolicitante" value="#{comOperacionTrasladoController.selected.idSolicitante}" title="#{bundle.EditComOperacionTrasladoTitle_idSolicitante}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idDirRecibe}" for="idDirRecibe" />
+                        <p:inputText id="idDirRecibe" value="#{comOperacionTrasladoController.selected.idDirRecibe}" title="#{bundle.EditComOperacionTrasladoTitle_idDirRecibe}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="MM/dd/yyyy" value="#{comOperacionTrasladoController.selected.fechaReg}" title="#{bundle.EditComOperacionTrasladoTitle_fechaReg}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{comOperacionTrasladoController.selected.idCreador}" title="#{bundle.EditComOperacionTrasladoTitle_idCreador}" />
+                        <p:outputLabel value="#{bundle.EditComOperacionTrasladoLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{comOperacionTrasladoController.selected.idEstado}" title="#{bundle.EditComOperacionTrasladoTitle_idEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionTrasladoController.update}" value="#{bundle.Save}" update="display,:ComOperacionTrasladoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComOperacionTrasladoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionTrasladoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

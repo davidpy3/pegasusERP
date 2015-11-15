@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TrasladoEditDlg" widgetVar="TrasladoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTrasladoTitle}">
+            <h:form id="TrasladoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{trasladoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_idTraslado}" for="idTraslado" />
+                        <p:inputText id="idTraslado" value="#{trasladoController.selected.idTraslado}" title="#{bundle.EditTrasladoTitle_idTraslado}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_idTraslado}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{trasladoController.selected.fecha}" title="#{bundle.EditTrasladoTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_motivo}" for="motivo" />
+                        <p:inputText id="motivo" value="#{trasladoController.selected.motivo}" title="#{bundle.EditTrasladoTitle_motivo}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_origen}" for="origen" />
+                        <p:inputText id="origen" value="#{trasladoController.selected.origen}" title="#{bundle.EditTrasladoTitle_origen}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_destino}" for="destino" />
+                        <p:inputText id="destino" value="#{trasladoController.selected.destino}" title="#{bundle.EditTrasladoTitle_destino}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_rucDest}" for="rucDest" />
+                        <p:inputText id="rucDest" value="#{trasladoController.selected.rucDest}" title="#{bundle.EditTrasladoTitle_rucDest}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_razSocDest}" for="razSocDest" />
+                        <p:inputText id="razSocDest" value="#{trasladoController.selected.razSocDest}" title="#{bundle.EditTrasladoTitle_razSocDest}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{trasladoController.selected.numero}" title="#{bundle.EditTrasladoTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{trasladoController.selected.serie}" title="#{bundle.EditTrasladoTitle_serie}" />
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{trasladoController.selected.estado}" title="#{bundle.EditTrasladoTitle_estado}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_rucTrans}" for="rucTrans" />
+                        <p:inputText id="rucTrans" value="#{trasladoController.selected.rucTrans}" title="#{bundle.EditTrasladoTitle_rucTrans}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_rucTrans}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_razTrans}" for="razTrans" />
+                        <p:inputText id="razTrans" value="#{trasladoController.selected.razTrans}" title="#{bundle.EditTrasladoTitle_razTrans}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_razTrans}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_marcaVeh}" for="marcaVeh" />
+                        <p:inputText id="marcaVeh" value="#{trasladoController.selected.marcaVeh}" title="#{bundle.EditTrasladoTitle_marcaVeh}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_marcaVeh}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_placaVeh}" for="placaVeh" />
+                        <p:inputText id="placaVeh" value="#{trasladoController.selected.placaVeh}" title="#{bundle.EditTrasladoTitle_placaVeh}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_placaVeh}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_brevete}" for="brevete" />
+                        <p:inputText id="brevete" value="#{trasladoController.selected.brevete}" title="#{bundle.EditTrasladoTitle_brevete}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_brevete}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_constancia}" for="constancia" />
+                        <p:inputText id="constancia" value="#{trasladoController.selected.constancia}" title="#{bundle.EditTrasladoTitle_constancia}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_constancia}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_chofer}" for="chofer" />
+                        <p:inputText id="chofer" value="#{trasladoController.selected.chofer}" title="#{bundle.EditTrasladoTitle_chofer}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_chofer}"/>
+                        <p:outputLabel value="#{bundle.EditTrasladoLabel_nick}" for="nick" />
+                        <p:selectOneMenu id="nick" value="#{trasladoController.selected.nick}" required="true" requiredMessage="#{bundle.EditTrasladoRequiredMessage_nick}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="nickItem"
+                                           itemValue="#{nickItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{trasladoController.update}" value="#{bundle.Save}" update="display,:TrasladoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TrasladoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TrasladoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

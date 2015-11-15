@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionVentaViewDlg" widgetVar="ComOperacionVentaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOperacionVentaTitle}">
+            <h:form id="ComOperacionVentaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionVentaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_idOperacion}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.idOperacion}" title="#{bundle.ViewComOperacionVentaTitle_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_idDirVendedor}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.idDirVendedor}" title="#{bundle.ViewComOperacionVentaTitle_idDirVendedor}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_idDirCliente}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.idDirCliente}" title="#{bundle.ViewComOperacionVentaTitle_idDirCliente}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_tasaImpuesto}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.tasaImpuesto}" title="#{bundle.ViewComOperacionVentaTitle_tasaImpuesto}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_subTotal}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.subTotal}" title="#{bundle.ViewComOperacionVentaTitle_subTotal}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_impuesto}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.impuesto}" title="#{bundle.ViewComOperacionVentaTitle_impuesto}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_total}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.total}" title="#{bundle.ViewComOperacionVentaTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewComOperacionVentaLabel_pagado}"/>
+                        <h:outputText value="#{comOperacionVentaController.selected.pagado}" title="#{bundle.ViewComOperacionVentaTitle_pagado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOperacionVentaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

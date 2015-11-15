@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PapeletaEditDlg" widgetVar="PapeletaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPapeletaTitle}">
+            <h:form id="PapeletaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{papeletaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_personal}" for="personal" />
+                        <p:selectOneMenu id="personal" value="#{papeletaController.selected.personal}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
+                                           var="personalItem"
+                                           itemValue="#{personalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_papeletaPK_NPapeleta}" for="papeletaPK_NPapeleta" />
+                        <p:inputText id="papeletaPK_NPapeleta" value="#{papeletaController.selected.papeletaPK.NPapeleta}" title="#{bundle.EditPapeletaTitle_papeletaPK_NPapeleta}" required="true" requiredMessage="#{bundle.EditPapeletaRequiredMessage_papeletaPK_NPapeleta}"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_papeletaPK_anoEje}" for="papeletaPK_anoEje" />
+                        <p:inputText id="papeletaPK_anoEje" value="#{papeletaController.selected.papeletaPK.anoEje}" title="#{bundle.EditPapeletaTitle_papeletaPK_anoEje}" required="true" requiredMessage="#{bundle.EditPapeletaRequiredMessage_papeletaPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_tipoPape}" for="tipoPape" />
+                        <p:inputText id="tipoPape" value="#{papeletaController.selected.tipoPape}" title="#{bundle.EditPapeletaTitle_tipoPape}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_regulariza}" for="regulariza" />
+                        <p:inputText id="regulariza" value="#{papeletaController.selected.regulariza}" title="#{bundle.EditPapeletaTitle_regulariza}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_periPape}" for="periPape" />
+                        <p:inputText id="periPape" value="#{papeletaController.selected.periPape}" title="#{bundle.EditPapeletaTitle_periPape}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_fechaPape}" for="fechaPape" />
+                        <p:calendar id="fechaPape" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaPape}" title="#{bundle.EditPapeletaTitle_fechaPape}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_fechaDel}" for="fechaDel" />
+                        <p:calendar id="fechaDel" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaDel}" title="#{bundle.EditPapeletaTitle_fechaDel}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_fechaAl}" for="fechaAl" />
+                        <p:calendar id="fechaAl" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.fechaAl}" title="#{bundle.EditPapeletaTitle_fechaAl}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_horaIni}" for="horaIni" />
+                        <p:calendar id="horaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.horaIni}" title="#{bundle.EditPapeletaTitle_horaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_horaFin}" for="horaFin" />
+                        <p:calendar id="horaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{papeletaController.selected.horaFin}" title="#{bundle.EditPapeletaTitle_horaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_lugar}" for="lugar" />
+                        <p:inputText id="lugar" value="#{papeletaController.selected.lugar}" title="#{bundle.EditPapeletaTitle_lugar}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_motivo}" for="motivo" />
+                        <p:inputText id="motivo" value="#{papeletaController.selected.motivo}" title="#{bundle.EditPapeletaTitle_motivo}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{papeletaController.selected.observaciones}" title="#{bundle.EditPapeletaTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.EditPapeletaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{papeletaController.selected.estado}" title="#{bundle.EditPapeletaTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{papeletaController.update}" value="#{bundle.Save}" update="display,:PapeletaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PapeletaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PapeletaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

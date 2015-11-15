@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargaLectivaDocenteEditDlg" widgetVar="CargaLectivaDocenteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCargaLectivaDocenteTitle}">
+            <h:form id="CargaLectivaDocenteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargaLectivaDocenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{cargaLectivaDocenteController.selected.idEsc}" title="#{bundle.EditCargaLectivaDocenteTitle_idEsc}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_idEsc}"/>
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idClcab}" for="idClcab" />
+                        <p:inputText id="idClcab" value="#{cargaLectivaDocenteController.selected.idClcab}" title="#{bundle.EditCargaLectivaDocenteTitle_idClcab}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_idClcab}"/>
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idDcexp}" for="idDcexp" />
+                        <p:inputText id="idDcexp" value="#{cargaLectivaDocenteController.selected.idDcexp}" title="#{bundle.EditCargaLectivaDocenteTitle_idDcexp}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_idDcexp}"/>
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{cargaLectivaDocenteController.selected.idDir}" title="#{bundle.EditCargaLectivaDocenteTitle_idDir}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_horas}" for="horas" />
+                        <p:inputText id="horas" value="#{cargaLectivaDocenteController.selected.horas}" title="#{bundle.EditCargaLectivaDocenteTitle_horas}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idCategoria}" for="idCategoria" />
+                        <p:inputText id="idCategoria" value="#{cargaLectivaDocenteController.selected.idCategoria}" title="#{bundle.EditCargaLectivaDocenteTitle_idCategoria}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idDedicacion}" for="idDedicacion" />
+                        <p:inputText id="idDedicacion" value="#{cargaLectivaDocenteController.selected.idDedicacion}" title="#{bundle.EditCargaLectivaDocenteTitle_idDedicacion}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_idCarglect}" for="idCarglect" />
+                        <p:inputText id="idCarglect" value="#{cargaLectivaDocenteController.selected.idCarglect}" title="#{bundle.EditCargaLectivaDocenteTitle_idCarglect}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_idCarglect}"/>
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_totalHoras}" for="totalHoras" />
+                        <p:inputText id="totalHoras" value="#{cargaLectivaDocenteController.selected.totalHoras}" title="#{bundle.EditCargaLectivaDocenteTitle_totalHoras}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{cargaLectivaDocenteController.selected.descripcion}" title="#{bundle.EditCargaLectivaDocenteTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{cargaLectivaDocenteController.selected.estado}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_orden}" for="orden" />
+                        <p:inputText id="orden" value="#{cargaLectivaDocenteController.selected.orden}" title="#{bundle.EditCargaLectivaDocenteTitle_orden}" />
+                        <p:outputLabel value="#{bundle.EditCargaLectivaDocenteLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{cargaLectivaDocenteController.selected.tipo}" title="#{bundle.EditCargaLectivaDocenteTitle_tipo}" required="true" requiredMessage="#{bundle.EditCargaLectivaDocenteRequiredMessage_tipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargaLectivaDocenteController.update}" value="#{bundle.Save}" update="display,:CargaLectivaDocenteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CargaLectivaDocenteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargaLectivaDocenteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

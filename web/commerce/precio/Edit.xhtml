@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComPrecioEditDlg" widgetVar="ComPrecioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComPrecioTitle}">
+            <h:form id="ComPrecioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comPrecioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_idPrecio}" for="idPrecio" />
+                        <p:inputText id="idPrecio" value="#{comPrecioController.selected.idPrecio}" title="#{bundle.EditComPrecioTitle_idPrecio}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_idPrecio}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_idArticulo}" for="idArticulo" />
+                        <p:inputText id="idArticulo" value="#{comPrecioController.selected.idArticulo}" title="#{bundle.EditComPrecioTitle_idArticulo}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_idUnidad}" for="idUnidad" />
+                        <p:inputText id="idUnidad" value="#{comPrecioController.selected.idUnidad}" title="#{bundle.EditComPrecioTitle_idUnidad}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_idUnidad}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comPrecioController.selected.cantidad}" title="#{bundle.EditComPrecioTitle_cantidad}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_idPlan}" for="idPlan" />
+                        <p:inputText id="idPlan" value="#{comPrecioController.selected.idPlan}" title="#{bundle.EditComPrecioTitle_idPlan}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_idPlan}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_meses}" for="meses" />
+                        <p:inputText id="meses" value="#{comPrecioController.selected.meses}" title="#{bundle.EditComPrecioTitle_meses}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_meses}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_idGrupo}" for="idGrupo" />
+                        <p:inputText id="idGrupo" value="#{comPrecioController.selected.idGrupo}" title="#{bundle.EditComPrecioTitle_idGrupo}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_idGrupo}"/>
+                        <p:outputLabel value="#{bundle.EditComPrecioLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{comPrecioController.selected.precio}" title="#{bundle.EditComPrecioTitle_precio}" required="true" requiredMessage="#{bundle.EditComPrecioRequiredMessage_precio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comPrecioController.update}" value="#{bundle.Save}" update="display,:ComPrecioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComPrecioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComPrecioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

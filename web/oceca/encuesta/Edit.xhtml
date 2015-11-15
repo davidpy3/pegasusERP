@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaEncuestaEspecialidadEditDlg" widgetVar="SvaEncuestaEspecialidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSvaEncuestaEspecialidadTitle}">
+            <h:form id="SvaEncuestaEspecialidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaEncuestaEspecialidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idEncuesta}" for="idEncuesta" />
+                        <p:inputText id="idEncuesta" value="#{svaEncuestaEspecialidadController.selected.idEncuesta}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idEncuesta}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idEncuesta}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idAutoevaluacion}" for="idAutoevaluacion" />
+                        <p:inputText id="idAutoevaluacion" value="#{svaEncuestaEspecialidadController.selected.idAutoevaluacion}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idAutoevaluacion}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idAutoevaluacion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idAcper}" for="idAcper" />
+                        <p:inputText id="idAcper" value="#{svaEncuestaEspecialidadController.selected.idAcper}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idAcper}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idAcper}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idEspecialidad}" for="idEspecialidad" />
+                        <p:inputText id="idEspecialidad" value="#{svaEncuestaEspecialidadController.selected.idEspecialidad}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idEspecialidad}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idEspecialidad}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idModelo}" for="idModelo" />
+                        <p:inputText id="idModelo" value="#{svaEncuestaEspecialidadController.selected.idModelo}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idModelo}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idModelo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idCuestionario}" for="idCuestionario" />
+                        <p:inputText id="idCuestionario" value="#{svaEncuestaEspecialidadController.selected.idCuestionario}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idCuestionario}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idCuestionario}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaIni}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaFin}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_observacion}" for="observacion" />
+                        <p:inputTextarea rows="4" cols="30" id="observacion" value="#{svaEncuestaEspecialidadController.selected.observacion}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idEditor}" for="idEditor" />
+                        <p:inputText id="idEditor" value="#{svaEncuestaEspecialidadController.selected.idEditor}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idEditor}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idEditor}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{svaEncuestaEspecialidadController.selected.idCreador}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_idCreador}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_idCreador}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{svaEncuestaEspecialidadController.selected.activo}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaReg}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSvaEncuestaEspecialidadLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{svaEncuestaEspecialidadController.selected.estado}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_estado}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaEncuestaEspecialidadController.update}" value="#{bundle.Save}" update="display,:SvaEncuestaEspecialidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SvaEncuestaEspecialidadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaEncuestaEspecialidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

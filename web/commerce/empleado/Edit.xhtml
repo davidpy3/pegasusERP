@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoEditDlg" widgetVar="EmpleadoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEmpleadoTitle}">
+            <h:form id="EmpleadoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empleadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_dni}" for="dni" />
+                        <p:inputText id="dni" value="#{empleadoController.selected.dni}" title="#{bundle.EditEmpleadoTitle_dni}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_dni}"/>
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_nombreCompleto}" for="nombreCompleto" />
+                        <p:inputText id="nombreCompleto" value="#{empleadoController.selected.nombreCompleto}" title="#{bundle.EditEmpleadoTitle_nombreCompleto}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{empleadoController.selected.direccion}" title="#{bundle.EditEmpleadoTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_telefono2}" for="telefono2" />
+                        <p:inputText id="telefono2" value="#{empleadoController.selected.telefono2}" title="#{bundle.EditEmpleadoTitle_telefono2}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_image}" for="image" />
+                        <p:inputText id="image" value="#{empleadoController.selected.image}" title="#{bundle.EditEmpleadoTitle_image}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_estPer}" for="estPer" />
+                        <p:inputText id="estPer" value="#{empleadoController.selected.estPer}" title="#{bundle.EditEmpleadoTitle_estPer}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_sueldo}" for="sueldo" />
+                        <p:inputText id="sueldo" value="#{empleadoController.selected.sueldo}" title="#{bundle.EditEmpleadoTitle_sueldo}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_fechaNac}" for="fechaNac" />
+                        <p:inputText id="fechaNac" value="#{empleadoController.selected.fechaNac}" title="#{bundle.EditEmpleadoTitle_fechaNac}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{empleadoController.selected.cargo}" title="#{bundle.EditEmpleadoTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_almacen}" for="almacen" />
+                        <p:inputText id="almacen" value="#{empleadoController.selected.almacen}" title="#{bundle.EditEmpleadoTitle_almacen}" />
+                        <p:outputLabel value="#{bundle.EditEmpleadoLabel_meta}" for="meta" />
+                        <p:inputText id="meta" value="#{empleadoController.selected.meta}" title="#{bundle.EditEmpleadoTitle_meta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empleadoController.update}" value="#{bundle.Save}" update="display,:EmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EmpleadoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpleadoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

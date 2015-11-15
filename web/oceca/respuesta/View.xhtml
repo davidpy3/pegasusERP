@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaRespuestaViewDlg" widgetVar="SvaRespuestaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaRespuestaTitle}">
+            <h:form id="SvaRespuestaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaRespuestaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSvaRespuestaLabel_svaRespuestaPK_idPregunta}"/>
+                        <h:outputText value="#{svaRespuestaController.selected.svaRespuestaPK.idPregunta}" title="#{bundle.ViewSvaRespuestaTitle_svaRespuestaPK_idPregunta}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaLabel_svaRespuestaPK_idParticipacion}"/>
+                        <h:outputText value="#{svaRespuestaController.selected.svaRespuestaPK.idParticipacion}" title="#{bundle.ViewSvaRespuestaTitle_svaRespuestaPK_idParticipacion}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaLabel_idEncuesta}"/>
+                        <h:outputText value="#{svaRespuestaController.selected.idEncuesta}" title="#{bundle.ViewSvaRespuestaTitle_idEncuesta}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaLabel_idDir}"/>
+                        <h:outputText value="#{svaRespuestaController.selected.idDir}" title="#{bundle.ViewSvaRespuestaTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewSvaRespuestaLabel_idOpcion}"/>
+                        <h:outputText value="#{svaRespuestaController.selected.idOpcion}" title="#{bundle.ViewSvaRespuestaTitle_idOpcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaRespuestaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioCreateDlg" widgetVar="InventarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInventarioTitle}">
+            <h:form id="InventarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.AnoEje}:" for="inventarioPK_anoEje" />
+                        <p:inputText style=" text-align: center" id="inventarioPK_anoEje" value="#{inventarioController.selected.inventarioPK.anoEje}" title="#{bundle.CreateInventarioTitle_inventarioPK_anoEje}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_inventarioPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.Numero}:" for="inventarioPK_numInv" />
+                        <p:inputText styleClass="td-center" id="inventarioPK_numInv" value="#{inventarioController.selected.inventarioPK.numInv}" title="#{bundle.CreateInventarioTitle_inventarioPK_numInv}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_inventarioPK_numInv}"/>
+                        <p:outputLabel value="#{bundle.TipoInventario}" for="tipoInventario" />
+                        <p:selectOneMenu id="tipoInventario" value="#{inventarioController.selected.tipoInventario}" title="#{bundle.EditInventarioTitle_tipoInventario}" required="true"  requiredMessage="El tipo de Inventario, es un dato obligatorio.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItem itemValue="1" itemLabel="Anual"/>
+                        <f:selectItem itemValue="2" itemLabel="Semestral"/>
+                        <f:selectItem itemValue="3" itemLabel="Trimestral"/>
+                        <f:selectItem itemValue="4" itemLabel="Bimestral"/>
+                        
+                    </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.Periodo}:" for="periodo" />
+                        <p:calendar id="periodo" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.periodo}" title="#{bundle.EditInventarioTitle_periodo}" required="true"  requiredMessage="El Periodo del Inventario, es un dato obligatorio." showOn="button"/>
+                        <p:outputLabel value="#{bundle.FechaIni}:" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.fechaIni}" title="#{bundle.EditInventarioTitle_fechaIni}" required="true" showOn="button"/>
+                        <p:outputLabel value="#{bundle.FechaFin}:" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{inventarioController.selected.fechaFin}" title="#{bundle.EditInventarioTitle_fechaFin}" required="true" showOn="button"/>
+                        <p:outputLabel value="#{bundle.Responsable}:" for="responsable" />
+                        <p:inputText id="responsable" value="#{inventarioController.selected.responsable}" title="#{bundle.CreateInventarioTitle_responsable}" required="true"  requiredMessage="El Responsable del Inventario, es un dato obligatorio."/>
+                        <p:outputLabel value="#{bundle.Estado}:" for="estado" />
+                        <p:inputText id="estado" value="#{inventarioController.selected.estado}" title="#{bundle.CreateInventarioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.Observacion}:" for="observacion" />
+                        <p:inputText id="observacion" value="#{inventarioController.selected.observacion}" title="#{bundle.CreateInventarioTitle_observacion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{inventarioController.create}" value="#{bundle.Save}" update="display,:InventarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'InventarioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InventarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

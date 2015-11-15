@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGsiPrrbBackupTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="GsiPrrbBackupListForm">
+                <p:panel header="#{bundle.ListGsiPrrbBackupTitle}">
+                    <p:dataTable id="datalist" value="#{gsiPrrbBackupController.items}" var="item"
+                                 selectionMode="single" selection="#{gsiPrrbBackupController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idBackup}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_idBackup}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBackup}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_fechaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicio}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_fechaTermino}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaTermino}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_tiempo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempo}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_tamano}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tamano}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_cifrado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cifrado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_servidor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.servidor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_resultado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.resultado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbBackupTitle_idProg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProg}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{gsiPrrbBackupController.prepareCreate}" update=":GsiPrrbBackupCreateForm" oncomplete="PF('GsiPrrbBackupCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":GsiPrrbBackupViewForm" oncomplete="PF('GsiPrrbBackupViewDialog').show()" disabled="#{empty gsiPrrbBackupController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":GsiPrrbBackupEditForm" oncomplete="PF('GsiPrrbBackupEditDialog').show()" disabled="#{empty gsiPrrbBackupController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{gsiPrrbBackupController.destroy}" update=":growl,datalist" disabled="#{empty gsiPrrbBackupController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

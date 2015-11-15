@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HijosObraEditDlg" widgetVar="HijosObraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHijosObraTitle}">
+            <h:form id="HijosObraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{hijosObraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_hijosObraPK_nhijo}" for="hijosObraPK_nhijo" />
+                        <p:inputText id="hijosObraPK_nhijo" value="#{hijosObraController.selected.hijosObraPK.nhijo}" title="#{bundle.EditHijosObraTitle_hijosObraPK_nhijo}" required="true" requiredMessage="#{bundle.EditHijosObraRequiredMessage_hijosObraPK_nhijo}"/>
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_hijosObraPK_docuiden}" for="hijosObraPK_docuiden" />
+                        <p:inputText id="hijosObraPK_docuiden" value="#{hijosObraController.selected.hijosObraPK.docuiden}" title="#{bundle.EditHijosObraTitle_hijosObraPK_docuiden}" required="true" requiredMessage="#{bundle.EditHijosObraRequiredMessage_hijosObraPK_docuiden}"/>
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_apat}" for="apat" />
+                        <p:inputText id="apat" value="#{hijosObraController.selected.apat}" title="#{bundle.EditHijosObraTitle_apat}" />
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_amat}" for="amat" />
+                        <p:inputText id="amat" value="#{hijosObraController.selected.amat}" title="#{bundle.EditHijosObraTitle_amat}" />
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{hijosObraController.selected.nombres}" title="#{bundle.EditHijosObraTitle_nombres}" />
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_fechanac}" for="fechanac" />
+                        <p:calendar id="fechanac" pattern="dd/MM/yyyy HH:mm:ss" value="#{hijosObraController.selected.fechanac}" title="#{bundle.EditHijosObraTitle_fechanac}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_NPartida}" for="NPartida" />
+                        <p:inputText id="NPartida" value="#{hijosObraController.selected.NPartida}" title="#{bundle.EditHijosObraTitle_NPartida}" />
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_centroEstudios}" for="centroEstudios" />
+                        <p:inputText id="centroEstudios" value="#{hijosObraController.selected.centroEstudios}" title="#{bundle.EditHijosObraTitle_centroEstudios}" />
+                        <p:outputLabel value="#{bundle.EditHijosObraLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{hijosObraController.selected.estado}" title="#{bundle.EditHijosObraTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{hijosObraController.update}" value="#{bundle.Save}" update="display,:HijosObraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HijosObraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HijosObraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApsFacultadEfcapEditDlg" widgetVar="ApsFacultadEfcapEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditApsFacultadEfcapTitle}">
+            <h:form id="ApsFacultadEfcapEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{apsFacultadEfcapController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditApsFacultadEfcapLabel_idFacultad}" for="idFacultad" />
+                        <p:inputText id="idFacultad" value="#{apsFacultadEfcapController.selected.idFacultad}" title="#{bundle.EditApsFacultadEfcapTitle_idFacultad}" required="true" requiredMessage="#{bundle.EditApsFacultadEfcapRequiredMessage_idFacultad}"/>
+                        <p:outputLabel value="#{bundle.EditApsFacultadEfcapLabel_facultad}" for="facultad" />
+                        <p:inputText id="facultad" value="#{apsFacultadEfcapController.selected.facultad}" title="#{bundle.EditApsFacultadEfcapTitle_facultad}" />
+                        <p:outputLabel value="#{bundle.EditApsFacultadEfcapLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{apsFacultadEfcapController.selected.estado}" required="true" requiredMessage="#{bundle.EditApsFacultadEfcapRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditApsFacultadEfcapLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{apsFacultadEfcapController.selected.idAmbito}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{apsFacultadEfcapController.update}" value="#{bundle.Save}" update="display,:ApsFacultadEfcapListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ApsFacultadEfcapEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApsFacultadEfcapEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

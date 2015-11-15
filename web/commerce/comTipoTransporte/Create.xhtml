@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoTransporteCreateDlg" widgetVar="ComTipoTransporteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComTipoTransporteTitle}">
+            <h:form id="ComTipoTransporteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoTransporteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComTipoTransporteLabel_idTipoTransporte}" for="idTipoTransporte" />
+                        <p:inputText id="idTipoTransporte" value="#{comTipoTransporteController.selected.idTipoTransporte}" title="#{bundle.CreateComTipoTransporteTitle_idTipoTransporte}" required="true" requiredMessage="#{bundle.CreateComTipoTransporteRequiredMessage_idTipoTransporte}"/>
+                        <p:outputLabel value="#{bundle.CreateComTipoTransporteLabel_tipoTransporte}" for="tipoTransporte" />
+                        <p:inputText id="tipoTransporte" value="#{comTipoTransporteController.selected.tipoTransporte}" title="#{bundle.CreateComTipoTransporteTitle_tipoTransporte}" required="true" requiredMessage="#{bundle.CreateComTipoTransporteRequiredMessage_tipoTransporte}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comTipoTransporteController.create}" value="#{bundle.Save}" update="display,:ComTipoTransporteListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComTipoTransporteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComTipoTransporteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

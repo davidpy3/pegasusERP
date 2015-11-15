@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComCajaArqueoEditDlg" widgetVar="ComCajaArqueoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComCajaArqueoTitle}">
+            <h:form id="ComCajaArqueoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comCajaArqueoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_idArqueo}" for="idArqueo" />
+                        <p:inputText id="idArqueo" value="#{comCajaArqueoController.selected.idArqueo}" title="#{bundle.EditComCajaArqueoTitle_idArqueo}" required="true" requiredMessage="#{bundle.EditComCajaArqueoRequiredMessage_idArqueo}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_idDir}" for="idDir" />
+                        <p:inputText id="idDir" value="#{comCajaArqueoController.selected.idDir}" title="#{bundle.EditComCajaArqueoTitle_idDir}" required="true" requiredMessage="#{bundle.EditComCajaArqueoRequiredMessage_idDir}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_idTerminal}" for="idTerminal" />
+                        <p:inputText id="idTerminal" value="#{comCajaArqueoController.selected.idTerminal}" title="#{bundle.EditComCajaArqueoTitle_idTerminal}" />
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{comCajaArqueoController.selected.fechaIni}" title="#{bundle.EditComCajaArqueoTitle_fechaIni}" required="true" requiredMessage="#{bundle.EditComCajaArqueoRequiredMessage_fechaIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{comCajaArqueoController.selected.fechaFin}" title="#{bundle.EditComCajaArqueoTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_cantidadIni}" for="cantidadIni" />
+                        <p:inputText id="cantidadIni" value="#{comCajaArqueoController.selected.cantidadIni}" title="#{bundle.EditComCajaArqueoTitle_cantidadIni}" required="true" requiredMessage="#{bundle.EditComCajaArqueoRequiredMessage_cantidadIni}"/>
+                        <p:outputLabel value="#{bundle.EditComCajaArqueoLabel_cantidadFin}" for="cantidadFin" />
+                        <p:inputText id="cantidadFin" value="#{comCajaArqueoController.selected.cantidadFin}" title="#{bundle.EditComCajaArqueoTitle_cantidadFin}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comCajaArqueoController.update}" value="#{bundle.Save}" update="display,:ComCajaArqueoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComCajaArqueoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComCajaArqueoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

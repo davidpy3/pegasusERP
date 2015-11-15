@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListExpedienteTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ExpedienteListForm">
+                <p:panel header="#{bundle.ListExpedienteTitle}">
+                    <p:dataTable id="datalist" value="#{expedienteController.items}" var="item"
+                                 selectionMode="single" selection="#{expedienteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.expedientePK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_expedientePK_NExpediente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expedientePK.NExpediente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_expedientePK_anoEje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expedientePK.anoEje}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_descripcionExp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionExp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_codOficina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codOficina}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_dni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_idCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCargo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_expOrigen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expOrigen}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_flgOrigen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.flgOrigen}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpedienteTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{expedienteController.prepareCreate}" update=":ExpedienteCreateForm" oncomplete="PF('ExpedienteCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ExpedienteViewForm" oncomplete="PF('ExpedienteViewDialog').show()" disabled="#{empty expedienteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ExpedienteEditForm" oncomplete="PF('ExpedienteEditDialog').show()" disabled="#{empty expedienteController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{expedienteController.destroy}" update=":growl,datalist" disabled="#{empty expedienteController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

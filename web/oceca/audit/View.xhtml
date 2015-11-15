@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAuditViewDlg" widgetVar="SgcAuditViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcAuditTitle}">
+            <h:form id="SgcAuditViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAuditController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idAudit}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idAudit}" title="#{bundle.ViewSgcAuditTitle_idAudit}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_codigo}"/>
+                        <h:outputText value="#{sgcAuditController.selected.codigo}" title="#{bundle.ViewSgcAuditTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idTipoAudit}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idTipoAudit}" title="#{bundle.ViewSgcAuditTitle_idTipoAudit}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idDep}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idDep}" title="#{bundle.ViewSgcAuditTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idAuditado}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idAuditado}" title="#{bundle.ViewSgcAuditTitle_idAuditado}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_auditoria}"/>
+                        <h:outputText value="#{sgcAuditController.selected.auditoria}" title="#{bundle.ViewSgcAuditTitle_auditoria}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_fechaRealizado}"/>
+                        <h:outputText value="#{sgcAuditController.selected.fechaRealizado}" title="#{bundle.ViewSgcAuditTitle_fechaRealizado}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_ejecutado}"/>
+                        <h:outputText value="#{sgcAuditController.selected.ejecutado}" title="#{bundle.ViewSgcAuditTitle_ejecutado}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idDocumento}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idDocumento}" title="#{bundle.ViewSgcAuditTitle_idDocumento}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_comentario}"/>
+                        <h:outputText value="#{sgcAuditController.selected.comentario}" title="#{bundle.ViewSgcAuditTitle_comentario}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_cumplimiento}"/>
+                        <h:outputText value="#{sgcAuditController.selected.cumplimiento}" title="#{bundle.ViewSgcAuditTitle_cumplimiento}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idFuente}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idFuente}" title="#{bundle.ViewSgcAuditTitle_idFuente}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_idCreador}"/>
+                        <h:outputText value="#{sgcAuditController.selected.idCreador}" title="#{bundle.ViewSgcAuditTitle_idCreador}"/>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_fechaReg}"/>
+                        <h:outputText value="#{sgcAuditController.selected.fechaReg}" title="#{bundle.ViewSgcAuditTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_fechaPlanificada}"/>
+                        <h:outputText value="#{sgcAuditController.selected.fechaPlanificada}" title="#{bundle.ViewSgcAuditTitle_fechaPlanificada}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSgcAuditLabel_conclusion}"/>
+                        <h:outputText value="#{sgcAuditController.selected.conclusion}" title="#{bundle.ViewSgcAuditTitle_conclusion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcAuditViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionDetalleCreateDlg" widgetVar="ComOperacionDetalleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOperacionDetalleTitle}">
+            <h:form id="ComOperacionDetalleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionDetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_comOperacionDetallePK_idItem}" for="comOperacionDetallePK_idItem" />
+                        <p:inputText id="comOperacionDetallePK_idItem" value="#{comOperacionDetalleController.selected.comOperacionDetallePK.idItem}" title="#{bundle.CreateComOperacionDetalleTitle_comOperacionDetallePK_idItem}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_comOperacionDetallePK_idItem}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_comOperacionDetallePK_idOperacion}" for="comOperacionDetallePK_idOperacion" />
+                        <p:inputText id="comOperacionDetallePK_idOperacion" value="#{comOperacionDetalleController.selected.comOperacionDetallePK.idOperacion}" title="#{bundle.CreateComOperacionDetalleTitle_comOperacionDetallePK_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_comOperacionDetallePK_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idArticulo}" for="idArticulo" />
+                        <p:inputText id="idArticulo" value="#{comOperacionDetalleController.selected.idArticulo}" title="#{bundle.CreateComOperacionDetalleTitle_idArticulo}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_idArticulo}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{comOperacionDetalleController.selected.descripcion}" title="#{bundle.CreateComOperacionDetalleTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{comOperacionDetalleController.selected.codigo}" title="#{bundle.CreateComOperacionDetalleTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{comOperacionDetalleController.selected.cantidad}" title="#{bundle.CreateComOperacionDetalleTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idPlan}" for="idPlan" />
+                        <p:inputText id="idPlan" value="#{comOperacionDetalleController.selected.idPlan}" title="#{bundle.CreateComOperacionDetalleTitle_idPlan}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_meses}" for="meses" />
+                        <p:inputText id="meses" value="#{comOperacionDetalleController.selected.meses}" title="#{bundle.CreateComOperacionDetalleTitle_meses}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idGrupo}" for="idGrupo" />
+                        <p:inputText id="idGrupo" value="#{comOperacionDetalleController.selected.idGrupo}" title="#{bundle.CreateComOperacionDetalleTitle_idGrupo}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{comOperacionDetalleController.selected.precio}" title="#{bundle.CreateComOperacionDetalleTitle_precio}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_costo}" for="costo" />
+                        <p:inputText id="costo" value="#{comOperacionDetalleController.selected.costo}" title="#{bundle.CreateComOperacionDetalleTitle_costo}" required="true" requiredMessage="#{bundle.CreateComOperacionDetalleRequiredMessage_costo}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{comOperacionDetalleController.selected.tipo}" title="#{bundle.CreateComOperacionDetalleTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_alta}" for="alta" />
+                        <p:inputText id="alta" value="#{comOperacionDetalleController.selected.alta}" title="#{bundle.CreateComOperacionDetalleTitle_alta}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idMarca}" for="idMarca" />
+                        <p:inputText id="idMarca" value="#{comOperacionDetalleController.selected.idMarca}" title="#{bundle.CreateComOperacionDetalleTitle_idMarca}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idModelo}" for="idModelo" />
+                        <p:inputText id="idModelo" value="#{comOperacionDetalleController.selected.idModelo}" title="#{bundle.CreateComOperacionDetalleTitle_idModelo}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_disponible}" for="disponible" />
+                        <p:inputText id="disponible" value="#{comOperacionDetalleController.selected.disponible}" title="#{bundle.CreateComOperacionDetalleTitle_disponible}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_detalle}" for="detalle" />
+                        <p:inputText id="detalle" value="#{comOperacionDetalleController.selected.detalle}" title="#{bundle.CreateComOperacionDetalleTitle_detalle}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idUnidad}" for="idUnidad" />
+                        <p:inputText id="idUnidad" value="#{comOperacionDetalleController.selected.idUnidad}" title="#{bundle.CreateComOperacionDetalleTitle_idUnidad}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_cantidadPaquete}" for="cantidadPaquete" />
+                        <p:inputText id="cantidadPaquete" value="#{comOperacionDetalleController.selected.cantidadPaquete}" title="#{bundle.CreateComOperacionDetalleTitle_cantidadPaquete}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOperacionDetalleController.selected.subTotal}" title="#{bundle.CreateComOperacionDetalleTitle_subTotal}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idOperacionOrigen}" for="idOperacionOrigen" />
+                        <p:inputText id="idOperacionOrigen" value="#{comOperacionDetalleController.selected.idOperacionOrigen}" title="#{bundle.CreateComOperacionDetalleTitle_idOperacionOrigen}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idItemOrigen}" for="idItemOrigen" />
+                        <p:inputText id="idItemOrigen" value="#{comOperacionDetalleController.selected.idItemOrigen}" title="#{bundle.CreateComOperacionDetalleTitle_idItemOrigen}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{comOperacionDetalleController.selected.estado}" required="true" requiredMessage="#{bundle.EditComOperacionDetalleRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionDetalleLabel_idAlta}" for="idAlta" />
+                        <p:inputText id="idAlta" value="#{comOperacionDetalleController.selected.idAlta}" title="#{bundle.CreateComOperacionDetalleTitle_idAlta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionDetalleController.create}" value="#{bundle.Save}" update="display,:ComOperacionDetalleListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOperacionDetalleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionDetalleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

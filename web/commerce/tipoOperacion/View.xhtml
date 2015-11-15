@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComTipoOperacionViewDlg" widgetVar="ComTipoOperacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComTipoOperacionTitle}">
+            <h:form id="ComTipoOperacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comTipoOperacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComTipoOperacionLabel_idTipoOperacion}"/>
+                        <h:outputText value="#{comTipoOperacionController.selected.idTipoOperacion}" title="#{bundle.ViewComTipoOperacionTitle_idTipoOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComTipoOperacionLabel_tipoOperacion}"/>
+                        <h:outputText value="#{comTipoOperacionController.selected.tipoOperacion}" title="#{bundle.ViewComTipoOperacionTitle_tipoOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComTipoOperacionLabel_movimiento}"/>
+                        <h:outputText value="#{comTipoOperacionController.selected.movimiento}" title="#{bundle.ViewComTipoOperacionTitle_movimiento}"/>
+                        <h:outputText value="#{bundle.ViewComTipoOperacionLabel_cierra}"/>
+                        <h:outputText value="#{comTipoOperacionController.selected.cierra}" title="#{bundle.ViewComTipoOperacionTitle_cierra}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComTipoOperacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="GsiPrrbProgBackupListForm">
+                <p:panel header="#{bundle.ListGsiPrrbProgBackupTitle}">
+                    <p:dataTable id="datalist" value="#{gsiPrrbProgBackupController.items}" var="item"
+                                 selectionMode="single" selection="#{gsiPrrbProgBackupController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idProg}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_idProg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProg}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_idEsc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEsc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_fechaProgInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaProgInicio}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_fechaProgFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaProgFin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_compresion}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.compresion}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_cifrado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.cifrado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_interval}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.interval}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_pathDestLocal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pathDestLocal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_pathDestFtp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pathDestFtp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_tareaNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tareaNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ubigeoDestLocal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ubigeoDestLocal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ubigeoDestFtp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ubigeoDestFtp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ubigeoFuente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ubigeoFuente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_pathFuente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pathFuente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ftpIp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ftpIp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ftpPort}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ftpPort}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ftpUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ftpUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ftpPass}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ftpPass}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_ftpPathFile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ftpPathFile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_emailNotificador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailNotificador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_emailDestino}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailDestino}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_telefonoNotificador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonoNotificador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_telefonoDestino}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonoDestino}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_emailSujeto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailSujeto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGsiPrrbProgBackupTitle_emailPassNotificador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailPassNotificador}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{gsiPrrbProgBackupController.prepareCreate}" update=":GsiPrrbProgBackupCreateForm" oncomplete="PF('GsiPrrbProgBackupCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":GsiPrrbProgBackupViewForm" oncomplete="PF('GsiPrrbProgBackupViewDialog').show()" disabled="#{empty gsiPrrbProgBackupController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":GsiPrrbProgBackupEditForm" oncomplete="PF('GsiPrrbProgBackupEditDialog').show()" disabled="#{empty gsiPrrbProgBackupController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{gsiPrrbProgBackupController.destroy}" update=":growl,datalist" disabled="#{empty gsiPrrbProgBackupController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

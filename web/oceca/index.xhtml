@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <style>.jmenucolumn button{ height:36px;width:36px}
+ .jm   .ui-button-text{height:36px;width:36px}
+ 
+      .fileupload-buttonbar .fileinput-button .ui-icon-plusthick{
+         background-image: url(http://localhost:8088/jsf/images/upload-16.png)!important;
+ }
+ 
+.jm span  {height:36px;width:36px}
+.jm input  {height:36px;width:36px; display:  none}
+.ui-fileupload-filename{ display: none}
+.ui-fileupload-choose .ui-icon {
+         visibility: hidden !important;
+     }
+     .ui-fileupload-upload .ui-icon {
+         visibility: hidden !important;
+     }
+     .ui-fileupload-cancel .ui-icon {
+         visibility: hidden !important;
+     }
+     .ui-button-icon-left .ui-icon ui-c .ui-icon-plusthick   .fileupload-buttonbar ui-button-icon-left .fileinput-button {
+         background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+ }
+      .ui-icon ui-c .ui-icon-plusthick {
+         background-image: url(http://localhost:8088/jsf/images/upload-16.png) !important;
+ }
+
+    </style>
+    <script>function clearInvalidFileMsg(){
+        if(1==2)
+                if ($("#importDevicesForm").is(':visible')){
+                    importDevicesWidget.uploadContent.find("tr.ui-state-error").remove();
+                    importDevicesWidget.uploadContent.find("td.progress").remove();
+                    importDevicesWidget.uploadContent.find("td.start").remove();
+                    importDevicesWidget.uploadContent.find("td.cancel").remove();                        
+                }
+            }</script>
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:form id="form">
+                <h:panelGrid style=" float: right" columns="2" cellpadding="5">
+                        <p:fileUpload   id="scriptUpload" 
+                        widgetVar="importDevicesWidget" 
+                        fileUploadListener="#{scriptUploadBean.handleFileUpload}"
+                        auto="true" skinSimple="true"
+                        label=""  value="" styleClass="jm"
+                        mode="simple"     requiredMessage=""
+                        onstart="clearInvalidFileMsg();$('#progress').show();"
+                        oncomplete="clearInvalidFileMsg();$('#progress').hide();importDevicesDialogWidget.hide()"/> 
+                         <p:menuButton  class="jmenucolumn"  value="">
+                            <p:menuitem value="Descargar" actionListener="#{ocedaService.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Aprobar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Observar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Editar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Eliminar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        </p:menuButton>
+                        </h:panelGrid>
+                <table width="100%"  cellspacing="5"><tr>
+                    <td valign="top">
+                    <p:editor  height="400" id="editor" widgetVar="editorWidget" value="#{editorView.text}" />
+                    </td>
+                    <td width="450px" style="border: 1px solid activeborder" > 
+                    <p:dataTable scrollable="true"  scrollHeight="400" sortMode="multiple" style="width:450px"  var="car"  value="#{ocedaService.estudianteList}">
+                     
+                        <p:column headerText="Código" style="text-align:center; font-size:16px" sortBy="#{car[0]}" width="80">
+                                <h:outputText style="width:80px;text-align:center" value="#{car[0]}">
+                                     <f:convertNumber pattern="0000"/>
+                                </h:outputText>
+                        </p:column>
+                        <p:column sortBy="#{car[1]}" headerText="Participante">
+                        <p:link value="#{car[1]}">
+                        <f:param name="productId" value="10" />
+                        </p:link>
+                        </p:column>
+                        <p:column width="42">
+                        <p:menuButton  class="jmenucolumn"  value="">
+                            <p:menuitem value="Descargar" actionListener="#{ocedaService.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Aprobar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Observar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Editar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Eliminar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        </p:menuButton>
+                        </p:column>
+                        </p:dataTable>
+                    </td></tr>
+                </table>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:commandButton value="Reset" type="reset"/>
+                    <p:commandButton value="Submit" label="Grabar"/>
+                </h:panelGrid>
+                
+                
+           
+                <h:panelGrid columns="1" width="100%">
+                    <p:dataTable var="car" value="#{ocedaService.estudianteList}" 
+                                  paginator="true"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15"
+                                 >
+
+                    <p:column width="42">
+                        <p:menuButton class="jmenucolumn" value="">
+                            <p:menuitem value="Descargar" actionListener="#{ocedaService.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Aprobar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Observar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Editar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                            <p:menuitem value="Eliminar" actionListener="#{ocedaService.delete}" ajax="false" icon="ui-icon-close" />
+                        </p:menuButton>
+                    </p:column>
+                    <p:column headerText="Id">
+                    <h:outputText value="#{car[0]}" />
+                    </p:column>
+                    <p:column headerText="Participante">
+                    <p:link value="#{car[1]}">
+                    <f:param name="productId" value="10" />
+                    </p:link>
+                    </p:column>
+                    <p:column headerText="Especialidad">
+                    <h:outputText value="#{car[2]}" />
+                    </p:column>
+                    <p:column style="width:40px;text-align: center">
+                    <p:commandButton  icon="ui-icon-search" title="View">
+                    <f:setPropertyActionListener value="#{car}" target="#{demoView.estudiante}" />
+                    </p:commandButton>
+                    </p:column>
+                    </p:dataTable>
+                    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="carDetail" style="text-align:center;">
+                    </p:outputPanel>
+                    </p:dialog>
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+    <style>
+        .ui-tabs .ui-tabs-panel {
+      padding: 0px 0px;
+}
+    </style>
+    <p:tabView  styleClass="dd" dynamic="true" cache="true">
+        <p:tab title="Contactos">
+            <ui:include src="/oceda/estudiante.xhtml">
+                <ui:param name="size" value="5" />
+            </ui:include>
+        </p:tab>
+        <p:tab title="Ofertas">
+            <ui:include src="/oceda/estudiante.xhtml">
+                <ui:param name="size" value="25" />
+            </ui:include>
+        </p:tab>
+        
+        <p:tab title="Estandares">
+            <ui:include src="/oceca/estandares.xhtml">
+                <ui:param name="size" value="25" />
+            </ui:include>
+        </p:tab>
+        
+    </p:tabView>
+</html>

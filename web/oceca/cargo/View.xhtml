@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaCargoViewDlg" widgetVar="SvaCargoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaCargoTitle}">
+            <h:form id="SvaCargoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaCargoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSvaCargoLabel_idCargo}"/>
+                        <h:outputText value="#{svaCargoController.selected.idCargo}" title="#{bundle.ViewSvaCargoTitle_idCargo}"/>
+                        <h:outputText value="#{bundle.ViewSvaCargoLabel_cargo}"/>
+                        <h:outputText value="#{svaCargoController.selected.cargo}" title="#{bundle.ViewSvaCargoTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewSvaCargoLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{svaCargoController.selected.estado}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaCargoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

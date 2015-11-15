@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAuditEstandarEditDlg" widgetVar="SgcAuditEstandarEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcAuditEstandarTitle}">
+            <h:form id="SgcAuditEstandarEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAuditEstandarController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcAuditEstandarLabel_idAudest}" for="idAudest" />
+                        <p:inputText id="idAudest" value="#{sgcAuditEstandarController.selected.idAudest}" title="#{bundle.EditSgcAuditEstandarTitle_idAudest}" required="true" requiredMessage="#{bundle.EditSgcAuditEstandarRequiredMessage_idAudest}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditEstandarLabel_idAudit}" for="idAudit" />
+                        <p:inputText id="idAudit" value="#{sgcAuditEstandarController.selected.idAudit}" title="#{bundle.EditSgcAuditEstandarTitle_idAudit}" required="true" requiredMessage="#{bundle.EditSgcAuditEstandarRequiredMessage_idAudit}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditEstandarLabel_idTipoEstandar}" for="idTipoEstandar" />
+                        <p:inputText id="idTipoEstandar" value="#{sgcAuditEstandarController.selected.idTipoEstandar}" title="#{bundle.EditSgcAuditEstandarTitle_idTipoEstandar}" required="true" requiredMessage="#{bundle.EditSgcAuditEstandarRequiredMessage_idTipoEstandar}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditEstandarLabel_idEstandar}" for="idEstandar" />
+                        <p:inputText id="idEstandar" value="#{sgcAuditEstandarController.selected.idEstandar}" title="#{bundle.EditSgcAuditEstandarTitle_idEstandar}" required="true" requiredMessage="#{bundle.EditSgcAuditEstandarRequiredMessage_idEstandar}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcAuditEstandarController.update}" value="#{bundle.Save}" update="display,:SgcAuditEstandarListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcAuditEstandarEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcAuditEstandarEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

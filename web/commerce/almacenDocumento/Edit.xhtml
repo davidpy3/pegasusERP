@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlmacenDocumentoEditDlg" widgetVar="AlmacenDocumentoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAlmacenDocumentoTitle}">
+            <h:form id="AlmacenDocumentoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{almacenDocumentoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAlmacenDocumentoLabel_almacenDocumentoPK_idAlmacen}" for="almacenDocumentoPK_idAlmacen" />
+                        <p:inputText id="almacenDocumentoPK_idAlmacen" value="#{almacenDocumentoController.selected.almacenDocumentoPK.idAlmacen}" title="#{bundle.EditAlmacenDocumentoTitle_almacenDocumentoPK_idAlmacen}" required="true" requiredMessage="#{bundle.EditAlmacenDocumentoRequiredMessage_almacenDocumentoPK_idAlmacen}"/>
+                        <p:outputLabel value="#{bundle.EditAlmacenDocumentoLabel_serDoc}" for="serDoc" />
+                        <p:inputText id="serDoc" value="#{almacenDocumentoController.selected.serDoc}" title="#{bundle.EditAlmacenDocumentoTitle_serDoc}" />
+                        <p:outputLabel value="#{bundle.EditAlmacenDocumentoLabel_nroDoc}" for="nroDoc" />
+                        <p:inputText id="nroDoc" value="#{almacenDocumentoController.selected.nroDoc}" title="#{bundle.EditAlmacenDocumentoTitle_nroDoc}" />
+                        <p:outputLabel value="#{bundle.EditAlmacenDocumentoLabel_tipoDoc}" for="tipoDoc" />
+                        <p:selectOneMenu id="tipoDoc" value="#{almacenDocumentoController.selected.tipoDoc}" required="true" requiredMessage="#{bundle.EditAlmacenDocumentoRequiredMessage_tipoDoc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"
+                                           var="tipoDocItem"
+                                           itemValue="#{tipoDocItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{almacenDocumentoController.update}" value="#{bundle.Save}" update="display,:AlmacenDocumentoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AlmacenDocumentoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AlmacenDocumentoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

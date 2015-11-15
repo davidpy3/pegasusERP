@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComMonedaCreateDlg" widgetVar="ComMonedaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComMonedaTitle}">
+            <h:form id="ComMonedaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comMonedaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComMonedaLabel_idMoneda}" for="idMoneda" />
+                        <p:inputText id="idMoneda" value="#{comMonedaController.selected.idMoneda}" title="#{bundle.CreateComMonedaTitle_idMoneda}" />
+                        <p:outputLabel value="#{bundle.CreateComMonedaLabel_moneda}" for="moneda" />
+                        <p:inputText id="moneda" value="#{comMonedaController.selected.moneda}" title="#{bundle.CreateComMonedaTitle_moneda}" />
+                        <p:outputLabel value="#{bundle.CreateComMonedaLabel_simbolo}" for="simbolo" />
+                        <p:inputText id="simbolo" value="#{comMonedaController.selected.simbolo}" title="#{bundle.CreateComMonedaTitle_simbolo}" />
+                        <p:outputLabel value="#{bundle.CreateComMonedaLabel_razonCambio}" for="razonCambio" />
+                        <p:inputText id="razonCambio" value="#{comMonedaController.selected.razonCambio}" title="#{bundle.CreateComMonedaTitle_razonCambio}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comMonedaController.create}" value="#{bundle.Save}" update="display,:ComMonedaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComMonedaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComMonedaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

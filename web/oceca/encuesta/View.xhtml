@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaEncuestaEspecialidadViewDlg" widgetVar="SvaEncuestaEspecialidadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaEncuestaEspecialidadTitle}">
+            <h:form id="SvaEncuestaEspecialidadViewForm" >
+                <h:panelGroup id="display" rendered="#{svaEncuestaEspecialidadController.selected != null}">
+                    <p:panelGrid columns="6">
+                        <h:outputText value="#{bundle.idEncuesta}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idEncuesta}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idEncuesta}"/>
+                        <h:outputText value="#{bundle.idAutoevaluacion}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idAutoevaluacion}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idAutoevaluacion}"/>
+                        <h:outputText value="#{bundle.idAcper}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idAcper}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idAcper}"/>
+                        <h:outputText value="#{bundle.idEspecialidad}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idEspecialidad}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idEspecialidad}"/>
+                        <h:outputText value="#{bundle.idModelo}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idModelo}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idModelo}"/>
+                        <h:outputText value="#{bundle.idCuestionario}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idCuestionario}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idCuestionario}"/>
+                        <h:outputText value="#{bundle.fechaIni}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.fechaIni}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_fechaIni}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.fechaFin}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.fechaFin}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_fechaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.observacion}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.observacion}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_observacion}"/>
+                        <h:outputText value="#{bundle.idEditor}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idEditor}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idEditor}"/>
+                        <h:outputText value="#{bundle.idCreador}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.idCreador}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_idCreador}"/>
+                        <h:outputText value="#{bundle.activo}"/>
+                        <p:selectBooleanCheckbox value="#{svaEncuestaEspecialidadController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.fechaReg}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.fechaReg}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.estado}"/>
+                        <h:outputText value="#{svaEncuestaEspecialidadController.selected.estado}" title="#{bundle.ViewSvaEncuestaEspecialidadTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:dataTable id="preguntaTable" value="#{svaEncuestaEspecialidadController.preguntaList}" var="item"
+                                 selectionMode="single" selection="#{quizPreguntaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idPregunta}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect" />
+                        <p:ajax event="rowUnselect"/>
+
+                      
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.categoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoria.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.pregunta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pregunta}" title="ID=#{item.idPregunta}"/>
+                            
+                            <h:outputText value="#{item.idTipoPregunta}"/>
+                            
+                            <p:selectOneRadio columns="3" layout="grid" value="#{item.idRespuesta}">
+                                <f:selectItems value="#{item.opcionListCollection}" var="c" itemLabel="#{c.opcion}" itemValue="#{c.idOpcion}"/>
+                            </p:selectOneRadio>
+                        </p:column>
+                        <p:column width="47">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.activo}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
+                        </p:column>
+                        <p:column width="55">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.opcional}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.opcional}" disabled="true"/>
+                        </p:column>
+                        <p:column width="47">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaEncuestaEspecialidadViewDialog.hide()"/>
+
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

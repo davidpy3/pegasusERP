@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteTextoEditDlg" widgetVar="SgcFuenteTextoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcFuenteTextoTitle}">
+            <h:form id="SgcFuenteTextoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteTextoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_idFuetex}" for="idFuetex" />
+                        <p:inputText id="idFuetex" value="#{sgcFuenteTextoController.selected.idFuetex}" title="#{bundle.EditSgcFuenteTextoTitle_idFuetex}" required="true" requiredMessage="#{bundle.EditSgcFuenteTextoRequiredMessage_idFuetex}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_idAutoevaluacion}" for="idAutoevaluacion" />
+                        <p:inputText id="idAutoevaluacion" value="#{sgcFuenteTextoController.selected.idAutoevaluacion}" title="#{bundle.EditSgcFuenteTextoTitle_idAutoevaluacion}" />
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcFuenteTextoController.selected.idFuente}" title="#{bundle.EditSgcFuenteTextoTitle_idFuente}" required="true" requiredMessage="#{bundle.EditSgcFuenteTextoRequiredMessage_idFuente}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{sgcFuenteTextoController.selected.titulo}" title="#{bundle.EditSgcFuenteTextoTitle_titulo}" />
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_texto}" for="texto" />
+                        <p:inputTextarea rows="4" cols="30" id="texto" value="#{sgcFuenteTextoController.selected.texto}" title="#{bundle.EditSgcFuenteTextoTitle_texto}" />
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_peso}" for="peso" />
+                        <p:inputText id="peso" value="#{sgcFuenteTextoController.selected.peso}" title="#{bundle.EditSgcFuenteTextoTitle_peso}" />
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_pagina}" for="pagina" />
+                        <p:inputText id="pagina" value="#{sgcFuenteTextoController.selected.pagina}" title="#{bundle.EditSgcFuenteTextoTitle_pagina}" />
+                        <p:outputLabel value="#{bundle.EditSgcFuenteTextoLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{sgcFuenteTextoController.selected.idEstado}" title="#{bundle.EditSgcFuenteTextoTitle_idEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFuenteTextoController.update}" value="#{bundle.Save}" update="display,:SgcFuenteTextoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcFuenteTextoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFuenteTextoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaInformeEditDlg" widgetVar="SvaInformeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSvaInformeTitle}">
+            <h:form id="SvaInformeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaInformeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idAutoinfo}" for="idAutoinfo" />
+                        <p:inputText id="idAutoinfo" value="#{svaInformeController.selected.idAutoinfo}" title="#{bundle.EditSvaInformeTitle_idAutoinfo}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idAutoinfo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idAutoevaluacion}" for="idAutoevaluacion" />
+                        <p:inputText id="idAutoevaluacion" value="#{svaInformeController.selected.idAutoevaluacion}" title="#{bundle.EditSvaInformeTitle_idAutoevaluacion}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idAutoevaluacion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idVersion}" for="idVersion" />
+                        <p:inputText id="idVersion" value="#{svaInformeController.selected.idVersion}" title="#{bundle.EditSvaInformeTitle_idVersion}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idVersion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idInstitucion}" for="idInstitucion" />
+                        <p:inputText id="idInstitucion" value="#{svaInformeController.selected.idInstitucion}" title="#{bundle.EditSvaInformeTitle_idInstitucion}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idInstitucion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idUbig}" for="idUbig" />
+                        <p:inputText id="idUbig" value="#{svaInformeController.selected.idUbig}" title="#{bundle.EditSvaInformeTitle_idUbig}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idUbig}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_fechaPresentacion}" for="fechaPresentacion" />
+                        <p:calendar id="fechaPresentacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaInformeController.selected.fechaPresentacion}" title="#{bundle.EditSvaInformeTitle_fechaPresentacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_resumenEjecutivo}" for="resumenEjecutivo" />
+                        <p:inputTextarea rows="4" cols="30" id="resumenEjecutivo" value="#{svaInformeController.selected.resumenEjecutivo}" title="#{bundle.EditSvaInformeTitle_resumenEjecutivo}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_resumenEjecutivo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_introduccion}" for="introduccion" />
+                        <p:inputTextarea rows="4" cols="30" id="introduccion" value="#{svaInformeController.selected.introduccion}" title="#{bundle.EditSvaInformeTitle_introduccion}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_introduccion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_carreraDescripcion}" for="carreraDescripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="carreraDescripcion" value="#{svaInformeController.selected.carreraDescripcion}" title="#{bundle.EditSvaInformeTitle_carreraDescripcion}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_carreraDescripcion}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_carreraHistoria}" for="carreraHistoria" />
+                        <p:inputTextarea rows="4" cols="30" id="carreraHistoria" value="#{svaInformeController.selected.carreraHistoria}" title="#{bundle.EditSvaInformeTitle_carreraHistoria}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_carreraHistoria}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_mision}" for="mision" />
+                        <p:inputTextarea rows="4" cols="30" id="mision" value="#{svaInformeController.selected.mision}" title="#{bundle.EditSvaInformeTitle_mision}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_mision}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_vision}" for="vision" />
+                        <p:inputTextarea rows="4" cols="30" id="vision" value="#{svaInformeController.selected.vision}" title="#{bundle.EditSvaInformeTitle_vision}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_vision}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idAutoridad}" for="idAutoridad" />
+                        <p:inputText id="idAutoridad" value="#{svaInformeController.selected.idAutoridad}" title="#{bundle.EditSvaInformeTitle_idAutoridad}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idAutoridad}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{svaInformeController.selected.idDtra}" title="#{bundle.EditSvaInformeTitle_idDtra}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_idDtra}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_nroMatriculados}" for="nroMatriculados" />
+                        <p:inputText id="nroMatriculados" value="#{svaInformeController.selected.nroMatriculados}" title="#{bundle.EditSvaInformeTitle_nroMatriculados}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_nroMatriculados}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_nroPromociones}" for="nroPromociones" />
+                        <p:inputText id="nroPromociones" value="#{svaInformeController.selected.nroPromociones}" title="#{bundle.EditSvaInformeTitle_nroPromociones}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_nroPromociones}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_nroGraduados}" for="nroGraduados" />
+                        <p:inputText id="nroGraduados" value="#{svaInformeController.selected.nroGraduados}" title="#{bundle.EditSvaInformeTitle_nroGraduados}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_nroGraduados}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_nroTitulados}" for="nroTitulados" />
+                        <p:inputText id="nroTitulados" value="#{svaInformeController.selected.nroTitulados}" title="#{bundle.EditSvaInformeTitle_nroTitulados}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_nroTitulados}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_grado}" for="grado" />
+                        <p:inputText id="grado" value="#{svaInformeController.selected.grado}" title="#{bundle.EditSvaInformeTitle_grado}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_grado}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{svaInformeController.selected.titulo}" title="#{bundle.EditSvaInformeTitle_titulo}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_titulo}"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{svaInformeController.selected.descripcion}" title="#{bundle.EditSvaInformeTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaInformeController.selected.fechaReg}" title="#{bundle.EditSvaInformeTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSvaInformeLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{svaInformeController.selected.estado}" title="#{bundle.EditSvaInformeTitle_estado}" required="true" requiredMessage="#{bundle.EditSvaInformeRequiredMessage_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{svaInformeController.update}" value="#{bundle.Save}" update="display,:SvaInformeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SvaInformeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SvaInformeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

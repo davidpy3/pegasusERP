@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SvaTipoParticipanteListForm">
+                <p:panel header="#{bundle.ListSvaTipoParticipanteTitle}">
+                    <p:dataTable id="datalist" value="#{svaTipoParticipanteController.items}" var="item"
+                                 selectionMode="single" selection="#{svaTipoParticipanteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idTipo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle_idTipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle_tipoParticipante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoParticipante}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle_base}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.base}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle_idTipart}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipart}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSvaTipoParticipanteTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{svaTipoParticipanteController.prepareCreate}" update=":SvaTipoParticipanteCreateForm" oncomplete="PF('SvaTipoParticipanteCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SvaTipoParticipanteViewForm" oncomplete="PF('SvaTipoParticipanteViewDialog').show()" disabled="#{empty svaTipoParticipanteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SvaTipoParticipanteEditForm" oncomplete="PF('SvaTipoParticipanteEditDialog').show()" disabled="#{empty svaTipoParticipanteController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{svaTipoParticipanteController.destroy}" update=":growl,datalist" disabled="#{empty svaTipoParticipanteController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

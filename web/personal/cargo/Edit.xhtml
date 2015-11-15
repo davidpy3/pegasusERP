@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargoEditDlg" widgetVar="CargoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCargoTitle}">
+            <h:form id="CargoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCargoLabel_idCargo}" for="idCargo" />
+                        <p:inputText id="idCargo" value="#{cargoController.selected.idCargo}" title="#{bundle.EditCargoTitle_idCargo}" required="true" requiredMessage="#{bundle.EditCargoRequiredMessage_idCargo}"/>
+                        <p:outputLabel value="#{bundle.EditCargoLabel_codPdt}" for="codPdt" />
+                        <p:inputText id="codPdt" value="#{cargoController.selected.codPdt}" title="#{bundle.EditCargoTitle_codPdt}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_nomCargo}" for="nomCargo" />
+                        <p:inputText id="nomCargo" value="#{cargoController.selected.nomCargo}" title="#{bundle.EditCargoTitle_nomCargo}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{cargoController.selected.nivel}" title="#{bundle.EditCargoTitle_nivel}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_ordenFirma}" for="ordenFirma" />
+                        <p:inputText id="ordenFirma" value="#{cargoController.selected.ordenFirma}" title="#{bundle.EditCargoTitle_ordenFirma}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_abreviatura}" for="abreviatura" />
+                        <p:inputText id="abreviatura" value="#{cargoController.selected.abreviatura}" title="#{bundle.EditCargoTitle_abreviatura}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_abrev}" for="abrev" />
+                        <p:inputText id="abrev" value="#{cargoController.selected.abrev}" title="#{bundle.EditCargoTitle_abrev}" />
+                        <p:outputLabel value="#{bundle.EditCargoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{cargoController.selected.estado}" title="#{bundle.EditCargoTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargoController.update}" value="#{bundle.Save}" update="display,:CargoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CargoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

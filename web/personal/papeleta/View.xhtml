@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PapeletaViewDlg" widgetVar="PapeletaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPapeletaTitle}">
+            <h:form id="PapeletaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{papeletaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_personal}"/>
+                        <h:outputText value="#{papeletaController.selected.personal}" title="#{bundle.ViewPapeletaTitle_personal}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_papeletaPK_NPapeleta}"/>
+                        <h:outputText value="#{papeletaController.selected.papeletaPK.NPapeleta}" title="#{bundle.ViewPapeletaTitle_papeletaPK_NPapeleta}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_papeletaPK_anoEje}"/>
+                        <h:outputText value="#{papeletaController.selected.papeletaPK.anoEje}" title="#{bundle.ViewPapeletaTitle_papeletaPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_tipoPape}"/>
+                        <h:outputText value="#{papeletaController.selected.tipoPape}" title="#{bundle.ViewPapeletaTitle_tipoPape}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_regulariza}"/>
+                        <h:outputText value="#{papeletaController.selected.regulariza}" title="#{bundle.ViewPapeletaTitle_regulariza}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_periPape}"/>
+                        <h:outputText value="#{papeletaController.selected.periPape}" title="#{bundle.ViewPapeletaTitle_periPape}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_fechaPape}"/>
+                        <h:outputText value="#{papeletaController.selected.fechaPape}" title="#{bundle.ViewPapeletaTitle_fechaPape}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_fechaDel}"/>
+                        <h:outputText value="#{papeletaController.selected.fechaDel}" title="#{bundle.ViewPapeletaTitle_fechaDel}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_fechaAl}"/>
+                        <h:outputText value="#{papeletaController.selected.fechaAl}" title="#{bundle.ViewPapeletaTitle_fechaAl}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_horaIni}"/>
+                        <h:outputText value="#{papeletaController.selected.horaIni}" title="#{bundle.ViewPapeletaTitle_horaIni}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_horaFin}"/>
+                        <h:outputText value="#{papeletaController.selected.horaFin}" title="#{bundle.ViewPapeletaTitle_horaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_lugar}"/>
+                        <h:outputText value="#{papeletaController.selected.lugar}" title="#{bundle.ViewPapeletaTitle_lugar}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_motivo}"/>
+                        <h:outputText value="#{papeletaController.selected.motivo}" title="#{bundle.ViewPapeletaTitle_motivo}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_observaciones}"/>
+                        <h:outputText value="#{papeletaController.selected.observaciones}" title="#{bundle.ViewPapeletaTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewPapeletaLabel_estado}"/>
+                        <h:outputText value="#{papeletaController.selected.estado}" title="#{bundle.ViewPapeletaTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PapeletaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

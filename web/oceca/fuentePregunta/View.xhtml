@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuentePreguntaViewDlg" widgetVar="SgcFuentePreguntaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcFuentePreguntaTitle}">
+            <h:form id="SgcFuentePreguntaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuentePreguntaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_idFuente}"/>
+                        <h:outputText value="#{sgcFuentePreguntaController.selected.idFuente}" title="#{bundle.ViewSgcFuentePreguntaTitle_idFuente}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_idPregunta}"/>
+                        <h:outputText value="#{sgcFuentePreguntaController.selected.idPregunta}" title="#{bundle.ViewSgcFuentePreguntaTitle_idPregunta}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_e}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.e}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_s}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.s}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_d}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.d}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_a}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.a}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_b}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.b}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_c}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.c}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_g}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.g}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_v}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.v}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_t}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.t}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSgcFuentePreguntaLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{sgcFuentePreguntaController.selected.estado}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcFuentePreguntaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

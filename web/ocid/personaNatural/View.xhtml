@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtPersonaNaturalViewDlg" widgetVar="DrtPersonaNaturalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDrtPersonaNaturalTitle}">
+            <h:form id="DrtPersonaNaturalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtPersonaNaturalController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idDir}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idDir}" title="#{bundle.ViewDrtPersonaNaturalTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idUbgNac}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idUbgNac}" title="#{bundle.ViewDrtPersonaNaturalTitle_idUbgNac}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_apMaterno}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.apMaterno}" title="#{bundle.ViewDrtPersonaNaturalTitle_apMaterno}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_apPaterno}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.apPaterno}" title="#{bundle.ViewDrtPersonaNaturalTitle_apPaterno}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_nombre}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.nombre}" title="#{bundle.ViewDrtPersonaNaturalTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_sexo}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.sexo}" title="#{bundle.ViewDrtPersonaNaturalTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_fechaNac}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.fechaNac}" title="#{bundle.ViewDrtPersonaNaturalTitle_fechaNac}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_estadoPernat}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.estadoPernat}" title="#{bundle.ViewDrtPersonaNaturalTitle_estadoPernat}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_fechaIng}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.fechaIng}" title="#{bundle.ViewDrtPersonaNaturalTitle_fechaIng}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_direccion}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.direccion}" title="#{bundle.ViewDrtPersonaNaturalTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idUbgPro}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idUbgPro}" title="#{bundle.ViewDrtPersonaNaturalTitle_idUbgPro}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_observacion}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.observacion}" title="#{bundle.ViewDrtPersonaNaturalTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idPdid}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idPdid}" title="#{bundle.ViewDrtPersonaNaturalTitle_idPdid}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_numeroPndid}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.numeroPndid}" title="#{bundle.ViewDrtPersonaNaturalTitle_numeroPndid}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idPnec}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idPnec}" title="#{bundle.ViewDrtPersonaNaturalTitle_idPnec}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idGrpsng}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idGrpsng}" title="#{bundle.ViewDrtPersonaNaturalTitle_idGrpsng}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_nombreCompleto}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.nombreCompleto}" title="#{bundle.ViewDrtPersonaNaturalTitle_nombreCompleto}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_idColegio}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.idColegio}" title="#{bundle.ViewDrtPersonaNaturalTitle_idColegio}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_anioEgresoCole}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.anioEgresoCole}" title="#{bundle.ViewDrtPersonaNaturalTitle_anioEgresoCole}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_updateFlow}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.updateFlow}" title="#{bundle.ViewDrtPersonaNaturalTitle_updateFlow}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_emailPrin}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.emailPrin}" title="#{bundle.ViewDrtPersonaNaturalTitle_emailPrin}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_telefonoPrin}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.telefonoPrin}" title="#{bundle.ViewDrtPersonaNaturalTitle_telefonoPrin}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_celularPrin}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.celularPrin}" title="#{bundle.ViewDrtPersonaNaturalTitle_celularPrin}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_updateSelf}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.updateSelf}" title="#{bundle.ViewDrtPersonaNaturalTitle_updateSelf}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_otroColegio}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.otroColegio}" title="#{bundle.ViewDrtPersonaNaturalTitle_otroColegio}"/>
+                        <h:outputText value="#{bundle.ViewDrtPersonaNaturalLabel_drtDirectorio}"/>
+                        <h:outputText value="#{drtPersonaNaturalController.selected.drtDirectorio}" title="#{bundle.ViewDrtPersonaNaturalTitle_drtDirectorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DrtPersonaNaturalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

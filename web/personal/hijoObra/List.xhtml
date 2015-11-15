@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHijosObraTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="HijosObraListForm">
+                <p:panel header="#{bundle.ListHijosObraTitle}">
+                    <p:dataTable id="datalist" value="#{hijosObraController.items}" var="item"
+                                 selectionMode="single" selection="#{hijosObraController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.hijosObraPK}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_hijosObraPK_docuiden}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hijosObraPK.docuiden}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_hijosObraPK_nhijo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hijosObraPK.nhijo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_apat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_amat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.amat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_nombres}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombres}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_fechanac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechanac}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_NPartida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.NPartida}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_centroEstudios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.centroEstudios}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHijosObraTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{hijosObraController.prepareCreate}" update=":HijosObraCreateForm" oncomplete="PF('HijosObraCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":HijosObraViewForm" oncomplete="PF('HijosObraViewDialog').show()" disabled="#{empty hijosObraController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":HijosObraEditForm" oncomplete="PF('HijosObraEditDialog').show()" disabled="#{empty hijosObraController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{hijosObraController.destroy}" update=":growl,datalist" disabled="#{empty hijosObraController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

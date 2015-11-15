@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcInspeccionCreateDlg" widgetVar="SgcInspeccionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSgcInspeccionTitle}">
+            <h:form id="SgcInspeccionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcInspeccionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idInspec}" for="idInspec" />
+                        <p:inputText id="idInspec" value="#{sgcInspeccionController.selected.idInspec}" title="#{bundle.CreateSgcInspeccionTitle_idInspec}" required="true" requiredMessage="#{bundle.CreateSgcInspeccionRequiredMessage_idInspec}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idTipins}" for="idTipins" />
+                        <p:inputText id="idTipins" value="#{sgcInspeccionController.selected.idTipins}" title="#{bundle.CreateSgcInspeccionTitle_idTipins}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_detalle}" for="detalle" />
+                        <p:inputText id="detalle" value="#{sgcInspeccionController.selected.detalle}" title="#{bundle.CreateSgcInspeccionTitle_detalle}" required="true" requiredMessage="#{bundle.CreateSgcInspeccionRequiredMessage_detalle}"/>
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_fechaPlan}" for="fechaPlan" />
+                        <p:calendar id="fechaPlan" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcInspeccionController.selected.fechaPlan}" title="#{bundle.EditSgcInspeccionTitle_fechaPlan}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcInspeccionController.selected.fecha}" title="#{bundle.EditSgcInspeccionTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idObjeto}" for="idObjeto" />
+                        <p:inputText id="idObjeto" value="#{sgcInspeccionController.selected.idObjeto}" title="#{bundle.CreateSgcInspeccionTitle_idObjeto}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idInspector}" for="idInspector" />
+                        <p:inputText id="idInspector" value="#{sgcInspeccionController.selected.idInspector}" title="#{bundle.CreateSgcInspeccionTitle_idInspector}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idTestigo}" for="idTestigo" />
+                        <p:inputText id="idTestigo" value="#{sgcInspeccionController.selected.idTestigo}" title="#{bundle.CreateSgcInspeccionTitle_idTestigo}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_observacion}" for="observacion" />
+                        <p:inputTextarea rows="4" cols="30" id="observacion" value="#{sgcInspeccionController.selected.observacion}" title="#{bundle.CreateSgcInspeccionTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{sgcInspeccionController.selected.idEstado}" title="#{bundle.CreateSgcInspeccionTitle_idEstado}" />
+                        <p:outputLabel value="#{bundle.CreateSgcInspeccionLabel_idExpe}" for="idExpe" />
+                        <p:inputText id="idExpe" value="#{sgcInspeccionController.selected.idExpe}" title="#{bundle.CreateSgcInspeccionTitle_idExpe}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcInspeccionController.create}" value="#{bundle.Save}" update="display,:SgcInspeccionListForm:datalist,:growl" oncomplete="handleSubmit(args,'SgcInspeccionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcInspeccionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

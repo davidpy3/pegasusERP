@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatriMovimientoDetViewDlg" widgetVar="PatriMovimientoDetViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPatriMovimientoDetTitle}">
+            <h:form id="PatriMovimientoDetViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{patriMovimientoDetController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPatriMovimientoDetLabel_ubicaBien}"/>
+                        <h:outputText value="#{patriMovimientoDetController.selected.ubicaBien}" title="#{bundle.ViewPatriMovimientoDetTitle_ubicaBien}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoDetLabel_mbienes0}"/>
+                        <h:outputText value="#{patriMovimientoDetController.selected.mbienes0}" title="#{bundle.ViewPatriMovimientoDetTitle_mbienes0}"/>
+                        <h:outputText value="#{bundle.ViewPatriMovimientoDetLabel_patriMovimiento}"/>
+                        <h:outputText value="#{patriMovimientoDetController.selected.patriMovimiento}" title="#{bundle.ViewPatriMovimientoDetTitle_patriMovimiento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PatriMovimientoDetViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

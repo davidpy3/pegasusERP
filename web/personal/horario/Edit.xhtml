@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HorarioEditDlg" widgetVar="HorarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHorarioTitle}">
+            <h:form id="HorarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{horarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_horarioPK_tipoHor}" for="horarioPK_tipoHor" />
+                        <p:inputText id="horarioPK_tipoHor" value="#{horarioController.selected.horarioPK.tipoHor}" title="#{bundle.EditHorarioTitle_horarioPK_tipoHor}" required="true" requiredMessage="#{bundle.EditHorarioRequiredMessage_horarioPK_tipoHor}"/>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_horarioPK_turno}" for="horarioPK_turno" />
+                        <p:inputText id="horarioPK_turno" value="#{horarioController.selected.horarioPK.turno}" title="#{bundle.EditHorarioTitle_horarioPK_turno}" required="true" requiredMessage="#{bundle.EditHorarioRequiredMessage_horarioPK_turno}"/>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_horarioPK_registro}" for="horarioPK_registro" />
+                        <p:inputText id="horarioPK_registro" value="#{horarioController.selected.horarioPK.registro}" title="#{bundle.EditHorarioTitle_horarioPK_registro}" required="true" requiredMessage="#{bundle.EditHorarioRequiredMessage_horarioPK_registro}"/>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{horarioController.selected.descripcion}" title="#{bundle.EditHorarioTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_desde}" for="desde" />
+                        <p:calendar id="desde" pattern="dd/MM/yyyy HH:mm:ss" value="#{horarioController.selected.desde}" title="#{bundle.EditHorarioTitle_desde}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_hasta}" for="hasta" />
+                        <p:calendar id="hasta" pattern="dd/MM/yyyy HH:mm:ss" value="#{horarioController.selected.hasta}" title="#{bundle.EditHorarioTitle_hasta}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_tolerancia}" for="tolerancia" />
+                        <p:inputText id="tolerancia" value="#{horarioController.selected.tolerancia}" title="#{bundle.EditHorarioTitle_tolerancia}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{horarioController.update}" value="#{bundle.Save}" update="display,:HorarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HorarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HorarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

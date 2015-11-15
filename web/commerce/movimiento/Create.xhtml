@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MovimientoCreateDlg" widgetVar="MovimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMovimientoTitle}">
+            <h:form id="MovimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{movimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_idMovimiento}" for="idMovimiento" />
+                        <p:inputText id="idMovimiento" value="#{movimientoController.selected.idMovimiento}" title="#{bundle.CreateMovimientoTitle_idMovimiento}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_idMovimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_glosa}" for="glosa" />
+                        <p:inputText id="glosa" value="#{movimientoController.selected.glosa}" title="#{bundle.CreateMovimientoTitle_glosa}" />
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_fecMov}" for="fecMov" />
+                        <p:calendar id="fecMov" pattern="MM/dd/yyyy" value="#{movimientoController.selected.fecMov}" title="#{bundle.EditMovimientoTitle_fecMov}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_ingreso}" for="ingreso" />
+                        <p:inputText id="ingreso" value="#{movimientoController.selected.ingreso}" title="#{bundle.CreateMovimientoTitle_ingreso}" />
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_egreso}" for="egreso" />
+                        <p:inputText id="egreso" value="#{movimientoController.selected.egreso}" title="#{bundle.CreateMovimientoTitle_egreso}" />
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_idAlmacen}" for="idAlmacen" />
+                        <p:inputText id="idAlmacen" value="#{movimientoController.selected.idAlmacen}" title="#{bundle.CreateMovimientoTitle_idAlmacen}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_idAlmacen}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_flag}" for="flag" />
+                        <p:inputText id="flag" value="#{movimientoController.selected.flag}" title="#{bundle.CreateMovimientoTitle_flag}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_flag}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_idCuenta}" for="idCuenta" />
+                        <p:inputText id="idCuenta" value="#{movimientoController.selected.idCuenta}" title="#{bundle.CreateMovimientoTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_idCuenta}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_destino}" for="destino" />
+                        <p:inputText id="destino" value="#{movimientoController.selected.destino}" title="#{bundle.CreateMovimientoTitle_destino}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_destino}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_idDestino}" for="idDestino" />
+                        <p:inputText id="idDestino" value="#{movimientoController.selected.idDestino}" title="#{bundle.CreateMovimientoTitle_idDestino}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_idDestino}"/>
+                        <p:outputLabel value="#{bundle.CreateMovimientoLabel_nick}" for="nick" />
+                        <p:selectOneMenu id="nick" value="#{movimientoController.selected.nick}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_nick}">
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="nickItem"
+                                           itemValue="#{nickItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{movimientoController.create}" value="#{bundle.Save}" update="display,:MovimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MovimientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MovimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

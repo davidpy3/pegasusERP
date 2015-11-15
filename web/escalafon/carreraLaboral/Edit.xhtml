@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCarreraLaboralEditDlg" widgetVar="EscCarreraLaboralEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscCarreraLaboralTitle}">
+            <h:form id="EscCarreraLaboralEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCarreraLaboralController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idPercl}" for="idPercl" />
+                        <p:inputText id="idPercl" value="#{escCarreraLaboralController.selected.idPercl}" title="#{bundle.EditEscCarreraLaboralTitle_idPercl}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_idPercl}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idPerclDe}" for="idPerclDe" />
+                        <p:inputText id="idPerclDe" value="#{escCarreraLaboralController.selected.idPerclDe}" title="#{bundle.EditEscCarreraLaboralTitle_idPerclDe}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idCap}" for="idCap" />
+                        <p:inputText id="idCap" value="#{escCarreraLaboralController.selected.idCap}" title="#{bundle.EditEscCarreraLaboralTitle_idCap}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_tipoCap}" for="tipoCap" />
+                        <p:selectBooleanCheckbox id="tipoCap" value="#{escCarreraLaboralController.selected.tipoCap}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escCarreraLaboralController.selected.fechaIni}" title="#{bundle.EditEscCarreraLaboralTitle_fechaIni}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_fechaIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escCarreraLaboralController.selected.fechaFin}" title="#{bundle.EditEscCarreraLaboralTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_codDtra}" for="codDtra" />
+                        <p:inputText id="codDtra" value="#{escCarreraLaboralController.selected.codDtra}" title="#{bundle.EditEscCarreraLaboralTitle_codDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_condicion}" for="condicion" />
+                        <p:inputText id="condicion" value="#{escCarreraLaboralController.selected.condicion}" title="#{bundle.EditEscCarreraLaboralTitle_condicion}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_condicion}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escCarreraLaboralController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_jefe}" for="jefe" />
+                        <p:selectBooleanCheckbox id="jefe" value="#{escCarreraLaboralController.selected.jefe}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_jefe}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_plaza}" for="plaza" />
+                        <p:selectBooleanCheckbox id="plaza" value="#{escCarreraLaboralController.selected.plaza}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_plaza}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_servicio}" for="servicio" />
+                        <p:selectBooleanCheckbox id="servicio" value="#{escCarreraLaboralController.selected.servicio}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_servicio}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_horas}" for="horas" />
+                        <p:inputText id="horas" value="#{escCarreraLaboralController.selected.horas}" title="#{bundle.EditEscCarreraLaboralTitle_horas}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{escCarreraLaboralController.selected.monto}" title="#{bundle.EditEscCarreraLaboralTitle_monto}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escCarreraLaboralController.selected.mencion}" title="#{bundle.EditEscCarreraLaboralTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_migrado}" for="migrado" />
+                        <p:selectBooleanCheckbox id="migrado" value="#{escCarreraLaboralController.selected.migrado}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_migrado}"/>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idAcper}" for="idAcper" />
+                        <p:selectOneMenu id="idAcper" value="#{escCarreraLaboralController.selected.idAcper}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apcPeriodoAcademicoController.itemsAvailableSelectOne}"
+                                           var="idAcperItem"
+                                           itemValue="#{idAcperItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu id="idAmbito" value="#{escCarreraLaboralController.selected.idAmbito}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsAmbitoAcademicoController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idDesp}" for="idDesp" />
+                        <p:selectOneMenu id="idDesp" value="#{escCarreraLaboralController.selected.idDesp}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escDesplazamientoController.itemsAvailableSelectOne}"
+                                           var="idDespItem"
+                                           itemValue="#{idDespItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idMov}" for="idMov" />
+                        <p:selectOneMenu id="idMov" value="#{escCarreraLaboralController.selected.idMov}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_idMov}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escMovimientosController.itemsAvailableSelectOne}"
+                                           var="idMovItem"
+                                           itemValue="#{idMovItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idMovmod}" for="idMovmod" />
+                        <p:selectOneMenu id="idMovmod" value="#{escCarreraLaboralController.selected.idMovmod}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_idMovmod}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escMovmodalidadController.itemsAvailableSelectOne}"
+                                           var="idMovmodItem"
+                                           itemValue="#{idMovmodItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escCarreraLaboralController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idServicio}" for="idServicio" />
+                        <p:selectOneMenu id="idServicio" value="#{escCarreraLaboralController.selected.idServicio}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escServiciosController.itemsAvailableSelectOne}"
+                                           var="idServicioItem"
+                                           itemValue="#{idServicioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idTipo}" for="idTipo" />
+                        <p:selectOneMenu id="idTipo" value="#{escCarreraLaboralController.selected.idTipo}" required="true" requiredMessage="#{bundle.EditEscCarreraLaboralRequiredMessage_idTipo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escTipoPersonalController.itemsAvailableSelectOne}"
+                                           var="idTipoItem"
+                                           itemValue="#{idTipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscCarreraLaboralLabel_idTp}" for="idTp" />
+                        <p:selectOneMenu id="idTp" value="#{escCarreraLaboralController.selected.idTp}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escTipoPromocionController.itemsAvailableSelectOne}"
+                                           var="idTpItem"
+                                           itemValue="#{idTpItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCarreraLaboralController.update}" value="#{bundle.Save}" update="display,:EscCarreraLaboralListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscCarreraLaboralEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCarreraLaboralEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AfectacionesEditDlg" widgetVar="AfectacionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAfectacionesTitle}">
+            <h:form id="AfectacionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{afectacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_afectacionesPK_tipoTrab}" for="afectacionesPK_tipoTrab" />
+                        <p:inputText id="afectacionesPK_tipoTrab" value="#{afectacionesController.selected.afectacionesPK.tipoTrab}" title="#{bundle.EditAfectacionesTitle_afectacionesPK_tipoTrab}" required="true" requiredMessage="#{bundle.EditAfectacionesRequiredMessage_afectacionesPK_tipoTrab}"/>
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_afectacionesPK_codigo}" for="afectacionesPK_codigo" />
+                        <p:inputText id="afectacionesPK_codigo" value="#{afectacionesController.selected.afectacionesPK.codigo}" title="#{bundle.EditAfectacionesTitle_afectacionesPK_codigo}" required="true" requiredMessage="#{bundle.EditAfectacionesRequiredMessage_afectacionesPK_codigo}"/>
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_iden}" for="iden" />
+                        <p:inputText id="iden" value="#{afectacionesController.selected.iden}" title="#{bundle.EditAfectacionesTitle_iden}" required="true" requiredMessage="#{bundle.EditAfectacionesRequiredMessage_iden}"/>
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{afectacionesController.selected.valor}" title="#{bundle.EditAfectacionesTitle_valor}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_valorMen}" for="valorMen" />
+                        <p:inputText id="valorMen" value="#{afectacionesController.selected.valorMen}" title="#{bundle.EditAfectacionesTitle_valorMen}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_porcen}" for="porcen" />
+                        <p:inputText id="porcen" value="#{afectacionesController.selected.porcen}" title="#{bundle.EditAfectacionesTitle_porcen}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_porcenMensual}" for="porcenMensual" />
+                        <p:inputText id="porcenMensual" value="#{afectacionesController.selected.porcenMensual}" title="#{bundle.EditAfectacionesTitle_porcenMensual}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_tablaMonto}" for="tablaMonto" />
+                        <p:inputText id="tablaMonto" value="#{afectacionesController.selected.tablaMonto}" title="#{bundle.EditAfectacionesTitle_tablaMonto}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_columnaMonto}" for="columnaMonto" />
+                        <p:inputText id="columnaMonto" value="#{afectacionesController.selected.columnaMonto}" title="#{bundle.EditAfectacionesTitle_columnaMonto}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_dn}" for="dn" />
+                        <p:inputText id="dn" value="#{afectacionesController.selected.dn}" title="#{bundle.EditAfectacionesTitle_dn}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_dd}" for="dd" />
+                        <p:inputText id="dd" value="#{afectacionesController.selected.dd}" title="#{bundle.EditAfectacionesTitle_dd}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_dfer}" for="dfer" />
+                        <p:inputText id="dfer" value="#{afectacionesController.selected.dfer}" title="#{bundle.EditAfectacionesTitle_dfer}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_dftrab}" for="dftrab" />
+                        <p:inputText id="dftrab" value="#{afectacionesController.selected.dftrab}" title="#{bundle.EditAfectacionesTitle_dftrab}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_horaExt}" for="horaExt" />
+                        <p:inputText id="horaExt" value="#{afectacionesController.selected.horaExt}" title="#{bundle.EditAfectacionesTitle_horaExt}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_gastoDebe}" for="gastoDebe" />
+                        <p:inputText id="gastoDebe" value="#{afectacionesController.selected.gastoDebe}" title="#{bundle.EditAfectacionesTitle_gastoDebe}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_gastoHaber}" for="gastoHaber" />
+                        <p:inputText id="gastoHaber" value="#{afectacionesController.selected.gastoHaber}" title="#{bundle.EditAfectacionesTitle_gastoHaber}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_cuenta}" for="cuenta" />
+                        <p:inputText id="cuenta" value="#{afectacionesController.selected.cuenta}" title="#{bundle.EditAfectacionesTitle_cuenta}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_remAseg}" for="remAseg" />
+                        <p:inputText id="remAseg" value="#{afectacionesController.selected.remAseg}" title="#{bundle.EditAfectacionesTitle_remAseg}" />
+                        <p:outputLabel value="#{bundle.EditAfectacionesLabel_exCodigo}" for="exCodigo" />
+                        <p:inputText id="exCodigo" value="#{afectacionesController.selected.exCodigo}" title="#{bundle.EditAfectacionesTitle_exCodigo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{afectacionesController.update}" value="#{bundle.Save}" update="display,:AfectacionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AfectacionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AfectacionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

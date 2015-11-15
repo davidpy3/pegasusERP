@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdenCreateDlg" widgetVar="OrdenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOrdenTitle}">
+            <h:form id="OrdenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordenController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_ordenPK_anoEje}" for="ordenPK_anoEje" />
+                        <p:inputText id="ordenPK_anoEje" value="#{ordenController.selected.ordenPK.anoEje}" title="#{bundle.CreateOrdenTitle_ordenPK_anoEje}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_ordenPK_anoEje}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_ordenPK_tipo}" for="ordenPK_tipo" />
+                        <p:inputText id="ordenPK_tipo" value="#{ordenController.selected.ordenPK.tipo}" title="#{bundle.CreateOrdenTitle_ordenPK_tipo}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_ordenPK_tipo}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_ordenPK_NOrden}" for="ordenPK_NOrden" />
+                        <p:inputText id="ordenPK_NOrden" value="#{ordenController.selected.ordenPK.NOrden}" title="#{bundle.CreateOrdenTitle_ordenPK_NOrden}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_ordenPK_NOrden}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_codDoc}" for="codDoc" />
+                        <p:inputText id="codDoc" value="#{ordenController.selected.codDoc}" title="#{bundle.CreateOrdenTitle_codDoc}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_codDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_numDoc}" for="numDoc" />
+                        <p:inputText id="numDoc" value="#{ordenController.selected.numDoc}" title="#{bundle.CreateOrdenTitle_numDoc}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_numDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{ordenController.selected.fecha}" title="#{bundle.EditOrdenTitle_fecha}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_secFunc}" for="secFunc" />
+                        <p:inputText id="secFunc" value="#{ordenController.selected.secFunc}" title="#{bundle.CreateOrdenTitle_secFunc}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_secFunc}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_fuenteFinanc}" for="fuenteFinanc" />
+                        <p:inputText id="fuenteFinanc" value="#{ordenController.selected.fuenteFinanc}" title="#{bundle.CreateOrdenTitle_fuenteFinanc}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_fuenteFinanc}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_RUCprov}" for="RUCprov" />
+                        <p:inputText id="RUCprov" value="#{ordenController.selected.RUCprov}" title="#{bundle.CreateOrdenTitle_RUCprov}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_RUCprov}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_condiciones}" for="condiciones" />
+                        <p:inputText id="condiciones" value="#{ordenController.selected.condiciones}" title="#{bundle.CreateOrdenTitle_condiciones}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_RUCfact}" for="RUCfact" />
+                        <p:inputText id="RUCfact" value="#{ordenController.selected.RUCfact}" title="#{bundle.CreateOrdenTitle_RUCfact}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{ordenController.selected.total}" title="#{bundle.CreateOrdenTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_justificacion}" for="justificacion" />
+                        <p:inputText id="justificacion" value="#{ordenController.selected.justificacion}" title="#{bundle.CreateOrdenTitle_justificacion}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{ordenController.selected.estado}" title="#{bundle.CreateOrdenTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_estCont}" for="estCont" />
+                        <p:inputText id="estCont" value="#{ordenController.selected.estCont}" title="#{bundle.CreateOrdenTitle_estCont}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_NRegSiaf}" for="NRegSiaf" />
+                        <p:inputText id="NRegSiaf" value="#{ordenController.selected.NRegSiaf}" title="#{bundle.CreateOrdenTitle_NRegSiaf}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{ordenController.selected.observaciones}" title="#{bundle.CreateOrdenTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_fechComp}" for="fechComp" />
+                        <p:calendar id="fechComp" pattern="dd/MM/yyyy HH:mm:ss" value="#{ordenController.selected.fechComp}" title="#{bundle.EditOrdenTitle_fechComp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{ordenController.selected.referencia}" title="#{bundle.CreateOrdenTitle_referencia}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_anoRequer}" for="anoRequer" />
+                        <p:inputText id="anoRequer" value="#{ordenController.selected.anoRequer}" title="#{bundle.CreateOrdenTitle_anoRequer}" />
+                        <p:outputLabel value="#{bundle.CreateOrdenLabel_fechaAnul}" for="fechaAnul" />
+                        <p:calendar id="fechaAnul" pattern="dd/MM/yyyy HH:mm:ss" value="#{ordenController.selected.fechaAnul}" title="#{bundle.EditOrdenTitle_fechaAnul}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ordenController.create}" value="#{bundle.Save}" update="display,:OrdenListForm:datalist,:growl" oncomplete="handleSubmit(args,'OrdenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrdenCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

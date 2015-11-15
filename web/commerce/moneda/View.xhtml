@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComMonedaViewDlg" widgetVar="ComMonedaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComMonedaTitle}">
+            <h:form id="ComMonedaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comMonedaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComMonedaLabel_idMoneda}"/>
+                        <h:outputText value="#{comMonedaController.selected.idMoneda}" title="#{bundle.ViewComMonedaTitle_idMoneda}"/>
+                        <h:outputText value="#{bundle.ViewComMonedaLabel_moneda}"/>
+                        <h:outputText value="#{comMonedaController.selected.moneda}" title="#{bundle.ViewComMonedaTitle_moneda}"/>
+                        <h:outputText value="#{bundle.ViewComMonedaLabel_simbolo}"/>
+                        <h:outputText value="#{comMonedaController.selected.simbolo}" title="#{bundle.ViewComMonedaTitle_simbolo}"/>
+                        <h:outputText value="#{bundle.ViewComMonedaLabel_razonCambio}"/>
+                        <h:outputText value="#{comMonedaController.selected.razonCambio}" title="#{bundle.ViewComMonedaTitle_razonCambio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComMonedaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

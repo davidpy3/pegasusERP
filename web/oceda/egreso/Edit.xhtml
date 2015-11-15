@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FxaEgresoEditDlg" widgetVar="FxaEgresoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFxaEgresoTitle}">
+            <h:form id="FxaEgresoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fxaEgresoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idAcexp}" for="idAcexp" />
+                        <p:inputText id="idAcexp" value="#{fxaEgresoController.selected.idAcexp}" title="#{bundle.EditFxaEgresoTitle_idAcexp}" required="true" requiredMessage="#{bundle.EditFxaEgresoRequiredMessage_idAcexp}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idPromegr}" for="idPromegr" />
+                        <p:inputText id="idPromegr" value="#{fxaEgresoController.selected.idPromegr}" title="#{bundle.EditFxaEgresoTitle_idPromegr}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idEspecialidad}" for="idEspecialidad" />
+                        <p:inputText id="idEspecialidad" value="#{fxaEgresoController.selected.idEspecialidad}" title="#{bundle.EditFxaEgresoTitle_idEspecialidad}" required="true" requiredMessage="#{bundle.EditFxaEgresoRequiredMessage_idEspecialidad}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idPlancur}" for="idPlancur" />
+                        <p:inputText id="idPlancur" value="#{fxaEgresoController.selected.idPlancur}" title="#{bundle.EditFxaEgresoTitle_idPlancur}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_promedio}" for="promedio" />
+                        <p:inputText id="promedio" value="#{fxaEgresoController.selected.promedio}" title="#{bundle.EditFxaEgresoTitle_promedio}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{fxaEgresoController.selected.idDtra}" title="#{bundle.EditFxaEgresoTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_codDtra}" for="codDtra" />
+                        <p:inputText id="codDtra" value="#{fxaEgresoController.selected.codDtra}" title="#{bundle.EditFxaEgresoTitle_codDtra}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_puestoAmbito}" for="puestoAmbito" />
+                        <p:inputText id="puestoAmbito" value="#{fxaEgresoController.selected.puestoAmbito}" title="#{bundle.EditFxaEgresoTitle_puestoAmbito}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_puestoEspecialidad}" for="puestoEspecialidad" />
+                        <p:inputText id="puestoEspecialidad" value="#{fxaEgresoController.selected.puestoEspecialidad}" title="#{bundle.EditFxaEgresoTitle_puestoEspecialidad}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_promSeccionEgreso}" for="promSeccionEgreso" />
+                        <p:inputText id="promSeccionEgreso" value="#{fxaEgresoController.selected.promSeccionEgreso}" title="#{bundle.EditFxaEgresoTitle_promSeccionEgreso}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_fechaEgreso}" for="fechaEgreso" />
+                        <p:calendar id="fechaEgreso" pattern="dd/MM/yyyy HH:mm:ss" value="#{fxaEgresoController.selected.fechaEgreso}" title="#{bundle.EditFxaEgresoTitle_fechaEgreso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_fechaTitulacion}" for="fechaTitulacion" />
+                        <p:calendar id="fechaTitulacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{fxaEgresoController.selected.fechaTitulacion}" title="#{bundle.EditFxaEgresoTitle_fechaTitulacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{fxaEgresoController.selected.observacion}" title="#{bundle.EditFxaEgresoTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{fxaEgresoController.selected.idCreador}" title="#{bundle.EditFxaEgresoTitle_idCreador}" required="true" requiredMessage="#{bundle.EditFxaEgresoRequiredMessage_idCreador}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{fxaEgresoController.selected.fechaReg}" title="#{bundle.EditFxaEgresoTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditFxaEgresoRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idModegr}" for="idModegr" />
+                        <p:inputText id="idModegr" value="#{fxaEgresoController.selected.idModegr}" title="#{bundle.EditFxaEgresoTitle_idModegr}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idEstado}" for="idEstado" />
+                        <p:inputText id="idEstado" value="#{fxaEgresoController.selected.idEstado}" title="#{bundle.EditFxaEgresoTitle_idEstado}" required="true" requiredMessage="#{bundle.EditFxaEgresoRequiredMessage_idEstado}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idAcper}" for="idAcper" />
+                        <p:inputText id="idAcper" value="#{fxaEgresoController.selected.idAcper}" title="#{bundle.EditFxaEgresoTitle_idAcper}" />
+                        <p:outputLabel value="#{bundle.EditFxaEgresoLabel_idProduc}" for="idProduc" />
+                        <p:inputText id="idProduc" value="#{fxaEgresoController.selected.idProduc}" title="#{bundle.EditFxaEgresoTitle_idProduc}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fxaEgresoController.update}" value="#{bundle.Save}" update="display,:FxaEgresoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FxaEgresoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FxaEgresoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

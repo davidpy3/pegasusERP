@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanillaCreateDlg" widgetVar="PlanillaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlanillaTitle}">
+            <h:form id="PlanillaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="6" rendered="#{planillaController.selected != null}">
+                        <p:outputLabel value="#{bundle.anoEje}" for="planillaPK_anoEje" />
+                        <p:inputText id="planillaPK_anoEje" value="#{planillaController.selected.planillaPK.anoEje}" title="#{bundle.CreatePlanillaTitle_planillaPK_anoEje}" />
+                        <p:outputLabel value="#{bundle.NExpediente}" for="planillaPK_NExpediente" />
+                        <p:inputText id="planillaPK_NExpediente" value="#{planillaController.selected.planillaPK.NExpediente}" title="#{bundle.CreatePlanillaTitle_planillaPK_NExpediente}" />
+                        <p:outputLabel value="#{bundle.mes}" for="mes" />
+                        <p:selectOneMenu style=" width:164px" id="mes" value="#{planillaController.selected.mes}" >
+                            <f:selectItems value="#{mesController.itemsAvailableSelectOne}"
+                                           var="mesItem"
+                                           itemValue="#{mesItem}"
+                                           itemLabel="#{mesItem.mesEje}: #{mesItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.NPlanilla}" for="NPlanilla" />
+                        <p:inputText id="NPlanilla" value="#{planillaController.selected.NPlanilla}" title="#{bundle.CreatePlanillaTitle_NPlanilla}" />
+                        <p:outputLabel value="#{bundle.secFunc}" for="secFunc" />
+                        <p:inputText id="secFunc" value="#{planillaController.selected.secFunc}" title="#{bundle.CreatePlanillaTitle_secFunc}" />
+                        <p:outputLabel value="#{bundle.fuenteFinanc}" for="fuenteFinanc" />
+                        <p:inputText id="fuenteFinanc" value="#{planillaController.selected.fuenteFinanc}" title="#{bundle.CreatePlanillaTitle_fuenteFinanc}" />
+                        <p:outputLabel value="#{bundle.modalidadLaboral}" for="modalidadLaboral" />
+                        <p:selectOneMenu style=" width:164px" id="modalidadLaboral" value="#{planillaController.selected.modalidadLaboral}" >
+                            <f:selectItems value="#{modalidadLaboralController.itemsAvailableSelectOne}"
+                                           var="tipoPlanillaItem"
+                                           itemValue="#{tipoPlanillaItem}"
+                                           itemLabel="#{tipoPlanillaItem.id}: #{tipoPlanillaItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.tipoTrab}" for="tipoTrab" />
+                        <p:inputText id="tipoTrab" value="#{planillaController.selected.tipoTrab}" title="#{bundle.CreatePlanillaTitle_tipoTrab}" />
+                        <p:outputLabel value="#{bundle.trabajos}" for="trabajos" />
+                        <p:inputText id="trabajos" value="#{planillaController.selected.trabajos}" title="#{bundle.CreatePlanillaTitle_trabajos}" />
+                        <p:outputLabel value="#{bundle.fechaExp}" for="fechaExp" />
+                        <p:calendar id="fechaExp" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaController.selected.fechaExp}" title="#{bundle.EditPlanillaTitle_fechaExp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.fechaPlan}" for="fechaPlan" />
+                        <p:calendar id="fechaPlan" pattern="dd/MM/yyyy HH:mm:ss" value="#{planillaController.selected.fechaPlan}" title="#{bundle.EditPlanillaTitle_fechaPlan}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.periodoIni}" for="periodoIni" />
+                        <p:calendar id="periodoIni" pattern="MM/dd/yyyy" value="#{planillaController.selected.periodoIni}" title="#{bundle.EditPlanillaTitle_periodoIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.periodoFin}" for="periodoFin" />
+                        <p:calendar id="periodoFin" pattern="MM/dd/yyyy" value="#{planillaController.selected.periodoFin}" title="#{bundle.EditPlanillaTitle_periodoFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.elaboradoPor}" for="elaboradoPor" />
+                        <p:inputText id="elaboradoPor" value="#{planillaController.selected.elaboradoPor}" title="#{bundle.CreatePlanillaTitle_elaboradoPor}" />
+                        <p:outputLabel value="#{bundle.tareadoPor}" for="tareadoPor" />
+                        <p:inputText id="tareadoPor" value="#{planillaController.selected.tareadoPor}" title="#{bundle.CreatePlanillaTitle_tareadoPor}" />
+                        <p:outputLabel value="#{bundle.observacion}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{planillaController.selected.observaciones}" title="#{bundle.CreatePlanillaTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.estado}" for="estado" />
+                        <p:inputText id="estado" value="#{planillaController.selected.estado}" title="#{bundle.CreatePlanillaTitle_estado}" />
+                        
+                        <p:outputLabel value="#{bundle.tipoPlanilla}" for="tipoPlanilla" />
+                        <p:selectOneMenu style=" width:164px" id="tipoPlanilla" value="#{planillaController.selected.tipoPlanilla}" >
+                            <f:selectItems value="#{tipoPlanillaController.itemsAvailableSelectOne}"
+                                           var="tipoPlanillaItem"
+                                           itemValue="#{tipoPlanillaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planillaController.create}" value="#{bundle.Save}" update="display,:PlanillaListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlanillaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlanillaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscContratosDocEditDlg" widgetVar="EscContratosDocEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscContratosDocTitle}">
+            <h:form id="EscContratosDocEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escContratosDocController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_idCnd}" for="idCnd" />
+                        <p:inputText id="idCnd" value="#{escContratosDocController.selected.idCnd}" title="#{bundle.EditEscContratosDocTitle_idCnd}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_idCnd}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escContratosDocController.selected.fechaIni}" title="#{bundle.EditEscContratosDocTitle_fechaIni}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_fechaIni}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escContratosDocController.selected.fechaFin}" title="#{bundle.EditEscContratosDocTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_fechaFin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escContratosDocController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escContratosDocController.selected.idDtra}" title="#{bundle.EditEscContratosDocTitle_idDtra}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_idDtra}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_horas}" for="horas" />
+                        <p:inputText id="horas" value="#{escContratosDocController.selected.horas}" title="#{bundle.EditEscContratosDocTitle_horas}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_horas}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escContratosDocController.selected.mencion}" title="#{bundle.EditEscContratosDocTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{escContratosDocController.selected.periodo}" title="#{bundle.EditEscContratosDocTitle_periodo}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_escCapDocente}" for="escCapDocente" />
+                        <p:selectOneMenu id="escCapDocente" value="#{escContratosDocController.selected.escCapDocente}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_escCapDocente}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCapDocenteController.itemsAvailableSelectOne}"
+                                           var="escCapDocenteItem"
+                                           itemValue="#{escCapDocenteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscContratosDocLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escContratosDocController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscContratosDocRequiredMessage_idEsc}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escContratosDocController.update}" value="#{bundle.Save}" update="display,:EscContratosDocListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscContratosDocEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscContratosDocEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

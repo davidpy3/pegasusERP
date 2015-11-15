@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPlanillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <style>
+                .numberSpinner input{text-align: center}
+            </style>
+            <h:form id="PlanillaListForm">
+                <p:panel  id="container" header="#{bundle.ListPlanillaTitle}">
+                    <p:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.anoEje}:"/>
+                        <p:spinner size="12" styleClass="numberSpinner" min="2000" max="2100" value="#{planillaController.params['anoEje']}">
+                            <p:ajax listener="#{planillaController.ajax}" update="container"/>
+                        </p:spinner>
+                        <h:outputLabel value="#{bundle.mes}:"/>
+                        <p:selectOneMenu style=" width:164px" value="#{planillaController.params['mes']}">
+                            <f:selectItem itemValue="0" itemLabel="TODOS"/>
+                            <f:selectItems value="#{mesController.items}" var="v" itemValue="#{v.mesEje}" itemLabel="#{v.mesEje}: #{v.nombre}"/> 
+                            <p:ajax listener="#{planillaController.ajax}" update="container"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+
+                    <p:dataTable id="datalist" value="#{planillaController.items}" var="item"
+                                 selection="#{planillaController.selectedList}"
+                                 paginator="true"  
+                                 rowKey="#{item.key}" 
+                                 rows="20" 
+                                 rowsPerPageTemplate="20,40,60"
+                                 >
+                        <f:facet name="header">
+                            <p:commandButton id="siafButton" icon="ui-icon-gear"   value="#{bundle.Siaf}" actionListener="#{planillaController.siaf}"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{planillaController.prepareCreate}" update=":PlanillaCreateForm" oncomplete="PF('PlanillaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton" icon="ui-icon-search" value="#{bundle.View}" update=":PlanillaViewForm" oncomplete="PF('PlanillaViewDialog').show()" disabled="#{empty planillaController.selected}"/>
+                            <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlanillaEditForm" oncomplete="PF('PlanillaEditDialog').show()" disabled="#{empty planillaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{planillaController.destroy}" update=":growl,datalist" disabled="#{empty planillaController.selected}"/>
+                            <p:commandButton id="exportarButton" icon="ui-icon-trash"  value="Exportar" ajax="false" disabled="#{empty planillaController.selected}">
+                                <p:fileDownload value="#{planillaController.download()}" />
+                            </p:commandButton>
+                        </f:facet>
+                        <p:ajax event="rowSelect" process="datalist" update="exportarButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" process="datalist" update="exportarButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="toggleSelect" process="datalist" update="exportarButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelectCheckbox" process="datalist" update="exportarButton createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselectCheckbox" process="datalist" update="exportarButton createButton viewButton editButton deleteButton"/>
+                        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                        <p:column width="65">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.NPlanilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.NPlanilla}"/>
+                        </p:column>
+                        <p:column width="31">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Mod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modalidadLaboral.abrev}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.tipoPlanilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoPlanilla.nombrePlanilla}"/>
+                        </p:column>
+                        <p:column width="50">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.entidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sector.abrev}"/>
+                        </p:column>
+                        <p:column width="40">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.secFunc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.secFunc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.meta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.meta.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fuenteFinanc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fuenteFinanc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.tipoTrab}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoTrab}"/>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fechaExp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaExp}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="75">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.fechaPlan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPlan}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="65">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.elaboradoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.elaboradoPor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{planillaController.getEstado(item.estado)}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionVentaCreateDlg" widgetVar="ComOperacionVentaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOperacionVentaTitle}">
+            <h:form id="ComOperacionVentaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionVentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionVentaController.selected.idOperacion}" title="#{bundle.CreateComOperacionVentaTitle_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_idDirVendedor}" for="idDirVendedor" />
+                        <p:inputText id="idDirVendedor" value="#{comOperacionVentaController.selected.idDirVendedor}" title="#{bundle.CreateComOperacionVentaTitle_idDirVendedor}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_idDirCliente}" for="idDirCliente" />
+                        <p:inputText id="idDirCliente" value="#{comOperacionVentaController.selected.idDirCliente}" title="#{bundle.CreateComOperacionVentaTitle_idDirCliente}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_idDirCliente}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_tasaImpuesto}" for="tasaImpuesto" />
+                        <p:inputText id="tasaImpuesto" value="#{comOperacionVentaController.selected.tasaImpuesto}" title="#{bundle.CreateComOperacionVentaTitle_tasaImpuesto}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_tasaImpuesto}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_subTotal}" for="subTotal" />
+                        <p:inputText id="subTotal" value="#{comOperacionVentaController.selected.subTotal}" title="#{bundle.CreateComOperacionVentaTitle_subTotal}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_subTotal}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_impuesto}" for="impuesto" />
+                        <p:inputText id="impuesto" value="#{comOperacionVentaController.selected.impuesto}" title="#{bundle.CreateComOperacionVentaTitle_impuesto}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_impuesto}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{comOperacionVentaController.selected.total}" title="#{bundle.CreateComOperacionVentaTitle_total}" required="true" requiredMessage="#{bundle.CreateComOperacionVentaRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionVentaLabel_pagado}" for="pagado" />
+                        <p:inputText id="pagado" value="#{comOperacionVentaController.selected.pagado}" title="#{bundle.CreateComOperacionVentaTitle_pagado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionVentaController.create}" value="#{bundle.Save}" update="display,:ComOperacionVentaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOperacionVentaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionVentaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

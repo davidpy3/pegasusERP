@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdenDetViewDlg" widgetVar="OrdenDetViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOrdenDetTitle}">
+            <h:form id="OrdenDetViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordenDetController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_ordenDetPK_item}"/>
+                        <h:outputText value="#{ordenDetController.selected.ordenDetPK.item}" title="#{bundle.ViewOrdenDetTitle_ordenDetPK_item}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_numDoc}"/>
+                        <h:outputText value="#{ordenDetController.selected.numDoc}" title="#{bundle.ViewOrdenDetTitle_numDoc}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_especifica}"/>
+                        <h:outputText value="#{ordenDetController.selected.especifica}" title="#{bundle.ViewOrdenDetTitle_especifica}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_cantidad}"/>
+                        <h:outputText value="#{ordenDetController.selected.cantidad}" title="#{bundle.ViewOrdenDetTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_saldo}"/>
+                        <h:outputText value="#{ordenDetController.selected.saldo}" title="#{bundle.ViewOrdenDetTitle_saldo}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_factor}"/>
+                        <h:outputText value="#{ordenDetController.selected.factor}" title="#{bundle.ViewOrdenDetTitle_factor}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_salida}"/>
+                        <h:outputText value="#{ordenDetController.selected.salida}" title="#{bundle.ViewOrdenDetTitle_salida}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_idItem}"/>
+                        <h:outputText value="#{ordenDetController.selected.idItem}" title="#{bundle.ViewOrdenDetTitle_idItem}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_unidad}"/>
+                        <h:outputText value="#{ordenDetController.selected.unidad}" title="#{bundle.ViewOrdenDetTitle_unidad}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_descInsumo}"/>
+                        <h:outputText value="#{ordenDetController.selected.descInsumo}" title="#{bundle.ViewOrdenDetTitle_descInsumo}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_descCalidad}"/>
+                        <h:outputText value="#{ordenDetController.selected.descCalidad}" title="#{bundle.ViewOrdenDetTitle_descCalidad}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_precioAdj}"/>
+                        <h:outputText value="#{ordenDetController.selected.precioAdj}" title="#{bundle.ViewOrdenDetTitle_precioAdj}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_cantIng}"/>
+                        <h:outputText value="#{ordenDetController.selected.cantIng}" title="#{bundle.ViewOrdenDetTitle_cantIng}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_temporal}"/>
+                        <h:outputText value="#{ordenDetController.selected.temporal}" title="#{bundle.ViewOrdenDetTitle_temporal}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_unidadAlm}"/>
+                        <h:outputText value="#{ordenDetController.selected.unidadAlm}" title="#{bundle.ViewOrdenDetTitle_unidadAlm}"/>
+                        <h:outputText value="#{bundle.ViewOrdenDetLabel_orden}"/>
+                        <h:outputText value="#{ordenDetController.selected.orden}" title="#{bundle.ViewOrdenDetTitle_orden}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OrdenDetViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JudicialObraViewDlg" widgetVar="JudicialObraViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewJudicialObraTitle}">
+            <h:form id="JudicialObraViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{judicialObraController.selected != null}">
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_judicialObraPK_docudem}"/>
+                        <h:outputText value="#{judicialObraController.selected.judicialObraPK.docudem}" title="#{bundle.ViewJudicialObraTitle_judicialObraPK_docudem}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_judicialObraPK_docuiden}"/>
+                        <h:outputText value="#{judicialObraController.selected.judicialObraPK.docuiden}" title="#{bundle.ViewJudicialObraTitle_judicialObraPK_docuiden}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_nomDeman}"/>
+                        <h:outputText value="#{judicialObraController.selected.nomDeman}" title="#{bundle.ViewJudicialObraTitle_nomDeman}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_descJudi}"/>
+                        <h:outputText value="#{judicialObraController.selected.descJudi}" title="#{bundle.ViewJudicialObraTitle_descJudi}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_porcJudi}"/>
+                        <h:outputText value="#{judicialObraController.selected.porcJudi}" title="#{bundle.ViewJudicialObraTitle_porcJudi}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_tipoAbono}"/>
+                        <h:outputText value="#{judicialObraController.selected.tipoAbono}" title="#{bundle.ViewJudicialObraTitle_tipoAbono}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_cuentaAbono}"/>
+                        <h:outputText value="#{judicialObraController.selected.cuentaAbono}" title="#{bundle.ViewJudicialObraTitle_cuentaAbono}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_indDesc}"/>
+                        <h:outputText value="#{judicialObraController.selected.indDesc}" title="#{bundle.ViewJudicialObraTitle_indDesc}"/>
+                        <h:outputText value="#{bundle.ViewJudicialObraLabel_estado}"/>
+                        <h:outputText value="#{judicialObraController.selected.estado}" title="#{bundle.ViewJudicialObraTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="JudicialObraViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

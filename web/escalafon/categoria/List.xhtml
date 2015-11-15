@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEscCategoriaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EscCategoriaListForm">
+                <p:panel header="#{bundle.ListEscCategoriaTitle}">
+                    <p:dataTable id="datalist" value="#{escCategoriaController.items}" var="item"
+                                 selectionMode="single" selection="#{escCategoriaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idCategoria}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_idCategoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCategoria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_categoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_dedicacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dedicacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_abrevCat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.abrevCat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_abrevDed}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.abrevDed}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEscCategoriaTitle_idCat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCat}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{escCategoriaController.prepareCreate}" update=":EscCategoriaCreateForm" oncomplete="PF('EscCategoriaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EscCategoriaViewForm" oncomplete="PF('EscCategoriaViewDialog').show()" disabled="#{empty escCategoriaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EscCategoriaEditForm" oncomplete="PF('EscCategoriaEditDialog').show()" disabled="#{empty escCategoriaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{escCategoriaController.destroy}" update=":growl,datalist" disabled="#{empty escCategoriaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

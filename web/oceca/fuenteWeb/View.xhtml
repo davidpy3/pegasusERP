@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteWebViewDlg" widgetVar="SgcFuenteWebViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcFuenteWebTitle}">
+            <h:form id="SgcFuenteWebViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteWebController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcFuenteWebLabel_idRefweb}"/>
+                        <h:outputText value="#{sgcFuenteWebController.selected.idRefweb}" title="#{bundle.ViewSgcFuenteWebTitle_idRefweb}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteWebLabel_titulo}"/>
+                        <h:outputText value="#{sgcFuenteWebController.selected.titulo}" title="#{bundle.ViewSgcFuenteWebTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteWebLabel_direccion}"/>
+                        <h:outputText value="#{sgcFuenteWebController.selected.direccion}" title="#{bundle.ViewSgcFuenteWebTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewSgcFuenteWebLabel_idFuente}"/>
+                        <h:outputText value="#{sgcFuenteWebController.selected.idFuente}" title="#{bundle.ViewSgcFuenteWebTitle_idFuente}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcFuenteWebViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

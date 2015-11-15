@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle0.ViewUsuarioTitle}">
+            <h:form id="UsuarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_usuarioPK_anoEje}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioPK.anoEje}" title="#{bundle0.ViewUsuarioTitle_usuarioPK_anoEje}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_usuarioPK_dni}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioPK.dni}" title="#{bundle0.ViewUsuarioTitle_usuarioPK_dni}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_usuario}"/>
+                        <h:outputText value="#{usuarioController.selected.usuario}" title="#{bundle0.ViewUsuarioTitle_usuario}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_clave}"/>
+                        <h:outputText value="#{usuarioController.selected.clave}" title="#{bundle0.ViewUsuarioTitle_clave}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_IDcargo}"/>
+                        <h:outputText value="#{usuarioController.selected.IDcargo}" title="#{bundle0.ViewUsuarioTitle_IDcargo}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_anio}"/>
+                        <h:outputText value="#{usuarioController.selected.anio}" title="#{bundle0.ViewUsuarioTitle_anio}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_obra}"/>
+                        <p:selectBooleanCheckbox value="#{usuarioController.selected.obra}" disabled="true"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_actProy}"/>
+                        <h:outputText value="#{usuarioController.selected.actProy}" title="#{bundle0.ViewUsuarioTitle_actProy}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_secFunc}"/>
+                        <h:outputText value="#{usuarioController.selected.secFunc}" title="#{bundle0.ViewUsuarioTitle_secFunc}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_estado}"/>
+                        <h:outputText value="#{usuarioController.selected.estado}" title="#{bundle0.ViewUsuarioTitle_estado}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_autoriza}"/>
+                        <h:outputText value="#{usuarioController.selected.autoriza}" title="#{bundle0.ViewUsuarioTitle_autoriza}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_localHost}"/>
+                        <h:outputText value="#{usuarioController.selected.localHost}" title="#{bundle0.ViewUsuarioTitle_localHost}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_localIp}"/>
+                        <h:outputText value="#{usuarioController.selected.localIp}" title="#{bundle0.ViewUsuarioTitle_localIp}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_fecHora}"/>
+                        <h:outputText value="#{usuarioController.selected.fecHora}" title="#{bundle0.ViewUsuarioTitle_fecHora}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_ventana}"/>
+                        <h:outputText value="#{usuarioController.selected.ventana}" title="#{bundle0.ViewUsuarioTitle_ventana}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PConfig}"/>
+                        <h:outputText value="#{usuarioController.selected.PConfig}" title="#{bundle0.ViewUsuarioTitle_PConfig}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PPresu}"/>
+                        <h:outputText value="#{usuarioController.selected.PPresu}" title="#{bundle0.ViewUsuarioTitle_PPresu}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PReque}"/>
+                        <h:outputText value="#{usuarioController.selected.PReque}" title="#{bundle0.ViewUsuarioTitle_PReque}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PAltad}"/>
+                        <h:outputText value="#{usuarioController.selected.PAltad}" title="#{bundle0.ViewUsuarioTitle_PAltad}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PAbast}"/>
+                        <h:outputText value="#{usuarioController.selected.PAbast}" title="#{bundle0.ViewUsuarioTitle_PAbast}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PAdqui}"/>
+                        <h:outputText value="#{usuarioController.selected.PAdqui}" title="#{bundle0.ViewUsuarioTitle_PAdqui}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PAlmac}"/>
+                        <h:outputText value="#{usuarioController.selected.PAlmac}" title="#{bundle0.ViewUsuarioTitle_PAlmac}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PPerso}"/>
+                        <h:outputText value="#{usuarioController.selected.PPerso}" title="#{bundle0.ViewUsuarioTitle_PPerso}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PPaac}"/>
+                        <h:outputText value="#{usuarioController.selected.PPaac}" title="#{bundle0.ViewUsuarioTitle_PPaac}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PConta}"/>
+                        <h:outputText value="#{usuarioController.selected.PConta}" title="#{bundle0.ViewUsuarioTitle_PConta}"/>
+                        <h:outputText value="#{bundle0.ViewUsuarioLabel_PPatri}"/>
+                        <h:outputText value="#{usuarioController.selected.PPatri}" title="#{bundle0.ViewUsuarioTitle_PPatri}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle0.Close}" onclick="UsuarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

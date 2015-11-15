@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PedidoViewDlg" widgetVar="PedidoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPedidoTitle}">
+            <h:form id="PedidoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pedidoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPedidoLabel_idPedido}"/>
+                        <h:outputText value="#{pedidoController.selected.idPedido}" title="#{bundle.ViewPedidoTitle_idPedido}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_fecha}"/>
+                        <h:outputText value="#{pedidoController.selected.fecha}" title="#{bundle.ViewPedidoTitle_fecha}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_fechaPago}"/>
+                        <h:outputText value="#{pedidoController.selected.fechaPago}" title="#{bundle.ViewPedidoTitle_fechaPago}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_descuento}"/>
+                        <h:outputText value="#{pedidoController.selected.descuento}" title="#{bundle.ViewPedidoTitle_descuento}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_estado}"/>
+                        <h:outputText value="#{pedidoController.selected.estado}" title="#{bundle.ViewPedidoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_serie}"/>
+                        <h:outputText value="#{pedidoController.selected.serie}" title="#{bundle.ViewPedidoTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_numero}"/>
+                        <h:outputText value="#{pedidoController.selected.numero}" title="#{bundle.ViewPedidoTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_albaran}"/>
+                        <h:outputText value="#{pedidoController.selected.albaran}" title="#{bundle.ViewPedidoTitle_albaran}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_total}"/>
+                        <h:outputText value="#{pedidoController.selected.total}" title="#{bundle.ViewPedidoTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_idAlmacen}"/>
+                        <h:outputText value="#{pedidoController.selected.idAlmacen}" title="#{bundle.ViewPedidoTitle_idAlmacen}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_cliente}"/>
+                        <h:outputText value="#{pedidoController.selected.cliente}" title="#{bundle.ViewPedidoTitle_cliente}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_nick}"/>
+                        <h:outputText value="#{pedidoController.selected.nick}" title="#{bundle.ViewPedidoTitle_nick}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_idTipoPago}"/>
+                        <h:outputText value="#{pedidoController.selected.idTipoPago}" title="#{bundle.ViewPedidoTitle_idTipoPago}"/>
+                        <h:outputText value="#{bundle.ViewPedidoLabel_tipoDoc}"/>
+                        <h:outputText value="#{pedidoController.selected.tipoDoc}" title="#{bundle.ViewPedidoTitle_tipoDoc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PedidoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

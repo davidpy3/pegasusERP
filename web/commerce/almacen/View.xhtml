@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SonAlmacenViewDlg" widgetVar="SonAlmacenViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSonAlmacenTitle}">
+            <h:form id="SonAlmacenViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sonAlmacenController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_idAlmacen}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.idAlmacen}" title="#{bundle.ViewSonAlmacenTitle_idAlmacen}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_nombre}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.nombre}" title="#{bundle.ViewSonAlmacenTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_direccion}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.direccion}" title="#{bundle.ViewSonAlmacenTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_estado}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.estado}" title="#{bundle.ViewSonAlmacenTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_ciudad}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.ciudad}" title="#{bundle.ViewSonAlmacenTitle_ciudad}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_razonSocial}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.razonSocial}" title="#{bundle.ViewSonAlmacenTitle_razonSocial}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_ruc}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.ruc}" title="#{bundle.ViewSonAlmacenTitle_ruc}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_cuenta}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.cuenta}" title="#{bundle.ViewSonAlmacenTitle_cuenta}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_telefono1}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.telefono1}" title="#{bundle.ViewSonAlmacenTitle_telefono1}"/>
+                        <h:outputText value="#{bundle.ViewSonAlmacenLabel_telefono2}"/>
+                        <h:outputText value="#{sonAlmacenController.selected.telefono2}" title="#{bundle.ViewSonAlmacenTitle_telefono2}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SonAlmacenViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

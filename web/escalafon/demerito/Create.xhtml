@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscDemeritosCreateDlg" widgetVar="EscDemeritosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscDemeritosTitle}">
+            <h:form id="EscDemeritosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escDemeritosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{escDemeritosController.selected.id}" title="#{bundle.CreateEscDemeritosTitle_id}" required="true" requiredMessage="#{bundle.CreateEscDemeritosRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escDemeritosController.selected.idDtra}" title="#{bundle.CreateEscDemeritosTitle_idDtra}" required="true" requiredMessage="#{bundle.CreateEscDemeritosRequiredMessage_idDtra}"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escDemeritosController.selected.mencion}" title="#{bundle.CreateEscDemeritosTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_diasSancion}" for="diasSancion" />
+                        <p:inputText id="diasSancion" value="#{escDemeritosController.selected.diasSancion}" title="#{bundle.CreateEscDemeritosTitle_diasSancion}" />
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_fechaIni}" for="fechaIni" />
+                        <p:calendar id="fechaIni" pattern="MM/dd/yyyy" value="#{escDemeritosController.selected.fechaIni}" title="#{bundle.EditEscDemeritosTitle_fechaIni}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{escDemeritosController.selected.fechaFin}" title="#{bundle.EditEscDemeritosTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_fechaDem}" for="fechaDem" />
+                        <p:calendar id="fechaDem" pattern="MM/dd/yyyy" value="#{escDemeritosController.selected.fechaDem}" title="#{bundle.EditEscDemeritosTitle_fechaDem}" required="true" requiredMessage="#{bundle.EditEscDemeritosRequiredMessage_fechaDem}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{escDemeritosController.selected.activo}" required="true" requiredMessage="#{bundle.EditEscDemeritosRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{escDemeritosController.selected.observacion}" title="#{bundle.CreateEscDemeritosTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_idEsc}" for="idEsc" />
+                        <p:selectOneMenu id="idEsc" value="#{escDemeritosController.selected.idEsc}" required="true" requiredMessage="#{bundle.EditEscDemeritosRequiredMessage_idEsc}">
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="idEscItem"
+                                           itemValue="#{idEscItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_idTf}" for="idTf" />
+                        <p:selectOneMenu id="idTf" value="#{escDemeritosController.selected.idTf}" required="true" requiredMessage="#{bundle.EditEscDemeritosRequiredMessage_idTf}">
+                            <f:selectItems value="#{escTipoFaltaController.itemsAvailableSelectOne}"
+                                           var="idTfItem"
+                                           itemValue="#{idTfItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscDemeritosLabel_idTs}" for="idTs" />
+                        <p:selectOneMenu id="idTs" value="#{escDemeritosController.selected.idTs}" required="true" requiredMessage="#{bundle.EditEscDemeritosRequiredMessage_idTs}">
+                            <f:selectItems value="#{escTipoSancionController.itemsAvailableSelectOne}"
+                                           var="idTsItem"
+                                           itemValue="#{idTsItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escDemeritosController.create}" value="#{bundle.Save}" update="display,:EscDemeritosListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscDemeritosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscDemeritosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

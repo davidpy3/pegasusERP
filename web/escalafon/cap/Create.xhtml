@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscCapCreateDlg" widgetVar="EscCapCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscCapTitle}">
+            <h:form id="EscCapCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escCapController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_escCapPK_idCap}" for="escCapPK_idCap" />
+                        <p:inputText id="escCapPK_idCap" value="#{escCapController.selected.escCapPK.idCap}" title="#{bundle.CreateEscCapTitle_escCapPK_idCap}" required="true" requiredMessage="#{bundle.CreateEscCapRequiredMessage_escCapPK_idCap}"/>
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_escCapPK_idDep}" for="escCapPK_idDep" />
+                        <p:inputText id="escCapPK_idDep" value="#{escCapController.selected.escCapPK.idDep}" title="#{bundle.CreateEscCapTitle_escCapPK_idDep}" required="true" requiredMessage="#{bundle.CreateEscCapRequiredMessage_escCapPK_idDep}"/>
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{escCapController.selected.codigo}" title="#{bundle.CreateEscCapTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{escCapController.selected.cargo}" title="#{bundle.CreateEscCapTitle_cargo}" required="true" requiredMessage="#{bundle.CreateEscCapRequiredMessage_cargo}"/>
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{escCapController.selected.observaciones}" title="#{bundle.CreateEscCapTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_nroCargo}" for="nroCargo" />
+                        <p:inputText id="nroCargo" value="#{escCapController.selected.nroCargo}" title="#{bundle.CreateEscCapTitle_nroCargo}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_totalNecesario}" for="totalNecesario" />
+                        <p:inputText id="totalNecesario" value="#{escCapController.selected.totalNecesario}" title="#{bundle.CreateEscCapTitle_totalNecesario}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_previstos}" for="previstos" />
+                        <p:inputText id="previstos" value="#{escCapController.selected.previstos}" title="#{bundle.CreateEscCapTitle_previstos}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_nombrados}" for="nombrados" />
+                        <p:inputText id="nombrados" value="#{escCapController.selected.nombrados}" title="#{bundle.CreateEscCapTitle_nombrados}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_contratados}" for="contratados" />
+                        <p:inputText id="contratados" value="#{escCapController.selected.contratados}" title="#{bundle.CreateEscCapTitle_contratados}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_vacantes}" for="vacantes" />
+                        <p:inputText id="vacantes" value="#{escCapController.selected.vacantes}" title="#{bundle.CreateEscCapTitle_vacantes}" />
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_idHistCap}" for="idHistCap" />
+                        <p:selectOneMenu id="idHistCap" value="#{escCapController.selected.idHistCap}" >
+                            <f:selectItems value="#{escHistoriaCapController.itemsAvailableSelectOne}"
+                                           var="idHistCapItem"
+                                           itemValue="#{idHistCapItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEscCapLabel_idNivel}" for="idNivel" />
+                        <p:selectOneMenu id="idNivel" value="#{escCapController.selected.idNivel}" >
+                            <f:selectItems value="#{escNivelRemunerativoController.itemsAvailableSelectOne}"
+                                           var="idNivelItem"
+                                           itemValue="#{idNivelItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escCapController.create}" value="#{bundle.Save}" update="display,:EscCapListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscCapCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscCapCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

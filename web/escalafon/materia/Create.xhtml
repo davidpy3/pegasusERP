@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscMateriaCreateDlg" widgetVar="EscMateriaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEscMateriaTitle}">
+            <h:form id="EscMateriaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escMateriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEscMateriaLabel_idMateria}" for="idMateria" />
+                        <p:inputText id="idMateria" value="#{escMateriaController.selected.idMateria}" title="#{bundle.CreateEscMateriaTitle_idMateria}" required="true" requiredMessage="#{bundle.CreateEscMateriaRequiredMessage_idMateria}"/>
+                        <p:outputLabel value="#{bundle.CreateEscMateriaLabel_materia}" for="materia" />
+                        <p:inputText id="materia" value="#{escMateriaController.selected.materia}" title="#{bundle.CreateEscMateriaTitle_materia}" required="true" requiredMessage="#{bundle.CreateEscMateriaRequiredMessage_materia}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escMateriaController.create}" value="#{bundle.Save}" update="display,:EscMateriaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EscMateriaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscMateriaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

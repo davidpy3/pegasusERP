@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComCajaArqueoViewDlg" widgetVar="ComCajaArqueoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComCajaArqueoTitle}">
+            <h:form id="ComCajaArqueoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comCajaArqueoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_idArqueo}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.idArqueo}" title="#{bundle.ViewComCajaArqueoTitle_idArqueo}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_idDir}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.idDir}" title="#{bundle.ViewComCajaArqueoTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_idTerminal}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.idTerminal}" title="#{bundle.ViewComCajaArqueoTitle_idTerminal}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_fechaIni}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.fechaIni}" title="#{bundle.ViewComCajaArqueoTitle_fechaIni}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_fechaFin}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.fechaFin}" title="#{bundle.ViewComCajaArqueoTitle_fechaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_cantidadIni}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.cantidadIni}" title="#{bundle.ViewComCajaArqueoTitle_cantidadIni}"/>
+                        <h:outputText value="#{bundle.ViewComCajaArqueoLabel_cantidadFin}"/>
+                        <h:outputText value="#{comCajaArqueoController.selected.cantidadFin}" title="#{bundle.ViewComCajaArqueoTitle_cantidadFin}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComCajaArqueoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

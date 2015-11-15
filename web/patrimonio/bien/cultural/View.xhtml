@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BienViewDlg" widgetVar="BienViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBienTitle}">
+            <h:form id="BienViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bienController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBienLabel_MBienes0PK_correla}"/>
+                        <h:outputText value="#{bienController.selected.bienPK.correla}" title="#{bundle.ViewBienTitle_MBienes0PK_correla}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_clasifica}"/>
+                        <h:outputText value="#{bienController.selected.clasifica}" title="#{bundle.ViewBienTitle_clasifica}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codlocal}"/>
+                        <h:outputText value="#{bienController.selected.codlocal}" title="#{bundle.ViewBienTitle_codlocal}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codarea}"/>
+                        <h:outputText value="#{bienController.selected.codarea}" title="#{bundle.ViewBienTitle_codarea}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codoficina}"/>
+                        <h:outputText value="#{bienController.selected.codoficina}" title="#{bundle.ViewBienTitle_codoficina}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codambiente}"/>
+                        <h:outputText value="#{bienController.selected.codambiente}" title="#{bundle.ViewBienTitle_codambiente}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codanterior}"/>
+                        <h:outputText value="#{bienController.selected.codanterior}" title="#{bundle.ViewBienTitle_codanterior}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codusuario}"/>
+                        <h:outputText value="#{bienController.selected.codusuario}" title="#{bundle.ViewBienTitle_codusuario}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_tipoCta}"/>
+                        <h:outputText value="#{bienController.selected.tipoCta}" title="#{bundle.ViewBienTitle_tipoCta}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_cuenta}"/>
+                        <h:outputText value="#{bienController.selected.cuenta}" title="#{bundle.ViewBienTitle_cuenta}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_valorlibro}"/>
+                        <h:outputText value="#{bienController.selected.valorlibro}" title="#{bundle.ViewBienTitle_valorlibro}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_valortasa}"/>
+                        <h:outputText value="#{bienController.selected.valortasa}" title="#{bundle.ViewBienTitle_valortasa}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_estado}"/>
+                        <h:outputText value="#{bienController.selected.estado}" title="#{bundle.ViewBienTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_marca}"/>
+                        <h:outputText value="#{bienController.selected.marca}" title="#{bundle.ViewBienTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_modelo}"/>
+                        <h:outputText value="#{bienController.selected.modelo}" title="#{bundle.ViewBienTitle_modelo}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_tipo}"/>
+                        <h:outputText value="#{bienController.selected.tipo}" title="#{bundle.ViewBienTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_color}"/>
+                        <h:outputText value="#{bienController.selected.color}" title="#{bundle.ViewBienTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_serie}"/>
+                        <h:outputText value="#{bienController.selected.serie}" title="#{bundle.ViewBienTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_titulo}"/>
+                        <h:outputText value="#{bienController.selected.titulo}" title="#{bundle.ViewBienTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_edicion}"/>
+                        <h:outputText value="#{bienController.selected.edicion}" title="#{bundle.ViewBienTitle_edicion}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_autor}"/>
+                        <h:outputText value="#{bienController.selected.autor}" title="#{bundle.ViewBienTitle_autor}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_productName}"/>
+                        <h:outputText value="#{bienController.selected.productName}" title="#{bundle.ViewBienTitle_productName}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_productKey}"/>
+                        <h:outputText value="#{bienController.selected.productKey}" title="#{bundle.ViewBienTitle_productKey}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_vigenciaDesde}"/>
+                        <h:outputText value="#{bienController.selected.vigenciaDesde}" title="#{bundle.ViewBienTitle_vigenciaDesde}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_vigenciaHasta}"/>
+                        <h:outputText value="#{bienController.selected.vigenciaHasta}" title="#{bundle.ViewBienTitle_vigenciaHasta}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_nummotor}"/>
+                        <h:outputText value="#{bienController.selected.nummotor}" title="#{bundle.ViewBienTitle_nummotor}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_numchasis}"/>
+                        <h:outputText value="#{bienController.selected.numchasis}" title="#{bundle.ViewBienTitle_numchasis}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_año}"/>
+                        <h:outputText value="#{bienController.selected.año}" title="#{bundle.ViewBienTitle_año}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_dimension}"/>
+                        <h:outputText value="#{bienController.selected.dimension}" title="#{bundle.ViewBienTitle_dimension}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_raza}"/>
+                        <h:outputText value="#{bienController.selected.raza}" title="#{bundle.ViewBienTitle_raza}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_especie}"/>
+                        <h:outputText value="#{bienController.selected.especie}" title="#{bundle.ViewBienTitle_especie}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_otros}"/>
+                        <h:outputText value="#{bienController.selected.otros}" title="#{bundle.ViewBienTitle_otros}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecReg}"/>
+                        <h:outputText value="#{bienController.selected.fecReg}" title="#{bundle.ViewBienTitle_fecReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_placa}"/>
+                        <h:outputText value="#{bienController.selected.placa}" title="#{bundle.ViewBienTitle_placa}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_edad}"/>
+                        <h:outputText value="#{bienController.selected.edad}" title="#{bundle.ViewBienTitle_edad}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_pais}"/>
+                        <h:outputText value="#{bienController.selected.pais}" title="#{bundle.ViewBienTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_condicion}"/>
+                        <h:outputText value="#{bienController.selected.condicion}" title="#{bundle.ViewBienTitle_condicion}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecAct}"/>
+                        <h:outputText value="#{bienController.selected.fecAct}" title="#{bundle.ViewBienTitle_fecAct}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_asegurado}"/>
+                        <h:outputText value="#{bienController.selected.asegurado}" title="#{bundle.ViewBienTitle_asegurado}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_estBien}"/>
+                        <h:outputText value="#{bienController.selected.estBien}" title="#{bundle.ViewBienTitle_estBien}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_flgCausal}"/>
+                        <h:outputText value="#{bienController.selected.flgCausal}" title="#{bundle.ViewBienTitle_flgCausal}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_resolBaja}"/>
+                        <h:outputText value="#{bienController.selected.resolBaja}" title="#{bundle.ViewBienTitle_resolBaja}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecBaja}"/>
+                        <h:outputText value="#{bienController.selected.fecBaja}" title="#{bundle.ViewBienTitle_fecBaja}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_userBaja}"/>
+                        <h:outputText value="#{bienController.selected.userBaja}" title="#{bundle.ViewBienTitle_userBaja}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_flgActo}"/>
+                        <h:outputText value="#{bienController.selected.flgActo}" title="#{bundle.ViewBienTitle_flgActo}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_resolDisp}"/>
+                        <h:outputText value="#{bienController.selected.resolDisp}" title="#{bundle.ViewBienTitle_resolDisp}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecDisp}"/>
+                        <h:outputText value="#{bienController.selected.fecDisp}" title="#{bundle.ViewBienTitle_fecDisp}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_causalElim}"/>
+                        <h:outputText value="#{bienController.selected.causalElim}" title="#{bundle.ViewBienTitle_causalElim}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fechaElim}"/>
+                        <h:outputText value="#{bienController.selected.fechaElim}" title="#{bundle.ViewBienTitle_fechaElim}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_userElim}"/>
+                        <h:outputText value="#{bienController.selected.userElim}" title="#{bundle.ViewBienTitle_userElim}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_estGestion}"/>
+                        <h:outputText value="#{bienController.selected.estGestion}" title="#{bundle.ViewBienTitle_estGestion}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_resolAfec}"/>
+                        <h:outputText value="#{bienController.selected.resolAfec}" title="#{bundle.ViewBienTitle_resolAfec}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecAfec}"/>
+                        <h:outputText value="#{bienController.selected.fecAfec}" title="#{bundle.ViewBienTitle_fecAfec}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecVafec}"/>
+                        <h:outputText value="#{bienController.selected.fecVafec}" title="#{bundle.ViewBienTitle_fecVafec}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_entAfec}"/>
+                        <h:outputText value="#{bienController.selected.entAfec}" title="#{bundle.ViewBienTitle_entAfec}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_resolArre}"/>
+                        <h:outputText value="#{bienController.selected.resolArre}" title="#{bundle.ViewBienTitle_resolArre}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecArre}"/>
+                        <h:outputText value="#{bienController.selected.fecArre}" title="#{bundle.ViewBienTitle_fecArre}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_fecVarre}"/>
+                        <h:outputText value="#{bienController.selected.fecVarre}" title="#{bundle.ViewBienTitle_fecVarre}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBienLabel_entArre}"/>
+                        <h:outputText value="#{bienController.selected.entArre}" title="#{bundle.ViewBienTitle_entArre}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_docAlta}"/>
+                        <h:outputText value="#{bienController.selected.docAlta}" title="#{bundle.ViewBienTitle_docAlta}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_userAlta}"/>
+                        <h:outputText value="#{bienController.selected.userAlta}" title="#{bundle.ViewBienTitle_userAlta}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_docBaja}"/>
+                        <h:outputText value="#{bienController.selected.docBaja}" title="#{bundle.ViewBienTitle_docBaja}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_flgEstado}"/>
+                        <h:outputText value="#{bienController.selected.flgEstado}" title="#{bundle.ViewBienTitle_flgEstado}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_selec}"/>
+                        <h:outputText value="#{bienController.selected.selec}" title="#{bundle.ViewBienTitle_selec}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_sbn}"/>
+                        <h:outputText value="#{bienController.selected.sbn}" title="#{bundle.ViewBienTitle_sbn}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_anoOrden}"/>
+                        <h:outputText value="#{bienController.selected.anoOrden}" title="#{bundle.ViewBienTitle_anoOrden}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_NOrden}"/>
+                        <h:outputText value="#{bienController.selected.NOrden}" title="#{bundle.ViewBienTitle_NOrden}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_tipoOrden}"/>
+                        <h:outputText value="#{bienController.selected.tipoOrden}" title="#{bundle.ViewBienTitle_tipoOrden}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_funcionario}"/>
+                        <h:outputText value="#{bienController.selected.funcionario}" title="#{bundle.ViewBienTitle_funcionario}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_srp}"/>
+                        <h:outputText value="#{bienController.selected.srp}" title="#{bundle.ViewBienTitle_srp}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_tasado}"/>
+                        <h:outputText value="#{bienController.selected.tasado}" title="#{bundle.ViewBienTitle_tasado}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_NNotacargo}"/>
+                        <h:outputText value="#{bienController.selected.NNotacargo}" title="#{bundle.ViewBienTitle_NNotacargo}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codPadre}"/>
+                        <h:outputText value="#{bienController.selected.codPadre}" title="#{bundle.ViewBienTitle_codPadre}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codMadre}"/>
+                        <h:outputText value="#{bienController.selected.codMadre}" title="#{bundle.ViewBienTitle_codMadre}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_sitBinv}"/>
+                        <h:outputText value="#{bienController.selected.sitBinv}" title="#{bundle.ViewBienTitle_sitBinv}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_valoradq}"/>
+                        <h:outputText value="#{bienController.selected.valoradq}" title="#{bundle.ViewBienTitle_valoradq}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_entDisp}"/>
+                        <h:outputText value="#{bienController.selected.entDisp}" title="#{bundle.ViewBienTitle_entDisp}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_matricula}"/>
+                        <h:outputText value="#{bienController.selected.matricula}" title="#{bundle.ViewBienTitle_matricula}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_anhoFab}"/>
+                        <h:outputText value="#{bienController.selected.anhoFab}" title="#{bundle.ViewBienTitle_anhoFab}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_longitud}"/>
+                        <h:outputText value="#{bienController.selected.longitud}" title="#{bundle.ViewBienTitle_longitud}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_altura}"/>
+                        <h:outputText value="#{bienController.selected.altura}" title="#{bundle.ViewBienTitle_altura}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_ancho}"/>
+                        <h:outputText value="#{bienController.selected.ancho}" title="#{bundle.ViewBienTitle_ancho}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_codbienAux}"/>
+                        <h:outputText value="#{bienController.selected.codbienAux}" title="#{bundle.ViewBienTitle_codbienAux}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_correlaAux}"/>
+                        <h:outputText value="#{bienController.selected.correlaAux}" title="#{bundle.ViewBienTitle_correlaAux}"/>
+                        <h:outputText value="#{bundle.ViewBienLabel_tipobien}"/>
+                        <h:outputText value="#{bienController.selected.tipoBien}" title="#{bundle.ViewBienTitle_tipobien}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BienViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

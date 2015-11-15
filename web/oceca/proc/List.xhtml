@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSgcProcTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SgcProcListForm">
+                <p:panel header="#{bundle.ListSgcProcTitle}">
+                    <p:dataTable id="datalist" value="#{sgcProcController.items}" var="item"
+                                 selectionMode="single" selection="#{sgcProcController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idProc}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idProc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idTipoproc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoproc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_proceso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proceso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idDoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDoc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idDir}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDir}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idDirDoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDirDoc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idDepAdministra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDepAdministra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idDep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDep}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_idCap}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCap}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_depResponsable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.depResponsable}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_meta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.meta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_baseLegal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.baseLegal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_requisitos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_disposicion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.disposicion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_creador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.creador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_responsabilidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsabilidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_otrasDep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otrasDep}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_documentosGenerados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documentosGenerados}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_clase}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clase}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_nivel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivel}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSgcProcTitle_enlace}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.enlace}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{sgcProcController.prepareCreate}" update=":SgcProcCreateForm" oncomplete="PF('SgcProcCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SgcProcViewForm" oncomplete="PF('SgcProcViewDialog').show()" disabled="#{empty sgcProcController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SgcProcEditForm" oncomplete="PF('SgcProcEditDialog').show()" disabled="#{empty sgcProcController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{sgcProcController.destroy}" update=":growl,datalist" disabled="#{empty sgcProcController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOperacionCreateDlg" widgetVar="ComOperacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComOperacionTitle}">
+            <h:form id="ComOperacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOperacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idOperacion}" for="idOperacion" />
+                        <p:inputText id="idOperacion" value="#{comOperacionController.selected.idOperacion}" title="#{bundle.CreateComOperacionTitle_idOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionRequiredMessage_idOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idTipoOperacion}" for="idTipoOperacion" />
+                        <p:inputText id="idTipoOperacion" value="#{comOperacionController.selected.idTipoOperacion}" title="#{bundle.CreateComOperacionTitle_idTipoOperacion}" required="true" requiredMessage="#{bundle.CreateComOperacionRequiredMessage_idTipoOperacion}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{comOperacionController.selected.idDep}" title="#{bundle.CreateComOperacionTitle_idDep}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idTerminal}" for="idTerminal" />
+                        <p:inputText id="idTerminal" value="#{comOperacionController.selected.idTerminal}" title="#{bundle.CreateComOperacionTitle_idTerminal}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_correlativo}" for="correlativo" />
+                        <p:inputText id="correlativo" value="#{comOperacionController.selected.correlativo}" title="#{bundle.CreateComOperacionTitle_correlativo}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idTipoDocumento}" for="idTipoDocumento" />
+                        <p:inputText id="idTipoDocumento" value="#{comOperacionController.selected.idTipoDocumento}" title="#{bundle.CreateComOperacionTitle_idTipoDocumento}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{comOperacionController.selected.serie}" title="#{bundle.CreateComOperacionTitle_serie}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{comOperacionController.selected.numero}" title="#{bundle.CreateComOperacionTitle_numero}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idDirUpdate}" for="idDirUpdate" />
+                        <p:inputText id="idDirUpdate" value="#{comOperacionController.selected.idDirUpdate}" title="#{bundle.CreateComOperacionTitle_idDirUpdate}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idDepDestino}" for="idDepDestino" />
+                        <p:inputText id="idDepDestino" value="#{comOperacionController.selected.idDepDestino}" title="#{bundle.CreateComOperacionTitle_idDepDestino}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{comOperacionController.selected.observacion}" title="#{bundle.CreateComOperacionTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{comOperacionController.selected.fechaReg}" title="#{bundle.EditComOperacionTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditComOperacionRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{comOperacionController.selected.estado}" title="#{bundle.CreateComOperacionTitle_estado}" required="true" requiredMessage="#{bundle.CreateComOperacionRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_documento}" for="documento" />
+                        <p:inputText id="documento" value="#{comOperacionController.selected.documento}" title="#{bundle.CreateComOperacionTitle_documento}" />
+                        <p:outputLabel value="#{bundle.CreateComOperacionLabel_idModalidad}" for="idModalidad" />
+                        <p:inputText id="idModalidad" value="#{comOperacionController.selected.idModalidad}" title="#{bundle.CreateComOperacionTitle_idModalidad}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comOperacionController.create}" value="#{bundle.Save}" update="display,:ComOperacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComOperacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComOperacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

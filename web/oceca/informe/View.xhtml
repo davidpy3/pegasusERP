@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SvaInformeViewDlg" widgetVar="SvaInformeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSvaInformeTitle}">
+            <h:form id="SvaInformeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{svaInformeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idAutoinfo}"/>
+                        <h:outputText value="#{svaInformeController.selected.idAutoinfo}" title="#{bundle.ViewSvaInformeTitle_idAutoinfo}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idAutoevaluacion}"/>
+                        <h:outputText value="#{svaInformeController.selected.idAutoevaluacion}" title="#{bundle.ViewSvaInformeTitle_idAutoevaluacion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idVersion}"/>
+                        <h:outputText value="#{svaInformeController.selected.idVersion}" title="#{bundle.ViewSvaInformeTitle_idVersion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idInstitucion}"/>
+                        <h:outputText value="#{svaInformeController.selected.idInstitucion}" title="#{bundle.ViewSvaInformeTitle_idInstitucion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idUbig}"/>
+                        <h:outputText value="#{svaInformeController.selected.idUbig}" title="#{bundle.ViewSvaInformeTitle_idUbig}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_fechaPresentacion}"/>
+                        <h:outputText value="#{svaInformeController.selected.fechaPresentacion}" title="#{bundle.ViewSvaInformeTitle_fechaPresentacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_resumenEjecutivo}"/>
+                        <h:outputText value="#{svaInformeController.selected.resumenEjecutivo}" title="#{bundle.ViewSvaInformeTitle_resumenEjecutivo}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_introduccion}"/>
+                        <h:outputText value="#{svaInformeController.selected.introduccion}" title="#{bundle.ViewSvaInformeTitle_introduccion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_carreraDescripcion}"/>
+                        <h:outputText value="#{svaInformeController.selected.carreraDescripcion}" title="#{bundle.ViewSvaInformeTitle_carreraDescripcion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_carreraHistoria}"/>
+                        <h:outputText value="#{svaInformeController.selected.carreraHistoria}" title="#{bundle.ViewSvaInformeTitle_carreraHistoria}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_mision}"/>
+                        <h:outputText value="#{svaInformeController.selected.mision}" title="#{bundle.ViewSvaInformeTitle_mision}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_vision}"/>
+                        <h:outputText value="#{svaInformeController.selected.vision}" title="#{bundle.ViewSvaInformeTitle_vision}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idAutoridad}"/>
+                        <h:outputText value="#{svaInformeController.selected.idAutoridad}" title="#{bundle.ViewSvaInformeTitle_idAutoridad}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_idDtra}"/>
+                        <h:outputText value="#{svaInformeController.selected.idDtra}" title="#{bundle.ViewSvaInformeTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_nroMatriculados}"/>
+                        <h:outputText value="#{svaInformeController.selected.nroMatriculados}" title="#{bundle.ViewSvaInformeTitle_nroMatriculados}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_nroPromociones}"/>
+                        <h:outputText value="#{svaInformeController.selected.nroPromociones}" title="#{bundle.ViewSvaInformeTitle_nroPromociones}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_nroGraduados}"/>
+                        <h:outputText value="#{svaInformeController.selected.nroGraduados}" title="#{bundle.ViewSvaInformeTitle_nroGraduados}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_nroTitulados}"/>
+                        <h:outputText value="#{svaInformeController.selected.nroTitulados}" title="#{bundle.ViewSvaInformeTitle_nroTitulados}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_grado}"/>
+                        <h:outputText value="#{svaInformeController.selected.grado}" title="#{bundle.ViewSvaInformeTitle_grado}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_titulo}"/>
+                        <h:outputText value="#{svaInformeController.selected.titulo}" title="#{bundle.ViewSvaInformeTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_descripcion}"/>
+                        <h:outputText value="#{svaInformeController.selected.descripcion}" title="#{bundle.ViewSvaInformeTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_fechaReg}"/>
+                        <h:outputText value="#{svaInformeController.selected.fechaReg}" title="#{bundle.ViewSvaInformeTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSvaInformeLabel_estado}"/>
+                        <h:outputText value="#{svaInformeController.selected.estado}" title="#{bundle.ViewSvaInformeTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SvaInformeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConceptoViewDlg" widgetVar="ConceptoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewConceptoTitle}">
+            <h:form id="ConceptoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{conceptoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewConceptoLabel_codigo}"/>
+                        <h:outputText value="#{conceptoController.selected.codigo}" title="#{bundle.ViewConceptoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_concepto}"/>
+                        <h:outputText value="#{conceptoController.selected.concepto}" title="#{bundle.ViewConceptoTitle_concepto}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_codPDT}"/>
+                        <h:outputText value="#{conceptoController.selected.codPDT}" title="#{bundle.ViewConceptoTitle_codPDT}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_calculo}"/>
+                        <h:outputText value="#{conceptoController.selected.calculo}" title="#{bundle.ViewConceptoTitle_calculo}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_procesar}"/>
+                        <h:outputText value="#{conceptoController.selected.procesar}" title="#{bundle.ViewConceptoTitle_procesar}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_selec}"/>
+                        <h:outputText value="#{conceptoController.selected.selec}" title="#{bundle.ViewConceptoTitle_selec}"/>
+                        <h:outputText value="#{bundle.ViewConceptoLabel_glosa}"/>
+                        <h:outputText value="#{conceptoController.selected.glosa}" title="#{bundle.ViewConceptoTitle_glosa}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConceptoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

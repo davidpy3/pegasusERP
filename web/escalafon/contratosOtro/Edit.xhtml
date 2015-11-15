@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscContratosOtrosEditDlg" widgetVar="EscContratosOtrosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscContratosOtrosTitle}">
+            <h:form id="EscContratosOtrosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escContratosOtrosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idServicio}" for="idServicio" />
+                        <p:inputText id="idServicio" value="#{escContratosOtrosController.selected.idServicio}" title="#{bundle.EditEscContratosOtrosTitle_idServicio}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idEsc}" for="idEsc" />
+                        <p:inputText id="idEsc" value="#{escContratosOtrosController.selected.idEsc}" title="#{bundle.EditEscContratosOtrosTitle_idEsc}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idCap}" for="idCap" />
+                        <p:inputText id="idCap" value="#{escContratosOtrosController.selected.idCap}" title="#{bundle.EditEscContratosOtrosTitle_idCap}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{escContratosOtrosController.selected.idDep}" title="#{bundle.EditEscContratosOtrosTitle_idDep}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idCno}" for="idCno" />
+                        <p:inputText id="idCno" value="#{escContratosOtrosController.selected.idCno}" title="#{bundle.EditEscContratosOtrosTitle_idCno}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_idCno}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_fecInicio}" for="fecInicio" />
+                        <p:calendar id="fecInicio" pattern="MM/dd/yyyy" value="#{escContratosOtrosController.selected.fecInicio}" title="#{bundle.EditEscContratosOtrosTitle_fecInicio}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_fecInicio}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_fecFin}" for="fecFin" />
+                        <p:calendar id="fecFin" pattern="MM/dd/yyyy" value="#{escContratosOtrosController.selected.fecFin}" title="#{bundle.EditEscContratosOtrosTitle_fecFin}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_fecFin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_monto}" for="monto" />
+                        <p:inputText id="monto" value="#{escContratosOtrosController.selected.monto}" title="#{bundle.EditEscContratosOtrosTitle_monto}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{escContratosOtrosController.selected.estado}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idDtra}" for="idDtra" />
+                        <p:inputText id="idDtra" value="#{escContratosOtrosController.selected.idDtra}" title="#{bundle.EditEscContratosOtrosTitle_idDtra}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_mencion}" for="mencion" />
+                        <p:inputText id="mencion" value="#{escContratosOtrosController.selected.mencion}" title="#{bundle.EditEscContratosOtrosTitle_mencion}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{escContratosOtrosController.selected.periodo}" title="#{bundle.EditEscContratosOtrosTitle_periodo}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_adhonoren}" for="adhonoren" />
+                        <p:selectBooleanCheckbox id="adhonoren" value="#{escContratosOtrosController.selected.adhonoren}" />
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_escCap}" for="escCap" />
+                        <p:selectOneMenu id="escCap" value="#{escContratosOtrosController.selected.escCap}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_escCap}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escCapController.itemsAvailableSelectOne}"
+                                           var="escCapItem"
+                                           itemValue="#{escCapItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_escPersonal}" for="escPersonal" />
+                        <p:selectOneMenu id="escPersonal" value="#{escContratosOtrosController.selected.escPersonal}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_escPersonal}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escPersonalController.itemsAvailableSelectOne}"
+                                           var="escPersonalItem"
+                                           itemValue="#{escPersonalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_escServicios}" for="escServicios" />
+                        <p:selectOneMenu id="escServicios" value="#{escContratosOtrosController.selected.escServicios}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escServiciosController.itemsAvailableSelectOne}"
+                                           var="escServiciosItem"
+                                           itemValue="#{escServiciosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEscContratosOtrosLabel_idTipo}" for="idTipo" />
+                        <p:selectOneMenu id="idTipo" value="#{escContratosOtrosController.selected.idTipo}" required="true" requiredMessage="#{bundle.EditEscContratosOtrosRequiredMessage_idTipo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{escTipoPersonalController.itemsAvailableSelectOne}"
+                                           var="idTipoItem"
+                                           itemValue="#{idTipoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escContratosOtrosController.update}" value="#{bundle.Save}" update="display,:EscContratosOtrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscContratosOtrosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscContratosOtrosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOmarPartidaMatTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="OmarPartidaMatListForm">
+                <p:panel header="#{bundle.ListOmarPartidaMatTitle}">
+                    <p:dataTable id="datalist" value="#{omarPartidaMatController.items}" var="item"
+                                 selectionMode="single" selection="#{omarPartidaMatController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idPartidamat}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_idPartidamat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPartidamat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_nombPartida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombPartida}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_nombPartidar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombPartidar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_libro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.libro}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_folio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.folio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_esposo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.esposo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_edadEsposo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.edadEsposo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_esposa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.esposa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_edadEsposa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.edadEsposa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_fechaMatrimonio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaMatrimonio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOmarPartidaMatTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{omarPartidaMatController.prepareCreate}" update=":OmarPartidaMatCreateForm" oncomplete="PF('OmarPartidaMatCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":OmarPartidaMatViewForm" oncomplete="PF('OmarPartidaMatViewDialog').show()" disabled="#{empty omarPartidaMatController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":OmarPartidaMatEditForm" oncomplete="PF('OmarPartidaMatEditDialog').show()" disabled="#{empty omarPartidaMatController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{omarPartidaMatController.destroy}" update=":growl,datalist" disabled="#{empty omarPartidaMatController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

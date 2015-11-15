@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscPromocionesDocViewDlg" widgetVar="EscPromocionesDocViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEscPromocionesDocTitle}">
+            <h:form id="EscPromocionesDocViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escPromocionesDocController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_idProd}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.idProd}" title="#{bundle.ViewEscPromocionesDocTitle_idProd}"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_fechaProm}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.fechaProm}" title="#{bundle.ViewEscPromocionesDocTitle_fechaProm}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_idDtra}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.idDtra}" title="#{bundle.ViewEscPromocionesDocTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{escPromocionesDocController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_fechaFin}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.fechaFin}" title="#{bundle.ViewEscPromocionesDocTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_horas}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.horas}" title="#{bundle.ViewEscPromocionesDocTitle_horas}"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_escCapDocente}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.escCapDocente}" title="#{bundle.ViewEscPromocionesDocTitle_escCapDocente}"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_idEsc}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.idEsc}" title="#{bundle.ViewEscPromocionesDocTitle_idEsc}"/>
+                        <h:outputText value="#{bundle.ViewEscPromocionesDocLabel_idTp}"/>
+                        <h:outputText value="#{escPromocionesDocController.selected.idTp}" title="#{bundle.ViewEscPromocionesDocTitle_idTp}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EscPromocionesDocViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

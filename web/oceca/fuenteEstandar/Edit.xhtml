@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcFuenteEstandarEditDlg" widgetVar="SgcFuenteEstandarEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcFuenteEstandarTitle}">
+            <h:form id="SgcFuenteEstandarEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcFuenteEstandarController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcFuenteEstandarLabel_sgcFuenteEstandarPK_idFuente}" for="sgcFuenteEstandarPK_idFuente" />
+                        <p:inputText id="sgcFuenteEstandarPK_idFuente" value="#{sgcFuenteEstandarController.selected.sgcFuenteEstandarPK.idFuente}" title="#{bundle.EditSgcFuenteEstandarTitle_sgcFuenteEstandarPK_idFuente}" required="true" requiredMessage="#{bundle.EditSgcFuenteEstandarRequiredMessage_sgcFuenteEstandarPK_idFuente}"/>
+                        <p:outputLabel value="#{bundle.EditSgcFuenteEstandarLabel_sgcFuenteEstandarPK_idEstandar}" for="sgcFuenteEstandarPK_idEstandar" />
+                        <p:inputText id="sgcFuenteEstandarPK_idEstandar" value="#{sgcFuenteEstandarController.selected.sgcFuenteEstandarPK.idEstandar}" title="#{bundle.EditSgcFuenteEstandarTitle_sgcFuenteEstandarPK_idEstandar}" required="true" requiredMessage="#{bundle.EditSgcFuenteEstandarRequiredMessage_sgcFuenteEstandarPK_idEstandar}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcFuenteEstandarController.update}" value="#{bundle.Save}" update="display,:SgcFuenteEstandarListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcFuenteEstandarEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcFuenteEstandarEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

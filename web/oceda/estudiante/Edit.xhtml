@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <style>
+            .jtable td{ margin:0px; padding:0px;   }
+            
+        </style>
+        <p:dialog id="FxaEstudianteEditDlg" widgetVar="FxaEstudianteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFxaEstudianteTitle}">
+            <h:form id="FxaEstudianteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fxaEstudianteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_nivelAcademico}" for="nivelAcademico" />
+                        <p:selectOneMenu  style="width:180px" id="nivelAcademico" value="#{fxaEstudianteController.selected.nivelAcademico}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fxaNivelAcadController.itemsAvailableSelectOne}"
+                                           var="nivelAcademicoItem"
+                                           itemValue="#{nivelAcademicoItem}" itemLabel="#{nivelAcademicoItem.codNivAcad}: #{nivelAcademicoItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_situacionAcademico}" for="situacionAcademico" />
+                        <p:selectOneMenu  style="width:180px" id="situacionAcademico" value="#{fxaEstudianteController.selected.situacionAcademico}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fxaSituacionAcadController.itemsAvailableSelectOne}"
+                                           var="situacionAcademicoItem"
+                                           itemValue="#{situacionAcademicoItem}" 
+                                           itemDescription="#{situacionAcademicoItem.descripcion}"
+                                           itemLabel="#{situacionAcademicoItem.codSitAcad}: #{situacionAcademicoItem.nombre}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_personaNatural}" for="personaNatural" />
+                        
+                        <p:selectOneMenu style="width:400px" id="personaNatural" value="#{fxaEstudianteController.selected.personaNatural}" required="true">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItem itemLabel="#{fxaEstudianteController.selected.personaNatural.idDir}: #{fxaEstudianteController.selected.personaNatural.nombreCompleto}" itemValue="#{fxaEstudianteController.selected.personaNatural}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_idAcexp}" for="idAcexp" />
+                        <p:inputText id="idAcexp" value="#{fxaEstudianteController.selected.idAcexp}" title="#{bundle.EditFxaEstudianteTitle_idAcexp}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_idAcexp}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_codigoEstudiante}" for="codigoEstudiante" />
+                        <p:inputText id="codigoEstudiante" value="#{fxaEstudianteController.selected.codigoEstudiante}" title="#{bundle.EditFxaEstudianteTitle_codigoEstudiante}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_codigoEstudiante}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_promSeccion}" for="promSeccion" />
+                        <p:inputText id="promSeccion" value="#{fxaEstudianteController.selected.promSeccion}" title="#{bundle.EditFxaEstudianteTitle_promSeccion}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_promSeccion}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_cicloNumero}" for="cicloNumero" />
+                        <p:inputText id="cicloNumero" value="#{fxaEstudianteController.selected.cicloNumero}" title="#{bundle.EditFxaEstudianteTitle_cicloNumero}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_cicloNumero}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{fxaEstudianteController.selected.activo}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_anulado}" for="anulado" />
+                        <p:selectBooleanCheckbox id="anulado" value="#{fxaEstudianteController.selected.anulado}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_anulado}"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_situacion}" for="situacion" />
+                        <p:inputText id="situacion" value="#{fxaEstudianteController.selected.situacion}" title="#{bundle.EditFxaEstudianteTitle_situacion}" />
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_dateinsert}" for="dateinsert" />
+                        <p:calendar id="dateinsert" pattern="dd/MM/yyyy HH:mm:ss" value="#{fxaEstudianteController.selected.dateinsert}" title="#{bundle.EditFxaEstudianteTitle_dateinsert}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_dateinsert}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_migrado}" for="migrado" />
+                        <p:selectBooleanCheckbox id="migrado" value="#{fxaEstudianteController.selected.migrado}" />
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_promocionId}" for="promocionId" />
+                        <p:inputText id="promocionId" value="#{fxaEstudianteController.selected.promocionId}" title="#{bundle.EditFxaEstudianteTitle_promocionId}" />
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_passEnc}" for="passEnc" />
+                        <p:inputText id="passEnc" value="#{fxaEstudianteController.selected.passEnc}" title="#{bundle.EditFxaEstudianteTitle_passEnc}" />
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_passVerifica}" for="passVerifica" />
+                        <p:inputText id="passVerifica" value="#{fxaEstudianteController.selected.passVerifica}" title="#{bundle.EditFxaEstudianteTitle_passVerifica}" />
+                        <p:outputLabel value="#{bundle.EditFxaEstudianteLabel_idAmbito}" for="idAmbito" />
+                        <p:selectOneMenu style="width:180px" id="idAmbito" value="#{fxaEstudianteController.selected.idAmbito}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_idAmbito}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsAmbitoAcadController.itemsAvailableSelectOne}"
+                                           var="idAmbitoItem"
+                                           itemValue="#{idAmbitoItem}" itemLabel="#{idAmbitoItem.idAmbito}: #{idAmbitoItem.ambito}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel  value="#{bundle.EditFxaEstudianteLabel_especialidad}" for="especialidad" />
+                        <p:selectOneMenu style="width:400px" id="especialidad" value="#{fxaEstudianteController.selected.especialidad}" required="true" requiredMessage="#{bundle.EditFxaEstudianteRequiredMessage_especialidad}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{apsEspecialidadController.itemsAvailableSelectOne}"
+                                           var="especialidadItem"
+                                           itemValue="#{especialidadItem}" itemDescription="#{especialidadItem.idEspecialidad.toString()}" itemLabel="#{especialidadItem.codEspecialidad}: #{especialidadItem.especialidad}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fxaEstudianteController.update}" value="#{bundle.Save}" update="display,:FxaEstudianteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FxaEstudianteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FxaEstudianteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

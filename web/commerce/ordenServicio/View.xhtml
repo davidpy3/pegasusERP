@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComOrdenServicioViewDlg" widgetVar="ComOrdenServicioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComOrdenServicioTitle}">
+            <h:form id="ComOrdenServicioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comOrdenServicioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idOrdenServicio}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idOrdenServicio}" title="#{bundle.ViewComOrdenServicioTitle_idOrdenServicio}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_correlativo}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.correlativo}" title="#{bundle.ViewComOrdenServicioTitle_correlativo}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idDep}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idDep}" title="#{bundle.ViewComOrdenServicioTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idDirProveedor}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idDirProveedor}" title="#{bundle.ViewComOrdenServicioTitle_idDirProveedor}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idFuenteFinanciamiento}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idFuenteFinanciamiento}" title="#{bundle.ViewComOrdenServicioTitle_idFuenteFinanciamiento}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idPrograma}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idPrograma}" title="#{bundle.ViewComOrdenServicioTitle_idPrograma}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_fechaReg}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.fechaReg}" title="#{bundle.ViewComOrdenServicioTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idTipoDocumento}" title="#{bundle.ViewComOrdenServicioTitle_idTipoDocumento}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_serie}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.serie}" title="#{bundle.ViewComOrdenServicioTitle_serie}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_numero}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.numero}" title="#{bundle.ViewComOrdenServicioTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_tasaImpuesto}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.tasaImpuesto}" title="#{bundle.ViewComOrdenServicioTitle_tasaImpuesto}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_impuesto}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.impuesto}" title="#{bundle.ViewComOrdenServicioTitle_impuesto}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_subTotal}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.subTotal}" title="#{bundle.ViewComOrdenServicioTitle_subTotal}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_total}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.total}" title="#{bundle.ViewComOrdenServicioTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_referencia}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.referencia}" title="#{bundle.ViewComOrdenServicioTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_estado}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.estado}" title="#{bundle.ViewComOrdenServicioTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewComOrdenServicioLabel_idDirUpdate}"/>
+                        <h:outputText value="#{comOrdenServicioController.selected.idDirUpdate}" title="#{bundle.ViewComOrdenServicioTitle_idDirUpdate}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComOrdenServicioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

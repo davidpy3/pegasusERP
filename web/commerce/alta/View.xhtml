@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComAltaViewDlg" widgetVar="ComAltaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComAltaTitle}">
+            <h:form id="ComAltaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comAltaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idAlta}"/>
+                        <h:outputText value="#{comAltaController.selected.idAlta}" title="#{bundle.ViewComAltaTitle_idAlta}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idFormaAdquisicion}"/>
+                        <h:outputText value="#{comAltaController.selected.idFormaAdquisicion}" title="#{bundle.ViewComAltaTitle_idFormaAdquisicion}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idArticulo}"/>
+                        <h:outputText value="#{comAltaController.selected.idArticulo}" title="#{bundle.ViewComAltaTitle_idArticulo}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_correlativo}"/>
+                        <h:outputText value="#{comAltaController.selected.correlativo}" title="#{bundle.ViewComAltaTitle_correlativo}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idOperacion}"/>
+                        <h:outputText value="#{comAltaController.selected.idOperacion}" title="#{bundle.ViewComAltaTitle_idOperacion}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idItem}"/>
+                        <h:outputText value="#{comAltaController.selected.idItem}" title="#{bundle.ViewComAltaTitle_idItem}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_identificador}"/>
+                        <h:outputText value="#{comAltaController.selected.identificador}" title="#{bundle.ViewComAltaTitle_identificador}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_detalle}"/>
+                        <h:outputText value="#{comAltaController.selected.detalle}" title="#{bundle.ViewComAltaTitle_detalle}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idDep}"/>
+                        <h:outputText value="#{comAltaController.selected.idDep}" title="#{bundle.ViewComAltaTitle_idDep}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idEstado}"/>
+                        <h:outputText value="#{comAltaController.selected.idEstado}" title="#{bundle.ViewComAltaTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_valor}"/>
+                        <h:outputText value="#{comAltaController.selected.valor}" title="#{bundle.ViewComAltaTitle_valor}"/>
+                        <h:outputText value="#{bundle.ViewComAltaLabel_idUltope}"/>
+                        <h:outputText value="#{comAltaController.selected.idUltope}" title="#{bundle.ViewComAltaTitle_idUltope}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComAltaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

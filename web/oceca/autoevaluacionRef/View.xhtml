@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAutoevaluacionRefViewDlg" widgetVar="SgcAutoevaluacionRefViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcAutoevaluacionRefTitle}">
+            <h:form id="SgcAutoevaluacionRefViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAutoevaluacionRefController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_idAutref}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.idAutref}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_idAutref}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_idAutoevaluacion}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.idAutoevaluacion}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_idAutoevaluacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_idFuente}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.idFuente}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_idFuente}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_fase}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.fase}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_fase}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_observacion}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.observacion}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_idDir}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.idDir}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_estado}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.estado}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewSgcAutoevaluacionRefLabel_fechaReg}"/>
+                        <h:outputText value="#{sgcAutoevaluacionRefController.selected.fechaReg}" title="#{bundle.ViewSgcAutoevaluacionRefTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcAutoevaluacionRefViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuizPreguntaViewDlg" widgetVar="QuizPreguntaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewQuizPreguntaTitle}">
+            <h:form id="QuizPreguntaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizPreguntaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idPregunta}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idPregunta}" title="#{bundle.ViewQuizPreguntaTitle_idPregunta}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idCuestionario}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idCuestionario}" title="#{bundle.ViewQuizPreguntaTitle_idCuestionario}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_numero}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.numero}" title="#{bundle.ViewQuizPreguntaTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idCategoria}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idCategoria}" title="#{bundle.ViewQuizPreguntaTitle_idCategoria}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idTipoPregunta}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idTipoPregunta}" title="#{bundle.ViewQuizPreguntaTitle_idTipoPregunta}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_pregunta}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.pregunta}" title="#{bundle.ViewQuizPreguntaTitle_pregunta}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idLista}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idLista}" title="#{bundle.ViewQuizPreguntaTitle_idLista}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_idRespuesta}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.idRespuesta}" title="#{bundle.ViewQuizPreguntaTitle_idRespuesta}"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{quizPreguntaController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_opcional}"/>
+                        <p:selectBooleanCheckbox value="#{quizPreguntaController.selected.opcional}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewQuizPreguntaLabel_estado}"/>
+                        <h:outputText value="#{quizPreguntaController.selected.estado}" title="#{bundle.ViewQuizPreguntaTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="QuizPreguntaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

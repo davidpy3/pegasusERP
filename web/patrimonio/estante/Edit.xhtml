@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstanteEditDlg" widgetVar="EstanteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEstanteTitle}">
+            <h:form id="EstanteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estanteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_NEstante}" for="NEstante" />
+                        <p:inputText id="NEstante" value="#{estanteController.selected.NEstante}" title="#{bundle.EditEstanteTitle_NEstante}" required="true" requiredMessage="#{bundle.EditEstanteRequiredMessage_NEstante}"/>
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_codBien}" for="codBien" />
+                        <p:inputText id="codBien" value="#{estanteController.selected.codBien}" title="#{bundle.EditEstanteTitle_codBien}" />
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_correla}" for="correla" />
+                        <p:inputText id="correla" value="#{estanteController.selected.correla}" title="#{bundle.EditEstanteTitle_correla}" />
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_NPisos}" for="NPisos" />
+                        <p:inputText id="NPisos" value="#{estanteController.selected.NPisos}" title="#{bundle.EditEstanteTitle_NPisos}" />
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{estanteController.selected.estado}" title="#{bundle.EditEstanteTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditEstanteLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{estanteController.selected.observaciones}" title="#{bundle.EditEstanteTitle_observaciones}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estanteController.update}" value="#{bundle.Save}" update="display,:EstanteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstanteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EstanteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

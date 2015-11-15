@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComEstadoViewDlg" widgetVar="ComEstadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComEstadoTitle}">
+            <h:form id="ComEstadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comEstadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComEstadoLabel_idEstado}"/>
+                        <h:outputText value="#{comEstadoController.selected.idEstado}" title="#{bundle.ViewComEstadoTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewComEstadoLabel_estado}"/>
+                        <h:outputText value="#{comEstadoController.selected.estado}" title="#{bundle.ViewComEstadoTitle_estado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComEstadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

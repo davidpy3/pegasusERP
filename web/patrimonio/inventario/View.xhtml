@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioViewDlg" widgetVar="InventarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInventarioTitle}">
+            <h:form id="InventarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInventarioLabel_inventarioPK_anoEje}"/>
+                        <h:outputText value="#{inventarioController.selected.inventarioPK.anoEje}" title="#{bundle.ViewInventarioTitle_inventarioPK_anoEje}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_inventarioPK_numInv}"/>
+                        <h:outputText value="#{inventarioController.selected.inventarioPK.numInv}" title="#{bundle.ViewInventarioTitle_inventarioPK_numInv}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_tipoInventario}"/>
+                        <h:outputText value="#{inventarioController.selected.tipoInventario}" title="#{bundle.ViewInventarioTitle_tipoInventario}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_periodo}"/>
+                        <h:outputText value="#{inventarioController.selected.periodo}" title="#{bundle.ViewInventarioTitle_periodo}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_fechaIni}"/>
+                        <h:outputText value="#{inventarioController.selected.fechaIni}" title="#{bundle.ViewInventarioTitle_fechaIni}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_fechaFin}"/>
+                        <h:outputText value="#{inventarioController.selected.fechaFin}" title="#{bundle.ViewInventarioTitle_fechaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_responsable}"/>
+                        <h:outputText value="#{inventarioController.selected.responsable}" title="#{bundle.ViewInventarioTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_estado}"/>
+                        <h:outputText value="#{inventarioController.selected.estado}" title="#{bundle.ViewInventarioTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_observacion}"/>
+                        <h:outputText value="#{inventarioController.selected.observacion}" title="#{bundle.ViewInventarioTitle_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InventarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

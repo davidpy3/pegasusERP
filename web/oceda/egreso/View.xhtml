@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FxaEgresoViewDlg" widgetVar="FxaEgresoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFxaEgresoTitle}">
+            <h:form id="FxaEgresoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fxaEgresoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idAcexp}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idAcexp}" title="#{bundle.ViewFxaEgresoTitle_idAcexp}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idPromegr}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idPromegr}" title="#{bundle.ViewFxaEgresoTitle_idPromegr}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idEspecialidad}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idEspecialidad}" title="#{bundle.ViewFxaEgresoTitle_idEspecialidad}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idPlancur}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idPlancur}" title="#{bundle.ViewFxaEgresoTitle_idPlancur}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_promedio}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.promedio}" title="#{bundle.ViewFxaEgresoTitle_promedio}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idDtra}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idDtra}" title="#{bundle.ViewFxaEgresoTitle_idDtra}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_codDtra}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.codDtra}" title="#{bundle.ViewFxaEgresoTitle_codDtra}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_puestoAmbito}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.puestoAmbito}" title="#{bundle.ViewFxaEgresoTitle_puestoAmbito}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_puestoEspecialidad}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.puestoEspecialidad}" title="#{bundle.ViewFxaEgresoTitle_puestoEspecialidad}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_promSeccionEgreso}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.promSeccionEgreso}" title="#{bundle.ViewFxaEgresoTitle_promSeccionEgreso}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_fechaEgreso}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.fechaEgreso}" title="#{bundle.ViewFxaEgresoTitle_fechaEgreso}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_fechaTitulacion}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.fechaTitulacion}" title="#{bundle.ViewFxaEgresoTitle_fechaTitulacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_observacion}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.observacion}" title="#{bundle.ViewFxaEgresoTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idCreador}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idCreador}" title="#{bundle.ViewFxaEgresoTitle_idCreador}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_fechaReg}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.fechaReg}" title="#{bundle.ViewFxaEgresoTitle_fechaReg}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idModegr}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idModegr}" title="#{bundle.ViewFxaEgresoTitle_idModegr}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idEstado}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idEstado}" title="#{bundle.ViewFxaEgresoTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idAcper}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idAcper}" title="#{bundle.ViewFxaEgresoTitle_idAcper}"/>
+                        <h:outputText value="#{bundle.ViewFxaEgresoLabel_idProduc}"/>
+                        <h:outputText value="#{fxaEgresoController.selected.idProduc}" title="#{bundle.ViewFxaEgresoTitle_idProduc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FxaEgresoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

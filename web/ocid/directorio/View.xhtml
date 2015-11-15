@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrtDirectorioViewDlg" widgetVar="DrtDirectorioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDrtDirectorioTitle}">
+            <h:form id="DrtDirectorioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drtDirectorioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_idDclas}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.idDclas}" title="#{bundle.ViewDrtDirectorioTitle_idDclas}"/>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_idDir}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.idDir}" title="#{bundle.ViewDrtDirectorioTitle_idDir}"/>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_pspCxt}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.pspCxt}" title="#{bundle.ViewDrtDirectorioTitle_pspCxt}"/>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_pspApp}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.pspApp}" title="#{bundle.ViewDrtDirectorioTitle_pspApp}"/>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_pspUid}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.pspUid}" title="#{bundle.ViewDrtDirectorioTitle_pspUid}"/>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_dateinsert}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.dateinsert}" title="#{bundle.ViewDrtDirectorioTitle_dateinsert}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDrtDirectorioLabel_drtPersonanatural}"/>
+                        <h:outputText value="#{drtDirectorioController.selected.drtPersonanatural}" title="#{bundle.ViewDrtDirectorioTitle_drtPersonanatural}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DrtDirectorioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

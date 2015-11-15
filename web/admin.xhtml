@@ -8,99 +8,123 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Pegasus - Administracion</title>
         <f:facet name="first"></f:facet>
+        <style>
+            .xx ul{
+                left:-114px !important
+            }
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;
+            }
+            .ui_app_icon{
+                margin-right:4px;
+                background: url(images/icono_pega.png) !important;
+                height:16px;
+                width:16px;
+            }
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+        </style>
     </h:head>
 
     <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="62">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="PEGASUS"  icon="ui_app_icon"/>
+                        <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                            <p:menuitem value="Cerrar Sessión" ajax="false" action="#{usuarioController.logout}"/>
+                            <p:menuitem value="Cambiar Contraseña" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <center><table width="100%">
+                        <tr><td align="center" colspan="2">
+                                <table border="0" >
+                                    <tr>
+                                        <td width="170" align="center"><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
+                                            <p:link  href="direccion/index.xhtml" value="Alta Dirección">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                        <td width="20"></td><td width="170" align="center"><h:graphicImage   url="images/m_presupuesto.png"></h:graphicImage><BR/>
+                                            <p:link href="presupuesto/index.xhtml" value="Presupuesto">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                        <td width="20"></td><td width="170" align="center"><h:graphicImage   url="images/m_configuraciones.png"></h:graphicImage><BR/>
+                                            <p:link href="pegasus/index.xhtml?q=configuracion" value="Configuraciones">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>      
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20"></td>
+                                        <td width="20"></td><td align="center"> </td>
+                                        <td width="20"></td><td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td width="20"></td><td align="center"><h:graphicImage   url="images/\m_requerimiento.png"></h:graphicImage><BR/>
+                                            <p:link href="operaciones/index.xhtml" value="Operaciones">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                        <td width="20"></td><td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"><h:graphicImage   url="images/m_personal.png"></h:graphicImage><BR/>
+                                            <p:link href="pegasus/index.xhtml?q=personal" value="Personal">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>  </td>
+                                        <td width="20"></td><td align="center"></td>
+                                        <td width="20"></td><td align="center"><h:graphicImage   url="images/m_abastecimiento.png"></h:graphicImage><BR/>
+                                            <p:link href="configuracion/index.xhtml" value="Abastecimiento">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                    </tr>  
 
+                                    <tr>
+                                        <td height="20"></td>
+                                        <td width="20"></td><td align="center"> </td>
+                                        <td width="20"></td><td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"></td>
+                                        <td width="20"></td><td align="center"><h:graphicImage   url="images/m_tramite_documentario.png"></h:graphicImage><BR/>
+                                            <p:link href="configuracion/index.xhtml" value="Contabilidad">
+                                                <f:param name="productId" value="10" />
+                                            </p:link></td>
+                                        <td width="20"></td><td align="center"><h:graphicImage   url="images/m_almacen.png"></h:graphicImage><BR/>
+                                            <p:link href="almacen/index.xhtml" value="Almacen">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                    </tr>
 
-        <center><table width="100%"><tr><td align="left">
-                        <h:graphicImage  url="images/pegasus_top.png"></h:graphicImage></td>
-                    <td align="right">
-        <h:form>
-            <p>Biembenido #{userController.usuario.usuario}</p>
-            <h:commandLink action="#{userController.logout}" value="Logout"></h:commandLink>
-        </h:form></td></tr>
-                <tr><td align="center" colspan="2">
-                        <table border="0" >
-                            <tr>
-                                <td width="170" align="center"><h:graphicImage   url="images/m_direccion.png"></h:graphicImage><BR/>
-                                    <p:link href="direccion/index.xhtml" value="Alta Dirección">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                                <td width="20"></td><td width="170" align="center"><h:graphicImage   url="images/m_presupuesto.png"></h:graphicImage><BR/>
-                                    <p:link href="presupuesto/index.xhtml" value="Presupuesto">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                                <td width="20"></td><td width="170" align="center"><h:graphicImage   url="images/m_configuraciones.png"></h:graphicImage><BR/>
-                                    <p:link href="configuracion/index.xhtml" value="Configuraciones">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>      
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="20"></td>
-                                <td width="20"></td><td align="center"> </td>
-                                <td width="20"></td><td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td width="20"></td><td align="center"><h:graphicImage   url="images/\m_requerimiento.png"></h:graphicImage><BR/>
-                                    <p:link href="operaciones/index.xhtml" value="Operaciones">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                                <td width="20"></td><td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center"><h:graphicImage   url="images/m_personal.png"></h:graphicImage><BR/>
-                                    <p:link href="personal/index.xhtml" value="Personal">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>  </td>
-                                <td width="20"></td><td align="center"></td>
-                                <td width="20"></td><td align="center"><h:graphicImage   url="images/m_abastecimiento.png"></h:graphicImage><BR/>
-                                    <p:link href="configuracion/index.xhtml" value="Abastecimiento">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                            </tr>  
-
-                            <tr>
-                                <td height="20"></td>
-                                <td width="20"></td><td align="center"> </td>
-                                <td width="20"></td><td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center"></td>
-                                <td width="20"></td><td align="center"><h:graphicImage   url="images/\m_tramite_documentario.png"></h:graphicImage><BR/>
-                                    <p:link href="configuracion/index.xhtml" value="Contabilidad">
-                                        <f:param name="productId" value="10" />
-                                    </p:link></td>
-                                <td width="20"></td><td align="center"><h:graphicImage   url="images/m_almacen.png"></h:graphicImage><BR/>
-                                    <p:link href="almacen/index.xhtml" value="Almacen">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                            </tr>
-
-                            <tr>
-                                <td height="20"></td>
-                                <td width="20"></td><td align="center"> </td>
-                                <td width="20"></td><td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center"></td>
-                                <td width="20"></td><td align="center"></td>
-                                <td width="20"></td><td align="center"><h:graphicImage   url="images/m_judiciales.png"></h:graphicImage><BR/>
-                                    <p:link href="patrimonio/index.xhtml" value="Patrimonio">
-                                        <f:param name="productId" value="10" />
-                                    </p:link>   </td>
-                            </tr>
-                        </table>
-                        El menú principial que puede apreciar muestra la estructura funcional del sistema, cada opción es un módulo. Puede ingresar también utilizado las teclas rápidas que se muestra entre paréntesis.     
-                    </td></tr></table>
-        </center>
+                                    <tr>
+                                        <td height="20"></td>
+                                        <td width="20"></td><td align="center"> </td>
+                                        <td width="20"></td><td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"></td>
+                                        <td width="20"></td><td align="center"></td>
+                                        <td width="20"></td><td align="center"><h:graphicImage   url="images/m_judiciales.png"></h:graphicImage><BR/>
+                                            <p:link href="pegasus/index.xhtml?q=patrimonio" value="Patrimonio">
+                                                <f:param name="productId" value="10" />
+                                            </p:link>   </td>
+                                    </tr>
+                                </table>
+                            </td></tr></table>
+                </center>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>

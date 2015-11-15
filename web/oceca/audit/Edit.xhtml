@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcAuditEditDlg" widgetVar="SgcAuditEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcAuditTitle}">
+            <h:form id="SgcAuditEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sgcAuditController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idAudit}" for="idAudit" />
+                        <p:inputText id="idAudit" value="#{sgcAuditController.selected.idAudit}" title="#{bundle.EditSgcAuditTitle_idAudit}" required="true" requiredMessage="#{bundle.EditSgcAuditRequiredMessage_idAudit}"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{sgcAuditController.selected.codigo}" title="#{bundle.EditSgcAuditTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idTipoAudit}" for="idTipoAudit" />
+                        <p:inputText id="idTipoAudit" value="#{sgcAuditController.selected.idTipoAudit}" title="#{bundle.EditSgcAuditTitle_idTipoAudit}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idDep}" for="idDep" />
+                        <p:inputText id="idDep" value="#{sgcAuditController.selected.idDep}" title="#{bundle.EditSgcAuditTitle_idDep}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idAuditado}" for="idAuditado" />
+                        <p:inputText id="idAuditado" value="#{sgcAuditController.selected.idAuditado}" title="#{bundle.EditSgcAuditTitle_idAuditado}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_auditoria}" for="auditoria" />
+                        <p:inputText id="auditoria" value="#{sgcAuditController.selected.auditoria}" title="#{bundle.EditSgcAuditTitle_auditoria}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_fechaRealizado}" for="fechaRealizado" />
+                        <p:calendar id="fechaRealizado" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcAuditController.selected.fechaRealizado}" title="#{bundle.EditSgcAuditTitle_fechaRealizado}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_ejecutado}" for="ejecutado" />
+                        <p:inputText id="ejecutado" value="#{sgcAuditController.selected.ejecutado}" title="#{bundle.EditSgcAuditTitle_ejecutado}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idDocumento}" for="idDocumento" />
+                        <p:inputText id="idDocumento" value="#{sgcAuditController.selected.idDocumento}" title="#{bundle.EditSgcAuditTitle_idDocumento}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_comentario}" for="comentario" />
+                        <p:inputText id="comentario" value="#{sgcAuditController.selected.comentario}" title="#{bundle.EditSgcAuditTitle_comentario}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_cumplimiento}" for="cumplimiento" />
+                        <p:inputText id="cumplimiento" value="#{sgcAuditController.selected.cumplimiento}" title="#{bundle.EditSgcAuditTitle_cumplimiento}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idFuente}" for="idFuente" />
+                        <p:inputText id="idFuente" value="#{sgcAuditController.selected.idFuente}" title="#{bundle.EditSgcAuditTitle_idFuente}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_idCreador}" for="idCreador" />
+                        <p:inputText id="idCreador" value="#{sgcAuditController.selected.idCreador}" title="#{bundle.EditSgcAuditTitle_idCreador}" />
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcAuditController.selected.fechaReg}" title="#{bundle.EditSgcAuditTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSgcAuditRequiredMessage_fechaReg}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_fechaPlanificada}" for="fechaPlanificada" />
+                        <p:calendar id="fechaPlanificada" pattern="dd/MM/yyyy HH:mm:ss" value="#{sgcAuditController.selected.fechaPlanificada}" title="#{bundle.EditSgcAuditTitle_fechaPlanificada}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSgcAuditLabel_conclusion}" for="conclusion" />
+                        <p:inputText id="conclusion" value="#{sgcAuditController.selected.conclusion}" title="#{bundle.EditSgcAuditTitle_conclusion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sgcAuditController.update}" value="#{bundle.Save}" update="display,:SgcAuditListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcAuditEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcAuditEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

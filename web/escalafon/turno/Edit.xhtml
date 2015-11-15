@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EscTurnoEditDlg" widgetVar="EscTurnoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEscTurnoTitle}">
+            <h:form id="EscTurnoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{escTurnoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEscTurnoLabel_idTurno}" for="idTurno" />
+                        <p:inputText id="idTurno" value="#{escTurnoController.selected.idTurno}" title="#{bundle.EditEscTurnoTitle_idTurno}" required="true" requiredMessage="#{bundle.EditEscTurnoRequiredMessage_idTurno}"/>
+                        <p:outputLabel value="#{bundle.EditEscTurnoLabel_turno}" for="turno" />
+                        <p:inputText id="turno" value="#{escTurnoController.selected.turno}" title="#{bundle.EditEscTurnoTitle_turno}" required="true" requiredMessage="#{bundle.EditEscTurnoRequiredMessage_turno}"/>
+                        <p:outputLabel value="#{bundle.EditEscTurnoLabel_tolerancia}" for="tolerancia" />
+                        <p:inputText id="tolerancia" value="#{escTurnoController.selected.tolerancia}" title="#{bundle.EditEscTurnoTitle_tolerancia}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{escTurnoController.update}" value="#{bundle.Save}" update="display,:EscTurnoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EscTurnoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EscTurnoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
