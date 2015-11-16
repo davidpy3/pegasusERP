@@ -77,6 +77,7 @@
                             <p:menuitem value="Modelos" outcome="/oceca/modelo/List.xhtml" />
                             <p:menuitem value="Estandares" outcome="/oceca/estandar/List.xhtml" />
                             <p:menuitem value="Encuestas" outcome="/oceca/encuesta/List.xhtml" />
+                            <p:menuitem value="Participaciones" outcome="/oceca/encuestaParticipacion/List.xhtml" />
                             <p:menuitem value="Preguntas" outcome="/oceca/pregunta/List.xhtml" />
                             <p:menuitem value="Cuestionarios" outcome="/oceca/cuestionario/List.xhtml" />
                             <p:menuitem value="Categorias" outcome="/oceca/categoriaPregunta/List.xhtml" />
@@ -297,7 +298,7 @@
                         </p:submenu>
                         
                         
-                        <p:submenu  class="xx" style="float:right" label="#{userController.usuario.usuario}">
+                        <p:submenu  class="xx" style="float:right" label="#{sessionScope.personaNatural eq null?userController.usuario.usuario:sessionScope.personaNatural.nombreCompleto}">
                             <p:menuitem value="Cerrar Sessión" ajax="false" action="#{usuarioController.logout}"/>
                             <p:menuitem value="Cambiar Contraseña" />
                         </p:submenu>

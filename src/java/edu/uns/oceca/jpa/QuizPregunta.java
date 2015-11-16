@@ -3,20 +3,16 @@ package edu.uns.oceca.jpa;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
-import org.jsuns.commerce.jpa.CompraDetalle;
 
 @Entity
 @Table(name = "quiz_pregunta")
@@ -37,7 +33,7 @@ public class QuizPregunta implements Serializable {
     private Integer numero;
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_catepre")
     @ManyToOne(optional = true)
-    private QuizCategoriaPregunta categoria;
+    private QuizCategoria categoria;
     
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compra")
 //    @OneToMany(fetch=FetchType.LAZY)
@@ -53,11 +49,11 @@ public class QuizPregunta implements Serializable {
         this.opcionListaCollection = opcionListCollection;
     }
 
-    public QuizCategoriaPregunta getCategoria() {
+    public QuizCategoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(QuizCategoriaPregunta categoria) {
+    public void setCategoria(QuizCategoria categoria) {
         this.categoria = categoria;
     }
 

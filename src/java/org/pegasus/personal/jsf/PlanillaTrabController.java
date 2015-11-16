@@ -3,7 +3,6 @@ package org.pegasus.personal.jsf;
 import java.io.ByteArrayInputStream;
 import org.pegasus.personal.jpa.PlanillaTrab;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,24 +31,11 @@ import org.primefaces.model.StreamedContent;
 @SessionScoped
 public class PlanillaTrabController extends AbstractController<PlanillaTrab> implements Serializable {
 
-    
-    
     @EJB
     private PlanillaTrabFacadeLocal ejbFacade;
 
-    private HashMap params = new HashMap();
-
     private PlanillaTrabFacadeLocal getFacade() {
         return ejbFacade;
-    }
-
-    public HashMap getParams() {
-        return params;
-    }
-
-   
-    public void setParams(HashMap params) {
-        this.params = params;
     }
 
     public int getDiasTotal(PlanillaTrab pt){
@@ -60,7 +46,7 @@ public class PlanillaTrabController extends AbstractController<PlanillaTrab> imp
     
     public List<PlanillaTrab> getItems() {
         if (items == null) {
-            items = getFacade().load(0, -1, null, params);
+            items = getFacade().load(0, -1, null, getParams());
         }
         return items;
     }
@@ -179,7 +165,7 @@ public class PlanillaTrabController extends AbstractController<PlanillaTrab> imp
                     JReportAction.export(
                             JReportAction.getJasperReport(Object.class,
                                     "/org/munisoft/personal/jr/dw_pers_certificado_trab.jasper", 0), 
-                            new XMap("YEAR_NAME","Año de la pera",DataSource.class, getFacade().load(0, 0, null,params)), "pdf")
+                            new XMap("YEAR_NAME","Año de la pera",DataSource.class, getFacade().load(0, 0, null,getParams())), "pdf")
                     .toByteArray()
             ), "application/pdf");
         } catch (Exception ex) {

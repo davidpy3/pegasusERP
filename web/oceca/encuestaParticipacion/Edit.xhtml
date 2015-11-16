@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcEncuestaParticipanteEditDlg" widgetVar="SgcEncuestaParticipanteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSgcEncuestaParticipanteTitle}">
+            <h:form id="SgcEncuestaParticipanteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizcEncuestaParticipacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.cerrado}" for="cerrado" />
+                        <p:selectBooleanCheckbox id="cerrado" value="#{quizcEncuestaParticipacionController.selected.cerrado}" required="true" requiredMessage="#{bundle.EditSgcEncuestaParticipanteRequiredMessage_cerrado}"/>
+                        <p:outputLabel value="#{bundle.fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="MM/dd/yyyy HH:mm:ss" value="#{quizcEncuestaParticipacionController.selected.fechaIni}" title="#{bundle.EditSgcEncuestaParticipanteTitle_fechaInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.fechaCierre}" for="fechaCierre" />
+                        <p:calendar id="fechaCierre" pattern="MM/dd/yyyy HH:mm:ss" value="#{quizcEncuestaParticipacionController.selected.fechaFin}" title="#{bundle.EditSgcEncuestaParticipanteTitle_fechaCierre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{quizcEncuestaParticipacionController.selected.idUsuario}" title="#{bundle.EditSgcEncuestaParticipanteTitle_idUsuario}" />
+                        <p:outputLabel value="#{bundle.fechaReg}" for="fechaReg" />
+                        <p:calendar id="fechaReg" pattern="MM/dd/yyyy HH:mm:ss" value="#{quizcEncuestaParticipacionController.selected.fechaReg}" title="#{bundle.EditSgcEncuestaParticipanteTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSgcEncuestaParticipanteRequiredMessage_fechaReg}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{quizcEncuestaParticipacionController.update}" value="#{bundle.Save}" update="display,:SgcEncuestaParticipanteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SgcEncuestaParticipanteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SgcEncuestaParticipanteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

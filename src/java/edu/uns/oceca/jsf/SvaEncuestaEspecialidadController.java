@@ -1,11 +1,13 @@
 package edu.uns.oceca.jsf;
 
-import edu.uns.oceca.jpa.SvaEncuestaEspecialidad;
+import edu.uns.oceca.jpa.QuizEncuesta;
 import org.jsuns.util.JsfUtil;
 import org.jsuns.util.JsfUtil.PersistAction;
-import edu.uns.oceca.ejb.SvaEncuestaEspecialidadFacadeLocal;
+import edu.uns.oceca.ejb.QuizEncuestaEspecialidadFacadeLocal;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -22,18 +24,22 @@ import org.jsuns.util.AbstractController;
 
 @Named("svaEncuestaEspecialidadController")
 @SessionScoped
-public class SvaEncuestaEspecialidadController extends AbstractController<SvaEncuestaEspecialidad> implements Serializable {
+public class SvaEncuestaEspecialidadController extends AbstractController<QuizEncuesta> implements Serializable {
 
     @EJB
-    private edu.uns.oceca.ejb.SvaEncuestaEspecialidadFacadeLocal ejbFacade;
+    private edu.uns.oceca.ejb.QuizEncuestaEspecialidadFacadeLocal ejbFacade;
 
-    private SvaEncuestaEspecialidadFacadeLocal getFacade() {
+    public void ajax(){
+        items=null;
+    }
+    
+    private QuizEncuestaEspecialidadFacadeLocal getFacade() {
         return ejbFacade;
     }
 
     public List getPreguntaList(){
-        SvaEncuestaEspecialidad selected=getSelected();
-        
+        QuizEncuesta selected=getSelected();
+        if(selected==null)return Collections.EMPTY_LIST;
         List l=selected.getPreguntaList();
         if(l==null){
             l=getFacade().load(selected).getPreguntaList();
@@ -43,16 +49,16 @@ public class SvaEncuestaEspecialidadController extends AbstractController<SvaEnc
     
    
     
-    public List<SvaEncuestaEspecialidad> getItems() {
+    public List<QuizEncuesta> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items =(List) getFacade().load(0, -1, null,getParams());
         }
         return items;
     }
 
     @Override
     protected void persist(PersistAction persistAction, String successMessage) {
-        SvaEncuestaEspecialidad selected=getSelected();
+        QuizEncuesta selected=getSelected();
         if (selected != null) {
             setEmbeddableKeys();
             try {
@@ -80,19 +86,19 @@ public class SvaEncuestaEspecialidadController extends AbstractController<SvaEnc
         }
     }
 
-    public SvaEncuestaEspecialidad getSvaEncuestaEspecialidad(java.lang.Integer id) {
+    public QuizEncuesta getSvaEncuestaEspecialidad(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<SvaEncuestaEspecialidad> getItemsAvailableSelectMany() {
+    public List<QuizEncuesta> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<SvaEncuestaEspecialidad> getItemsAvailableSelectOne() {
+    public List<QuizEncuesta> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = SvaEncuestaEspecialidad.class)
+    @FacesConverter(forClass = QuizEncuesta.class)
     public static class SvaEncuestaEspecialidadControllerConverter implements Converter {
 
         @Override
@@ -122,11 +128,11 @@ public class SvaEncuestaEspecialidadController extends AbstractController<SvaEnc
             if (object == null) {
                 return null;
             }
-            if (object instanceof SvaEncuestaEspecialidad) {
-                SvaEncuestaEspecialidad o = (SvaEncuestaEspecialidad) object;
+            if (object instanceof QuizEncuesta) {
+                QuizEncuesta o = (QuizEncuesta) object;
                 return getStringKey(o.getIdEncuesta());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SvaEncuestaEspecialidad.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), QuizEncuesta.class.getName()});
                 return null;
             }
         }

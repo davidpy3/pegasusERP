@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SgcEncuestaParticipanteViewDlg" widgetVar="SgcEncuestaParticipanteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSgcEncuestaParticipanteTitle}">
+            <h:form id="SgcEncuestaParticipanteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quizcEncuestaParticipacionController.selected != null}">
+                        <h:outputText value="#{bundle.flags}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.flags}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_flags}"/>
+                        <h:outputText value="#{bundle.idAcexp}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.idAcexp}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_idAcexp}"/>
+                        <h:outputText value="#{bundle.cerrado}"/>
+                        <p:selectBooleanCheckbox value="#{quizcEncuestaParticipacionController.selected.cerrado}" disabled="true"/>
+                        <h:outputText value="#{bundle.fechaInicio}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.fechaInicio}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_fechaInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.fechaCierre}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.fechaCierre}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_fechaCierre}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.idUsuario}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.idUsuario}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.fechaReg}"/>
+                        <h:outputText value="#{quizcEncuestaParticipacionController.selected.fechaReg}" title="#{bundle.ViewSgcEncuestaParticipanteTitle_fechaReg}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SgcEncuestaParticipanteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

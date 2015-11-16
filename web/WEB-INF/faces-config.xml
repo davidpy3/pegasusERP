@@ -136,6 +136,10 @@
             <base-name>/Bundlex</base-name>
             <var>bundlex</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle0</base-name>
+            <var>bundle0</var>
+        </resource-bundle>
     </application>
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>

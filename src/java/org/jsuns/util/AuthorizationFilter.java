@@ -34,18 +34,18 @@ public class AuthorizationFilter implements Filter {
             HttpServletRequest reqt = (HttpServletRequest) request;
             HttpServletResponse resp = (HttpServletResponse) response;
 
-            if (true) {
-                Object mod = request.getParameter("mod");
-                if (mod == null) {
-                    mod = reqt.getSession().getAttribute("mod");
-                } else {
-                    reqt.getSession().setAttribute("mod", mod);
-                }
-                X.log("fffffffffffff");
-                request.setAttribute("mod", mod);
-                chain.doFilter(request, response);
-                return;
-            }
+//            if (true) {
+//                Object mod = request.getParameter("mod");
+//                if (mod == null) {
+//                    mod = reqt.getSession().getAttribute("mod");
+//                } else {
+//                    reqt.getSession().setAttribute("mod", mod);
+//                }
+//                X.log("fffffffffffff");
+//                request.setAttribute("mod", mod);
+//                chain.doFilter(request, response);
+//                return;
+//            }
 
             HttpSession ses = reqt.getSession(false);
             String reqURI = reqt.getRequestURI();

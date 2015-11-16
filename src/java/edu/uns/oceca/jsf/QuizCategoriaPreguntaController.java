@@ -1,6 +1,6 @@
 package edu.uns.oceca.jsf;
 
-import edu.uns.oceca.jpa.QuizCategoriaPregunta;
+import edu.uns.oceca.jpa.QuizCategoria;
 import edu.uns.oceca.ejb.QuizCategoriaPreguntaFacadeLocal;
 
 import java.io.Serializable;
@@ -22,7 +22,7 @@ import org.jsuns.util.JsfUtil.PersistAction;
 
 @Named("quizCategoriaPreguntaController")
 @SessionScoped
-public class QuizCategoriaPreguntaController extends AbstractController<QuizCategoriaPregunta> implements Serializable {
+public class QuizCategoriaPreguntaController extends AbstractController<QuizCategoria> implements Serializable {
 
     @EJB
     private edu.uns.oceca.ejb.QuizCategoriaPreguntaFacadeLocal ejbFacade;
@@ -31,7 +31,7 @@ public class QuizCategoriaPreguntaController extends AbstractController<QuizCate
         return ejbFacade;
     }
 
-    public List<QuizCategoriaPregunta> getItems() {
+    public List<QuizCategoria> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -40,7 +40,7 @@ public class QuizCategoriaPreguntaController extends AbstractController<QuizCate
 
     @Override
     protected void persist(PersistAction persistAction, String successMessage) {
-        QuizCategoriaPregunta selected=getSelected();
+        QuizCategoria selected=getSelected();
         if (selected != null) {
             setEmbeddableKeys();
             try {
@@ -68,19 +68,19 @@ public class QuizCategoriaPreguntaController extends AbstractController<QuizCate
         }
     }
 
-    public QuizCategoriaPregunta getQuizCategoriaPregunta(java.lang.Integer id) {
+    public QuizCategoria getQuizCategoriaPregunta(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<QuizCategoriaPregunta> getItemsAvailableSelectMany() {
+    public List<QuizCategoria> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<QuizCategoriaPregunta> getItemsAvailableSelectOne() {
+    public List<QuizCategoria> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = QuizCategoriaPregunta.class)
+    @FacesConverter(forClass = QuizCategoria.class)
     public static class QuizCategoriaPreguntaControllerConverter implements Converter {
 
         @Override
@@ -110,11 +110,11 @@ public class QuizCategoriaPreguntaController extends AbstractController<QuizCate
             if (object == null) {
                 return null;
             }
-            if (object instanceof QuizCategoriaPregunta) {
-                QuizCategoriaPregunta o = (QuizCategoriaPregunta) object;
+            if (object instanceof QuizCategoria) {
+                QuizCategoria o = (QuizCategoria) object;
                 return getStringKey(o.getIdCategoria());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), QuizCategoriaPregunta.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), QuizCategoria.class.getName()});
                 return null;
             }
         }

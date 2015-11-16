@@ -5,7 +5,7 @@
  */
 package edu.uns.oceca.ejb;
 
-import edu.uns.oceca.jpa.SgcFuentePregunta;
+import edu.uns.oceca.jpa.QuizFuentePregunta;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface SgcFuentePreguntaFacadeLocal {
 
-    void create(SgcFuentePregunta sgcFuentePregunta);
+    void create(QuizFuentePregunta sgcFuentePregunta);
 
-    void edit(SgcFuentePregunta sgcFuentePregunta);
+    void edit(QuizFuentePregunta sgcFuentePregunta);
 
-    void remove(SgcFuentePregunta sgcFuentePregunta);
+    void remove(QuizFuentePregunta sgcFuentePregunta);
 
-    SgcFuentePregunta find(Object id);
+    QuizFuentePregunta find(Object id);
 
-    List<SgcFuentePregunta> findAll();
+    List<QuizFuentePregunta> findAll();
 
-    List<SgcFuentePregunta> findRange(int[] range);
+    List<QuizFuentePregunta> findRange(int[] range);
 
     int count();
     

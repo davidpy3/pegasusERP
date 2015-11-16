@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.jsuns.util;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -17,7 +13,16 @@ public abstract class AbstractController<T> {
     private Class<T> entityClass;
     protected List<T> items = null;
     private T selected;
+    private HashMap params=new HashMap();
 
+    public HashMap getParams() {
+        return params;
+    }
+
+    public void setParams(HashMap params) {
+        this.params = params;
+    }
+    
     public AbstractController() {
         try {
             String g = this.getClass().getGenericSuperclass().toString();

@@ -1,6 +1,6 @@
 package edu.uns.oceca.jsf;
 
-import edu.uns.oceca.jpa.SgcFuentePregunta;
+import edu.uns.oceca.jpa.QuizFuentePregunta;
 import org.jsuns.util.JsfUtil;
 import org.jsuns.util.JsfUtil.PersistAction;
 import edu.uns.oceca.ejb.SgcFuentePreguntaFacade;
@@ -26,17 +26,17 @@ public class SgcFuentePreguntaController implements Serializable {
 
     @EJB
     private edu.uns.oceca.ejb.SgcFuentePreguntaFacadeLocal ejbFacade;
-    private List<SgcFuentePregunta> items = null;
-    private SgcFuentePregunta selected;
+    private List<QuizFuentePregunta> items = null;
+    private QuizFuentePregunta selected;
 
     public SgcFuentePreguntaController() {
     }
 
-    public SgcFuentePregunta getSelected() {
+    public QuizFuentePregunta getSelected() {
         return selected;
     }
 
-    public void setSelected(SgcFuentePregunta selected) {
+    public void setSelected(QuizFuentePregunta selected) {
         this.selected = selected;
     }
 
@@ -50,8 +50,8 @@ public class SgcFuentePreguntaController implements Serializable {
         return ejbFacade;
     }
 
-    public SgcFuentePregunta prepareCreate() {
-        selected = new SgcFuentePregunta();
+    public QuizFuentePregunta prepareCreate() {
+        selected = new QuizFuentePregunta();
         initializeEmbeddableKey();
         return selected;
     }
@@ -75,7 +75,7 @@ public class SgcFuentePreguntaController implements Serializable {
         }
     }
 
-    public List<SgcFuentePregunta> getItems() {
+    public List<QuizFuentePregunta> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -110,19 +110,19 @@ public class SgcFuentePreguntaController implements Serializable {
         }
     }
 
-    public SgcFuentePregunta getSgcFuentePregunta(java.lang.Integer id) {
+    public QuizFuentePregunta getSgcFuentePregunta(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<SgcFuentePregunta> getItemsAvailableSelectMany() {
+    public List<QuizFuentePregunta> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<SgcFuentePregunta> getItemsAvailableSelectOne() {
+    public List<QuizFuentePregunta> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = SgcFuentePregunta.class)
+    @FacesConverter(forClass = QuizFuentePregunta.class)
     public static class SgcFuentePreguntaControllerConverter implements Converter {
 
         @Override
@@ -152,11 +152,11 @@ public class SgcFuentePreguntaController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof SgcFuentePregunta) {
-                SgcFuentePregunta o = (SgcFuentePregunta) object;
+            if (object instanceof QuizFuentePregunta) {
+                QuizFuentePregunta o = (QuizFuentePregunta) object;
                 return getStringKey(o.getIdPregunta());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SgcFuentePregunta.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), QuizFuentePregunta.class.getName()});
                 return null;
             }
         }

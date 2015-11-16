@@ -14,16 +14,24 @@
 
         <ui:define name="body">
             <h:form id="SvaEncuestaEspecialidadListForm">
-                <p:panel header="#{bundle.ListSvaEncuestaEspecialidadTitle}">
+                <p:panel id="container" header="#{bundle.ListSvaEncuestaEspecialidadTitle}">
+                                        <p:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.periodo}:"/>
+                        <p:inputText value="#{svaEncuestaEspecialidadController.params['dni']}">
+                            <p:ajax update="container" listener="#{svaEncuestaEspecialidadController.ajax}"/>
+                        </p:inputText>
+                        <h:outputLabel value="#{bundle.objeto}:"/>
+                        <p:inputText value="#{svaEncuestaEspecialidadController.params['objeto']}">
+                            <p:ajax update="container" listener="#{svaEncuestaEspecialidadController.ajax}"/>
+                        </p:inputText>
+                    </p:panelGrid>
                     <p:dataTable id="datalist" value="#{svaEncuestaEspecialidadController.items}" var="item"
                                  selectionMode="single" selection="#{svaEncuestaEspecialidadController.selected}"
                                  paginator="true"
                                  rowKey="#{item.idEncuesta}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 
-                                 
-                                 
+                                 rows="20"
+                                 rowsPerPageTemplate="20,30,40,50"
+                                
                                  
                                  >
 
@@ -32,51 +40,41 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEncuesta}"/>
+                                <h:outputText value="#{bundle.idEncuesta}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idEncuesta}"/>
+                            <h:outputText value="#{item.idEncuesta}">
+      <f:convertNumber pattern="0000"/>
+    </h:outputText>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idAutoevaluacion}"/>
+                                <h:outputText value="#{bundle.cuestionario}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idAutoevaluacion}"/>
+                            <h:outputText value="#{item.quizCuestionario.nombre}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idAcper}"/>
+                                <h:outputText value="#{bundle.especialidad}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idAcper}"/>
+                            <h:outputText value="#{item.apsEspecialidad.especialidad}"/>
                         </p:column>
-                        <p:column>
+                                            <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEspecialidad}"/>
+                                <h:outputText value="#{bundle.periodo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idEspecialidad}"/>
+                            <h:outputText value="#{item.apcPeriodoAcademico.codAcper}"/>
                         </p:column>
-                        <p:column>
+                        <p:column width="75">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idModelo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idModelo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idCuestionario}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idCuestionario}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaIni}"/>
+                                <h:outputText value="#{bundle.fechaIni}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechaIni}">
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column width="75">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaFin}"/>
+                                <h:outputText value="#{bundle.fechaFin}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechaFin}">
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
@@ -84,31 +82,31 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_observacion}"/>
+                                <h:outputText value="#{bundle.observacion}"/>
                             </f:facet>
                             <h:outputText value="#{item.observacion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idEditor}"/>
+                                <h:outputText value="#{bundle.idEditor}"/>
                             </f:facet>
                             <h:outputText value="#{item.idEditor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_idCreador}"/>
+                                <h:outputText value="#{bundle.idCreador}"/>
                             </f:facet>
                             <h:outputText value="#{item.idCreador}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_activo}"/>
+                                <h:outputText value="#{bundle.activo}"/>
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
                         </p:column>
-                        <p:column>
+                        <p:column width="75">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_fechaReg}"/>
+                                <h:outputText value="#{bundle.fechaReg}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechaReg}">
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
@@ -116,7 +114,7 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSvaEncuestaEspecialidadTitle_estado}"/>
+                                <h:outputText value="#{bundle.estado}"/>
                             </f:facet>
                             <h:outputText value="#{item.estado}"/>
                         </p:column>

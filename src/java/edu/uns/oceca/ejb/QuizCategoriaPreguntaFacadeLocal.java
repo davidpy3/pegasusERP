@@ -1,23 +1,23 @@
 package edu.uns.oceca.ejb;
 
-import edu.uns.oceca.jpa.QuizCategoriaPregunta;
+import edu.uns.oceca.jpa.QuizCategoria;
 import java.util.List;
 import javax.ejb.Local;
 
 @Local
 public interface QuizCategoriaPreguntaFacadeLocal {
 
-    void create(QuizCategoriaPregunta sgcAudit);
+    void create(QuizCategoria sgcAudit);
 
-    void edit(QuizCategoriaPregunta sgcAudit);
+    void edit(QuizCategoria sgcAudit);
 
-    void remove(QuizCategoriaPregunta sgcAudit);
+    void remove(QuizCategoria sgcAudit);
 
-    QuizCategoriaPregunta find(Object id);
+    QuizCategoria find(Object id);
 
-    List<QuizCategoriaPregunta> findAll();
+    List<QuizCategoria> findAll();
 
-    List<QuizCategoriaPregunta> findRange(int[] range);
+    List<QuizCategoria> findRange(int[] range);
 
     int count();
     

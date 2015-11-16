@@ -1,6 +1,6 @@
 package edu.uns.oceca.jsf;
 
-import edu.uns.oceca.jpa.SvaRespuesta;
+import edu.uns.oceca.jpa.QuizRespuesta;
 import org.jsuns.util.JsfUtil;
 import org.jsuns.util.JsfUtil.PersistAction;
 import edu.uns.oceca.ejb.SvaRespuestaFacade;
@@ -26,17 +26,17 @@ public class SvaRespuestaController implements Serializable {
 
     @EJB
     private edu.uns.oceca.ejb.SvaRespuestaFacadeLocal ejbFacade;
-    private List<SvaRespuesta> items = null;
-    private SvaRespuesta selected;
+    private List<QuizRespuesta> items = null;
+    private QuizRespuesta selected;
 
     public SvaRespuestaController() {
     }
 
-    public SvaRespuesta getSelected() {
+    public QuizRespuesta getSelected() {
         return selected;
     }
 
-    public void setSelected(SvaRespuesta selected) {
+    public void setSelected(QuizRespuesta selected) {
         this.selected = selected;
     }
 
@@ -51,8 +51,8 @@ public class SvaRespuestaController implements Serializable {
         return ejbFacade;
     }
 
-    public SvaRespuesta prepareCreate() {
-        selected = new SvaRespuesta();
+    public QuizRespuesta prepareCreate() {
+        selected = new QuizRespuesta();
         initializeEmbeddableKey();
         return selected;
     }
@@ -76,7 +76,7 @@ public class SvaRespuestaController implements Serializable {
         }
     }
 
-    public List<SvaRespuesta> getItems() {
+    public List<QuizRespuesta> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -111,19 +111,19 @@ public class SvaRespuestaController implements Serializable {
         }
     }
 
-    public SvaRespuesta getSvaRespuesta(edu.uns.oceca.jpa.SvaRespuestaPK id) {
+    public QuizRespuesta getSvaRespuesta(edu.uns.oceca.jpa.SvaRespuestaPK id) {
         return getFacade().find(id);
     }
 
-    public List<SvaRespuesta> getItemsAvailableSelectMany() {
+    public List<QuizRespuesta> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<SvaRespuesta> getItemsAvailableSelectOne() {
+    public List<QuizRespuesta> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = SvaRespuesta.class)
+    @FacesConverter(forClass = QuizRespuesta.class)
     public static class SvaRespuestaControllerConverter implements Converter {
 
         private static final String SEPARATOR = "#";
@@ -161,11 +161,11 @@ public class SvaRespuestaController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof SvaRespuesta) {
-                SvaRespuesta o = (SvaRespuesta) object;
+            if (object instanceof QuizRespuesta) {
+                QuizRespuesta o = (QuizRespuesta) object;
                 return getStringKey(o.getSvaRespuestaPK());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SvaRespuesta.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), QuizRespuesta.class.getName()});
                 return null;
             }
         }

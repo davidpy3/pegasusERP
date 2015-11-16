@@ -12,33 +12,25 @@
             <h:form id="SvaEncuestaEspecialidadCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{svaEncuestaEspecialidadController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idEncuesta}" for="idEncuesta" />
-                        <p:inputText id="idEncuesta" value="#{svaEncuestaEspecialidadController.selected.idEncuesta}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idEncuesta}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idEncuesta}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idAutoevaluacion}" for="idAutoevaluacion" />
-                        <p:inputText id="idAutoevaluacion" value="#{svaEncuestaEspecialidadController.selected.idAutoevaluacion}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idAutoevaluacion}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idAutoevaluacion}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idAcper}" for="idAcper" />
-                        <p:inputText id="idAcper" value="#{svaEncuestaEspecialidadController.selected.idAcper}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idAcper}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idAcper}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idEspecialidad}" for="idEspecialidad" />
-                        <p:inputText id="idEspecialidad" value="#{svaEncuestaEspecialidadController.selected.idEspecialidad}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idEspecialidad}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idEspecialidad}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idModelo}" for="idModelo" />
+                        <p:outputLabel value="#{bundle.idModelo}" for="idModelo" />
                         <p:inputText id="idModelo" value="#{svaEncuestaEspecialidadController.selected.idModelo}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idModelo}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idModelo}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idCuestionario}" for="idCuestionario" />
+                        <p:outputLabel value="#{bundle.idCuestionario}" for="idCuestionario" />
                         <p:inputText id="idCuestionario" value="#{svaEncuestaEspecialidadController.selected.idCuestionario}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idCuestionario}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idCuestionario}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_fechaIni}" for="fechaIni" />
+                        <p:outputLabel value="#{bundle.fechaIni}" for="fechaIni" />
                         <p:calendar id="fechaIni" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaIni}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaIni}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_fechaFin}" for="fechaFin" />
+                        <p:outputLabel value="#{bundle.fechaFin}" for="fechaFin" />
                         <p:calendar id="fechaFin" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaFin}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaFin}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_observacion}" for="observacion" />
+                        <p:outputLabel value="#{bundle.observacion}" for="observacion" />
                         <p:inputTextarea rows="4" cols="30" id="observacion" value="#{svaEncuestaEspecialidadController.selected.observacion}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_observacion}" />
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idEditor}" for="idEditor" />
+                        <p:outputLabel value="#{bundle.idEditor}" for="idEditor" />
                         <p:inputText id="idEditor" value="#{svaEncuestaEspecialidadController.selected.idEditor}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idEditor}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idEditor}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_idCreador}" for="idCreador" />
+                        <p:outputLabel value="#{bundle.idCreador}" for="idCreador" />
                         <p:inputText id="idCreador" value="#{svaEncuestaEspecialidadController.selected.idCreador}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_idCreador}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_idCreador}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_activo}" for="activo" />
+                        <p:outputLabel value="#{bundle.activo}" for="activo" />
                         <p:selectBooleanCheckbox id="activo" value="#{svaEncuestaEspecialidadController.selected.activo}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_activo}"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_fechaReg}" for="fechaReg" />
+                        <p:outputLabel value="#{bundle.fechaReg}" for="fechaReg" />
                         <p:calendar id="fechaReg" pattern="dd/MM/yyyy HH:mm:ss" value="#{svaEncuestaEspecialidadController.selected.fechaReg}" title="#{bundle.EditSvaEncuestaEspecialidadTitle_fechaReg}" required="true" requiredMessage="#{bundle.EditSvaEncuestaEspecialidadRequiredMessage_fechaReg}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateSvaEncuestaEspecialidadLabel_estado}" for="estado" />
+                        <p:outputLabel value="#{bundle.estado}" for="estado" />
                         <p:inputText id="estado" value="#{svaEncuestaEspecialidadController.selected.estado}" title="#{bundle.CreateSvaEncuestaEspecialidadTitle_estado}" required="true" requiredMessage="#{bundle.CreateSvaEncuestaEspecialidadRequiredMessage_estado}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{svaEncuestaEspecialidadController.create}" value="#{bundle.Save}" update="display,:SvaEncuestaEspecialidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'SvaEncuestaEspecialidadCreateDialog');"/>

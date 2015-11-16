@@ -5,13 +5,10 @@ import org.pegasus.personal.jpa.Personal;
 import org.jsuns.util.JsfUtil;
 import org.jsuns.util.JsfUtil.PersistAction;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,7 +25,6 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.sql.DataSource;
 import org.jsuns.jreport.JReportAction;
 import org.jsuns.util.AbstractController;
-import org.jsuns.util.XDate;
 import org.jsuns.util.XMap;
 import org.pegasus.personal.ejb.PersonalFacadeLocal;
 import org.primefaces.model.DefaultStreamedContent;
@@ -38,22 +34,7 @@ import org.primefaces.model.StreamedContent;
 @SessionScoped
 public class PersonalController extends AbstractController<Personal> implements Serializable {
 
-    private String anoEje = "" + XDate.getYear(new XDate());
     private String mes;
-
-    public String getAnoEje() {
-        return anoEje;
-    }
-
-    public void setAnoEje(String anoEje) {
-        this.anoEje = anoEje;
-    }
-
-    public HashMap getParams() {
-        return params;
-    }
-    
-    private final HashMap params=new HashMap();
 
     public Integer getEdad(Date birthDate) {
         if(birthDate!=null){
@@ -102,10 +83,8 @@ public class PersonalController extends AbstractController<Personal> implements 
     }
 
     public List<Personal> getItems() {
-//        X.log(this.params);
         if (items == null) {
-            items = getFacade().load(0,-1, anoEje,params);
-//            items = getFacade().findAll();
+            items = getFacade().load(0,-1,null,getParams());
         }
         return items;
     }

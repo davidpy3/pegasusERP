@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.uns.oceda.jpa;
 
 import java.io.Serializable;
@@ -18,10 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.jsuns.ocid.DrtPersonaNatural;
 
-/**
- *
- * @author USER
- */
 @Entity
 @Table(name = "fxa_estudiante")
 public class FxaEstudiante implements Serializable {

@@ -1,5 +1,7 @@
 package org.pegasus.jsf;
 
+import edu.uns.ocid.ejb.DrtDirectorioFacadeLocal;
+import edu.uns.ocid.ejb.DrtPersonaNaturalFacadeLocal;
 import org.pegasus.jpa.Usuario;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,25 +19,21 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.servlet.http.HttpSession;
 import org.jsuns.X;
+import org.jsuns.ocid.DrtPersonaNatural;
 import org.jsuns.util.AbstractController;
 import org.jsuns.util.JsfUtil;
 import org.jsuns.util.JsfUtil.PersistAction;
 import org.jsuns.util.Pegasus;
+import org.jsuns.util.XUtil;
 import org.pegasus.ejb.UsuarioFacadeLocal;
+import org.pegasus.jpa.UsuarioPK;
 
 @Named("usuarioController")
 @SessionScoped
 public class UsuarioController extends AbstractController<Usuario> implements Serializable {
-
-    private HashMap params=new HashMap();
-
-    public HashMap getParams() {
-        return params;
-    }
-
-    public void setParams(HashMap params) {
-        this.params = params;
-    }
+    
+    @EJB
+    private DrtPersonaNaturalFacadeLocal drtDirectorioFacade;
     
     @EJB
     private org.pegasus.ejb.UsuarioFacadeLocal ejbFacade;
@@ -166,14 +164,21 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
 
     }
 
-        //validate login
     public String login(){//00011678
         HashMap p=getParams();
         try{
             Usuario u=getFacade().login(X.toText(p.get("user")),X.toText(p.get("pass")));
+            if(u!=null){
+                UsuarioPK upk=u.getUsuarioPK();
+                if("0".equals(upk.getAnoEje())){
+                    DrtPersonaNatural pn=drtDirectorioFacade.find(XUtil.intValue(upk.getDni()));
+                    Pegasus.getSession().setAttribute("personaNatural",pn);
+                }
+            }
             Pegasus.getSession().setAttribute("usuario", u);
 //            return "admin";
-            return "personal/planilla/List?faces-redirect=true";
+//            return "personal/planilla/List?faces-redirect=true";
+            return "oceca/encuestaParticipacion/List?faces-redirect=true";
         }catch(Exception e){
             return "login";
         }

@@ -27,8 +27,7 @@ public class PersonalDsctoController extends AbstractController<PersonalDscto> i
 
     @EJB
     private org.pegasus.personal.ejb.PersonalDsctoFacadeLocal ejbFacade;
-    private HashMap params=new HashMap();
-    
+
     @Override
     protected void initializeEmbeddableKey() {
         getSelected().setPersonalDsctoPK(new org.pegasus.personal.jpa.PersonalDsctoPK());
@@ -38,17 +37,9 @@ public class PersonalDsctoController extends AbstractController<PersonalDscto> i
         return ejbFacade;
     }
 
-    public HashMap getParams() {
-        return params;
-    }
-
-    public void setParams(HashMap params) {
-        this.params = params;
-    }
-
     public List<PersonalDscto> getItems() {
         if (items == null) {
-            items = getFacade().load(0, -1, null,params);
+            items = getFacade().load(0, -1, null,getParams());
         }
         return items;
     }

@@ -5,7 +5,7 @@
  */
 package edu.uns.oceca.ejb;
 
-import edu.uns.oceca.jpa.SvaRespuesta;
+import edu.uns.oceca.jpa.QuizRespuesta;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface SvaRespuestaFacadeLocal {
 
-    void create(SvaRespuesta svaRespuesta);
+    void create(QuizRespuesta svaRespuesta);
 
-    void edit(SvaRespuesta svaRespuesta);
+    void edit(QuizRespuesta svaRespuesta);
 
-    void remove(SvaRespuesta svaRespuesta);
+    void remove(QuizRespuesta svaRespuesta);
 
-    SvaRespuesta find(Object id);
+    QuizRespuesta find(Object id);
 
-    List<SvaRespuesta> findAll();
+    List<QuizRespuesta> findAll();
 
-    List<SvaRespuesta> findRange(int[] range);
+    List<QuizRespuesta> findRange(int[] range);
 
     int count();
     
